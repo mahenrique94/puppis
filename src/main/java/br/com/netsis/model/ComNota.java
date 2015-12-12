@@ -71,7 +71,7 @@ public class ComNota implements Serializable {
 	private String cancelada;
 	@OneToOne
 	@JoinColumn(name = "idtipooperacao", referencedColumnName = "id", nullable = false)
-	private CadTipoOperacao idtipooperacao;
+	private SysTipoOperacao idtipooperacao;
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "idnota")
 	private ComNotaCusto custo;
 	@OneToMany
@@ -161,10 +161,10 @@ public class ComNota implements Serializable {
 	public void setCancelada(String cancelada) {
 		this.cancelada = cancelada;
 	}
-	public CadTipoOperacao getIdtipooperacao() {
+	public SysTipoOperacao getIdtipooperacao() {
 		return idtipooperacao;
 	}
-	public void setIdtipooperacao(CadTipoOperacao idtipooperacao) {
+	public void setIdtipooperacao(SysTipoOperacao idtipooperacao) {
 		this.idtipooperacao = idtipooperacao;
 	}
 	public ComNotaCusto getCusto() {

@@ -32,7 +32,7 @@ public class ComNotaCusto implements Serializable {
 	private ComNota idnota;
 	@ManyToOne
 	@JoinColumn(name = "idformapagamento", referencedColumnName = "id", nullable = false)
-	private SysFormaPagamento idformapagamento;
+	private FinFormaPagamento idformapagamento;
 	@DecimalMin("0.0")
 	@Digits(integer = 9, fraction = 2)
 	@Column(nullable = true)
@@ -80,10 +80,10 @@ public class ComNotaCusto implements Serializable {
 	public void setIdnota(ComNota idnota) {
 		this.idnota = idnota;
 	}
-	public SysFormaPagamento getIdformapagamento() {
+	public FinFormaPagamento getIdformapagamento() {
 		return idformapagamento;
 	}
-	public void setIdformapagamento(SysFormaPagamento idformapagamento) {
+	public void setIdformapagamento(FinFormaPagamento idformapagamento) {
 		this.idformapagamento = idformapagamento;
 	}
 	public Double getPorcdesconto() {

@@ -18,8 +18,8 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "cad_setor")
-public class CadSetor implements Serializable {
+@Table(name = "cad_nucleo")
+public class PesNucleo implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,12 +36,12 @@ public class CadSetor implements Serializable {
 	@Column(nullable = false)
 	private Calendar dataupdate;
 	
-	public CadSetor() {
+	public PesNucleo() {
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
 	}
 	
-	public CadSetor(Integer id) {
+	public PesNucleo(Integer id) {
 		this();
 		setId(id);
 	}

@@ -18,7 +18,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "cad_banco")
+@Table(name = "fin_banco")
 public class FinBanco implements Serializable {
 
 	@Id

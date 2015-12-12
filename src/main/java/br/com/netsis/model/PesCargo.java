@@ -16,36 +16,31 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
-import org.hibernate.validator.constraints.Range;
 
 @Entity
-@Table(name = "sys_formapagamento")
-public class SysFormaPagamento implements Serializable {
+@Table(name = "sys_cargo")
+public class PesCargo implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@NotNull
 	@NotEmpty
-	@Size(min = 0, max = 30, message = "{minimo.0.maximo.30}")
-	@Column(length = 30, columnDefinition = "varchar(30)", nullable = false)
+	@Size(min = 0, max = 120, message = "{minimo.0.maximo.120}")
+	@Column(length = 120, columnDefinition = "varchar(120)", nullable = false, unique = true)
 	private String descricao;
-	@Range(min = 0, max = 10, message = "{intervalo.0.10}")
-	private Integer quantidadeparcela;
-	@Range(min = 0, max = 120, message = "{intervalo.0.120}")
-	private Integer intervalo;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Calendar datacreate;
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
 	private Calendar dataupdate;
-
-	public SysFormaPagamento() {
+	
+	public PesCargo() {
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
 	}
-	public SysFormaPagamento(Integer id) {
+	public PesCargo(Integer id) {
 		this();
 		setId(id);
 	}
@@ -61,18 +56,6 @@ public class SysFormaPagamento implements Serializable {
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
-	}
-	public Integer getQuantidadeparcela() {
-		return quantidadeparcela;
-	}
-	public void setQuantidadeparcela(Integer quantidadeparcela) {
-		this.quantidadeparcela = quantidadeparcela;
-	}
-	public Integer getIntervalo() {
-		return intervalo;
-	}
-	public void setIntervalo(Integer intervalo) {
-		this.intervalo = intervalo;
 	}
 	public Calendar getDatacreate() {
 		return datacreate;

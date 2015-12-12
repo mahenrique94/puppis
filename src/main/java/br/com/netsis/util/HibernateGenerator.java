@@ -16,12 +16,12 @@ import br.com.netsis.model.FinBanco;
 import br.com.netsis.model.CadCentroCusto;
 import br.com.netsis.model.CadCidade;
 import br.com.netsis.model.CadEstado;
-import br.com.netsis.model.CadModulo;
-import br.com.netsis.model.CadNucleo;
+import br.com.netsis.model.SysModulo;
+import br.com.netsis.model.PesNucleo;
 import br.com.netsis.model.CadPais;
-import br.com.netsis.model.CadRamo;
-import br.com.netsis.model.CadSetor;
-import br.com.netsis.model.CadTipoOperacao;
+import br.com.netsis.model.PesRamo;
+import br.com.netsis.model.PesSetor;
+import br.com.netsis.model.SysTipoOperacao;
 import br.com.netsis.model.ComNota;
 import br.com.netsis.model.ComNotaCusto;
 import br.com.netsis.model.ComNotaItens;
@@ -38,10 +38,10 @@ import br.com.netsis.model.PsEstoque;
 import br.com.netsis.model.PsGrupo;
 import br.com.netsis.model.PsProdutoServico;
 import br.com.netsis.model.PsTipo;
-import br.com.netsis.model.SysCargo;
-import br.com.netsis.model.SysEspecializacao;
+import br.com.netsis.model.PesCargo;
+import br.com.netsis.model.PesEspecializacao;
 import br.com.netsis.model.SysEstadoCivil;
-import br.com.netsis.model.SysFormaPagamento;
+import br.com.netsis.model.FinFormaPagamento;
 import br.com.netsis.model.SysNacionalidade;
 import br.com.netsis.model.SysNivelFormacao;
 import br.com.netsis.model.SysSexo;
@@ -65,8 +65,8 @@ public class HibernateGenerator {
 //				SysTipoContaBancaria.class, SysTipoContratacao.class, SysTipoFornecedor.class,SysUnidadeMedida.class
 //				PsGrupo.class, PsClasse.class, PsProdutoServico.class, PsEstoque.class, PsCusto.class, PsTipo.class
 //				ComNota.class, ComNotaCusto.class, ComNotaItens.class);
-		createDB(FinBanco.class, CadCentroCusto.class, CadModulo.class, CadNucleo.class, CadRamo.class, CadSetor.class,
-				CadTipoOperacao.class);
+		createDB(FinBanco.class, CadCentroCusto.class, SysModulo.class, PesNucleo.class, PesRamo.class, PesSetor.class,
+				SysTipoOperacao.class);
 	}
 
 	private static void createDB(Class<?>... clazzz) {
@@ -104,10 +104,10 @@ public class HibernateGenerator {
 //		cfg.addAnnotatedClass(CadRamo.class);
 //		cfg.addAnnotatedClass(CadNucleo.class);
 //		cfg.addAnnotatedClass(CadCidade.class);
-		cfg.addAnnotatedClass(SysCargo.class);
-		cfg.addAnnotatedClass(SysEspecializacao.class);
+		cfg.addAnnotatedClass(PesCargo.class);
+		cfg.addAnnotatedClass(PesEspecializacao.class);
 		cfg.addAnnotatedClass(SysEstadoCivil.class);
-		cfg.addAnnotatedClass(SysFormaPagamento.class);
+		cfg.addAnnotatedClass(FinFormaPagamento.class);
 		cfg.addAnnotatedClass(SysNacionalidade.class);
 		cfg.addAnnotatedClass(SysNivelFormacao.class);
 		cfg.addAnnotatedClass(SysSexo.class);
