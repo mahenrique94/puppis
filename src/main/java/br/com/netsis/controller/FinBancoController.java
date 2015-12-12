@@ -5,7 +5,7 @@ import br.com.caelum.vraptor.Path;
 import br.com.netsis.model.FinBanco;
 
 @Controller
-@Path("banco")
-public class CadBancoController extends GenericController<FinBanco> {
+@Path("financeiro/banco")
+public class FinBancoController extends GenericController<FinBanco> {
 
 }

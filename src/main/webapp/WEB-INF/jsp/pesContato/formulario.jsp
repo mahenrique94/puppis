@@ -4,7 +4,7 @@
 	<legend class="block-header">
 		<h1 class="block-title"><label><fmt:message key="nav.cadastro"/>&nbsp;<fmt:message key="label.barra"/>&nbsp;<fmt:message key="nav.cadastro.pessoa"/>&nbsp;<fmt:message key="label.barra"/>&nbsp;<fmt:message key="nav.cadastro.pessoa.contato"/></label></h1>
 	</legend>
-	<form action="<c:url value="/contato"/>" class="form-inline" id="formlistarpescontato" method="post" name="formlistarpescontato" onsubmit="return enviarPost(this);" role="form">
+	<form action="<c:url value="/pessoa/contato"/>" class="form-inline" id="formlistarpescontato" method="post" name="formlistarpescontato" onsubmit="return enviarPost(this);" role="form">
 		<input type="hidden" name="obj.id" value="${obj.id}">
 		<input type="hidden" name="obj.idpessoa.id" value="${obj.idpessoa.id}">
 		<nav class="clearfix nav-block" role="navigation">

@@ -1,7 +1,6 @@
 <%@include file="/config/taglibraries.jsp"%>
 <input type="hidden" name="obj.documento.id" value="${obj.documento.id}">
 <input type="hidden" name="obj.documento.idpessoa.id" value="${obj.documento.idpessoa.id}">
-<input type="hidden" name="obj.endereco.ufaux" value="${obj.endereco.uf}">
 <div class="row-input" role="row">
 	<div class="w-50" role="separator">
 		<label class="align-left"><fmt:message key="label.cpf.cnpj"/></label>

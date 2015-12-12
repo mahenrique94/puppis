@@ -18,7 +18,7 @@ import br.com.netsis.model.AdmEndereco;
 import br.com.netsis.security.AdminAccess;
 
 @Controller
-@Path("comercio")
+@Path("administrador/comercio")
 @CustomBrutauthRules(AdminAccess.class)
 public class AdmComercioController extends GenericController<AdmComercio> {
 

@@ -5,7 +5,7 @@ import br.com.caelum.vraptor.Path;
 import br.com.netsis.model.CadEstado;
 
 @Controller
-@Path("estado")
+@Path("cadastro/estado")
 public class CadEstadoController extends GenericController<CadEstado> {
 
 }

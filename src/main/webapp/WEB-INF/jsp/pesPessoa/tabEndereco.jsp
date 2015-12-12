@@ -1,8 +1,9 @@
 <%@include file="/config/taglibraries.jsp"%>
 <input type="hidden" name="obj.endereco.id" value="${obj.endereco.id}">
 <input type="hidden" name="obj.endereco.idpessoa.id" value="${obj.endereco.idpessoa.id}">
-<input type="hidden" name="obj.endereco.ufaux" value="${obj.endereco.uf}">
-<input type="hidden" name="obj.endereco.cidadeaux" value="${obj.endereco.cidade}">
+<input type="hidden" name="obj.endereco.idestado.idaux" value="${obj.endereco.idestado.id}">
+<input type="hidden" name="obj.endereco.idcidade.idaux" value="${obj.endereco.idcidade.id}">
+<input type="hidden" name="obj.endereco.idpais.idaux" value="${obj.endereco.idpais.id}">
 <div class="row-input" role="row">
 	<div class="w-20" role="separator">
 		<label class="align-left"><fmt:message key="label.cep"/></label>
@@ -30,13 +31,13 @@
 <div class="row-input" role="row">
 	<div class="w-20" role="separator">
 		<label class="align-left"><fmt:message key="label.uf"/></label>
-		<select class="select-form" data-class="slCadEstado" id="slEstado_json_01" name="obj.endereco.uf" required></select>
-		<netsis:validationMessage name="obj.endereco.uf"/>
+		<select class="select-form" data-class="slCadEstado" id="slCadastro_Estado_json_01" name="obj.endereco.idestado.id" required></select>
+		<netsis:validationMessage name="obj.endereco.idestado.id"/>
 	</div>
 	<div class="w-40" role="separator">
 		<label class="align-left"><fmt:message key="label.cidade"/></label>
-		<select class="select-form" data-class="slCadCidade" id="slCidade_json_01" name="obj.endereco.cidade" required></select>
-		<netsis:validationMessage name="obj.endereco.cidade"/>
+		<select class="select-form" data-class="slCadCidade" id="slCadastro_Cidade_json_01" name="obj.endereco.idcidade.id" required></select>
+		<netsis:validationMessage name="obj.enderecoid.idcidade.id"/>
 	</div>
 	<div class="w-40" role="separator">
 		<label class="align-left"><fmt:message key="label.complemento"/></label>
@@ -47,7 +48,7 @@
 <div class="row" role="row">
 	<div class="w-100" role="separator">
 		<label class="align-left"><fmt:message key="label.pais"/></label>
-		<input class="input-form full" maxlength="60" name="obj.endereco.pais" pattern="letraEspaco" required type="text" value="${obj.endereco.pais}">
-		<netsis:validationMessage name="obj.endereco.pais"/>
+		<select class="select-form" data-class="slCadPais" id="slCadastro_Pais_json_01" name="obj.endereco.idpais.id" required></select>
+		<netsis:validationMessage name="obj.endereco.idpais.id"/>
 	</div>
 </div>

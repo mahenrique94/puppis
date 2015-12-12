@@ -5,7 +5,7 @@ import br.com.caelum.vraptor.Controller;
 import br.com.netsis.model.FinFormaPagamento;
 
 @Controller
-@Path("forma-de-pagamento")
-public class SysFormaPagamentoController extends GenericController<FinFormaPagamento> {
+@Path("financeiro/forma-de-pagamento")
+public class FinFormaPagamentoController extends GenericController<FinFormaPagamento> {
 
 }

@@ -18,8 +18,8 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "sys_sexo")
-public class SysSexo implements Serializable {
+@Table(name = "ps_unidademedida")
+public class PsUnidadeMedida implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,9 +31,9 @@ public class SysSexo implements Serializable {
 	private String descricao;
 	@NotNull
 	@NotEmpty
-	@Size(min = 1, max = 1, message = "{minimo.1.maximo.1}")
-	@Column(length = 1, columnDefinition = "char(1)", nullable = false)
-	private String abreviado;
+	@Size(min = 2, max = 2, message = "{minimo.2.maximo.2}")
+	@Column(length = 2, columnDefinition = "char(2)", nullable = false, unique = true)
+	private String unidade;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Calendar datacreate;
@@ -41,11 +41,11 @@ public class SysSexo implements Serializable {
 	@Column(nullable = false)
 	private Calendar dataupdate;
 	
-	public SysSexo() {
+	public PsUnidadeMedida() {
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
 	}
-	public SysSexo(Integer id) {
+	public PsUnidadeMedida(Integer id) {
 		this();
 		setId(id);
 	}
@@ -62,11 +62,11 @@ public class SysSexo implements Serializable {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public String getAbreviado() {
-		return abreviado;
+	public String getUnidade() {
+		return unidade;
 	}
-	public void setAbreviado(String abreviado) {
-		this.abreviado = abreviado;
+	public void setUnidade(String unidade) {
+		this.unidade = unidade;
 	}
 	public Calendar getDatacreate() {
 		return datacreate;

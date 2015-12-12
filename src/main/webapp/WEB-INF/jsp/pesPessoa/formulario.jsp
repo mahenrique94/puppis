@@ -4,9 +4,9 @@
 		<h1 class="block-title"><label><fmt:message key="nav.cadastro"/>&nbsp;<fmt:message key="label.barra"/>&nbsp;<fmt:message key="nav.cadastro.pessoa"/>&nbsp;<fmt:message key="label.barra"/>&nbsp;<fmt:message key="nav.cadastro.pessoa.cliente"/></label></h1>
 	</legend>
 	<form action="<c:url value="/pessoa"/>" class="form-inline" id="formlistarpespessoa" method="post" name="formlistarpespessoa" role="form">
-		<input type="hidden" name="obj.estadocivilaux" value="${obj.estadocivil}">
-		<input type="hidden" name="obj.sexoaux" value="${obj.sexo}">
-		<input type="hidden" name="obj.tipo.idaux" value="${obj.tipo.id}">
+		<input type="hidden" name="obj.idestadocivil.idaux" value="${obj.idestadocivil.id}">
+		<input type="hidden" name="obj.idsexo.idaux" value="${obj.idsexo.id}">
+		<input type="hidden" name="obj.idtipo.idaux" value="${obj.idtipo.id}">
 		<nav class="clearfix nav-block" role="navigation">
 			<div class="w-100">
 				<button class="btn-md float-left m-right-5" title="<fmt:message key="button.salvar"/>" type="submit"><span class="icon-floppy-disk"></span>&nbsp;<fmt:message key="button.salvar"/></button>
@@ -17,7 +17,7 @@
 			<div class="row-input" role="row">
 				<div class="w-100" role="separator">
 					<label class="align-left"><fmt:message key="label.tipo"/></label>
-					<select class="select-form full-select" data-class="slPesTipo" id="slPessoa_tipo_json_1" name="obj.tipo.id"></select>
+					<select class="select-form full-select" data-class="slPesTipo" id="slPessoa_Tipo_json_1" name="obj.idtipo.id"></select>
 					<netsis:validationMessage name="obj.tipo.id"/>
 				</div>
 			</div>
@@ -50,13 +50,13 @@
 			<div class="row-input" role="row">
 				<div class="w-30" role="separator">
 					<label class="align-left"><fmt:message key="label.sexo"/></label>
-					<select class="select-form" data-class="slSysSexo" id="slSexo_json_1" name="obj.sexo"></select>
-					<netsis:validationMessage name="obj.sexo"/>
+					<select class="select-form" data-class="slPesSexo" id="slPessoa_Sexo_json_1" name="obj.idsexo.id"></select>
+					<netsis:validationMessage name="obj.idsexo.id"/>
 				</div>
 				<div class="w-30" role="separator">
 					<label class="align-left"><fmt:message key="label.estado.civil"/></label>
-					<select class="select-form" data-class="slSysEstadoCivil" id="slEstado-civil_json_1" name="obj.estadocivil"></select>
-					<netsis:validationMessage name="obj.estadocivil"/>
+					<select class="select-form" data-class="slPesEstadoCivil" id="slPessoa_Estado-civil_json_1" name="obj.idestadocivil.id"></select>
+					<netsis:validationMessage name="obj.idestadocivil.id"/>
 				</div>							
 				<div class="w-40" role="separator">
 					<label class="align-left"><fmt:message key="label.apelido"/></label>

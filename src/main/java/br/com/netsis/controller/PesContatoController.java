@@ -13,7 +13,7 @@ import br.com.mhc.parametrosweb.ParametrosWeb;
 import br.com.netsis.model.PesContato;
 
 @Controller
-@Path("contato")
+@Path("pessoa/contato")
 public class PesContatoController extends GenericController<PesContato> {
 
 	@Delete("deletar/{obj.id}")

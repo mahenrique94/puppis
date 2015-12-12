@@ -6,6 +6,6 @@ import br.com.netsis.model.SysTipoOperacao;
 
 @Controller
 @Path("tipo-de-operacao")
-public class CadTipoOperacaoController extends GenericController<SysTipoOperacao> {
+public class SysTipoOperacaoController extends GenericController<SysTipoOperacao> {
 
 }

@@ -2,10 +2,10 @@ package br.com.netsis.controller;
 
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;
-import br.com.netsis.model.PesCargo;
+import br.com.netsis.model.PesSexo;
 
 @Controller
-@Path("cargo")
-public class SysCargoController extends GenericController<PesCargo> {
+@Path("pessoa/sexo")
+public class PesSexoController extends GenericController<PesSexo> {
 
 }

@@ -18,16 +18,16 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "sys_estadocivil")
-public class SysEstadoCivil implements Serializable {
-
+@Table(name = "pes_sexo")
+public class PesSexo implements Serializable {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@NotNull
 	@NotEmpty
-	@Size(min = 0, max = 15, message = "{minimo.0.maximo.15}")
-	@Column(length = 15, columnDefinition = "varchar(15)", nullable = false)
+	@Size(min = 0, max = 10, message = "{minimo.0.maximo.10}")
+	@Column(length = 10, columnDefinition = "varchar(10)", nullable = false, unique = true)
 	private String descricao;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
@@ -36,11 +36,11 @@ public class SysEstadoCivil implements Serializable {
 	@Column(nullable = false)
 	private Calendar dataupdate;
 	
-	public SysEstadoCivil() {
+	public PesSexo() {
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
 	}
-	public SysEstadoCivil(Integer id) {
+	public PesSexo(Integer id) {
 		this();
 		setId(id);
 	}

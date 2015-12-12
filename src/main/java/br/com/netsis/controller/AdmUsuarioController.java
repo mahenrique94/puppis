@@ -8,7 +8,7 @@ import br.com.netsis.model.AdmUsuario;
 import br.com.netsis.security.AdminAccess;
 
 @Controller
-@Path("usuario")
+@Path("administrador/usuario")
 @CustomBrutauthRules(AdminAccess.class)
 public class AdmUsuarioController extends GenericController<AdmUsuario> {
 	

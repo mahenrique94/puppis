@@ -38,17 +38,17 @@ public class PesPessoa implements Serializable {
 	@Column(length = 60, columnDefinition = "varchar(60)", nullable = true, unique = true)
 	private String nomefantasia;
 	@ManyToOne
-	@JoinColumn(name = "tipo", referencedColumnName = "id", nullable = false)
-	private PesTipo tipo;
+	@JoinColumn(name = "idtipo", referencedColumnName = "id", nullable = false)
+	private PesTipo idtipo;
 	@Size(min = 0, max = 30, message = "{minimo.0.maximo.30}")
 	@Column(length = 30, columnDefinition = "varchar(30)", nullable = true)
 	private String apelido;
-	@Size(min = 1, max = 1, message = "{minimo.1.maximo.1}")
-	@Column(length = 1, columnDefinition = "char(1)", nullable = true)
-	private String sexo;
-	@Size(min = 0, max = 15, message = "{minimo.0.maximo.15}")
-	@Column(length = 15, columnDefinition = "varchar(15)", nullable = true)
-	private String estadocivil;
+	@ManyToOne
+	@JoinColumn(name = "idsexo", referencedColumnName = "id", nullable = true)
+	private PesSexo idsexo;
+	@ManyToOne
+	@JoinColumn(name = "idestadocivil", referencedColumnName = "id", nullable = true)
+	private PesEstadoCivil idestadocivil;
 	@NotNull
 	@NotEmpty
 	@Size(min = 1, max = 1, message = "{minimo.1.maximo.1}")
@@ -60,10 +60,6 @@ public class PesPessoa implements Serializable {
 	private PesDocumento documento;
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "idpessoa")
 	private PesEndereco endereco;
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "idpessoa")
-	private PesInformacao informacao;
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "idpessoa")
-	private PesInformacaoBancaria informacaoBancaria;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Calendar datacreate;
@@ -99,23 +95,29 @@ public class PesPessoa implements Serializable {
 	public void setNomefantasia(String nomefantasia) {
 		this.nomefantasia = nomefantasia;
 	}
+	public PesTipo getIdtipo() {
+		return idtipo;
+	}
+	public void setIdtipo(PesTipo idtipo) {
+		this.idtipo = idtipo;
+	}
 	public String getApelido() {
 		return apelido;
 	}
 	public void setApelido(String apelido) {
 		this.apelido = apelido;
 	}
-	public String getSexo() {
-		return sexo;
+	public PesSexo getIdsexo() {
+		return idsexo;
 	}
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
+	public void setIdsexo(PesSexo idsexo) {
+		this.idsexo = idsexo;
 	}
-	public String getEstadocivil() {
-		return estadocivil;
+	public PesEstadoCivil getIdestadocivil() {
+		return idestadocivil;
 	}
-	public void setEstadocivil(String estadocivil) {
-		this.estadocivil = estadocivil;
+	public void setIdestadocivil(PesEstadoCivil idestadocivil) {
+		this.idestadocivil = idestadocivil;
 	}
 	public String getInativo() {
 		return inativo;
@@ -141,24 +143,6 @@ public class PesPessoa implements Serializable {
 	public void setEndereco(PesEndereco endereco) {
 		this.endereco = endereco;
 	}
-	public PesInformacao getInformacao() {
-		return informacao;
-	}
-	public void setInformacao(PesInformacao informacao) {
-		this.informacao = informacao;
-	}
-	public PesInformacaoBancaria getInformacaoBancaria() {
-		return informacaoBancaria;
-	}
-	public void setInformacaoBancaria(PesInformacaoBancaria informacaoBancaria) {
-		this.informacaoBancaria = informacaoBancaria;
-	}
-	public PesTipo getTipo() {
-		return tipo;
-	}
-	public void setTipo(PesTipo tipo) {
-		this.tipo = tipo;
-	}
 	public Calendar getDatacreate() {
 		return datacreate;
 	}
@@ -171,4 +155,5 @@ public class PesPessoa implements Serializable {
 	public void setDataupdate(Calendar dataupdate) {
 		this.dataupdate = dataupdate;
 	}
+	
 }

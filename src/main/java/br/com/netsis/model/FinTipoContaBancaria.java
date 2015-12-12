@@ -18,16 +18,16 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "sys_nivelformacao")
-public class SysNivelFormacao implements Serializable {
+@Table(name = "fin_tipocontabancaria")
+public class FinTipoContaBancaria implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@NotNull
 	@NotEmpty
-	@Size(min = 0, max = 50, message = "{minimo.0.maximo.50}")
-	@Column(length = 50, columnDefinition = "varchar(50)", nullable = false)
+	@Size(min = 0, max = 10, message = "{minimo.0.maximo.10}")
+	@Column(length = 10, columnDefinition = "varchar(10)", nullable = false)
 	private String descricao;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
@@ -36,11 +36,11 @@ public class SysNivelFormacao implements Serializable {
 	@Column(nullable = false)
 	private Calendar dataupdate;
 	
-	public SysNivelFormacao() {
+	public FinTipoContaBancaria() {
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
 	}
-	public SysNivelFormacao(Integer id) {
+	public FinTipoContaBancaria(Integer id) {
 		this();
 		setId(id);
 	}

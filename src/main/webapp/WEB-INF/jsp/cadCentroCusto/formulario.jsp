@@ -3,12 +3,12 @@
 	<legend class="block-header">
 		<h1 class="block-title"><label><fmt:message key="nav.cadastro"/>&nbsp;<fmt:message key="label.barra"/>&nbsp;<fmt:message key="nav.cadastro.centro.custo"/></label></h1>
 	</legend>
-	<form action="<c:url value="/centro-de-custo"/>" class="form-inline" id="formlistarcadcentrocusto" method="post" name="formlistarcadcentrocusto" role="form">
+	<form action="<c:url value="/cadastro/centro-de-custo"/>" class="form-inline" id="formlistarcadcentrocusto" method="post" name="formlistarcadcentrocusto" role="form">
 		<input type="hidden" name="obj.id" value="${obj.id}">
 		<nav class="clearfix nav-block" role="navigation">
 			<div class="w-100">
 				<button class="btn-md float-left m-right-5" title="<fmt:message key="button.salvar"/>" type="submit"><span class="icon-floppy-disk"></span>&nbsp;<fmt:message key="button.salvar"/></button>
-				<a href="<c:url value="/centro-de-custo"/>" class="btn-md float-left m-right-5" title="<fmt:message key="button.pesquisar"/>"><span class="icon-search"></span>&nbsp;<fmt:message key="button.pesquisar"/></a>
+				<a href="<c:url value="/cadastro/centro-de-custo"/>" class="btn-md float-left m-right-5" title="<fmt:message key="button.pesquisar"/>"><span class="icon-search"></span>&nbsp;<fmt:message key="button.pesquisar"/></a>
 			</div>
 		</nav>
 		<section aria-expanded="true" aria-hidden="false" class="block-body clearfix" role="form">

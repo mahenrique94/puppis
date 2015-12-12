@@ -2,10 +2,10 @@
 				<ul class="nav-main" role="menubar">
 					<li role="menuitem"><a href="#"><fmt:message key="nav.cadastro"/></a>
 						<ul aria-haspopup="true" role="menubar">
-							<li role="menuitem"><a href="<c:url value="/centro-de-custo"/>"><fmt:message key="nav.cadastro.centro.custo"/></a></li>
-							<li role="menuitem"><a href="<c:url value="/cidade"/>"><fmt:message key="nav.cadastro.cidade"/></a></li>
-							<li role="menuitem"><a href="<c:url value="/estado"/>"><fmt:message key="nav.cadastro.estado"/></a></li>
-							<li role="menuitem"><a href="<c:url value="/pais"/>"><fmt:message key="nav.cadastro.pais"/></a></li>
+							<li role="menuitem"><a href="<c:url value="/cadastro/centro-de-custo"/>"><fmt:message key="nav.cadastro.centro.custo"/></a></li>
+							<li role="menuitem"><a href="<c:url value="/cadastro/cidade"/>"><fmt:message key="nav.cadastro.cidade"/></a></li>
+							<li role="menuitem"><a href="<c:url value="/cadastro/estado"/>"><fmt:message key="nav.cadastro.estado"/></a></li>
+							<li role="menuitem"><a href="<c:url value="/cadastro/pais"/>"><fmt:message key="nav.cadastro.pais"/></a></li>
 							<li role="menuitem"><a href="#"><fmt:message key="nav.cadastro.pessoa"/></a>
 								<ul aria-haspopup="true" role="menubar">
 									<li role="menuitem"><a href="<c:url value="/pessoa"/>"><fmt:message key="nav.cadastro.pessoa.cliente"/></a></li>
@@ -31,11 +31,17 @@
 							</li>
 						</ul>
 					</li>
+					<li role="menuitem"><a href="#"><fmt:message key="nav.financeiro"/></a>
+						<ul aria-haspopup="true" role="menubar">
+							<li role="menuitem"><a href="<c:url value="/financeiro/banco"/>"><fmt:message key="nav.financeiro.banco"/></a></li>
+							<li role="menuitem"><a href="<c:url value="/financeiro/forma-de-pagamento"/>"><fmt:message key="nav.financeiro.forma.pagamento"/></a></li>
+						</ul>
+					</li>
 					<c:if test="${username.usuario.usuario.equals('ROOT')}">
 						<li role="menuitem"><a href="#"><fmt:message key="nav.sistema"/></a>
 							<ul aria-haspopup="true" role="menubar">
-								<li role="menuitem"><a href="<c:url value="/comercio"/>"><fmt:message key="nav.sistema.comercio"/></a></li>
-								<li role="menuitem"><a href="<c:url value="/usuario"/>"><fmt:message key="nav.sistema.usuario"/></a></li>
+								<li role="menuitem"><a href="<c:url value="/administrador/comercio"/>"><fmt:message key="nav.sistema.comercio"/></a></li>
+								<li role="menuitem"><a href="<c:url value="/administrador/usuario"/>"><fmt:message key="nav.sistema.usuario"/></a></li>
 							</ul>
 						</li>
 					</c:if>

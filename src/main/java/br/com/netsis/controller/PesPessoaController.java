@@ -31,8 +31,6 @@ public class PesPessoaController extends GenericController<PesPessoa> {
 		if (obj.getId() != null) {
 			obj.getEndereco().setIdpessoa(new PesPessoa(obj.getId()));
 			obj.getDocumento().setIdpessoa(new PesPessoa(obj.getId()));
-			obj.getInformacao().setIdpessoa(new PesPessoa(obj.getId()));
-			obj.getInformacaoBancaria().setIdpessoa(new PesPessoa(obj.getId()));
 		}
 		super.salvar(obj);
 	}
