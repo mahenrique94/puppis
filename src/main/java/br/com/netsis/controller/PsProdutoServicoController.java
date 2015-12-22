@@ -31,16 +31,9 @@ public class PsProdutoServicoController extends GenericController<PsProdutoServi
 			obj.getCusto().setIdgrupo(new PsGrupo(obj.getIdgrupo().getId()));
 			obj.getCusto().setIdclasse(new PsClasse(obj.getIdclasse().getId()));
 			obj.getCusto().setIdproduto(new PsProdutoServico(obj.getId()));
-			obj.getCusto().setPorclucro(0.0);
-			obj.getCusto().setValoranterior(0.0);
-			obj.getCusto().setValorvenda(0.0);
-			obj.getCusto().setValorpago(0.0);
-			obj.getCusto().setValortotal(0.0);
 			obj.getEstoque().setIdgrupo(new PsGrupo(obj.getIdgrupo().getId()));
 			obj.getEstoque().setIdclasse(new PsClasse(obj.getIdclasse().getId()));
 			obj.getEstoque().setIdproduto(new PsProdutoServico(obj.getId()));
-			obj.getEstoque().setQuantidade(0);
-			obj.getEstoque().setQuantidadeven(0);
 		}
 		super.salvar(obj);
 	}

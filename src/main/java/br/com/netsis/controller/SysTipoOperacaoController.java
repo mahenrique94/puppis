@@ -5,7 +5,7 @@ import br.com.caelum.vraptor.Path;
 import br.com.netsis.model.SysTipoOperacao;
 
 @Controller
-@Path("tipo-de-operacao")
+@Path("system/tipo-de-operacao")
 public class SysTipoOperacaoController extends GenericController<SysTipoOperacao> {
 
 }

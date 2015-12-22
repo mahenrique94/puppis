@@ -49,11 +49,9 @@ public class PsProdutoServico implements Serializable{
 	@OneToOne
 	@JoinColumn(name = "idtipo", referencedColumnName = "id", nullable = false)
 	private PsTipo idtipo;
-	@NotNull
-	@NotEmpty
-	@Size(min = 2, max = 2, message = "{minimo.2.maximo.2}")
-	@Column(length = 2, columnDefinition = "char(2)", nullable = false)
-	private String unidademedida;
+	@ManyToOne
+	@JoinColumn(name = "idunidademedida", referencedColumnName = "id", nullable = false)
+	private PsUnidadeMedida idunidademedida;
 	@Size(min = 1, max = 1, message = "{minimo.1.maximo.1}")
 	@Column(length = 1, columnDefinition = "char(1)", nullable = false)
 	private String inativo;
@@ -121,11 +119,11 @@ public class PsProdutoServico implements Serializable{
 	public void setIdtipo(PsTipo idtipo) {
 		this.idtipo = idtipo;
 	}
-	public String getUnidademedida() {
-		return unidademedida;
+	public PsUnidadeMedida getIdunidademedida() {
+		return idunidademedida;
 	}
-	public void setUnidademedida(String unidademedida) {
-		this.unidademedida = unidademedida;
+	public void setIdunidademedida(PsUnidadeMedida idunidademedida) {
+		this.idunidademedida = idunidademedida;
 	}
 	public String getInativo() {
 		return inativo;

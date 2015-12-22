@@ -67,8 +67,10 @@ public class ComNotaController extends GenericController<ComNota> {
 	@Override
 	public void salvar(ComNota obj) {
 		// TODO Auto-generated method stub
-		ComNota comNota = (ComNota) this.getDao().edit(obj);
-		obj.getCusto().calcularTotal(obj.getCusto(), comNota.getItens());
+		if (obj.getId() != null) {
+			ComNota comNota = (ComNota) this.getDao().edit(obj);
+			obj.getCusto().calcularTotal(obj.getCusto(), comNota.getItens());
+		}
 		super.salvar(obj);
 	}
 	

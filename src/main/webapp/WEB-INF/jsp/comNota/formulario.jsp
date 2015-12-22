@@ -21,7 +21,7 @@
 			<div class="row-input" role="row">
 				<div class="w-100" role="separator">
 					<label class="align-left"><fmt:message key="label.operacao"/></label>
-					<select class="select-form full-select" data-class="slCadTipoOperacao" id="slTipo-de-operacao_json_1" name="obj.idtipooperacao.id" ${readOnly}></select>
+					<select class="select-form full-select" data-class="slSysTipoOperacao" id="slSystem_Tipo-de-operacao_json_1" name="obj.idtipooperacao.id" ${readOnly}></select>
 					<netsis:validationMessage name="obj.operacao"/>
 				</div>
 			</div>
@@ -112,7 +112,7 @@
 				<div class="row-input" role="row">
 					<div class="w-100" role="separator">
 						<label class="align-left"><fmt:message key="label.forma.pagamento"/></label>
-						<select class="select-form full-select" data-class="slSysFormaPagamento" id="slForma-de-pagamento_json_1" name="obj.custo.idformapagamento.id"></select>
+						<select class="select-form full-select" data-class="slFinFormaPagamento" id="slFinanceiro_Forma-de-pagamento_json_1" name="obj.custo.idformapagamento.id"></select>
 						<netsis:validationMessage name="obj.custo.idformapagamento.id"/>
 					</div>
 				</div>

@@ -14,14 +14,14 @@
 		<section aria-expanded="true" aria-hidden="false" class="block-body clearfix" role="form">
 			<div class="row-input" role="row">
 				<div class="w-50" role="separator">
+					<label class="align-left"><fmt:message key="label.id.grupo"/></label>
+					<input class="input-form full" data-toggle="modal" formaction="<c:url value="/produto-servico/grupo/listarsl"/>" id="psgrupo_id" maxlength="10" name="obj.idgrupo.id" pattern="numero0a9" type="search" value="${obj.idgrupo.id}">
+					<netsis:validationMessage name="obj.idgrupo.id"/>
+				</div>
+				<div class="w-50" role="separator">
 					<label class="align-left"><fmt:message key="label.id"/></label>
 					<input class="input-form" maxlength="10" name="obj.id" pattern="numero0a9" type="number" value="${obj.id}">
 					<netsis:validationMessage name="obj.id"/>
-				</div>
-				<div class="w-50" role="separator">
-					<label class="align-left"><fmt:message key="label.id.grupo"/></label>
-					<input class="input-form full" data-toggle="modal" formaction="<c:url value="/produto-servico/grupo/listarsl"/>" id="psgrupo_id" maxlength="10" name="obj.idgrupo.id" pattern="numero0a9" readonly type="search" value="${obj.idgrupo.id}">
-					<netsis:validationMessage name="obj.idgrupo.id"/>
 				</div>
 			</div>
 			<div class="row-input" role="row">

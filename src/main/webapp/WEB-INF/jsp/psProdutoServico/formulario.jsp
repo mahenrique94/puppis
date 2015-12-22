@@ -6,7 +6,7 @@
 	<form action="<c:url value="/produto-servico"/>" class="form-inline" id="formlistarpsprodutoservico" method="post" name="formlistarpsprodutoservico" role="form">
 		<input type="hidden" name="openBoxSearch" value="psclasse">
 		<input type="hidden" name="obj.idtipo.idaux" value="${obj.idtipo.id}">
-		<input type="hidden" name="obj.unidademedidaaux" value="${obj.unidademedida}">
+		<input type="hidden" name="obj.idunidademedida.idaux" value="${obj.idunidademedida.id}">
 		<nav class="clearfix nav-block" role="navigation">
 			<div class="w-100">
 				<button class="btn-md float-left m-right-5" title="<fmt:message key="button.salvar"/>" type="submit"><span class="icon-floppy-disk"></span>&nbsp;<fmt:message key="button.salvar"/></button>
@@ -44,8 +44,8 @@
 				</div>
 				<div class="w-20" role="separator">
 					<label class="align-left"><fmt:message key="label.unidade.medida"/></label>
-					 <select class="select-form full-select" data-class="slSysUnidadeMedida" id="slUnidade-de-medida_json_1" name="obj.unidademedida"></select>
-					<netsis:validationMessage name="obj.unidademedida"/>
+					 <select class="select-form full-select" data-class="slPsUnidadeMedida" id="slProduto-Servico_Unidade-de-medida_json_1" name="obj.idunidademedida.id"></select>
+					<netsis:validationMessage name="obj.idunidademedida.id"/>
 				</div>
 			</div>
 			<div class="row-input" role="row">

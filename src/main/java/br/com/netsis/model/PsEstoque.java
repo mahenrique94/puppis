@@ -54,6 +54,7 @@ public class PsEstoque implements Serializable {
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
 		setQuantidade(0);
+		setQuantidadeven(0);
 	}
 	public PsEstoque(Long id) {
 		this();
