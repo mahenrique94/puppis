@@ -1,4 +1,5 @@
-			<nav class="nav-default">
+			<nav class="nav-tie">
+				<a class="nav-brand" href="<c:url value="/"/>"><fmt:message key="nav.brand"/></a>
 				<ul class="nav-main" role="menubar">
 					<li role="menuitem"><a href="#"><fmt:message key="nav.cadastro"/></a>
 						<ul aria-haspopup="true" role="menubar">
@@ -37,11 +38,13 @@
 							<li role="menuitem"><a href="<c:url value="/financeiro/forma-de-pagamento"/>"><fmt:message key="nav.financeiro.forma.pagamento"/></a></li>
 						</ul>
 					</li>
-					<c:if test="${username.usuario.usuario.equals('ROOT')}">
+					<c:if test="${username.usuario.usuario.equals('ADMIN')}">
 						<li role="menuitem"><a href="#"><fmt:message key="nav.sistema"/></a>
 							<ul aria-haspopup="true" role="menubar">
 								<li role="menuitem"><a href="<c:url value="/administrador/comercio"/>"><fmt:message key="nav.sistema.comercio"/></a></li>
+								<li role="menuitem"><a href="<c:url value="/administrador/grupo"/>"><fmt:message key="nav.sistema.grupo"/></a></li>
 								<li role="menuitem"><a href="<c:url value="/administrador/usuario"/>"><fmt:message key="nav.sistema.usuario"/></a></li>
+								<li role="menuitem"><a href="<c:url value="/administrador/tipo-de-acesso"/>"><fmt:message key="nav.sistema.tipo.acesso"/></a></li>
 							</ul>
 						</li>
 					</c:if>

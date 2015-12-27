@@ -16,6 +16,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.AssertFalse;
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -46,13 +48,10 @@ public class AdmUsuario implements Serializable {
 	@Column(length = 8, columnDefinition = "varchar(8)", nullable = false)
 	private String senha;
 	@ManyToOne
-	@JoinColumn(name = "idtipoacesso", referencedColumnName = "id", nullable = false)
-	private AdmTipoAcesso idtipoacesso;
-	@NotNull
-	@NotEmpty
-	@Size(min = 1, max = 1, message = "{minimo.1.maximo.1}")
-	@Column(length = 1, columnDefinition = "char(1)", nullable = false)
-	private String inativo;
+	@JoinColumn(name = "idgrupo", referencedColumnName = "id", nullable = false)
+	private AdmGrupo idgrupo;
+	@Column(nullable = false)
+	private Boolean inativo;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Calendar datacreate;
@@ -63,7 +62,7 @@ public class AdmUsuario implements Serializable {
 	public AdmUsuario() {
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
-		setInativo("F");
+		setInativo(false);
 	}
 	public AdmUsuario(Integer id) {
 		this();
@@ -94,16 +93,16 @@ public class AdmUsuario implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public AdmTipoAcesso getIdtipoacesso() {
-		return idtipoacesso;
+	public AdmGrupo getIdgrupo() {
+		return idgrupo;
 	}
-	public void setIdtipoacesso(AdmTipoAcesso idtipoacesso) {
-		this.idtipoacesso = idtipoacesso;
+	public void setIdgrupo(AdmGrupo idgrupo) {
+		this.idgrupo = idgrupo;
 	}
-	public String getInativo() {
+	public Boolean getInativo() {
 		return inativo;
 	}
-	public void setInativo(String inativo) {
+	public void setInativo(Boolean inativo) {
 		this.inativo = inativo;
 	}
 	public Calendar getDatacreate() {
@@ -120,7 +119,7 @@ public class AdmUsuario implements Serializable {
 	}
 	
 	public boolean isAdministrador(AdmUsuario admUsuario) {
-		if (admUsuario.getIdtipoacesso().getDescricao().equals("TOTAL"))
+		if (admUsuario.getIdgrupo().getDescricao().equals("ADMIN"))
 			return true;
 		else
 			return false;

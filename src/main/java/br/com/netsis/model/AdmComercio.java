@@ -36,7 +36,7 @@ public class AdmComercio implements Serializable {
 	@NotEmpty
 	@Size(min = 0, max = 60, message = "{minimo.0.maximo.60}")
 	@Column(length = 60, columnDefinition = "varchar(60)", nullable = false, unique = true)
-	private String razaosocial;
+	private String nomerazaosocial;
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 60, message = "{minimo.0.maximo.60}")
@@ -48,6 +48,8 @@ public class AdmComercio implements Serializable {
 	private AdmDocumento documento;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "idcomercio")
 	private AdmContato contato;
+	@Column(nullable = false)
+	private Boolean inativo;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Calendar datacreate;
@@ -70,11 +72,11 @@ public class AdmComercio implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getRazaosocial() {
-		return razaosocial;
+	public String getNomerazaosocial() {
+		return nomerazaosocial;
 	}
-	public void setRazaosocial(String razaosocial) {
-		this.razaosocial = razaosocial;
+	public void setNomerazaosocial(String nomerazaosocial) {
+		this.nomerazaosocial = nomerazaosocial;
 	}
 	public String getNomefantasia() {
 		return nomefantasia;
@@ -99,6 +101,12 @@ public class AdmComercio implements Serializable {
 	}
 	public void setContato(AdmContato contato) {
 		this.contato = contato;
+	}
+	public Boolean getInativo() {
+		return inativo;
+	}
+	public void setInativo(Boolean inativo) {
+		this.inativo = inativo;
 	}
 	public Calendar getDatacreate() {
 		return datacreate;

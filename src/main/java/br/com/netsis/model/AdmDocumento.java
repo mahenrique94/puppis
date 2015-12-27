@@ -32,15 +32,14 @@ public class AdmDocumento implements Serializable {
 	private AdmComercio idcomercio;
 	@NotNull
 	@NotEmpty
-//	@CNPJ
 	@Size(min = 18, max = 18, message = "{cnpj}")
 	@Column(length = 20, columnDefinition = "varchar(20)", nullable = false, unique = true)
-	private String cnpj;
+	private String cpfcnpj;
 	@NotNull
 	@NotEmpty
 	@Size(min = 6, max = 15, message = "{inscricao.estadual}")
 	@Column(length = 20, columnDefinition = "varchar(20)", nullable = false)
-	private String inscricaoestadual;
+	private String rginscricaoestadual;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Calendar datacreate;
@@ -49,8 +48,8 @@ public class AdmDocumento implements Serializable {
 	private Calendar dataupdate;
 	
 	public AdmDocumento() {
-		setCnpj("");
-		setInscricaoestadual("");
+		setCpfcnpj("");
+		setRginscricaoestadual("");
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
 	}
@@ -71,17 +70,17 @@ public class AdmDocumento implements Serializable {
 	public void setIdcomercio(AdmComercio idcomercio) {
 		this.idcomercio = idcomercio;
 	}
-	public String getCnpj() {
-		return cnpj;
+	public String getCpfcnpj() {
+		return cpfcnpj;
 	}
-	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
+	public void setCpfcnpj(String cpfcnpj) {
+		this.cpfcnpj = cpfcnpj;
 	}
-	public String getInscricaoestadual() {
-		return inscricaoestadual;
+	public String getRginscricaoestadual() {
+		return rginscricaoestadual;
 	}
-	public void setInscricaoestadual(String inscricaoestadual) {
-		this.inscricaoestadual = inscricaoestadual;
+	public void setRginscricaoestadual(String rginscricaoestadual) {
+		this.rginscricaoestadual = rginscricaoestadual;
 	}
 	public Calendar getDatacreate() {
 		return datacreate;

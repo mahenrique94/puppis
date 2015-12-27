@@ -35,8 +35,8 @@ public class Endereco implements Serializable {
 	private String numero;
 	@NotNull
 	@NotEmpty
-	@Size(min = 10, max = 10, message = "{cep}")
-	@Column(length = 12, columnDefinition = "varchar(12)", nullable = false)
+	@Size(min = 9, max = 9, message = "{cep}")
+	@Column(length = 9, columnDefinition = "varchar(9)", nullable = false)
 	private String cep;
 	@Size(min = 0, max = 30, message = "{minimo.0.maximo.30}")
 	@Column(length = 30, columnDefinition = "varchar(30)", nullable = true)

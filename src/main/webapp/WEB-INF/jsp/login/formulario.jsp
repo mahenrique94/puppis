@@ -16,14 +16,14 @@
 		<fieldset class="panel-center">
 			<legend class="center p-top-5"><h1><fmt:message key="titulo.controle.de.acesso"/></h1></legend>
 			<form action="<c:url value="/login"/>" class="form-inline m-top-10" id="formlogin" method="post" name="formlogin">
-				<div class="row-input" role="row">
-					<div class="w-100" role="separator">
+				<div class="row" role="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 						<label class="align-left"><fmt:message key="label.login"/></label>
 						<input autofocus class="input-form full" maxlength="20" name="usuario" pattern="letraNumeroEspaco" required type="text">
 					</div>
 				</div>
-				<div class="row-input" role="row">
-					<div class="w-100" role="separator">
+				<div class="row" role="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 						<label class="align-left"><fmt:message key="label.senha"/></label>
 						<input class="input-form full" maxlength="8" name="senha" pattern="letraNumeroMin8Max8" required type="password">
 					</div>

@@ -52,7 +52,7 @@ public class LoginController {
 		List<ParametrosWeb> parametrosWeb = new ArrayList<ParametrosWeb>();
 		parametrosWeb.add(new ParametrosWeb("usuario", usuario));
 		parametrosWeb.add(new ParametrosWeb("senha", senha));
-		parametrosWeb.add(new ParametrosWeb("inativo", "T", "<>"));
+		parametrosWeb.add(new ParametrosWeb("inativo", "true", "<>"));
 		AdmUsuario admUsuario = (AdmUsuario) this.dao.getDao().find(AdmUsuario.class, parametrosWeb);
 		if (new ValidatorUsuario().validar(admUsuario, usuario, senha)) {
 			this.userName.login(admUsuario);

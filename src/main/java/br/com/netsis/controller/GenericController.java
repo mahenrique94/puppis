@@ -6,6 +6,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.validation.Valid;
 
+import br.com.caelum.brutauth.auth.annotations.CustomBrutauthRules;
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
@@ -17,6 +18,10 @@ import br.com.mhc.paginator.Paginator;
 import br.com.mhc.parametrosweb.ParametrosWeb;
 import br.com.netsis.dao.Dao;
 import br.com.netsis.dao.GenericDao;
+import br.com.netsis.security.PermissionDelete;
+import br.com.netsis.security.PermissionEdit;
+import br.com.netsis.security.PermissionList;
+import br.com.netsis.security.PermissionSave;
 
 public abstract class GenericController<T> {
 	
@@ -28,6 +33,7 @@ public abstract class GenericController<T> {
 	private Validator validator;
 	private boolean redirecionar = true;
 	
+	@CustomBrutauthRules(PermissionDelete.class)
 	@Delete("")
 	public void deletar(T obj) {
 		this.getDao().delete(obj);
@@ -35,25 +41,30 @@ public abstract class GenericController<T> {
 			this.result.redirectTo(this).listar(obj, null);
 	}
 	
+	@CustomBrutauthRules(PermissionEdit.class)
 	@Get
 	public void editar(T obj) {
 		this.result.include("obj", this.edit(obj));
 		this.result.of(this).formulario(obj);
 	}
 	
+	@CustomBrutauthRules(PermissionSave.class)
 	@Get("formulario")
 	public void formulario(T obj) {}
 	
+	@CustomBrutauthRules(PermissionList.class)
 	@Get("")
 	public void listar(T obj, List<ParametrosWeb> parametrosWeb) {
 		this.result.include(this.getClassName(obj) + "List", this.getDao().findAll(obj.getClass(), parametrosWeb));
 	}
 	
+	@CustomBrutauthRules(PermissionList.class)
 	@Get("listarsl")
 	public void listarSl(T obj, List<ParametrosWeb> parametrosWeb) {
 		this.result.include(this.getClassName(obj) + "List", this.getDao().findAll(obj.getClass(), parametrosWeb));
 	}
 	
+	@CustomBrutauthRules(PermissionList.class)
 	@Get("page/{paginator.currentPage}")
 	public void pagination(T obj, List<ParametrosWeb> parametrosWeb, Paginator paginator) {
 		paginator.setFirst((paginator.getCurrentPage() * 10) - 10);
@@ -66,6 +77,7 @@ public abstract class GenericController<T> {
 		this.result.include("paginator", paginator);
 	}
 	
+	@CustomBrutauthRules(PermissionSave.class)
 	@Post("")
 	@IncludeParameters
 	public void salvar(@Valid T obj) {

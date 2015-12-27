@@ -33,8 +33,11 @@ public class AdmContato implements Serializable {
 	@Column(nullable = true)
 	private Integer ddd;
 	@Size(min = 0, max = 9, message = "{telefone}")
-	@Column(length = 10, columnDefinition = "varchar(10)", nullable = true)
+	@Column(length = 9, columnDefinition = "varchar(9)", nullable = true)
 	private String telefone;
+	@Size(min = 0, max = 11, message = "{celular}")
+	@Column(length = 11, columnDefinition = "varchar(11)", nullable = true)
+	private String celular;
 	@Email
 	@Size(min = 0, max = 255, message = "{email}")
 	@Column(length = 255, columnDefinition = "varchar(255)", nullable = true)
@@ -78,6 +81,12 @@ public class AdmContato implements Serializable {
 	}
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+	public String getCelular() {
+		return celular;
+	}
+	public void setCelular(String celular) {
+		this.celular = celular;
 	}
 	public String getEmail() {
 		return email;
