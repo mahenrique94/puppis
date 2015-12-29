@@ -22,18 +22,14 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class FinBanco implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	@Size(min = 0, max = 10, message = "{minimo.0.maximo.10}")
+	@Column(length = 10, columnDefinition = "varchar(10)", nullable = false)
+	private String id;
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 30, message = "{minimo.0.maximo.30}")
 	@Column(length = 30, columnDefinition = "varchar(30)", nullable = false, unique = true)
 	private String descricao;
-	@NotNull
-	@NotEmpty
-	@Size(min = 0, max = 10, message = "{minimo.0.maximo.10}")
-	@Column(length = 10, columnDefinition = "varchar(10)", nullable = true, unique = true)
-	private String codigo;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Calendar datacreate;
@@ -45,15 +41,15 @@ public class FinBanco implements Serializable {
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
 	}
-	public FinBanco(Integer id) {
+	public FinBanco(String id) {
 		this();
 		setId(id);
 	}
 	
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getDescricao() {
@@ -61,12 +57,6 @@ public class FinBanco implements Serializable {
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
-	}
-	public String getCodigo() {
-		return codigo;
-	}
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
 	}
 	public Calendar getDatacreate() {
 		return datacreate;

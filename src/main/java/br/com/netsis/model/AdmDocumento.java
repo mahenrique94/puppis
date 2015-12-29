@@ -32,13 +32,13 @@ public class AdmDocumento implements Serializable {
 	private AdmComercio idcomercio;
 	@NotNull
 	@NotEmpty
-	@Size(min = 18, max = 18, message = "{cnpj}")
-	@Column(length = 20, columnDefinition = "varchar(20)", nullable = false, unique = true)
+	@Size(min = 18, max = 18, message = "{cpf.cnpj}")
+	@Column(length = 18, columnDefinition = "varchar(18)", nullable = false, unique = true)
 	private String cpfcnpj;
 	@NotNull
 	@NotEmpty
-	@Size(min = 6, max = 15, message = "{inscricao.estadual}")
-	@Column(length = 20, columnDefinition = "varchar(20)", nullable = false)
+	@Size(min = 6, max = 15, message = "{rg.inscricao.estadual}")
+	@Column(length = 15, columnDefinition = "varchar(15)", nullable = false)
 	private String rginscricaoestadual;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)

@@ -25,7 +25,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class CadEstado implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@NotNull
 	@NotEmpty
@@ -36,7 +35,7 @@ public class CadEstado implements Serializable {
 	@NotEmpty
 	@Size(min = 0, max = 60, message = "{minimo.0.maximo.60}")
 	@Column(length = 60, columnDefinition = "varchar(60)", nullable = false, unique = true)
-	private String estado;
+	private String descricao;
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 60, message = "{minimo.0.maximo.60}")
@@ -71,11 +70,11 @@ public class CadEstado implements Serializable {
 	public void setUf(String uf) {
 		this.uf = uf;
 	}
-	public String getEstado() {
-		return estado;
+	public String getDescricao() {
+		return descricao;
 	}
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 	public CadPais getIdpais() {
 		return idpais;

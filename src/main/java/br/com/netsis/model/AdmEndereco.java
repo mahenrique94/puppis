@@ -16,13 +16,14 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "adm_endereco")
+@Table(name = "adm_endereco", uniqueConstraints = {@UniqueConstraint(columnNames = {"rua", "numero", "cep", "bairro"})})
 public class AdmEndereco extends Endereco implements Serializable {
 
 	@OneToOne

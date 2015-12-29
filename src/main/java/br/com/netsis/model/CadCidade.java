@@ -33,7 +33,7 @@ public class CadCidade implements Serializable {
 	@NotEmpty
 	@Size(min = 0, max = 60, message = "{minimo.0.maximo.60}")
 	@Column(length = 60, columnDefinition = "varchar(60)", nullable = false)
-	private String cidade;
+	private String descricao;
 	@NotNull
 	@NotEmpty
 	@Size(min = 2, max = 2, message = "{minimo.2.maximo.2}")
@@ -62,11 +62,11 @@ public class CadCidade implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getCidade() {
-		return cidade;
+	public String getDescricao() {
+		return descricao;
 	}
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 	public CadEstado getIdestado() {
 		return idestado;

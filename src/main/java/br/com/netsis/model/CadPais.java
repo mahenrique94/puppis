@@ -23,13 +23,12 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class CadPais implements Serializable{
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 60, message = "{minimo.0.maximo.60}")
 	@Column(length = 60, columnDefinition = "varchar(60)", nullable = false, unique = true)
-	private String pais;
+	private String descricao;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Calendar datacreate;
@@ -52,11 +51,11 @@ public class CadPais implements Serializable{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getPais() {
-		return pais;
+	public String getDescricao() {
+		return descricao;
 	}
-	public void setPais(String pais) {
-		this.pais = pais;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 	public Calendar getDatacreate() {
 		return datacreate;

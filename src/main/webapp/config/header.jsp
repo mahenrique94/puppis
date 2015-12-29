@@ -13,5 +13,5 @@
 		<div class="alert-message time-out" role="alert"><h2>${mensagem}</h2></div>
 		<%@include file="/config/nav.jsp"%>	
 	</header>
-	<main class="bg-fafafa" id="wrap" role="main">
-		<section class="bg-ffffff container">
+	<main id="wrap" role="main">
+		<section class="container p-bottom-50">

@@ -28,11 +28,13 @@ public class FinFormaPagamento implements Serializable {
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 30, message = "{minimo.0.maximo.30}")
-	@Column(length = 30, columnDefinition = "varchar(30)", nullable = false)
+	@Column(length = 30, columnDefinition = "varchar(30)", nullable = false, unique = true)
 	private String descricao;
 	@Range(min = 0, max = 10, message = "{intervalo.0.10}")
+	@Column(nullable = false)
 	private Integer quantidadeparcela;
 	@Range(min = 0, max = 120, message = "{intervalo.0.120}")
+	@Column(nullable = false)
 	private Integer intervalo;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)

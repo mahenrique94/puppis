@@ -60,6 +60,7 @@ public class AdmComercio implements Serializable {
 	public AdmComercio() {
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
+		setInativo(false);
 	}
 	public AdmComercio(Integer id) {
 		this();
