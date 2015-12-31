@@ -73,6 +73,7 @@ public class PsCusto implements Serializable {
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
 		setPorclucro(0.0);
+		setValoranterior(0.0);
 		setValorvenda(0.0);
 		setValorpago(0.0);
 		setValortotal(0.0);
@@ -80,6 +81,12 @@ public class PsCusto implements Serializable {
 	public PsCusto(Long id) {
 		this();
 		setId(id);
+	}
+	public PsCusto(Integer idGrupo, Integer idClasse, Long idProduto) {
+		this();
+		setIdgrupo(new PsGrupo(idGrupo));
+		setIdclasse(new PsClasse(idClasse));
+		setIdproduto(new PsProdutoServico(idProduto));
 	}
 	
 	public Long getId() {

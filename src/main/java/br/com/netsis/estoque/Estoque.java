@@ -12,8 +12,8 @@ public class Estoque {
 	private Double porclucro;
 	private Double valorunitario;
 	private Double valortotal;
-	private Integer quantidade;
-	private Integer quantidadevendida;
+	private Double quantidade;
+	private Double quantidadevendida;
 	
 	public Integer getIdgrupo() {
 		return idgrupo;
@@ -63,16 +63,16 @@ public class Estoque {
 	public void setValortotal(Double valortotal) {
 		this.valortotal = valortotal;
 	}
-	public Integer getQuantidade() {
+	public Double getQuantidade() {
 		return quantidade;
 	}
-	public void setQuantidade(Integer quantidade) {
+	public void setQuantidade(Double quantidade) {
 		this.quantidade = quantidade;
 	}
-	public Integer getQuantidadevendida() {
+	public Double getQuantidadevendida() {
 		return quantidadevendida;
 	}
-	public void setQuantidadevendida(Integer quantidadevendida) {
+	public void setQuantidadevendida(Double quantidadevendida) {
 		this.quantidadevendida = quantidadevendida;
 	}
 	

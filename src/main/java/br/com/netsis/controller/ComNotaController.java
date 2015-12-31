@@ -19,7 +19,7 @@ import br.com.netsis.model.ComNotaItens;
 import br.com.netsis.model.PsProdutoServico;
 
 @Controller
-@Path("nota")
+@Path("comercio/nota")
 public class ComNotaController extends GenericController<ComNota> {
 	
 	@Post("atualizar")
@@ -40,7 +40,7 @@ public class ComNotaController extends GenericController<ComNota> {
 			gerenciador.atualizaEstoque(item, estoque);
 			this.getDao().save(item);
 		}
-		obj.setAtualizada("T");
+		obj.setAtualizada(true);
 		super.salvar(obj);
 	}
 	

@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 
 @Entity
@@ -32,17 +34,22 @@ public class PsEstoque implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "idproduto", referencedColumnName = "id", nullable = false)
 	private PsProdutoServico idproduto;
+	@DecimalMin("0.0")
+	@Digits(integer = 10, fraction = 2)
 	@Column(nullable = false)
-	private Integer quantidade;
-	@Min(0)
+	private Double quantidade;
+	@DecimalMin("0.0")
+	@Digits(integer = 10, fraction = 2)
 	@Column(nullable = true)
-	private Integer quantidademin;
-	@Min(0)
+	private Double quantidademin;
+	@DecimalMin("0.0")
+	@Digits(integer = 10, fraction = 2)
 	@Column(nullable = true)
-	private Integer quantidadeven;
-	@Min(0)
+	private Double quantidadeven;
+	@DecimalMin("0.0")
+	@Digits(integer = 10, fraction = 2)
 	@Column(nullable = true)
-	private Integer quantidademax;
+	private Double quantidademax;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Calendar datacreate;
@@ -53,12 +60,18 @@ public class PsEstoque implements Serializable {
 	public PsEstoque() {
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
-		setQuantidade(0);
-		setQuantidadeven(0);
+		setQuantidade(0.0);
+		setQuantidadeven(0.0);
 	}
 	public PsEstoque(Long id) {
 		this();
 		setId(id);
+	}
+	public PsEstoque(Integer idGrupo, Integer idClasse, Long idProduto) {
+		this();
+		setIdgrupo(new PsGrupo(idGrupo));
+		setIdclasse(new PsClasse(idClasse));
+		setIdproduto(new PsProdutoServico(idProduto));
 	}
 	
 	public Long getId() {
@@ -85,28 +98,28 @@ public class PsEstoque implements Serializable {
 	public void setIdproduto(PsProdutoServico idproduto) {
 		this.idproduto = idproduto;
 	}
-	public Integer getQuantidade() {
+	public Double getQuantidade() {
 		return quantidade;
 	}
-	public void setQuantidade(Integer quantidade) {
+	public void setQuantidade(Double quantidade) {
 		this.quantidade = quantidade;
 	}
-	public Integer getQuantidademin() {
+	public Double getQuantidademin() {
 		return quantidademin;
 	}
-	public void setQuantidademin(Integer quantidademin) {
+	public void setQuantidademin(Double quantidademin) {
 		this.quantidademin = quantidademin;
 	}
-	public Integer getQuantidadeven() {
+	public Double getQuantidadeven() {
 		return quantidadeven;
 	}
-	public void setQuantidadeven(Integer quantidadeven) {
+	public void setQuantidadeven(Double quantidadeven) {
 		this.quantidadeven = quantidadeven;
 	}
-	public Integer getQuantidademax() {
+	public Double getQuantidademax() {
 		return quantidademax;
 	}
-	public void setQuantidademax(Integer quantidademax) {
+	public void setQuantidademax(Double quantidademax) {
 		this.quantidademax = quantidademax;
 	}
 	public Calendar getDatacreate() {

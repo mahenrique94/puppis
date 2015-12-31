@@ -12,7 +12,7 @@ import br.com.mhc.parametrosweb.ParametrosWeb;
 import br.com.netsis.model.ComNotaItens;
 
 @Controller
-@Path("nota-itens")
+@Path("comercio/nota-itens")
 public class ComNotaItensController extends GenericController<ComNotaItens> {
 
 	@Get("deletar/{obj.id}")

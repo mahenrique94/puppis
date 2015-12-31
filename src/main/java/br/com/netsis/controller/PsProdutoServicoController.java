@@ -8,6 +8,8 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.interceptor.IncludeParameters;
 import br.com.netsis.model.PsClasse;
+import br.com.netsis.model.PsCusto;
+import br.com.netsis.model.PsEstoque;
 import br.com.netsis.model.PsGrupo;
 import br.com.netsis.model.PsProdutoServico;
 
@@ -28,12 +30,8 @@ public class PsProdutoServicoController extends GenericController<PsProdutoServi
 	public void salvar(@Valid PsProdutoServico obj) {
 		// TODO Auto-generated method stub
 		if (obj.getId() != null && obj.getCusto().getId() == null && obj.getEstoque().getId() == null) {
-			obj.getCusto().setIdgrupo(new PsGrupo(obj.getIdgrupo().getId()));
-			obj.getCusto().setIdclasse(new PsClasse(obj.getIdclasse().getId()));
-			obj.getCusto().setIdproduto(new PsProdutoServico(obj.getId()));
-			obj.getEstoque().setIdgrupo(new PsGrupo(obj.getIdgrupo().getId()));
-			obj.getEstoque().setIdclasse(new PsClasse(obj.getIdclasse().getId()));
-			obj.getEstoque().setIdproduto(new PsProdutoServico(obj.getId()));
+			obj.setCusto(new PsCusto(obj.getIdgrupo().getId(), obj.getIdclasse().getId(), obj.getId()));
+			obj.setEstoque(new PsEstoque(obj.getIdgrupo().getId(), obj.getIdclasse().getId(), obj.getId()));
 		}
 		super.salvar(obj);
 	}

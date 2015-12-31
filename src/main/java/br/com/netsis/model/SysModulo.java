@@ -28,11 +28,8 @@ public class SysModulo implements Serializable {
 	@Size(min = 0, max = 20, message = "{minimo.0.maximo.20}")
 	@Column(length = 20, columnDefinition = "varchar(20)", nullable = false, unique = true)
 	private String descricao;
-	@NotNull
-	@NotEmpty
-	@Size(min = 1, max = 1, message = "{minimo.1.maximo.1}")
-	@Column(length = 1, columnDefinition = "char(1)", nullable = false)
-	private String inativo;
+	@Column(nullable = false)
+	private Boolean inativo;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Calendar datacreate;
@@ -43,6 +40,7 @@ public class SysModulo implements Serializable {
 	public SysModulo() {
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
+		setInativo(false);
 	}
 	public SysModulo(Integer id) {
 		this();
@@ -61,10 +59,10 @@ public class SysModulo implements Serializable {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public String getInativo() {
+	public Boolean getInativo() {
 		return inativo;
 	}
-	public void setInativo(String inativo) {
+	public void setInativo(Boolean inativo) {
 		this.inativo = inativo;
 	}
 	public Calendar getDatacreate() {

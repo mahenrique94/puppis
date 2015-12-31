@@ -42,12 +42,6 @@ public class ComNota implements Serializable {
 	@JoinColumn(name = "idfornecedor", referencedColumnName = "id", nullable = true)
 	private PesPessoa idfornecedor;
 	@Temporal(TemporalType.DATE)
-	@Column(nullable = false)
-	private Calendar datacreate;
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(nullable = false)
-	private Calendar dataupdate;
-	@Temporal(TemporalType.DATE)
 	@Column(nullable = true)
 	private Calendar dataentrada;
 	@Temporal(TemporalType.DATE)
@@ -59,16 +53,16 @@ public class ComNota implements Serializable {
 	@Min(0)
 	@Column(nullable = true)
 	private Integer serienota;
-	@NotNull
-	@NotEmpty
-	@Size(min = 1, max = 1, message = "{minimo.1.maximo.1}")
-	@Column(length = 1, columnDefinition = "char(1)", nullable = false)
-	private String atualizada;
-	@NotNull
-	@NotEmpty
-	@Size(min = 1, max = 1, message = "{minimo.1.maximo.1}")
-	@Column(length = 1, columnDefinition = "char(1)", nullable = false)
-	private String cancelada;
+	@Column(nullable = false)
+	private Boolean atualizada;
+	@Column(nullable = false)
+	private Boolean cancelada;
+	@Temporal(TemporalType.DATE)
+	@Column(nullable = false)
+	private Calendar datacreate;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(nullable = false)
+	private Calendar dataupdate;
 	@OneToOne
 	@JoinColumn(name = "idtipooperacao", referencedColumnName = "id", nullable = false)
 	private SysTipoOperacao idtipooperacao;
@@ -79,8 +73,8 @@ public class ComNota implements Serializable {
 	private List<ComNotaItens> itens;
 	
 	public ComNota() {
-		setAtualizada("F");
-		setCancelada("F");
+		setAtualizada(false);
+		setCancelada(false);
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
 	}
@@ -149,16 +143,16 @@ public class ComNota implements Serializable {
 	public void setSerienota(Integer serienota) {
 		this.serienota = serienota;
 	}
-	public String getAtualizada() {
+	public Boolean getAtualizada() {
 		return atualizada;
 	}
-	public void setAtualizada(String atualizada) {
+	public void setAtualizada(Boolean atualizada) {
 		this.atualizada = atualizada;
 	}
-	public String getCancelada() {
+	public Boolean getCancelada() {
 		return cancelada;
 	}
-	public void setCancelada(String cancelada) {
+	public void setCancelada(Boolean cancelada) {
 		this.cancelada = cancelada;
 	}
 	public SysTipoOperacao getIdtipooperacao() {

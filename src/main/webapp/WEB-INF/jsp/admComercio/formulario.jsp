@@ -7,7 +7,7 @@
 				<div class="col-xs-12-last col-sm-12-last col-md-12-last col-lg-12-last">
 					<h2><fmt:message key="nav.sistema"/>&nbsp;<fmt:message key="label.barra"/>&nbsp;<fmt:message key="nav.sistema.comercio"/></h2>
 				</div>
-				<div class="col-xs-12-last col-sm-12-last col-md-3 col-lg-2">
+				<div class="col-xs-12-last col-sm-12-last col-md-12 col-lg-12">
 					<button class="btn-md float-left m-right-5" title="<fmt:message key="button.salvar"/>" type="submit"><span class="icon-floppy-disk"></span>&nbsp;<fmt:message key="button.salvar"/></button>
 					<a href="<c:url value="/administrador/comercio"/>" class="btn-md float-left m-right-5" title="<fmt:message key="button.pesquisar"/>"><span class="icon-search"></span>&nbsp;<fmt:message key="button.pesquisar"/></a>
 				</div>

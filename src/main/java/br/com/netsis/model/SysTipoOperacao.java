@@ -35,7 +35,7 @@ public class SysTipoOperacao implements Serializable {
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 10, message = "{minimo.0.maximo.10}")
-	@Column(length = 10, columnDefinition = "char(10)", nullable = false, unique = true)
+	@Column(length = 10, columnDefinition = "varchar(10)", nullable = false, unique = true)
 	private String descricao;
 	@ManyToOne
 	@JoinColumn(name = "idmodulo", referencedColumnName = "id", nullable = false)

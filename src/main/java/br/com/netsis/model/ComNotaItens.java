@@ -33,32 +33,33 @@ public class ComNotaItens implements Serializable {
 	@JoinColumn(name = "iditem", referencedColumnName = "id", nullable = false)
 	private PsProdutoServico iditem;
 	@DecimalMin("0.0")
-	@Digits(integer = 9, fraction = 2)
+	@Digits(integer = 10, fraction = 2)
 	@Column(nullable = false)
 	private Double valorunitario;
 	@DecimalMin("0.0")
-	@Digits(integer = 9, fraction = 2)
+	@Digits(integer = 10, fraction = 2)
 	@Column(nullable = false)
 	private Double valortotal;
 	@DecimalMin("0.0")
-	@Digits(integer = 9, fraction = 2)
+	@Digits(integer = 10, fraction = 2)
 	@Column(nullable = true)
 	private Double porclucro;
 	@DecimalMin("0.0")
-	@Digits(integer = 9, fraction = 2)
+	@Digits(integer = 10, fraction = 2)
 	@Column(nullable = true)
 	private Double porcicms;
 	@DecimalMin("0.0")
-	@Digits(integer = 9, fraction = 2)
+	@Digits(integer = 10, fraction = 2)
 	@Column(nullable = true)
 	private Double porcipi;
 	@DecimalMin("0.0")
-	@Digits(integer = 9, fraction = 2)
+	@Digits(integer = 10, fraction = 2)
 	@Column(nullable = true)
 	private Double porcdesconto;
-	@Min(0)
+	@DecimalMin("0.0")
+	@Digits(integer = 10, fraction = 2)
 	@Column(nullable = false)
-	private Integer quantidade;
+	private Double quantidade;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Calendar datacreate;
@@ -133,10 +134,10 @@ public class ComNotaItens implements Serializable {
 	public void setPorcdesconto(Double porcdesconto) {
 		this.porcdesconto = porcdesconto;
 	}
-	public Integer getQuantidade() {
+	public Double getQuantidade() {
 		return quantidade;
 	}
-	public void setQuantidade(Integer quantidade) {
+	public void setQuantidade(Double quantidade) {
 		this.quantidade = quantidade;
 	}
 	public Calendar getDatacreate() {

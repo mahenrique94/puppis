@@ -24,7 +24,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "ps_produtoservico", uniqueConstraints = {@UniqueConstraint(columnNames = {"idgrupo", "idclasse", "id"})})
+@Table(name = "ps_produtoservico", uniqueConstraints = {@UniqueConstraint(columnNames = {"idgrupo", "idclasse"})})
 public class PsProdutoServico implements Serializable{
 	
 	@Id
@@ -41,20 +41,16 @@ public class PsProdutoServico implements Serializable{
 	@Size(min = 0, max = 120, message = "{minimo.0.maximo.120}")
 	@Column(length = 120, columnDefinition = "varchar(120)", nullable = false, unique = true)
 	private String descricao;
-	@NotNull
-	@NotEmpty
-	@Size(min = 1, max = 1, message = "{minimo.1.maximo.1}")
-	@Column(length = 1, columnDefinition = "char(1)", nullable = false)
-	private String aceitadesconto;
+	@Column(nullable = false)
+	private Boolean aceitadesconto;
 	@OneToOne
 	@JoinColumn(name = "idtipo", referencedColumnName = "id", nullable = false)
 	private PsTipo idtipo;
 	@ManyToOne
 	@JoinColumn(name = "idunidademedida", referencedColumnName = "id", nullable = false)
 	private PsUnidadeMedida idunidademedida;
-	@Size(min = 1, max = 1, message = "{minimo.1.maximo.1}")
-	@Column(length = 1, columnDefinition = "char(1)", nullable = false)
-	private String inativo;
+	@Column(nullable = false)
+	private Boolean inativo;
 	@Size(min = 0, max = 30, message = "{minimo.0.maximo.30}")
 	@Column(length = 30, columnDefinition = "varchar(30)", nullable = true)
 	private String marca;
@@ -75,8 +71,8 @@ public class PsProdutoServico implements Serializable{
 	public PsProdutoServico() {
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
-		setInativo("F");
-		setAceitadesconto("F");
+		setInativo(false);
+		setAceitadesconto(true);
 	}
 	public PsProdutoServico(Long id) {
 		this();
@@ -107,10 +103,10 @@ public class PsProdutoServico implements Serializable{
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public String getAceitadesconto() {
+	public Boolean getAceitadesconto() {
 		return aceitadesconto;
 	}
-	public void setAceitadesconto(String aceitadesconto) {
+	public void setAceitadesconto(Boolean aceitadesconto) {
 		this.aceitadesconto = aceitadesconto;
 	}
 	public PsTipo getIdtipo() {
@@ -125,10 +121,10 @@ public class PsProdutoServico implements Serializable{
 	public void setIdunidademedida(PsUnidadeMedida idunidademedida) {
 		this.idunidademedida = idunidademedida;
 	}
-	public String getInativo() {
+	public Boolean getInativo() {
 		return inativo;
 	}
-	public void setInativo(String inativo) {
+	public void setInativo(Boolean inativo) {
 		this.inativo = inativo;
 	}
 	public String getMarca() {

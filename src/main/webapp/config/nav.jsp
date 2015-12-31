@@ -27,7 +27,7 @@
 						<ul aria-haspopup="true" role="menubar">
 							<li role="menuitem"><a href="#"><fmt:message key="nav.comercio.operacional"/></a>
 								<ul aria-haspopup="true" role="menubar">
-									<li role="menuitem"><a href="<c:url value="/nota"/>"><fmt:message key="nav.comercio.operacional.compra.venda"/></a>
+									<li role="menuitem"><a href="<c:url value="/comercio/nota"/>"><fmt:message key="nav.comercio.operacional.compra.venda"/></a>
 								</ul>
 							</li>
 						</ul>
@@ -48,5 +48,13 @@
 							</ul>
 						</li>
 					</c:if>
+					<ul class="nav-main position-right" role="menubar">
+						<li role="menuitem"><a href="#"><fmt:message key="label.ola"/><fmt:message key="label.virgula"/>&nbsp;${username.usuario.usuario}</a>
+							<ul aria-haspopup="true" class="position-right" role="menubar">
+								<li role="menuitem"><a href="<c:url value="#"/>"><fmt:message key="nav.sistema.alterar.senha"/></a></li>
+								<li role="menuitem"><a href="<c:url value="/login/logout"/>"><fmt:message key="nav.sistema.sair"/></a></li>
+							</ul>
+						</li>
+					</ul>
 				</ul>
 			</nav>

@@ -32,21 +32,29 @@ public class PesDocumento implements Serializable {
 	@NotNull
 	@NotEmpty
 	@Size(min = 10, max = 18, message = "{cpfcnpj}")
-	@Column(length = 20, columnDefinition = "varchar(20)", nullable = false, unique = true)
+	@Column(length = 18, columnDefinition = "varchar(18)", nullable = false, unique = true)
 	private String cpfcnpj;
 	@NotNull
 	@NotEmpty
-	@Size(min = 6, max = 18, message = "{rginscricaoestadual}")
-	@Column(length = 20, columnDefinition = "varchar(20)", nullable = false, unique = true)
+	@Size(min = 6, max = 15, message = "{rginscricaoestadual}")
+	@Column(length = 15, columnDefinition = "varchar(15)", nullable = false, unique = true)
 	private String rginscricaoestadual;
 	@Column(nullable = true)
 	private Integer ctps;
 	@Column(nullable = true)
-	private Integer serie;
-	@Column(nullable = true)
-	private Integer pis;
+	private Integer seriectps;
+	@Column(length = 15, columnDefinition = "varchar(15", nullable = true)
+	private String pis;
 	@Column(length = 20, columnDefinition = "varchar(20)", nullable = true, unique = true)
 	private String cnh;
+	@Column(length = 5, columnDefinition = "varchar(5)", nullable = true)
+	private String tipocnh;
+	@Temporal(TemporalType.DATE)
+	@Column(nullable = true)
+	private Calendar dataexpedicaocnh;
+	@Temporal(TemporalType.DATE)
+	@Column(nullable = true)
+	private Calendar datavencimentocnh;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Calendar datacreate;
@@ -93,16 +101,16 @@ public class PesDocumento implements Serializable {
 	public void setCtps(Integer ctps) {
 		this.ctps = ctps;
 	}
-	public Integer getSerie() {
-		return serie;
+	public Integer getSeriectps() {
+		return seriectps;
 	}
-	public void setSerie(Integer serie) {
-		this.serie = serie;
+	public void setSeriectps(Integer seriectps) {
+		this.seriectps = seriectps;
 	}
-	public Integer getPis() {
+	public String getPis() {
 		return pis;
 	}
-	public void setPis(Integer pis) {
+	public void setPis(String pis) {
 		this.pis = pis;
 	}
 	public String getCnh() {
@@ -110,6 +118,24 @@ public class PesDocumento implements Serializable {
 	}
 	public void setCnh(String cnh) {
 		this.cnh = cnh;
+	}
+	public String getTipocnh() {
+		return tipocnh;
+	}
+	public void setTipocnh(String tipocnh) {
+		this.tipocnh = tipocnh;
+	}
+	public Calendar getDataexpedicaocnh() {
+		return dataexpedicaocnh;
+	}
+	public void setDataexpedicaocnh(Calendar dataexpedicaocnh) {
+		this.dataexpedicaocnh = dataexpedicaocnh;
+	}
+	public Calendar getDatavencimentocnh() {
+		return datavencimentocnh;
+	}
+	public void setDatavencimentocnh(Calendar datavencimentocnh) {
+		this.datavencimentocnh = datavencimentocnh;
 	}
 	public Calendar getDatacreate() {
 		return datacreate;

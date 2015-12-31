@@ -49,11 +49,8 @@ public class PesPessoa implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "idestadocivil", referencedColumnName = "id", nullable = true)
 	private PesEstadoCivil idestadocivil;
-	@NotNull
-	@NotEmpty
-	@Size(min = 1, max = 1, message = "{minimo.1.maximo.1}")
-	@Column(length = 1, columnDefinition = "char(1)", nullable = false)
-	private String inativo;
+	@Column(nullable = false)
+	private Boolean inativo;
 	@Column(columnDefinition = "text", nullable = true)
 	private String observacao;
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "idpessoa")
@@ -70,7 +67,7 @@ public class PesPessoa implements Serializable {
 	public PesPessoa() {
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
-		setInativo("F");
+		setInativo(false);
 	}
 	public PesPessoa(Long id) {
 		this();
@@ -119,10 +116,10 @@ public class PesPessoa implements Serializable {
 	public void setIdestadocivil(PesEstadoCivil idestadocivil) {
 		this.idestadocivil = idestadocivil;
 	}
-	public String getInativo() {
+	public Boolean getInativo() {
 		return inativo;
 	}
-	public void setInativo(String inativo) {
+	public void setInativo(Boolean inativo) {
 		this.inativo = inativo;
 	}
 	public String getObservacao() {

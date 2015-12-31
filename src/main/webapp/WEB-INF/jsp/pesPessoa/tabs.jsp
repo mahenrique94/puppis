@@ -5,7 +5,7 @@
 	<li aria-controls="content-tab3" aria-labelledby="tab3" aria-selected="false" class="active" role="tab"><a href="#content-tab3" id="tab3" role="presentation"><fmt:message key="tab.endereco"/></a></li>
 </ul>
 <div class="tab-group m-bottom-10">
-	<div aria-expanded="false" aria-hidden="true" aria-labelledby="tab1" class="no-margin" id="content-tab1" role="tabpanel">
+	<div aria-expanded="false" aria-hidden="true" aria-labelledby="tab1" class="no-padding" id="content-tab1" role="tabpanel">
 		<nav class="nav-band">
 			<a class="btn-xs" data-toggle="modal" href="<c:url value="/pessoa/contato/formulario/${obj.id}"/>"><span class="icon-plus"></span>&nbsp;<fmt:message key="button.novo"/></a>
 		</nav>
