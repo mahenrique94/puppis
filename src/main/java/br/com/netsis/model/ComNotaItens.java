@@ -33,31 +33,31 @@ public class ComNotaItens implements Serializable {
 	@JoinColumn(name = "iditem", referencedColumnName = "id", nullable = false)
 	private PsProdutoServico iditem;
 	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2)
+	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = false)
 	private Double valorunitario;
 	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2)
+	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = false)
 	private Double valortotal;
 	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2)
+	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = true)
 	private Double porclucro;
 	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2)
+	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = true)
 	private Double porcicms;
 	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2)
+	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = true)
 	private Double porcipi;
 	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2)
+	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = true)
 	private Double porcdesconto;
 	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2)
+	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = false)
 	private Double quantidade;
 	@Temporal(TemporalType.DATE)

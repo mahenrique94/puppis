@@ -34,19 +34,19 @@ public class ComNotaCusto implements Serializable {
 	@JoinColumn(name = "idformapagamento", referencedColumnName = "id", nullable = false)
 	private FinFormaPagamento idformapagamento;
 	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2)
+	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = true)
 	private Double porcdesconto;
 	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2)
+	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = true)
 	private Double porcicms;
 	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2)
+	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = true)
 	private Double porcipi;
 	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2)
+	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = false)
 	private Double valortotal;
 	@Temporal(TemporalType.DATE)

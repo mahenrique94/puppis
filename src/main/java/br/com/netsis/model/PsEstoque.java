@@ -35,19 +35,19 @@ public class PsEstoque implements Serializable {
 	@JoinColumn(name = "idproduto", referencedColumnName = "id", nullable = false)
 	private PsProdutoServico idproduto;
 	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2)
+	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = false)
 	private Double quantidade;
 	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2)
+	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = true)
 	private Double quantidademin;
 	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2)
+	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = true)
 	private Double quantidadeven;
 	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2)
+	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = true)
 	private Double quantidademax;
 	@Temporal(TemporalType.DATE)

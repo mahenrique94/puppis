@@ -35,31 +35,31 @@ public class PsCusto implements Serializable {
 	@JoinColumn(name = "idproduto", referencedColumnName = "id", nullable = false)
 	private PsProdutoServico idproduto;
 	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2)
+	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = false)
 	private Double valorvenda;
 	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2)
+	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = true)
 	private Double valormin;
 	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2)
+	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = true)
 	private Double valormax;
 	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2)
+	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = false)
 	private Double valorpago;
 	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2)
+	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = false)
 	private Double valortotal;
 	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2)
+	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = true)
 	private Double valoranterior;
 	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2)
+	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = false)
 	private Double porclucro;
 	@Temporal(TemporalType.DATE)
