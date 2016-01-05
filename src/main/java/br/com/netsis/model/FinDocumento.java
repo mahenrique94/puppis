@@ -25,16 +25,16 @@ public class FinDocumento implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@ManyToOne
-	@JoinColumn(name = "idcontabancaria", referencedColumnName = "id", nullable = false)
+	@JoinColumn(name = "idcontabancaria", referencedColumnName = "id", nullable = true)
 	private FinContaBancaria idcontabancaria;
 	@ManyToOne
-	@JoinColumn(name = "idpessoa", referencedColumnName = "id", nullable = false)
+	@JoinColumn(name = "idpessoa", referencedColumnName = "id", nullable = true)
 	private PesPessoa idpessoa;
 	@ManyToOne
 	@JoinColumn(name = "idtipooperacao", referencedColumnName = "id", nullable = false)
 	private SysTipoOperacao idtipooperacao;
 	@Min(0)
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private Long numero;
 	@Min(0)
 	@Column(nullable = true)
@@ -43,10 +43,10 @@ public class FinDocumento implements Serializable {
 	@Column(length = 120, columnDefinition = "varchar(120)", nullable = true)
 	private String codigobarra;
 	@ManyToOne
-	@JoinColumn(name = "idtipodocumento", referencedColumnName = "id", nullable = false)
+	@JoinColumn(name = "idtipodocumento", referencedColumnName = "id", nullable = true)
 	private FinTipoDocumento idtipodocumento;
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private Calendar dataemissao;
 	@OneToOne
 	@JoinColumn(name = "idhistorico", referencedColumnName = "id", nullable = true)

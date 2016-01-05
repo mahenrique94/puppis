@@ -25,7 +25,7 @@
 					</li>
 					<li role="menuitem"><a href="#"><fmt:message key="nav.comercio"/></a>
 						<ul aria-haspopup="true" role="menubar">
-							<li role="menuitem"><a href="#"><fmt:message key="nav.comercio.operacional"/></a>
+							<li role="menuitem"><a href="#"><fmt:message key="nav.operacional"/></a>
 								<ul aria-haspopup="true" role="menubar">
 									<li role="menuitem"><a href="<c:url value="/comercio/nota"/>"><fmt:message key="nav.comercio.operacional.compra.venda"/></a>
 								</ul>
@@ -35,7 +35,15 @@
 					<li role="menuitem"><a href="#"><fmt:message key="nav.financeiro"/></a>
 						<ul aria-haspopup="true" role="menubar">
 							<li role="menuitem"><a href="<c:url value="/financeiro/banco"/>"><fmt:message key="nav.financeiro.banco"/></a></li>
+							<li role="menuitem"><a href="<c:url value="/financeiro/conta-bancaria"/>"><fmt:message key="nav.financeiro.conta.bancaria"/></a></li>
+							<li role="menuitem"><a href="<c:url value="/financeiro/controle"/>"><fmt:message key="nav.financeiro.controle"/></a></li>
 							<li role="menuitem"><a href="<c:url value="/financeiro/forma-de-pagamento"/>"><fmt:message key="nav.financeiro.forma.pagamento"/></a></li>
+							<li role="menuitem"><a href="<c:url value="/financeiro/historico"/>"><fmt:message key="nav.financeiro.historico"/></a></li>
+							<li role="menuitem"><a href="<c:url value="#"/>"><fmt:message key="nav.operacional"/></a>
+								<ul aria-haspopup="true" role="menubar">
+									<li role="menuitem"><a href="<c:url value="/financeiro/documento"/>"><fmt:message key="nav.financeiro.operacional.documento"/></a></li>
+								</ul>
+							</li>
 						</ul>
 					</li>
 					<c:if test="${username.usuario.usuario.equals('ADMIN')}">

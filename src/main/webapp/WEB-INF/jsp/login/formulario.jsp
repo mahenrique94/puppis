@@ -13,13 +13,13 @@
 		<legend class="center float-left m-bottom-10 w-100"><h1><fmt:message key="titulo.controle.de.acesso"/></h1></legend>
 		<form action="<c:url value="/login"/>" class="form-inline" id="formlogin" method="post" name="formlogin">
 			<div class="row" role="row">
-				<div class="col-xs-12-last col-sm-12-last col-md-12-last col-lg-12-last" role="separator">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 					<label class="align-left"><fmt:message key="label.login"/></label>
 					<input autofocus class="input-form" maxlength="20" name="usuario" pattern="letraNumeroEspaco" required type="text">
 				</div>
 			</div>
 			<div class="row" role="row">
-				<div class="col-xs-12-last col-sm-12-last col-md-12-last col-lg-12-last" role="separator">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 					<label class="align-left"><fmt:message key="label.senha"/></label>
 					<input class="input-form" maxlength="8" name="senha" pattern="letraNumeroMin8Max8" required type="password">
 				</div>

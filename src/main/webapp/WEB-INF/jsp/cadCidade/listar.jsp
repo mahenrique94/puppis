@@ -3,13 +3,13 @@
 	<div class="container-header">
 		<form action="<c:url value="/cadastro/cidade"/>" class="form-search" id="formlistarcadcidade" method="get" name="formlistarcadcidade" role="search">
 			<div class="row">
-				<div class="col-xs-12-last col-sm-12-last col-md-12-last col-lg-12-last">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					<h2><fmt:message key="nav.cadastro"/>&nbsp;<fmt:message key="label.barra"/>&nbsp;<fmt:message key="nav.cadastro.cidade"/></h2>					
 				</div>
 				<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
 					<select class="select-search" data-class="displaytagSelect" name="parametrosWeb[0].campo"></select>
 				</div>
-				<div class="col-xs-8-last col-sm-8-last col-md-9-last col-lg-10-last">
+				<div class="col-xs-8 col-sm-8 col-md-9 col-lg-10">
 					<input autocomplete="off" class="input-search" name="parametrosWeb[0].parametro" pattern="letraNumeroEspacoPontoTracoBarra" type="search">
 				</div>
 			</div>

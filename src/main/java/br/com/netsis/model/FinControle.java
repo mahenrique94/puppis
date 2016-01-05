@@ -37,10 +37,6 @@ public class FinControle implements Serializable {
 	@DecimalMin("0.0")
 	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = true)
-	private Double saldo;
-	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
-	@Column(nullable = true)
 	private Double limite;
 	@Column(nullable = false)
 	private Boolean aceitasaldonegativo;
@@ -89,12 +85,6 @@ public class FinControle implements Serializable {
 	}
 	public void setRendamensal(Double rendamensal) {
 		this.rendamensal = rendamensal;
-	}
-	public Double getSaldo() {
-		return saldo;
-	}
-	public void setSaldo(Double saldo) {
-		this.saldo = saldo;
 	}
 	public Double getLimite() {
 		return limite;

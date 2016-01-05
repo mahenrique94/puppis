@@ -3,16 +3,16 @@
 	<div class="container-header">
 		<form action="<c:url value="/produto-servico"/>" class="form-search" id="formlistarpsprodutoservico" method="get" name="formlistarpsprodutoservico" role="search">
 			<div class="row">
-				<div class="col-xs-12-last col-sm-12-last col-md-12-last col-lg-12-last">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					<h2><fmt:message key="nav.cadastro"/>&nbsp;<fmt:message key="label.barra"/>&nbsp;<fmt:message key="nav.cadastro.produto.servico"/></h2>					
 				</div>
-				<div class="col-xs-12-last col-sm-12-last col-md-2 col-lg-1">
+				<div class="col-xs-12 col-sm-12 col-md-2 col-lg-1">
 					<a href="<c:url value="/produto-servico/formulario"/>" class="btn-md float-left" title="<fmt:message key="button.novo"/>"><span class="icon-plus"></span>&nbsp;<fmt:message key="button.novo"/></a>
 				</div>
 				<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
 					<select class="select-search" data-class="displaytagSelect" name="parametrosWeb[0].campo"></select>
 				</div>
-				<div class="col-xs-8-last col-sm-8-last col-md-7-last col-lg-9-last">
+				<div class="col-xs-8 col-sm-8 col-md-7 col-lg-9">
 					<input autocomplete="off" class="input-search" name="parametrosWeb[0].parametro" pattern="letraNumeroEspacoPontoTracoBarra" type="search">
 				</div>
 			</div>
