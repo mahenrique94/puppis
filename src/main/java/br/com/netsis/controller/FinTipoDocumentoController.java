@@ -5,7 +5,7 @@ import br.com.caelum.vraptor.Path;
 import br.com.netsis.model.FinTipoDocumento;
 
 @Controller
-@Path("financeiro/tipo-documento")
+@Path("financeiro/tipo-de-documento")
 public class FinTipoDocumentoController extends GenericController<FinTipoDocumento> {
 
 }

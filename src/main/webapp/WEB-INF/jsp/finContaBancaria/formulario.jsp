@@ -20,32 +20,38 @@
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
 					<label><fmt:message key="label.banco"/></label>
 					<select class="select-form" data-class="slFinBanco" id="slFinanceiro_Banco_Json_01" name="obj.idbanco.id"></select>
+					<netsis:validationMessage name="obj.idbanco.id"/>
 				</div>
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
 					<label><fmt:message key="label.tipo"/></label>
 					<select class="select-form" data-class="slFinTipoContaBancaria" id="slFinanceiro_Tipo-de-conta-bancaria_Json_01" name="obj.idtipocontabancaria.id"></select>
+					<netsis:validationMessage name="obj.idtipocontabancaria.id"/>
 				</div>
 			</div>
 			<div class="row-input" role="row">
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
 					<label><fmt:message key="label.agencia"/></label>
 					<input class="input-form" maxlength="10" name="obj.agencia" pattern="numeroPontoTracoBarra" required type="text" value="${obj.agencia}">
+					<netsis:validationMessage name="obj.agencia"/>
 				</div>
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
 					<label><fmt:message key="label.conta"/></label>
 					<input class="input-form" maxlength="10" name="obj.numeroconta" pattern="numeroPontoTracoBarra" required type="text" value="${obj.numeroconta}">
+					<netsis:validationMessage name="obj.numeroconta"/>
 				</div>
 			</div>
 			<div class="row-input" role="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 					<label><fmt:message key="label.titular"/></label>
 					<input class="input-form" maxlength="60" name="obj.nometitular" pattern="letraNumeroEspaco" required type="text" value="${obj.nometitular}">
+					<netsis:validationMessage name="obj.nometitular"/>
 				</div>
 			</div>
 			<div class="row-input" role="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 					<label><fmt:message key="label.inativo"/></label>
 					<input <c:if test="${obj.inativo == true}">checked</c:if> class="input-form" name="obj.inativo" type="checkbox" value="true">
+					<netsis:validationMessage name="obj.inativo"/>
 				</div>
 			</div>
 		</section>

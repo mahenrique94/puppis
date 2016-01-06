@@ -20,30 +20,36 @@
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
 					<label><fmt:message key="label.comercio"/></label>
 					<select class="select-form" data-class="slAdmComercio" id="slAdministrador_Comercio_Json_01" name="obj.idcomercio.id"></select>
+					<netsis:validationMessage name="obj.idcomercio.id"/>
 				</div>
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
 					<label><fmt:message key="label.conta"/></label>
 					<select class="select-form" data-class="slFinContaBancaria" id="slFinanceiro_Conta-bancaria_Json_01" name="obj.idcontabancaria.id"></select>
+					<netsis:validationMessage name="obj.idcontabancaria.id"/>
 				</div>
 			</div>
 			<div class="row-input" role="row">
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
 					<label><fmt:message key="label.renda.mensal"/></label>
 					<input class="input-form" maxlength="13" name="obj.rendamensal" pattern="numeric10_2" required type="text" value="${obj.rendamensal}">
+					<netsis:validationMessage name="obj.rendamensal"/>
 				</div>
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
 					<label><fmt:message key="label.limite"/></label>
 					<input class="input-form" maxlength="13" name="obj.limite" pattern="numeric10_2" type="text" value="${obj.limite}">
+					<netsis:validationMessage name="obj.limite"/>
 				</div>
 			</div>
 			<div class="row-input" role="row">
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
 					<label><fmt:message key="label.aceita.saldo.negativo"/></label>
 					<input <c:if test="${obj.aceitasaldonegativo == true}">checked</c:if> class="input-form" name="obj.aceitasaldonegativo" type="checkbox" value="true">
+					<netsis:validationMessage name="obj.aceitasaldonegativo"/>
 				</div>
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
 					<label><fmt:message key="label.aceita.ultrapassar.limite"/></label>
 					<input <c:if test="${obj.aceitaultrapassarlimite == true}">checked</c:if> class="input-form" name="obj.aceitaultrapassarlimite" type="checkbox" value="true">
+					<netsis:validationMessage name="obj.aceitaultrapassarlimite"/>
 				</div>
 			</div>
 		</section>

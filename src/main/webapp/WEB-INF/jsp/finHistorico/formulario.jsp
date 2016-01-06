@@ -18,6 +18,7 @@
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 					<label><fmt:message key="label.comercio"/></label>
 					<textarea class="textarea-form" name="obj.descricao" pattern="textarea" required rows="10">${obj.descricao}</textarea>
+					<netsis:validationMessage name="obj.descricao"/>
 				</div>
 			</div>
 		</section>
