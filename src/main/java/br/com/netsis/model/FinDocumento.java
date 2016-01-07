@@ -51,6 +51,9 @@ public class FinDocumento implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "idhistorico", referencedColumnName = "id", nullable = true)
 	private FinHistorico idhistorico;
+	@ManyToOne
+	@JoinColumn(name = "idformapagamento", referencedColumnName = "id", nullable = true)
+	private FinFormaPagamento idformapagamento;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Calendar datacreate;
@@ -62,6 +65,7 @@ public class FinDocumento implements Serializable {
 		// TODO Auto-generated constructor stub
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
+		setIdformapagamento(new FinFormaPagamento(1));
 	}
 	public FinDocumento(Long id) {
 		// TODO Auto-generated constructor stub
@@ -128,6 +132,12 @@ public class FinDocumento implements Serializable {
 	}
 	public void setIdhistorico(FinHistorico idhistorico) {
 		this.idhistorico = idhistorico;
+	}
+	public FinFormaPagamento getIdformapagamento() {
+		return idformapagamento;
+	}
+	public void setIdformapagamento(FinFormaPagamento idformapagamento) {
+		this.idformapagamento = idformapagamento;
 	}
 	public Calendar getDatacreate() {
 		return datacreate;

@@ -6,6 +6,7 @@
 		<input name="obj.idtipooperacao.idaux" type="hidden" value="${obj.idtipooperacao.id}">
 		<input name="obj.idcontabancaria.idaux" type="hidden" value="${obj.idcontabancaria.id}">
 		<input name="obj.idtipodocumento.idaux" type="hidden" value="${obj.idtipodocumento.id}">
+		<input name="obj.idformapagamento.idaux" type="hidden" value="${obj.idformapagamento.id}">
 		<div class="container-header">
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -68,6 +69,12 @@
 			</div>
 			<div class="row" role="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
+					<label><fmt:message key="label.forma.pagamento"/></label>
+					<select class="select-form" data-class="slFinFormaPagamento" id="slFinanceiro_Forma-de-pagamento_Json_01" name="obj.idformapagamento.id"></select>
+				</div>
+			</div>
+			<div class="row" role="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 					<label><fmt:message key="label.codigo.barra"/></label>
 					<input class="input-form" maxlength="120" name="obj.codigobarra" pattern="letraNumero" type="text" value="${obj.codigobarra}">
 					<netsis:validationMessage name="obj.codigobarra"/>
@@ -87,6 +94,7 @@
 					<netsis:validationMessage name="obj.idhistorico.descricao"/>
 				</div>
 			</div>
+			<c:import url="tabs.jsp"/>
 		</section>
 	</form>
 </div>
