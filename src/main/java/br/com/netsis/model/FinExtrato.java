@@ -15,6 +15,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "fin_extrato")
@@ -29,7 +32,10 @@ public class FinExtrato implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "idtipooperacao", referencedColumnName = "id", nullable = false)
 	private SysTipoOperacao idtipooperacao;
-	private CreditoDebito creditodebito;
+	@NotNull
+	@NotEmpty
+	@Column(length = 1, columnDefinition = "char(1)", nullable = false)
+	private String creditodebito;
 	@DecimalMin("0.0")
 	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = false)
@@ -51,6 +57,12 @@ public class FinExtrato implements Serializable {
 		this();
 		setId(id);
 	}
+	public FinExtrato(Long idDocumentoCusto, Integer idTipoOperacao, Double valor) {
+		this();
+		setIddocumentocusto(new FinDocumentoCusto(idDocumentoCusto));
+		setIdtipooperacao(new SysTipoOperacao(idTipoOperacao));
+		setValor(valor);
+	}
 	
 	public Long getId() {
 		return id;
@@ -70,10 +82,10 @@ public class FinExtrato implements Serializable {
 	public void setIdtipooperacao(SysTipoOperacao idtipooperacao) {
 		this.idtipooperacao = idtipooperacao;
 	}
-	public CreditoDebito getCreditodebito() {
+	public String getCreditodebito() {
 		return creditodebito;
 	}
-	public void setCreditodebito(CreditoDebito creditodebito) {
+	public void setCreditodebito(String creditodebito) {
 		this.creditodebito = creditodebito;
 	}
 	public Double getValor() {
@@ -95,4 +107,14 @@ public class FinExtrato implements Serializable {
 		this.dataupdate = dataupdate;
 	}
 
+	public FinExtrato criar(FinDocumentoCusto finDocumentoCusto, SysTipoOperacao sysTipoOperacao) {
+		double valor = finDocumentoCusto.getValortotal() + finDocumentoCusto.getValordesconto() + finDocumentoCusto.getValorjuros();
+		FinExtrato finExtrato = new FinExtrato(finDocumentoCusto.getId(), sysTipoOperacao.getId(), valor);
+		if (new CreditoDebito().getCreditoDebito(sysTipoOperacao.getDescricao(), finDocumentoCusto.getIddocumento().getIdpessoa().getIdtipo().getDescricao()).equals("C"))
+			finExtrato.setCreditodebito("C");
+		else
+			finExtrato.setCreditodebito("D");
+		return finExtrato;
+	}
+	
 }

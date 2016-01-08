@@ -21,6 +21,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import br.com.netsis.util.Util;
+
 @Entity
 @Table(name = "fin_documentocusto")
 public class FinDocumentoCusto implements Serializable {
@@ -42,15 +44,15 @@ public class FinDocumentoCusto implements Serializable {
 	private Double valortotal;
 	@DecimalMin("0.0")
 	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
-	@Column(nullable = true)
+	@Column(nullable = false)
 	private Double valordesconto;
 	@DecimalMin("0.0")
 	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
-	@Column(nullable = true)
+	@Column(nullable = false)
 	private Double valorjuros;
 	@DecimalMin("0.0")
 	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
-	@Column(nullable = true)
+	@Column(nullable = false)
 	private Double saldo;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
@@ -69,11 +71,21 @@ public class FinDocumentoCusto implements Serializable {
 		// TODO Auto-generated constructor stub
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
+		setValordesconto(0.0);
+		setValorjuros(0.0);
+		setSaldo(0.0);
 	}
 	public FinDocumentoCusto(Long id) {
 		// TODO Auto-generated constructor stub
 		this();
 		setId(id);
+	}
+	public FinDocumentoCusto(Long idDocumento, String desdobramento, Double valorTotal, Calendar datavencimento) {
+		this();
+		setIddocumento(new FinDocumento(idDocumento));
+		setDesdobramento(desdobramento);
+		setValortotal(valorTotal);
+		setDatavencimento(datavencimento);
 	}
 	
 	public Long getId() {
@@ -143,4 +155,12 @@ public class FinDocumentoCusto implements Serializable {
 		this.dataupdate = dataupdate;
 	}
 
+	public FinDocumentoCusto criar(FinDocumento finDocumento, int numeroParcela) {
+		String desdobramento = numeroParcela + "/" + finDocumento.getIdformapagamento().getQuantidadeparcela();
+		double valorTotal = finDocumento.getValortotal() / finDocumento.getIdformapagamento().getQuantidadeparcela();			
+		Calendar dataVencimento = new Util().calcularDataVencimento(finDocumento);
+		FinDocumentoCusto finDocumentoCusto = new FinDocumentoCusto(finDocumento.getId(), desdobramento, valorTotal, dataVencimento);
+		return finDocumentoCusto;
+	}
+	
 }

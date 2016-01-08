@@ -19,11 +19,12 @@
 		</form>
 	</div>
 	<display:table class="table-default" export="false" id="obj" name="${FinDocumentoList}" requestURI="/financeiro/documento">
-	<display:column headerScope="idtipooperacao.descricao" property="idtipooperacao.descricao" titleKey="displaytag.operacao"/>
+		<display:column headerScope="idtipooperacao.descricao" property="idtipooperacao.descricao" titleKey="displaytag.operacao"/>
 		<display:column headerScope="numero" property="numero" titleKey="displaytag.numero.documento"/>
 		<display:column headerScope="serie" property="serie" titleKey="displaytag.serie"/>
 		<display:column headerScope="idtipodocumento.descricao" property="idtipodocumento.descricao" titleKey="displaytag.tipo.documento"/>
 		<display:column headerScope="idformapagamento.descricao" property="idformapagamento.descricao" titleKey="displaytag.forma.pagamento"/>
+		<display:column headerScope="valortotal" property="valortotal" titleKey="displaytag.valor.total"/>
 		<display:column style="width: 150px;text-align: center;">
 			<a class="btn-xs" href="<c:url value="/financeiro/documento/${obj.id}"/>"><span class="icon-pencil"></span>&nbsp;<fmt:message key="button.editar"/></a>
 			<a class="btn-xs" href="<c:url value="/financeiro/documento/${obj.id}"/>" onclick="deletar(this);"><span class="icon-trash"></span>&nbsp;<fmt:message key="button.deletar"/></a>

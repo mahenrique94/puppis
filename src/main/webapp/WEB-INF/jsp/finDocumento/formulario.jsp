@@ -1,12 +1,16 @@
 <%@include file="/config/header.jsp" %>
 <div class="container-tie">
 	<form action="<c:url value="/financeiro/documento"/>" class="form-block" id="formfindocumento" method="post" name="formfindocumento" role="form">
-		<input name="openBoxSearch01" type="hidden" value="pespessoa finhistorico">
+		<input name="openBoxSearch" type="hidden" value="pespessoa finhistorico">
 		<input name="obj.id" type="hidden" value="${obj.id}">
 		<input name="obj.idtipooperacao.idaux" type="hidden" value="${obj.idtipooperacao.id}">
+		<input name="obj.idtipooperacao.descricao" type="hidden" value="${obj.idtipooperacao.descricao}">
 		<input name="obj.idcontabancaria.idaux" type="hidden" value="${obj.idcontabancaria.id}">
 		<input name="obj.idtipodocumento.idaux" type="hidden" value="${obj.idtipodocumento.id}">
 		<input name="obj.idformapagamento.idaux" type="hidden" value="${obj.idformapagamento.id}">
+		<input name="obj.idformapagamento.descricao" type="hidden" value="${obj.idformapagamento.descricao}">
+		<input name="obj.idformapagamento.intervalo" type="hidden" value="${obj.idformapagamento.intervalo}">
+		<input name="obj.idformapagamento.quantidadeparcela" type="hidden" value="${obj.idformapagamento.quantidadeparcela}">
 		<div class="container-header">
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -14,6 +18,7 @@
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					<button class="btn-md float-left m-right-5" title="<fmt:message key="button.salvar"/>" type="submit"><span class="icon-floppy-disk"></span>&nbsp;<fmt:message key="button.salvar"/></button>
+					<button class="btn-md float-left m-right-5" formaction="<c:url value="/financeiro/documento/atualizar"/>" title="<fmt:message key="button.atualizar"/>" type="submit"><span class="icon-refresh"></span>&nbsp;<fmt:message key="button.atualizar"/></button>
 					<a href="<c:url value="/financeiro/documento"/>" class="btn-md float-left m-right-5" title="<fmt:message key="button.pesquisar"/>"><span class="icon-search"></span>&nbsp;<fmt:message key="button.pesquisar"/></a>
 				</div>
 			</div>
@@ -65,6 +70,13 @@
 					<label><fmt:message key="label.data.emissao"/></label>
 					<input class="input-form" data-mask="data" maxlength="10" min="01-01-1970" name="obj.dataemissao" pattern="data" required type="text" value="<fmt:formatDate pattern="dd/MM/yyyy" type="date" value="${obj.dataemissao.time}"/>">
 					<netsis:validationMessage name="obj.dataemissao"/>
+				</div>
+			</div>
+			<div class="row" role="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
+					<label><fmt:message key="label.valor.total"/></label>
+					<input class="input-form" maxlength="13" name="obj.valortotal" pattern="numeric10_2" required type="text" value="${obj.valortotal}"/>
+					<netsis:validationMessage name="obj.valortotal"/>
 				</div>
 			</div>
 			<div class="row" role="row">

@@ -42,6 +42,7 @@
 							<li role="menuitem"><a href="<c:url value="#"/>"><fmt:message key="nav.operacional"/></a>
 								<ul aria-haspopup="true" role="menubar">
 									<li role="menuitem"><a href="<c:url value="/financeiro/documento"/>"><fmt:message key="nav.financeiro.operacional.documento"/></a></li>
+									<li role="menuitem"><a href="<c:url value="/financeiro/extrato"/>"><fmt:message key="nav.financeiro.operacional.extrato"/></a></li>
 								</ul>
 							</li>
 						</ul>
