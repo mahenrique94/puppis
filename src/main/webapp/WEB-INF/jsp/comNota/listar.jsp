@@ -7,7 +7,7 @@
 					<h2><fmt:message key="nav.comercio"/>&nbsp;<fmt:message key="label.barra"/>&nbsp;<fmt:message key="nav.operacional"/>&nbsp;<fmt:message key="label.barra"/>&nbsp;<fmt:message key="nav.comercio.operacional.compra.venda"/></h2>					
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-2 col-lg-1">
-					<a href="<c:url value="/comercio/nota/formulario"/>" class="btn-md float-left" title="<fmt:message key="button.novo"/>"><span class="icon-plus"></span>&nbsp;<fmt:message key="button.novo"/></a>
+					<a class="btn-md float-left" href="<c:url value="/comercio/nota/formulario"/>" title="<fmt:message key="button.novo"/>"><span class="icon-plus"></span>&nbsp;<fmt:message key="button.novo"/></a>
 				</div>
 				<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
 					<select class="select-search" data-class="displaytagSelect" name="parametrosWeb[0].campo"></select>

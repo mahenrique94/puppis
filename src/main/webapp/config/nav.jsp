@@ -1,5 +1,5 @@
 			<nav class="nav-tie">
-				<a class="nav-brand" href="<c:url value="/"/>"><fmt:message key="nav.brand"/></a>
+				<h1><a class="nav-brand" href="<c:url value="/"/>"><fmt:message key="nav.brand"/></a></h1>
 				<ul class="nav-main" role="menubar">
 					<li role="menuitem"><a href="#"><fmt:message key="nav.cadastro"/></a>
 						<ul aria-haspopup="true" role="menubar">

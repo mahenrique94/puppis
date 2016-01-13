@@ -32,7 +32,7 @@ public class AdmDocumento implements Serializable {
 	private AdmComercio idcomercio;
 	@NotNull
 	@NotEmpty
-	@Size(min = 18, max = 18, message = "{cpf.cnpj}")
+	@Size(min = 14, max = 18, message = "{cpf.cnpj}")
 	@Column(length = 18, columnDefinition = "varchar(18)", nullable = false, unique = true)
 	private String cpfcnpj;
 	@NotNull
