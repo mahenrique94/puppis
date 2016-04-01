@@ -1,0 +1,31 @@
+nav.nav-tie {
+	border-bottom: 5px solid $color-primary;
+	ul {
+		li {
+			a {
+				color: $color-text-tie;
+			}
+			&:hover {
+				background: $color-primary;
+			}
+			&:hover > a {
+				color: $color-text-primary;	
+			}
+		}
+	}
+	ul.user {
+		ul {
+			left: initial;
+			right: 0;
+		}
+	}
+}
+nav.nav-square {
+	a {
+		@include transition("all .25s linear");
+	}
+	a:hover {
+		background: $color-primary !important;
+		color: $color-text-primary !important;		
+	}
+}

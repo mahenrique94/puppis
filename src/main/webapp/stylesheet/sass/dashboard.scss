@@ -1,0 +1,49 @@
+.bg-dashboard {
+	background: url(../img/dashboard/bg-dashboard.jpg) center / cover no-repeat;
+}
+.bg-dashboard-sistema {
+	background: url(../img/dashboard/bg-dashboard-sistema.jpg) center / cover no-repeat;
+}
+.welcome {	
+	float: left;
+	margin-bottom: 1.5rem;
+	width: 100%;
+	h1, h2 {
+		color: #FFFFFF;
+		float: left;
+		text-shadow: 3px 2px 5px rgba(0, 0, 0, .7);
+	}
+	h1 {		
+		font-size: 3rem;
+		margin-bottom: .5rem;
+	}	
+	h2 {
+		clear: left;
+	}
+	.summary {
+		float: right;
+		&-options {
+			display: inline-block;
+			padding: 1rem;
+			text-align: center;
+		}
+		&-count {
+			display: block;
+			margin-bottom: 5px;
+		}
+		.opens {
+			color: #FF0000;
+		}
+		.progressing {
+			color: #0000FF;
+		}
+		.resolveds {
+			color: #00AA00;
+		}
+	}
+}
+.current {
+	background: rgba(0, 0, 0, .3);
+	color: #FFFFFF;
+	padding: .5rem;
+}

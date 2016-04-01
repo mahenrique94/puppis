@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>br.com.yumer</groupId>
-	<artifactId>yumer</artifactId>
+	<groupId>br.com.hebi</groupId>
+	<artifactId>hebi</artifactId>
 	<version>1.0.0</version>
 	<packaging>war</packaging>
 
@@ -118,16 +118,48 @@
 		</dependency>
 		
 		<dependency>
-		  <groupId>javax.servlet.jsp</groupId>
-		  <artifactId>jsp-api</artifactId>
-		  <version>2.1</version>
+		  	<groupId>javax.servlet.jsp</groupId>
+		  	<artifactId>jsp-api</artifactId>
+		  	<version>2.1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>c3p0</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>0.9.1.2</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-c3p0</artifactId>
+			<version>4.3.6.Final</version>
+		</dependency>
+		
+		<!-- Hibernate EHCache API -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-ehcache</artifactId>
+			<version>4.3.5.Final</version>
+		</dependency>
+		
+		<!-- EHCache uses slf4j for logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.7.5</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.6.1</version>
 		</dependency>
 		
 	</dependencies>
 
 	<build>
-		<finalName>yumer</finalName>
-		<outputDirectory>/Users/matheus/workspace/yumer/src/main/webapp/WEB-INF/classes</outputDirectory>
+		<finalName>hebi</finalName>
+		<outputDirectory>/Users/matheus/workspace/hebi/src/main/webapp/WEB-INF/classes</outputDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
