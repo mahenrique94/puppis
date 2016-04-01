@@ -1,19 +1,19 @@
 <%@include file="/config/header.jsp"%>
 <form action="<c:url value="/administrador/usuario/tipo-de-acesso"/>" class="form-search" id="formlistaradmusuariotipoacesso" method="get" name="formlistaradmusuariotipoacesso" role="search">
-	<nav class="band-nav-kal">
-		<div class="row" role="role">
+	<nav class="band-nav-kal" role="complementary">
+		<div class="row" role="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 				<label><fmt:message key="nav.administrador"/>&nbsp;<fmt:message key="label.barra"/>&nbsp;<fmt:message key="nav.administrador.usuario.tipo.acesso"/></label>					
 			</div>
 		</div>
-		<div class="row" role="role">
+		<div class="row" role="row">
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
 				<a class="btn-lube btn-sm" href="<c:url value="/administrador/usuario/tipo-de-acesso/formulario"/>" title="<fmt:message key="button.novo"/>"><i class="icon-plus"></i>&nbsp;<fmt:message key="button.novo"/></a>
 			</div>
-			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
 				<select class="form-data" data-class="displaytagSelect" name="parametrosWeb[0].campo"></select>
 			</div>
-			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
 				<input autocomplete="off" class="form-data" name="parametrosWeb[0].parametro" pattern="letraNumeroEspacoPontoTracoBarra" type="search">
 			</div>
 		</div>

@@ -131,5 +131,8 @@ nav.nav-square a:hover {
     .login-remember a:hover {
       color: #0099FF; }
 
+.band-lube {
+  margin-bottom: .625rem; }
+
 footer.footer-tie {
   border-top: 5px solid #0099FF; }

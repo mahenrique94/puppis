@@ -11,7 +11,7 @@
 <body>
 	<main id="wrap" role="main">
 		<header class="header-default" role="banner">
-			<div class="alert-message time-out" role="alert"><h2>${mensagem}</h2></div>
+			<%@include file="/config/messages.jsp"%>	
 			<%@include file="/config/nav.jsp"%>	
 		</header>
 		<section id="content">

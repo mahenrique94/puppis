@@ -2,13 +2,13 @@
 <form action="<c:url value="/administrador/usuario"/>" class="form-block" id="formadmusuario" method="post" name="formadmusuario" role="form">
 	<input name="obj.id" type="hidden" value="${obj.id}">
 	<input name="obj.idgrupo.idaux" type="hidden" value="${obj.idgrupo.id}">
-	<nav class="band-nav-kal">
-		<div class="row" role="role">
+	<nav class="band-nav-kal" role="complementary">
+		<div class="row" role="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 				<label><fmt:message key="nav.administrador"/>&nbsp;<fmt:message key="label.barra"/>&nbsp;<fmt:message key="nav.administrador.usuario.grupo"/></label>					
 			</div>
 		</div>
-		<div class="row" role="role">
+		<div class="row" role="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 				<button class="btn-lube btn-sm" title="<fmt:message key="button.salvar"/>" type="submit"><i class="icon-floppy"></i>&nbsp;<fmt:message key="button.salvar"/></button>
 				<a class="btn-lube btn-sm" href="<c:url value="/administrador/usuario"/>" title="<fmt:message key="button.pesquisar"/>"><i class="icon-search"></i>&nbsp;<fmt:message key="button.pesquisar"/></a>

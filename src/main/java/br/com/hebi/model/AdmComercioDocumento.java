@@ -26,7 +26,6 @@ import org.hibernate.validator.constraints.br.CNPJ;
 @Entity
 @Table(name = "adm_comerciodocumento")
 @DynamicUpdate(value = true)
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class AdmComercioDocumento implements Serializable {
 
 	@Id
