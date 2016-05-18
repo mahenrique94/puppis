@@ -22,7 +22,7 @@ public class FinDocumentoCustoController extends GenericController<FinDocumentoC
 		// TODO Auto-generated method stub
 		obj = (FinDocumentoCusto) this.edit(obj);
 		Long idDocumento = obj.getIddocumento().getId();
-		this.setRedirecionar(false);
+		this.setRedirect(false);
 		super.deletar(obj);
 		this.result.redirectTo("/financeiro/documento/custo/" + idDocumento);
 	}
@@ -55,7 +55,7 @@ public class FinDocumentoCustoController extends GenericController<FinDocumentoC
 	@Override
 	public void salvar(FinDocumentoCusto obj) {
 		// TODO Auto-generated method stub
-		this.setRedirecionar(false);
+		this.setRedirect(false);
 		super.salvar(obj);
 		this.result.redirectTo(FinDocumentoController.class).editar(obj.getIddocumento());
 	}

@@ -16,7 +16,7 @@ import br.com.caelum.vraptor.validator.Validator;
 import br.com.hebi.dao.Dao;
 import br.com.hebi.model.AdmUsuario;
 import br.com.hebi.security.UserName;
-import br.com.hebi.validator.ValidatorUsuario;
+import br.com.hebi.validator.ValidatorUser;
 import br.com.mhc.parametrosweb.ParametrosWeb;
 
 @Controller
@@ -54,11 +54,11 @@ public class LoginController {
 		parametrosWeb.add(new ParametrosWeb("senha", senha));
 		parametrosWeb.add(new ParametrosWeb("inativo", "true", "<>"));
 		AdmUsuario admUsuario = (AdmUsuario) this.dao.getDao().find(AdmUsuario.class, parametrosWeb);
-		if (new ValidatorUsuario().validar(admUsuario, usuario, senha)) {
+		if (admUsuario != null && new ValidatorUser().validar(admUsuario, usuario, senha)) {
 			this.userName.login(admUsuario);
 			this.result.redirectTo(DashBoardController.class).dashboard();
 		} else {
-			this.validator.add(new SimpleMessage("login.invalido", "Login ou senha incorretos"));
+			this.validator.add(new SimpleMessage("login.invalido", "Usuário ou senha inválidos"));
 			this.validator.onErrorRedirectTo(this).formulario();
 		}
 	}

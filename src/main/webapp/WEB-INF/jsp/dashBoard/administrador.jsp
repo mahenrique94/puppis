@@ -1,21 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<%@include file="/config/taglibraries.jsp" %>
-	<%@include file="/config/libraries-style.jsp" %>
-	<meta charset="UTF-8">
-	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport"/>
-	<link href="<c:url value="/img/favicon.ico"/>" rel="icon">
-	<title><fmt:message key="titulo.pagina"/></title>
-</head>
-<body>
-	<main class="bg-dashboard-sistema" id="wrap" role="main">
+<%@include file="/config/header-dashboard.jsp"%>
+	<main class="bg-dashboard-administrador" id="wrap" role="main">
 		<header class="header-default" role="banner">
-			<div class="alert-message time-out" role="alert"><h2>${mensagem}</h2></div>
 			<%@include file="/config/nav.jsp"%>	
 		</header>
 		<section id="content">
-			<div class="current"><fmt:message key="nav.dashboard"/>&nbsp;<i class="icon-right-open"></i>&nbsp;<fmt:message key="nav.administrador"/></div>
+			<div class="current"><a href="<c:url value="/dashboard"/>"><fmt:message key="nav.dashboard"/></a>&nbsp;<i class="icon-right-open"></i>&nbsp;<fmt:message key="nav.administrador"/></div>
 			<div class="clearfix container-center">
 				<nav class="nav-square" role="navigation">
 					<ul class="nav-row" role="menubar">
@@ -26,4 +15,6 @@
 					</ul>
 				</nav>
 			</div>
-<%@include file="/config/footer.jsp"%>
+		</section>
+	</main>
+<%@include file="/config/footer-dashboard.jsp"%>

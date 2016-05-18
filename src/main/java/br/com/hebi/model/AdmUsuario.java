@@ -16,7 +16,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
-import javax.persistence.Version;
 import javax.validation.constraints.AssertFalse;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Min;
@@ -46,7 +45,7 @@ public class AdmUsuario implements Serializable {
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 20, message = "{minimo.0.maximo.20}")
-	@Column(length = 20, columnDefinition = "varchar(20)", nullable = false, unique = true)	
+	@Column(length = 20, columnDefinition = "varchar(20)", nullable = false, unique = true)
 	private String usuario;
 	@NotNull
 	@NotEmpty
@@ -64,13 +63,11 @@ public class AdmUsuario implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
 	private Calendar dataupdate;
-//	@Version
-//	private Integer versao;
 	
 	public AdmUsuario() {
+		setInativo(false);
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
-		setInativo(false);
 	}
 	public AdmUsuario(Integer id) {
 		this();
@@ -88,7 +85,7 @@ public class AdmUsuario implements Serializable {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
-	}	
+	}
 	public String getUsuario() {
 		return usuario;
 	}
@@ -125,12 +122,6 @@ public class AdmUsuario implements Serializable {
 	public void setDataupdate(Calendar dataupdate) {
 		this.dataupdate = dataupdate;
 	}
-//	public Integer getVersao() {
-//		return versao;
-//	}
-//	public void setVersao(Integer versao) {
-//		this.versao = versao;
-//	}
 	
 	public boolean isAdministrador(AdmUsuario admUsuario) {
 		if (admUsuario.getIdgrupo().getDescricao().equals("ADMINISTRADOR"))

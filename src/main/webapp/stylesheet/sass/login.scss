@@ -30,6 +30,13 @@
 			}
 			width: 100%;
 		}
+		input {
+			padding: 1rem !important;
+			&:focus {
+				border: $border-lube !important;
+				box-shadow: 0 0 10px $color-lube;
+			}
+		}
 		button {
 			text-transform: uppercase;			
 		}

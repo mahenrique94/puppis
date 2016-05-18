@@ -1,12 +1,10 @@
 package br.com.hebi.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
 
-import br.com.caelum.brutauth.auth.annotations.CustomBrutauthRules;
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
@@ -16,10 +14,6 @@ import br.com.caelum.vraptor.validator.Validator;
 import br.com.caelum.vraptor.view.Results;
 import br.com.hebi.dao.Dao;
 import br.com.hebi.dao.GenericDao;
-import br.com.hebi.security.PermissionDelete;
-import br.com.hebi.security.PermissionEdit;
-import br.com.hebi.security.PermissionList;
-import br.com.hebi.security.PermissionSave;
 import br.com.mhc.paginator.Paginator;
 import br.com.mhc.parametrosweb.ParametrosWeb;
 
@@ -31,77 +25,71 @@ public abstract class GenericController<T> {
 	protected Result result;
 	@Inject
 	private Validator validator;
-	private boolean redirecionar = true;
+	private boolean redirect = true;
 	
-	@CustomBrutauthRules(PermissionDelete.class)
 	@Delete("")
 	public void deletar(T obj) {
 		this.getDao().delete(obj);
-		if(this.isRedirecionar())
+		if(this.isRedirect())
 			this.result.redirectTo(this).listar(obj, null);
 	}
 	
-	@CustomBrutauthRules(PermissionEdit.class)
 	@Get
 	public void editar(T obj) {
-		this.result.include("obj", this.edit(obj));
+		this.result.include("obj", edit(obj));
 		this.result.of(this).formulario(obj);
 	}
 	
-	@CustomBrutauthRules(PermissionSave.class)
 	@Get("formulario")
 	public void formulario(T obj) {}
 	
-	@CustomBrutauthRules(PermissionList.class)
 	@Get("")
 	public void listar(T obj, List<ParametrosWeb> parametrosWeb) {
-		this.result.include(this.getClassName(obj) + "List", this.getDao().findAll(obj.getClass(), parametrosWeb));
+		this.result.include(getClassName(obj) + "List", getDao().findAll(obj.getClass(), parametrosWeb));
 	}
 	
-	@CustomBrutauthRules(PermissionList.class)
 	@Get("listarsl")
 	public void listarSl(T obj, List<ParametrosWeb> parametrosWeb) {
-		this.result.include(this.getClassName(obj) + "List", this.getDao().findAll(obj.getClass(), parametrosWeb));
+		this.result.include(getClassName(obj) + "List", getDao().findAll(obj.getClass(), parametrosWeb));
 	}
 	
-	@CustomBrutauthRules(PermissionList.class)
-	@Get("page/{paginator.currentPage}")
-	public void pagination(T obj, List<ParametrosWeb> parametrosWeb, Paginator paginator) {
+	@Get("pagina/{paginator.currentPage}")
+	public void paginacao(T obj, List<ParametrosWeb> parametrosWeb, Paginator paginator) {
 		paginator.setFirst((paginator.getCurrentPage() * 10) - 10);
 		paginator.setInterval(10);
-		List<T> objRecords = this.getDao().findAll(obj.getClass(), null);
-		List<T> objList = this.getDao().findPagination(obj.getClass(), null, paginator);
+		List<T> objRecords = getDao().findAll(obj.getClass(), parametrosWeb);
+		List<T> objList = getDao().findPagination(obj.getClass(), parametrosWeb, paginator);
 		paginator.setRecords(objRecords.size());
 		paginator.setPages((paginator.getRecords() / paginator.getInterval()) + 1);
-		this.result.include(this.getClassName(obj) + "List", objList);
+		this.result.include(getClassName(obj) + "List", objList);
 		this.result.include("paginator", paginator);
+		this.result.include("parametrosWeb", parametrosWeb);
 	}
 	
-	@CustomBrutauthRules(PermissionSave.class)
 	@Post("")
 	@IncludeParameters
 	public void salvar(@Valid T obj) {
 		this.validator.onErrorForwardTo(this).formulario(obj);
-		this.getDao().save(obj);
+		getDao().save(obj);
 		this.result.include("mensagem", "Operação concluída com sucesso");
-		if(this.isRedirecionar())
+		if(isRedirect())
 			this.result.redirectTo(this).listar(obj, null);
 	}	
 	
 	@Get("json")
 	public void toJSON(T obj, List<ParametrosWeb> parametrosWeb) {
-		List<T> list = this.getDao().findAll(obj.getClass(), parametrosWeb);
+		List<T> list = getDao().findAll(obj.getClass(), parametrosWeb);
 		this.result.use(Results.json()).from(list).serialize();
 	}
 	
 	@Get("xml")
 	public void toXML(T obj, List<ParametrosWeb> parametrosWeb) {
-		List<T> list = this.getDao().findAll(obj.getClass(), parametrosWeb);
+		List<T> list = getDao().findAll(obj.getClass(), parametrosWeb);
 		this.result.use(Results.xml()).from(list).recursive().serialize();
 	}
 	
 	protected Object edit(T obj) {
-		return this.getDao().edit(obj);
+		return getDao().edit(obj);
 	}
 	
 	protected String getClassName(T obj) {
@@ -112,12 +100,12 @@ public abstract class GenericController<T> {
 		return this.dao.getDao();
 	}
 	
-	private boolean isRedirecionar() {
-		return redirecionar;
+	private boolean isRedirect() {
+		return redirect;
 	}
 
-	protected void setRedirecionar(boolean redirecionar) {
-		this.redirecionar = redirecionar;
+	protected void setRedirect(boolean redirect) {
+		this.redirect = redirect;
 	}
 	
 }

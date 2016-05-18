@@ -31,6 +31,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 @Table(name = "adm_comercio")
 @DynamicUpdate(value = true)
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class AdmComercio implements Serializable {
 
 	@Id

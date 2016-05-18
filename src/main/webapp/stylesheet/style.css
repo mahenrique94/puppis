@@ -11,6 +11,7 @@
 /************************************************** FONTS **************************************************/
 /************************************************** FOOTERS **************************************************/
 /************************************************** FORMS **************************************************/
+/************************************************** FORM-GROUP **************************************************/
 /************************************************** MEDIA-QUERIES **************************************************/
 /************************************************** NAVS **************************************************/
 /************************************************** PAGINATION **************************************************/
@@ -20,7 +21,7 @@
 /************************************************** BORDER **************************************************/
 /************************************************** EXPRESSION **************************************************/
 nav.nav-tie {
-  border-bottom: 5px solid #0099FF; }
+  border-bottom: 5px solid #303030; }
   nav.nav-tie ul li a {
     color: #000000; }
   nav.nav-tie ul li:hover {
@@ -41,11 +42,19 @@ nav.nav-square a:hover {
   background: #0099FF !important;
   color: #FFFFFF !important; }
 
-.bg-dashboard {
-  background: url(../img/dashboard/bg-dashboard.jpg) center/cover no-repeat; }
+[class^=bg-dashboard] {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; }
 
-.bg-dashboard-sistema {
-  background: url(../img/dashboard/bg-dashboard-sistema.jpg) center/cover no-repeat; }
+.bg-dashboard {
+  background-image: url(../img/dashboard/bg-dashboard.jpg); }
+
+.bg-dashboard-administrador {
+  background-image: url(../img/dashboard/bg-dashboard-administrador.jpg); }
+
+.bg-dashboard-cadastro {
+  background-image: url(../img/dashboard/bg-dashboard-cadastro.jpg); }
 
 .welcome {
   float: left;
@@ -60,26 +69,16 @@ nav.nav-square a:hover {
     margin-bottom: .5rem; }
   .welcome h2 {
     clear: left; }
-  .welcome .summary {
-    float: right; }
-    .welcome .summary-options {
-      display: inline-block;
-      padding: 1rem;
-      text-align: center; }
-    .welcome .summary-count {
-      display: block;
-      margin-bottom: 5px; }
-    .welcome .summary .opens {
-      color: #FF0000; }
-    .welcome .summary .progressing {
-      color: #0000FF; }
-    .welcome .summary .resolveds {
-      color: #00AA00; }
 
 .current {
   background: rgba(0, 0, 0, 0.3);
   color: #FFFFFF;
   padding: .5rem; }
+  .current a {
+    color: #FFFFFF;
+    text-decoration: none; }
+    .current a:hover {
+      text-decoration: underline; }
 
 .login {
   display: -webkit-flex;
@@ -118,6 +117,11 @@ nav.nav-square a:hover {
       text-align: center;
       text-transform: uppercase;
       width: 100%; }
+    .login-form input {
+      padding: 1rem !important; }
+      .login-form input:focus {
+        border: 1px solid #007acc !important;
+        box-shadow: 0 0 10px #0099FF; }
     .login-form button {
       text-transform: uppercase; }
   .login-remember a {
@@ -134,5 +138,13 @@ nav.nav-square a:hover {
 .band-lube {
   margin-bottom: .625rem; }
 
+.container-center {
+  background: transparent !important; }
+
+.form-data-group .form-data-group-btn button {
+  padding: .56rem .6rem !important; }
+  .form-data-group .form-data-group-btn button i {
+    font-size: .8rem; }
+
 footer.footer-tie {
-  border-top: 5px solid #0099FF; }
+  border-top: 5px solid #303030; }

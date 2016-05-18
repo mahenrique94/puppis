@@ -1,39 +1,33 @@
 <%@include file="/config/header.jsp" %>
-<div class="container-tie">
-	<form action="<c:url value="/cadastro/centro-de-custo"/>" class="form-block" id="formcadcentrocusto" method="post" name="formcadcentrocusto" role="form">
-		<input name="obj.id" type="hidden" value="${obj.id}">
-		<div class="container-header">
-			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-					<h2><fmt:message key="nav.cadastro"/>&nbsp;<fmt:message key="label.barra"/>&nbsp;<fmt:message key="nav.cadastro.centro.custo"/></h2>
-				</div>
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-					<button class="btn-md float-left m-right-5" title="<fmt:message key="button.salvar"/>" type="submit"><span class="icon-floppy-disk"></span>&nbsp;<fmt:message key="button.salvar"/></button>
-					<a href="<c:url value="/cadastro/centro-de-custo"/>" class="btn-md float-left m-right-5" title="<fmt:message key="button.pesquisar"/>"><span class="icon-search"></span>&nbsp;<fmt:message key="button.pesquisar"/></a>
-				</div>
+<form action="<c:url value="/cadastro/centro-de-custo"/>" class="form-modern" id="formcadcentrocusto" method="post" name="formcadcentrocusto" role="form">
+	<input name="obj.id" type="hidden" value="${obj.id}">
+	<input name="obj.idcentrocustomaster.idaux" type="hidden" value="${obj.idcentrocustomaster.id}">
+	<nav class="band-nav-lube" role="complementary">
+		<div class="row" role="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
+				<label><fmt:message key="nav.cadastro"/>&nbsp;<fmt:message key="label.barra"/>&nbsp;<fmt:message key="nav.cadastro.centro.custo"/></label>					
 			</div>
 		</div>
-		<section aria-expanded="true" aria-hidden="false" class="clearfix" role="form">
-			<div class="row-input" role="row">
-				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
-					<label><fmt:message key="label.conta"/></label>
-					<input autofocus class="input-form" maxlength="10" name="obj.conta" pattern="numero" required type="number" value="${obj.conta}">
-					<netsis:validationMessage name="obj.conta"/>
-				</div>
-				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
-					<label><fmt:message key="label.sub.conta"/></label>
-					<input class="input-form" maxlength="10" name="obj.subconta" pattern="numero" required type="number" value="${obj.subconta}">
-					<netsis:validationMessage name="obj.subconta"/>
-				</div>
+	</nav>
+	<section aria-expanded="true" aria-hidden="false" class="form-body" role="form">
+		<div class="row-input" role="row">
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
+				<label><fmt:message key="label.descricao"/></label>
+				<input autofocus class="form-data validate" maxlength="60" name="obj.descricao" pattern="letraEspaco" required type="text" value="${obj.descricao}">
+				<netsis:validationMessage name="obj.descricao"/>
 			</div>
-			<div class="row-input" role="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
-					<label><fmt:message key="label.descricao"/></label>
-					<input class="input-form" maxlength="60" name="obj.descricao" pattern="letraEspaco" required type="text" value="${obj.descricao}">
-					<netsis:validationMessage name="obj.descricao"/>
-				</div>
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
+				<label><fmt:message key="label.descricao.master"/></label>
+				<select class="form-data validate" data-class="sl" id="slCadastro_Centro-de-Custo_Json_01" required name="obj.idcentrocustomaster.id"></select>
+				<netsis:validationMessage name="obj.idcentrocustomaster.id"/>
 			</div>
-		</section>
-	</form>
-</div>
+		</div>
+	</section>
+</form>
+<nav class="nav-group-lube nav-fixed-bottom" role="complementary">
+	<ul>
+		<li><button form="formcadcentrocusto" title="<fmt:message key="button.salvar"/>" type="submit"><i class="icon-floppy"></i>&nbsp;<fmt:message key="button.salvar"/></button></li>
+		<li><a href="<c:url value="/cadastro/centro-de-custo"/>" title="<fmt:message key="button.pesquisar"/>"><i class="icon-search"></i>&nbsp;<fmt:message key="button.pesquisar"/></a></li>
+	</ul>
+</nav>
 <%@include file="/config/footer.jsp"%>

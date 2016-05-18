@@ -10,7 +10,7 @@ public class Dao {
 	private GenericDao dao;
 	
 	public GenericDao getDao() {
-		return dao;
+		return this.dao;
 	}
 	
 }

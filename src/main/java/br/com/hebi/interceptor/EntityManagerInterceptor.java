@@ -13,15 +13,14 @@ public class EntityManagerInterceptor {
 	@Inject
 	private EntityManager em;
 	
-	@AfterCall
-	public void after() {
-		this.em.getTransaction().commit();
-	}
-	
 	@BeforeCall
 	public void before() {
 		this.em.getTransaction().begin();
 	}
 	
+	@AfterCall
+	public void after() {
+		this.em.getTransaction().commit();
+	}
 	
 }

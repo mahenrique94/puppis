@@ -21,7 +21,7 @@ public class ComNotaItensController extends GenericController<ComNotaItens> {
 		// TODO Auto-generated method stub
 		obj = (ComNotaItens) this.edit(obj);
 		Long idNota = obj.getIdnota().getId();
-		this.setRedirecionar(false);
+		this.setRedirect(false);
 		super.deletar(obj);
 		this.result.redirectTo("/nota/editar/" + idNota);
 	}
@@ -53,7 +53,7 @@ public class ComNotaItensController extends GenericController<ComNotaItens> {
 	@Override
 	public void salvar(ComNotaItens obj) {
 		// TODO Auto-generated method stub
-		this.setRedirecionar(false);
+		this.setRedirect(false);
 		obj.calculaTotal(obj);
 		super.salvar(obj);
 		this.result.redirectTo(ComNotaController.class).editar(obj.getIdnota());

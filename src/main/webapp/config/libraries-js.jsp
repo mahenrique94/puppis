@@ -7,3 +7,4 @@
 <script src="<c:url value="/js/library-js/select.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/js/library-js/loadgrid.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/js/library-js/format.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/stylesheet/stilize/plugins/select2/select2.js"/>" type="text/javascript"></script>

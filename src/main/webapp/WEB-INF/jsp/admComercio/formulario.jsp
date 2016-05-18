@@ -1,5 +1,5 @@
 <%@include file="/config/header.jsp" %>
-<form action="<c:url value="/administrador/comercio"/>" class="form-block" id="formadmcomercio" method="post" name="formadmcomercio" role="form">
+<form action="<c:url value="/administrador/comercio"/>" class="form-modern" id="formadmcomercio" method="post" name="formadmcomercio" role="form">
 	<input name="obj.id" type="hidden" value="${obj.id}">
 	<input type="hidden" name="obj.documento.id" value="${obj.documento.id}">
 	<input type="hidden" name="obj.documento.idcomercio.id" value="${obj.documento.idcomercio.id}">
@@ -10,16 +10,10 @@
 	<input type="hidden" name="obj.endereco.idestado.idaux" value="${obj.endereco.idestado.id}">
 	<input type="hidden" name="obj.endereco.idcidade.idaux" value="${obj.endereco.idcidade.id}">
 	<input type="hidden" name="obj.endereco.idpais.idaux" value="${obj.endereco.idpais.id}">
-	<nav class="band-nav-kal" role="complementary">
+	<nav class="band-nav-lube" role="complementary">
 		<div class="row" role="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 				<label><fmt:message key="nav.administrador"/>&nbsp;<fmt:message key="label.barra"/>&nbsp;<fmt:message key="nav.administrador.comercio"/></label>					
-			</div>
-		</div>
-		<div class="row" role="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
-				<button class="btn-lube btn-sm" title="<fmt:message key="button.salvar"/>" type="submit"><i class="icon-floppy"></i>&nbsp;<fmt:message key="button.salvar"/></button>
-				<a class="btn-lube btn-sm" href="<c:url value="/administrador/comercio"/>" title="<fmt:message key="button.pesquisar"/>"><i class="icon-search"></i>&nbsp;<fmt:message key="button.pesquisar"/></a>
 			</div>
 		</div>
 	</nav>
@@ -110,7 +104,7 @@
 			</div>
 			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" role="separator">
 				<label><fmt:message key="label.cidade"/></label>
-				<select class="form-data validate" data-class="slCadCidade" id="slCadastro_Cidade_json_01" name="obj.endereco.idcidade.id" required></select>
+				<select class="form-data ss validate" data-class="slCadCidade" id="slCadastro_Cidade_json_01" name="obj.endereco.idcidade.id" required></select>
 				<netsis:validationMessage name="obj.endereco.cidade"/>
 			</div>
 		</div>
@@ -123,4 +117,10 @@
 		</div>
 	</section>
 </form>
+<nav class="nav-group-lube nav-fixed-bottom" role="complementary">
+	<ul>
+		<li><button form="formadmcomercio" title="<fmt:message key="button.salvar"/>" type="submit"><i class="icon-floppy"></i>&nbsp;<fmt:message key="button.salvar"/></button></li>
+		<li><a href="<c:url value="/administrador/comercio"/>" title="<fmt:message key="button.pesquisar"/>"><i class="icon-search"></i>&nbsp;<fmt:message key="button.pesquisar"/></a></li>
+	</ul>
+</nav>
 <%@include file="/config/footer.jsp"%>

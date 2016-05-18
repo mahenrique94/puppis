@@ -1,8 +1,16 @@
-.bg-dashboard {
-	background: url(../img/dashboard/bg-dashboard.jpg) center / cover no-repeat;
+[class^=bg-dashboard] {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;	
 }
-.bg-dashboard-sistema {
-	background: url(../img/dashboard/bg-dashboard-sistema.jpg) center / cover no-repeat;
+.bg-dashboard {
+	background-image: url(../img/dashboard/bg-dashboard.jpg);
+}
+.bg-dashboard-administrador {
+	background-image: url(../img/dashboard/bg-dashboard-administrador.jpg);
+}
+.bg-dashboard-cadastro {
+	background-image: url(../img/dashboard/bg-dashboard-cadastro.jpg);
 }
 .welcome {	
 	float: left;
@@ -20,30 +28,16 @@
 	h2 {
 		clear: left;
 	}
-	.summary {
-		float: right;
-		&-options {
-			display: inline-block;
-			padding: 1rem;
-			text-align: center;
-		}
-		&-count {
-			display: block;
-			margin-bottom: 5px;
-		}
-		.opens {
-			color: #FF0000;
-		}
-		.progressing {
-			color: #0000FF;
-		}
-		.resolveds {
-			color: #00AA00;
-		}
-	}
 }
 .current {
 	background: rgba(0, 0, 0, .3);
 	color: #FFFFFF;
 	padding: .5rem;
+	a {
+		color: #FFFFFF;
+		text-decoration: none;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
 }

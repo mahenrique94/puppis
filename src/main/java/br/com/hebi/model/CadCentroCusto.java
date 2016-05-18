@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -16,19 +18,23 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "cad_centrocusto", uniqueConstraints = {@UniqueConstraint(columnNames = {"conta", "subconta", "id"})})
+@Table(name = "cad_centrocusto", uniqueConstraints = {@UniqueConstraint(columnNames = {"id", "idcentrocustomaster"})})
+@DynamicUpdate(value = true)
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class CadCentroCusto implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(nullable = false)
-	private Integer conta;
-	@Column(nullable = false)
-	private Integer subconta;
+	@ManyToOne
+	@JoinColumn(name = "idcentrocustomaster", referencedColumnName = "id", nullable = false)
+	private CadCentroCusto idcentrocustomaster;
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 60, message = "{minimo.0.maximo.60}")
@@ -45,7 +51,6 @@ public class CadCentroCusto implements Serializable{
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
 	}
-	
 	public CadCentroCusto(Integer id) {
 		this();
 		setId(id);
@@ -57,17 +62,11 @@ public class CadCentroCusto implements Serializable{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Integer getConta() {
-		return conta;
+	public CadCentroCusto getIdcentrocustomaster() {
+		return idcentrocustomaster;
 	}
-	public void setConta(Integer conta) {
-		this.conta = conta;
-	}
-	public Integer getSubconta() {
-		return subconta;
-	}
-	public void setSubconta(Integer subconta) {
-		this.subconta = subconta;
+	public void setIdcentrocustomaster(CadCentroCusto idcentrocustomaster) {
+		this.idcentrocustomaster = idcentrocustomaster;
 	}
 	public String getDescricao() {
 		return descricao;

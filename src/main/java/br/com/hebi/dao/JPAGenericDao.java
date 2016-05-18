@@ -1,7 +1,5 @@
 package br.com.hebi.dao;
 
-import java.io.Serializable;
-import java.lang.reflect.Field;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -65,7 +63,7 @@ public class JPAGenericDao<T> implements GenericDao<T>{
 		// TODO Auto-generated method stub
 		int max = parametrosWeb != null ? parametrosWeb.get(0).getLimit() : 100;
 		try {
-			return this.em.createQuery(parametrosWebBuilder.buildJpql(clazz, parametrosWeb)).setFirstResult(0).setMaxResults(max).setHint("org.hibernate.cacheable", "true").getResultList();
+			return this.em.createQuery(parametrosWebBuilder.buildJpql(clazz, parametrosWeb)).setFirstResult(0).setMaxResults(max).getResultList();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

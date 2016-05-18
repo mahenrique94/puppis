@@ -22,7 +22,7 @@ public class PesContatoController extends GenericController<PesContato> {
 		// TODO Auto-generated method stub
 		obj = (PesContato) this.edit(obj);
 		Long idPessoa = obj.getIdpessoa().getId();
-		this.setRedirecionar(false);
+		this.setRedirect(false);
 		super.deletar(obj);
 		this.result.redirectTo("/pessoa/editar/" + idPessoa);
 	}
@@ -55,7 +55,7 @@ public class PesContatoController extends GenericController<PesContato> {
 	@Override
 	public void salvar(PesContato obj) {
 		// TODO Auto-generated method stub
-		this.setRedirecionar(false);
+		this.setRedirect(false);
 		super.salvar(obj);
 		this.result.redirectTo(PesPessoaController.class).editar(obj.getIdpessoa());
 	}

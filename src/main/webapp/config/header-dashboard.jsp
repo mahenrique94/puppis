@@ -10,9 +10,3 @@
 	<title><fmt:message key="titulo.pagina"/></title>
 </head>
 <body>
-	<main id="wrap" role="main">
-		<header class="header-default" role="banner">
-			<%@include file="/config/messages.jsp"%>	
-			<%@include file="/config/nav.jsp"%>	
-		</header>
-		<section id="content">
