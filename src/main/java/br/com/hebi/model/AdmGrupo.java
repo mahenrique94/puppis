@@ -23,17 +23,17 @@ import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "adm_usuariogrupo")
+@Table(name = "adm_grupo")
 @DynamicUpdate(value = true)
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class AdmUsuarioGrupo implements Serializable {
+public class AdmGrupo implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@OneToOne
 	@JoinColumn(name = "idtipoacesso", referencedColumnName = "id", nullable = false)
-	private AdmUsuarioTipoAcesso idtipoacesso;
+	private AdmTipoAcesso idtipoacesso;
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 30, message = "{minimo.0.maximo.30}")
@@ -46,12 +46,12 @@ public class AdmUsuarioGrupo implements Serializable {
 	@Column(nullable = false)
 	private Calendar dataupdate;
 	
-	public AdmUsuarioGrupo() {
+	public AdmGrupo() {
 		// TODO Auto-generated constructor stub
 		setDatacreate(getDatacreate() != null ? getDatacreate() : Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
 	}
-	public AdmUsuarioGrupo(Integer id) {
+	public AdmGrupo(Integer id) {
 		// TODO Auto-generated constructor stub
 		this();
 		setId(id);
@@ -63,10 +63,10 @@ public class AdmUsuarioGrupo implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public AdmUsuarioTipoAcesso getIdtipoacesso() {
+	public AdmTipoAcesso getIdtipoacesso() {
 		return idtipoacesso;
 	}
-	public void setIdtipoacesso(AdmUsuarioTipoAcesso idtipoacesso) {
+	public void setIdtipoacesso(AdmTipoAcesso idtipoacesso) {
 		this.idtipoacesso = idtipoacesso;
 	}
 	public String getDescricao() {

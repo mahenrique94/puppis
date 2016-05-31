@@ -54,7 +54,7 @@ public class AdmUsuario implements Serializable {
 	private String senha;
 	@ManyToOne
 	@JoinColumn(name = "idgrupo", referencedColumnName = "id", nullable = false)
-	private AdmUsuarioGrupo idgrupo;
+	private AdmGrupo idgrupo;
 	@Column(nullable = false)
 	private Boolean inativo;
 	@Temporal(TemporalType.DATE)
@@ -98,10 +98,10 @@ public class AdmUsuario implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public AdmUsuarioGrupo getIdgrupo() {
+	public AdmGrupo getIdgrupo() {
 		return idgrupo;
 	}
-	public void setIdgrupo(AdmUsuarioGrupo idgrupo) {
+	public void setIdgrupo(AdmGrupo idgrupo) {
 		this.idgrupo = idgrupo;
 	}
 	public Boolean getInativo() {

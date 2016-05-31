@@ -23,10 +23,10 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Range;
 
 @Entity
-@Table(name = "adm_comerciocontato")
+@Table(name = "adm_contato")
 @DynamicUpdate(value = true)
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class AdmComercioContato implements Serializable {
+public class AdmContato implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,11 +54,11 @@ public class AdmComercioContato implements Serializable {
 	@Column(nullable = false)
 	private Calendar dataupdate;
 	
-	public AdmComercioContato() {
+	public AdmContato() {
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
 	}
-	public AdmComercioContato(Integer id) {
+	public AdmContato(Integer id) {
 		this();
 		setId(id);
 	}

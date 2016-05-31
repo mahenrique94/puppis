@@ -25,10 +25,10 @@ import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "adm_usuariotipoacesso")
+@Table(name = "adm_tipoacesso")
 @DynamicUpdate(value = true)
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class AdmUsuarioTipoAcesso implements Serializable {
+public class AdmTipoAcesso implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,7 +55,7 @@ public class AdmUsuarioTipoAcesso implements Serializable {
 //	@Version
 //	private Integer versao;
 	
-	public AdmUsuarioTipoAcesso() {
+	public AdmTipoAcesso() {
 		setDatacreate(getDatacreate() != null ? getDatacreate() : Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
 		setDeletar(false);
@@ -63,7 +63,7 @@ public class AdmUsuarioTipoAcesso implements Serializable {
 		setListar(false);
 		setSalvar(false);
 	}
-	public AdmUsuarioTipoAcesso(Integer id) {
+	public AdmTipoAcesso(Integer id) {
 		this();
 		setId(id);
 	}

@@ -24,10 +24,10 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.br.CNPJ;
 
 @Entity
-@Table(name = "adm_comerciodocumento")
+@Table(name = "adm_documento")
 @DynamicUpdate(value = true)
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class AdmComercioDocumento implements Serializable {
+public class AdmDocumento implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,13 +52,13 @@ public class AdmComercioDocumento implements Serializable {
 	@Column(nullable = false)
 	private Calendar dataupdate;
 	
-	public AdmComercioDocumento() {
+	public AdmDocumento() {
 		setCpfcnpj("");
 		setRginscricaoestadual("");
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
 	}
-	public AdmComercioDocumento(Integer id) {
+	public AdmDocumento(Integer id) {
 		this();
 		setId(id);
 	}

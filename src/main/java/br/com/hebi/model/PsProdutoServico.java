@@ -24,15 +24,12 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "ps_produtoservico", uniqueConstraints = {@UniqueConstraint(columnNames = {"idgrupo", "idclasse"})})
+@Table(name = "ps_produtoservico")
 public class PsProdutoServico implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@ManyToOne
-	@JoinColumn(name = "idgrupo", referencedColumnName = "id", nullable = false)
-	private PsGrupo idgrupo;
 	@ManyToOne
 	@JoinColumn(name = "idclasse", referencedColumnName = "id", nullable = false)
 	private PsClasse idclasse;
@@ -57,15 +54,20 @@ public class PsProdutoServico implements Serializable{
 	@Size(min = 0, max = 120, message = "{minimo.0.maximo.120}")
 	@Column(length = 120, columnDefinition = "varchar(120)", nullable = true, unique = true)
 	private String codigobarra;
+	@Column(columnDefinition = "text", nullable = true)
+	private String observacao;
+	@Size(min = 0, max = 255, message = "{minimo.0.maximo.255}")
+	@Column(length = 255, columnDefinition = "varchar(255)", nullable = true)
+	private String pathimagem;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Calendar datacreate;
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
 	private Calendar dataupdate;
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "idproduto")
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "idprodutoservico")
 	private PsEstoque estoque;
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "idproduto")
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "idprodutoservico")
 	private PsCusto custo;
 	
 	public PsProdutoServico() {
@@ -84,12 +86,6 @@ public class PsProdutoServico implements Serializable{
 	}
 	public void setId(Long id) {
 		this.id = id;
-	}
-	public PsGrupo getIdgrupo() {
-		return idgrupo;
-	}
-	public void setIdgrupo(PsGrupo idgrupo) {
-		this.idgrupo = idgrupo;
 	}
 	public PsClasse getIdclasse() {
 		return idclasse;

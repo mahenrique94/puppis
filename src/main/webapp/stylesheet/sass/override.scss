@@ -10,3 +10,12 @@
 		font-size: .8rem;
 	}
 }
+.band-nav-lube {
+	a {
+		color: #FFFFFF;
+		text-decoration: none;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}

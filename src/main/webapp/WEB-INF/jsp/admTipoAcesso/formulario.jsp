@@ -5,7 +5,7 @@
 	<nav class="band-nav-lube" role="complementary">
 		<div class="row" role="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
-				<label><fmt:message key="nav.administrador"/>&nbsp;<fmt:message key="label.barra"/>&nbsp;<fmt:message key="nav.administrador.usuario.tipo.acesso"/></label>					
+				<label><a href="<c:url value="/dashboard/administrador"/>"><fmt:message key="nav.administrador"/></a>&nbsp;<i class="icon-right-open"></i>&nbsp;<fmt:message key="nav.administrador.usuario.tipo.acesso"/></label>					
 			</div>
 		</div>
 	</nav>
@@ -41,7 +41,7 @@
 		</div>
 	</section>
 </form>
-<nav class="nav-group-kal nav-fixed-bottom" role="complementary">
+<nav class="nav-group-lube nav-fixed-bottom" role="complementary">
 	<ul>
 		<li><button form="formadmusuariotipoacesso" title="<fmt:message key="button.salvar"/>" type="submit"><i class="icon-floppy"></i>&nbsp;<fmt:message key="button.salvar"/></button></li>
 		<li><a href="<c:url value="/administrador/usuario/tipo-de-acesso"/>" title="<fmt:message key="button.pesquisar"/>"><i class="icon-search"></i>&nbsp;<fmt:message key="button.pesquisar"/></a></li>

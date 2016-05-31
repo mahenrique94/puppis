@@ -5,7 +5,7 @@
 		<form action="<c:url value="/pessoa"/>" class="form-search" id="formlistarpespessoa" method="get" name="formlistarpespessoa" role="search">
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-					<h2><fmt:message key="nav.cadastro"/>&nbsp;<fmt:message key="label.barra"/>&nbsp;<fmt:message key="nav.cadastro.pessoa"/></h2>					
+					<h2><fmt:message key="nav.cadastro"/>&nbsp;<i class="icon-right-open"></i>&nbsp;<fmt:message key="nav.cadastro.pessoa"/></h2>					
 				</div>
 				<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
 					<select class="select-search" data-class="displaytagSelect" name="parametrosWeb[0].campo"></select>

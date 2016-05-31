@@ -28,9 +28,9 @@ public class PesPessoaController extends GenericController<PesPessoa> {
 	@Override
 	public void salvar(@Valid PesPessoa obj) {
 		// TODO Auto-generated method stub
-		if (obj.getId() != null && obj.getEndereco().getId() == null && obj.getDocumento().getId() == null) {
-			obj.getEndereco().setIdpessoa(new PesPessoa(obj.getId()));
-			obj.getDocumento().setIdpessoa(new PesPessoa(obj.getId()));
+		if (obj.getId() == null && obj.getEndereco().getId() == null && obj.getDocumento().getId() == null) {
+			obj.getEndereco().setIdpessoa(obj);
+			obj.getDocumento().setIdpessoa(obj);
 		}
 		super.salvar(obj);
 	}

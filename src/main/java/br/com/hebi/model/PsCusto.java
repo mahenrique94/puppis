@@ -19,21 +19,15 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 
 @Entity
-@Table(name = "ps_custo", uniqueConstraints = {@UniqueConstraint(columnNames = {"idgrupo", "idclasse", "idproduto"})})
+@Table(name = "ps_custo")
 public class PsCusto implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@OneToOne
-	@JoinColumn(name = "idgrupo", referencedColumnName = "id", nullable = false)
-	private PsGrupo idgrupo;
-	@OneToOne
-	@JoinColumn(name = "idclasse", referencedColumnName = "id", nullable = false)
-	private PsClasse idclasse;
-	@OneToOne
-	@JoinColumn(name = "idproduto", referencedColumnName = "id", nullable = false)
-	private PsProdutoServico idproduto;
+	@JoinColumn(name = "idprodutoservico", referencedColumnName = "id", nullable = false, unique = true)
+	private PsProdutoServico idprodutoservico;
 	@DecimalMin("0.0")
 	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = false)
@@ -82,12 +76,6 @@ public class PsCusto implements Serializable {
 		this();
 		setId(id);
 	}
-	public PsCusto(Integer idGrupo, Integer idClasse, Long idProduto) {
-		this();
-		setIdgrupo(new PsGrupo(idGrupo));
-		setIdclasse(new PsClasse(idClasse));
-		setIdproduto(new PsProdutoServico(idProduto));
-	}
 	
 	public Long getId() {
 		return id;
@@ -95,23 +83,11 @@ public class PsCusto implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public PsGrupo getIdgrupo() {
-		return idgrupo;
+	public PsProdutoServico getIdprodutoservico() {
+		return idprodutoservico;
 	}
-	public void setIdgrupo(PsGrupo idgrupo) {
-		this.idgrupo = idgrupo;
-	}
-	public PsClasse getIdclasse() {
-		return idclasse;
-	}
-	public void setIdclasse(PsClasse idclasse) {
-		this.idclasse = idclasse;
-	}
-	public PsProdutoServico getIdproduto() {
-		return idproduto;
-	}
-	public void setIdproduto(PsProdutoServico idproduto) {
-		this.idproduto = idproduto;
+	public void setIdprodutoservico(PsProdutoServico idprodutoservico) {
+		this.idprodutoservico = idprodutoservico;
 	}
 	public Double getValorvenda() {
 		return valorvenda;
@@ -166,6 +142,16 @@ public class PsCusto implements Serializable {
 	}
 	public void setPorclucro(Double porclucro) {
 		this.porclucro = porclucro;
+	}
+	
+	public void novo() {
+		setDatacreate(Calendar.getInstance());
+		setDataupdate(Calendar.getInstance());
+		setPorclucro(0.0);
+		setValoranterior(0.0);
+		setValorvenda(0.0);
+		setValorpago(0.0);
+		setValortotal(0.0);
 	}
 	
 }

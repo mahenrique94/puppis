@@ -3,7 +3,7 @@
 	<nav class="band-nav-lube" role="complementary">
 		<div class="row" role="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
-				<label><fmt:message key="nav.administrador"/>&nbsp;<fmt:message key="label.barra"/>&nbsp;<fmt:message key="nav.administrador.usuario.tipo.acesso"/></label>					
+				<label><a href="<c:url value="/dashboard/administrador"/>"><fmt:message key="nav.administrador"/></a>&nbsp;<i class="icon-right-open"></i>&nbsp;<fmt:message key="nav.administrador.usuario.tipo.acesso"/></label>					
 			</div>
 		</div>
 		<div class="row" role="row">
@@ -19,7 +19,7 @@
 		</div>
 	</nav>	
 </form>
-<display:table class="table-default" export="false" id="obj" name="${AdmUsuarioTipoAcessoList}" requestURI="/administrador/usuario/tipo-de-acesso">
+<display:table class="table-default" export="false" id="obj" name="${AdmTipoAcessoList}" requestURI="/administrador/usuario/tipo-de-acesso">
 	<display:column headerScope="id" property="id" style="width: 50px;" titleKey="displaytag.id"/>
 	<display:column headerScope="descricao" property="descricao" titleKey="displaytag.descricao"/>
 	<display:column style="text-align: center;width: 50px;" titleKey="displaytag.deletar">

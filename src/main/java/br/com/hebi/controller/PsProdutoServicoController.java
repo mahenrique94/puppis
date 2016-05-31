@@ -29,9 +29,11 @@ public class PsProdutoServicoController extends GenericController<PsProdutoServi
 	@Override
 	public void salvar(@Valid PsProdutoServico obj) {
 		// TODO Auto-generated method stub
-		if (obj.getId() != null && obj.getCusto().getId() == null && obj.getEstoque().getId() == null) {
-			obj.setCusto(new PsCusto(obj.getIdgrupo().getId(), obj.getIdclasse().getId(), obj.getId()));
-			obj.setEstoque(new PsEstoque(obj.getIdgrupo().getId(), obj.getIdclasse().getId(), obj.getId()));
+		if (obj.getId() == null && obj.getCusto().getId() == null && obj.getEstoque().getId() == null) {
+			obj.getCusto().novo();
+			obj.getCusto().setIdprodutoservico(obj);
+			obj.getEstoque().novo();
+			obj.getEstoque().setIdprodutoservico(obj);
 		}
 		super.salvar(obj);
 	}

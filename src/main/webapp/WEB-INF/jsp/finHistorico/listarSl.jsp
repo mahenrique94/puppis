@@ -5,7 +5,7 @@
 		<form action="<c:url value="/financeiro/historico/listarsl"/>" class="form-search" id="formlistarfinhistorico" method="get" name="formlistarfinhistorico" role="search">
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-					<h2><fmt:message key="nav.financeiro"/>&nbsp;<fmt:message key="label.barra"/>&nbsp;<fmt:message key="nav.financeiro.historico"/></h2>					
+					<h2><fmt:message key="nav.financeiro"/>&nbsp;<i class="icon-right-open"></i>&nbsp;<fmt:message key="nav.cadastro.historico"/></h2>					
 				</div>
 				<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
 					<select class="select-search" data-class="displaytagSelect" name="parametrosWeb[0].campo"></select>

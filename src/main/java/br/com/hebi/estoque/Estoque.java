@@ -78,7 +78,7 @@ public class Estoque {
 	
 	public Estoque criaEstoque(ComNotaItens comNotaItens) {
 		Estoque estoque = new Estoque();
-		estoque.setIdgrupo(comNotaItens.getIditem().getIdgrupo().getId());
+		estoque.setIdgrupo(comNotaItens.getIditem().getIdclasse().getIdgrupo().getId());
 		estoque.setIdclasse(comNotaItens.getIditem().getIdclasse().getId());
 		estoque.setIdproduto(comNotaItens.getIditem().getId());
 		estoque.setValoranterior(comNotaItens.getIditem().getCusto().getValoranterior() == 0.0 ? comNotaItens.getValorunitario() : comNotaItens.getIditem().getCusto().getValorpago());

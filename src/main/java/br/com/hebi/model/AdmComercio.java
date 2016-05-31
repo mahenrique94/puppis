@@ -48,11 +48,11 @@ public class AdmComercio implements Serializable {
 	@Column(length = 60, columnDefinition = "varchar(60)", nullable = false, unique = true)
 	private String nomefantasia;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "idcomercio")
-	private AdmComercioEndereco endereco;
+	private AdmEndereco endereco;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "idcomercio")
-	private AdmComercioDocumento documento;
+	private AdmDocumento documento;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "idcomercio")
-	private AdmComercioContato contato;
+	private AdmContato contato;
 	@Column(nullable = false)
 	private Boolean inativo;
 	@Temporal(TemporalType.DATE)
@@ -90,22 +90,22 @@ public class AdmComercio implements Serializable {
 	public void setNomefantasia(String nomefantasia) {
 		this.nomefantasia = nomefantasia;
 	}
-	public AdmComercioEndereco getEndereco() {
+	public AdmEndereco getEndereco() {
 		return endereco;
 	}
-	public void setEndereco(AdmComercioEndereco endereco) {
+	public void setEndereco(AdmEndereco endereco) {
 		this.endereco = endereco;
 	}
-	public AdmComercioDocumento getDocumento() {
+	public AdmDocumento getDocumento() {
 		return documento;
 	}
-	public void setDocumento(AdmComercioDocumento documento) {
+	public void setDocumento(AdmDocumento documento) {
 		this.documento = documento;
 	}
-	public AdmComercioContato getContato() {
+	public AdmContato getContato() {
 		return contato;
 	}
-	public void setContato(AdmComercioContato contato) {
+	public void setContato(AdmContato contato) {
 		this.contato = contato;
 	}
 	public Boolean getInativo() {

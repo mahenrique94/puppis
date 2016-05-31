@@ -37,9 +37,6 @@ public class PesPessoa implements Serializable {
 	@Size(min = 0, max = 60, message = "{minimo.0.maximo.60}")
 	@Column(length = 60, columnDefinition = "varchar(60)", nullable = true, unique = true)
 	private String nomefantasia;
-	@ManyToOne
-	@JoinColumn(name = "idtipo", referencedColumnName = "id", nullable = false)
-	private PesTipo idtipo;
 	@Size(min = 0, max = 30, message = "{minimo.0.maximo.30}")
 	@Column(length = 30, columnDefinition = "varchar(30)", nullable = true)
 	private String apelido;
@@ -91,12 +88,6 @@ public class PesPessoa implements Serializable {
 	}
 	public void setNomefantasia(String nomefantasia) {
 		this.nomefantasia = nomefantasia;
-	}
-	public PesTipo getIdtipo() {
-		return idtipo;
-	}
-	public void setIdtipo(PesTipo idtipo) {
-		this.idtipo = idtipo;
 	}
 	public String getApelido() {
 		return apelido;
