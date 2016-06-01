@@ -3,6 +3,8 @@ package br.com.hebi.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
@@ -53,7 +55,7 @@ public class PesContatoController extends GenericController<PesContato> {
 	@Post("")
 	@IncludeParameters
 	@Override
-	public void salvar(PesContato obj) {
+	public void salvar(@Valid PesContato obj) {
 		// TODO Auto-generated method stub
 		this.setRedirect(false);
 		super.salvar(obj);

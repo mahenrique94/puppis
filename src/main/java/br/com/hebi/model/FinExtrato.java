@@ -110,7 +110,7 @@ public class FinExtrato implements Serializable {
 	public FinExtrato criar(FinDocumentoCusto finDocumentoCusto, SysTipoOperacao sysTipoOperacao) {
 		double valor = finDocumentoCusto.getValortotal() + finDocumentoCusto.getValordesconto() + finDocumentoCusto.getValorjuros();
 		FinExtrato finExtrato = new FinExtrato(finDocumentoCusto.getId(), sysTipoOperacao.getId(), valor);
-		if (new CreditoDebito().getCreditoDebito(sysTipoOperacao.getDescricao(), finDocumentoCusto.getIddocumento().getIdpessoa().getIdtipo().getDescricao()).equals("C"))
+		if (new CreditoDebito().getCreditoDebito(sysTipoOperacao.getDescricao(), finDocumentoCusto.getIddocumento().getIddefinicao().getIdtipo().getDescricao()).equals("C"))
 			finExtrato.setCreditodebito("C");
 		else
 			finExtrato.setCreditodebito("D");

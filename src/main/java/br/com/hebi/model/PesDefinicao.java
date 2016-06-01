@@ -40,9 +40,11 @@ public class PesDefinicao implements Serializable {
 		// TODO Auto-generated constructor stub
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
+		setInativo(false);
 	}
 	public PesDefinicao(Long id) {
 		// TODO Auto-generated constructor stub
+		this();
 		setId(id);
 	}
 	

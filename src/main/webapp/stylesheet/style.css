@@ -34,6 +34,9 @@ nav.nav-square a:hover {
 .bg-dashboard-cadastro {
   background-image: url(../img/dashboard/bg-dashboard-cadastro.jpg); }
 
+.bg-dashboard-financeiro {
+  background-image: url(../img/dashboard/bg-dashboard-financeiro.jpg); }
+
 .welcome {
   float: left;
   margin-bottom: 1.5rem;

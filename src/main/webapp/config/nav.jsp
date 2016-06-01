@@ -24,7 +24,11 @@
 					</ul>	
 				</li>
 				<li role="menuitem"><a href="#"><fmt:message key="nav.comercio"/></a></li>
-				<li role="menuitem"><a href="#"><fmt:message key="nav.financeiro"/></a></li>
+				<li role="menuitem"><a href="#"><fmt:message key="nav.financeiro"/></a>
+					<ul aria-haspopup="true" role="menubar">
+						<li role="menuitem"><a href="<c:url value="/financeiro/documento"/>"><fmt:message key="nav.financeiro.documento"/></a></li>
+					</ul>	
+				</li>
 				<li role="menuitem"><a href="#"><fmt:message key="nav.administrador"/></a>
 					<ul aria-haspopup="true" role="menubar">
 						<li role="menuitem"><a href="<c:url value="/administrador/comercio"/>"><fmt:message key="nav.administrador.comercio"/></a></li>

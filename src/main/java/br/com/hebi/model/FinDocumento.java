@@ -34,8 +34,8 @@ public class FinDocumento implements Serializable {
 	@JoinColumn(name = "idcontabancaria", referencedColumnName = "id", nullable = true)
 	private FinContaBancaria idcontabancaria;
 	@ManyToOne
-	@JoinColumn(name = "idpessoa", referencedColumnName = "id", nullable = true)
-	private PesPessoa idpessoa;
+	@JoinColumn(name = "iddefinicao", referencedColumnName = "id", nullable = true)
+	private PesDefinicao iddefinicao;
 	@ManyToOne
 	@JoinColumn(name = "idtipooperacao", referencedColumnName = "id", nullable = false)
 	private SysTipoOperacao idtipooperacao;
@@ -101,11 +101,11 @@ public class FinDocumento implements Serializable {
 	public void setIdcontabancaria(FinContaBancaria idcontabancaria) {
 		this.idcontabancaria = idcontabancaria;
 	}
-	public PesPessoa getIdpessoa() {
-		return idpessoa;
+	public PesDefinicao getIddefinicao() {
+		return iddefinicao;
 	}
-	public void setIdpessoa(PesPessoa idpessoa) {
-		this.idpessoa = idpessoa;
+	public void setIddefinicao(PesDefinicao iddefinicao) {
+		this.iddefinicao = iddefinicao;
 	}
 	public SysTipoOperacao getIdtipooperacao() {
 		return idtipooperacao;
