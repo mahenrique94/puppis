@@ -9,6 +9,7 @@
 				<nav class="nav-square" role="navigation">
 					<ul class="nav-row" role="menubar">
 						<li role="menuitem"><a href="<c:url value="/financeiro/documento"/>"><i class="font-5x icon-doc-inv"></i><fmt:message key="nav.financeiro.documento"/></a></li>
+						<li role="menuitem"><a href="<c:url value="/financeiro/documento/baixa"/>"><i class="font-5x icon-money"></i><fmt:message key="nav.financeiro.baixa"/></a></li>
 					</ul>
 				</nav>
 			</div>

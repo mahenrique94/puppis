@@ -27,19 +27,8 @@ public class FinExtrato implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@ManyToOne
-	@JoinColumn(name = "iddocumentocusto", referencedColumnName = "id", nullable = false)
-	private FinDocumentoCusto iddocumentocusto;
-	@ManyToOne
-	@JoinColumn(name = "idtipooperacao", referencedColumnName = "id", nullable = false)
-	private SysTipoOperacao idtipooperacao;
-	@NotNull
-	@NotEmpty
-	@Column(length = 1, columnDefinition = "char(1)", nullable = false)
-	private String creditodebito;
-	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
-	@Column(nullable = false)
-	private Double valor;
+	@JoinColumn(name = "iddocumento", referencedColumnName = "id", nullable = false)
+	private FinDocumento iddocumento;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Calendar datacreate;
@@ -57,11 +46,9 @@ public class FinExtrato implements Serializable {
 		this();
 		setId(id);
 	}
-	public FinExtrato(Long idDocumentoCusto, Integer idTipoOperacao, Double valor) {
+	public FinExtrato(FinDocumento finDocumento) {
 		this();
-		setIddocumentocusto(new FinDocumentoCusto(idDocumentoCusto));
-		setIdtipooperacao(new SysTipoOperacao(idTipoOperacao));
-		setValor(valor);
+		setIddocumento(finDocumento);
 	}
 	
 	public Long getId() {
@@ -70,29 +57,11 @@ public class FinExtrato implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public FinDocumentoCusto getIddocumentocusto() {
-		return iddocumentocusto;
+	public FinDocumento getIddocumento() {
+		return iddocumento;
 	}
-	public void setIddocumentocusto(FinDocumentoCusto iddocumentocusto) {
-		this.iddocumentocusto = iddocumentocusto;
-	}
-	public SysTipoOperacao getIdtipooperacao() {
-		return idtipooperacao;
-	}
-	public void setIdtipooperacao(SysTipoOperacao idtipooperacao) {
-		this.idtipooperacao = idtipooperacao;
-	}
-	public String getCreditodebito() {
-		return creditodebito;
-	}
-	public void setCreditodebito(String creditodebito) {
-		this.creditodebito = creditodebito;
-	}
-	public Double getValor() {
-		return valor;
-	}
-	public void setValor(Double valor) {
-		this.valor = valor;
+	public void setIddocumento(FinDocumento iddocumento) {
+		this.iddocumento = iddocumento;
 	}
 	public Calendar getDatacreate() {
 		return datacreate;
@@ -105,16 +74,6 @@ public class FinExtrato implements Serializable {
 	}
 	public void setDataupdate(Calendar dataupdate) {
 		this.dataupdate = dataupdate;
-	}
-
-	public FinExtrato criar(FinDocumentoCusto finDocumentoCusto, SysTipoOperacao sysTipoOperacao) {
-		double valor = finDocumentoCusto.getValortotal() + finDocumentoCusto.getValordesconto() + finDocumentoCusto.getValorjuros();
-		FinExtrato finExtrato = new FinExtrato(finDocumentoCusto.getId(), sysTipoOperacao.getId(), valor);
-		if (new CreditoDebito().getCreditoDebito(sysTipoOperacao.getDescricao(), finDocumentoCusto.getIddocumento().getIddefinicao().getIdtipo().getDescricao()).equals("C"))
-			finExtrato.setCreditodebito("C");
-		else
-			finExtrato.setCreditodebito("D");
-		return finExtrato;
 	}
 	
 }
