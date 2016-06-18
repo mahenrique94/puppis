@@ -15,4 +15,4 @@
 			<%@include file="/config/messages.jsp"%>	
 			<%@include file="/config/nav.jsp"%>	
 		</header>
-		<section id="content">
+		<section id="content" style="padding-bottom: 3rem;">

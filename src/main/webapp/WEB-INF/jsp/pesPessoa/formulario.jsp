@@ -1,5 +1,5 @@
 <%@include file="/config/header.jsp" %>
-<form action="<c:url value="/pessoa"/>" class="form-modern" id="formpespessoa" method="post" name="formpespessoa" role="form">
+<form action="<c:url value="/pessoa"/>" class="form-modern" data-controller="ModalController" id="formpespessoa" method="post" name="formpespessoa" role="form">
 	<nav class="band-nav-lube" role="complementary">
 		<div class="row" role="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">

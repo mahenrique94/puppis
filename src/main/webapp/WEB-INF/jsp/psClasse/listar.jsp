@@ -12,7 +12,7 @@
 			</div>
 			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" role="separator">
 				<div class="form-data-group">
-					<input autocomplete="off" class="form-data" name="parametrosWeb[0].parametro" pattern="letraNumeroEspacoPontoTracoBarra" type="text">
+					<input autocomplete="off" class="form-data" name="parametrosWeb[0].parametroInicial" pattern="letraNumeroEspacoPontoTracoBarra" type="text">
 					<span class="form-data-group-btn"><button class="btn-default"><i class="icon-search"></i></button></span>
 				</div>
 			</div>

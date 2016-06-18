@@ -8,7 +8,7 @@
 		<c:if test="${obj.inativo == false}"><i class="color-error icon-cancel"></i></c:if>
 	</display:column>
 	<display:column style="width: 150px;text-align: center;">
-		<a class="btn-lower btn-xs" data-toggle="modal" href="<c:url value="/pessoa/definicao/${obj.id}"/>"><i class="icon-pencil"></i>&nbsp;<fmt:message key="button.editar"/></a>
+		<a class="btn-lower btn-xs" href="<c:url value="/pessoa/definicao/${obj.id}"/>" onclick="ModalController.show(this, event);"><i class="icon-pencil"></i>&nbsp;<fmt:message key="button.editar"/></a>
 		<a class="btn-der btn-xs" href="<c:url value="/pessoa/definicao/${obj.id}"/>" onclick="deletar(this);"><i class="icon-trash"></i>&nbsp;<fmt:message key="button.deletar"/></a>
 	</display:column>
 </display:table>

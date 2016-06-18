@@ -10,6 +10,7 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.interceptor.IncludeParameters;
+import br.com.caelum.vraptor.view.Results;
 import br.com.hebi.model.PesDefinicao;
 import br.com.mhc.parametrosweb.ParametrosWeb;
 
@@ -30,6 +31,14 @@ public class PesDefinicaoController extends GenericController<PesDefinicao> {
 		// TODO Auto-generated method stub
 		this.result.include("obj", obj);
 		super.formulario(obj);
+	}
+	
+	@Get("json")
+	@Override
+	public void toJSON(PesDefinicao obj, List<ParametrosWeb> parametrosWeb) {
+		// TODO Auto-generated method stub
+		List<PesDefinicao> list = getDao().findAll(obj.getClass(), parametrosWeb);
+		this.result.use(Results.json()).from(list).include("idpessoa").include("idtipo").serialize();
 	}
 	
 	@Get("loadgrid/{obj.idpessoa.id}")
