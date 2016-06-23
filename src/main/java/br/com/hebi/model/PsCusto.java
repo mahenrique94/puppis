@@ -18,8 +18,14 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.DynamicUpdate;
+
 @Entity
 @Table(name = "ps_custo")
+@DynamicUpdate(value = true)
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class PsCusto implements Serializable {
 
 	@Id

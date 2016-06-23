@@ -8,7 +8,12 @@ import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
+import br.com.hebi.financeiro.Gerenciador;
+import br.com.hebi.financeiro.GerenciadorDeBaixa;
+import br.com.hebi.financeiro.GerenciadorDeDocumento;
+import br.com.hebi.financeiro.GerenciadorFactory;
 import br.com.hebi.model.FinDocumento;
+import br.com.hebi.model.SysTipoOperacao;
 import br.com.mhc.parametrosweb.ParametrosWeb;
 
 @Controller
@@ -21,14 +26,21 @@ public class FinDocumentoController extends GenericController<FinDocumento> {
 	@Get
 	@Post
 	@Path("baixa")
-	public void baixa(List<ParametrosWeb> parametrosWeb) {
+	public void baixa(List<ParametrosWeb> parametrosWeb, Integer idTipoOperacao) {
 		if (parametrosWeb != null && !parametrosWeb.isEmpty()) {
 			validaParametrosWeb(parametrosWeb);
 			parametrosWeb.get(0).setCampo("idcontabancaria.id");
 			parametrosWeb.get(1).setCampo("iddefinicao.id");
 			parametrosWeb.get(2).setCampo("numero");
 			parametrosWeb.get(3).setCampo("dataemissao");
-			this.result.include("parametrosWeb", parametrosWeb).include("FinDocumentoList", this.getDao().findAll(FinDocumento.class, parametrosWeb));
+			if (idTipoOperacao == 5) { // 5 = ESTORNO
+				parametrosWeb.add(new ParametrosWeb("datapagamento", null, null, "is not null"));
+				parametrosWeb.add(new ParametrosWeb("iddocumento.id", null, null, "is not null", "or"));
+				parametrosWeb.add(new ParametrosWeb("idtipooperacao.descricao", "CANCELAMENTO", null, null, "or"));
+			} else { // 4 = BAIXA, 6 = CANCELAMENTO
+				parametrosWeb.add(new ParametrosWeb("datapagamento", null, null, "is null"));
+			}
+			this.result.include("parametrosWeb", parametrosWeb).include("idTipoOperacao", idTipoOperacao).include("FinDocumentoList", this.getDao().findAll(FinDocumento.class, parametrosWeb));
 		}
 	}
 	
@@ -40,19 +52,20 @@ public class FinDocumentoController extends GenericController<FinDocumento> {
 	}
 	
 	@Post("processar")
-	public void processar(List<FinDocumento> obj) {
+	public void processar(List<FinDocumento> obj, Integer idTipoOperacao) {
+		SysTipoOperacao sysTipoOperacao = (SysTipoOperacao) this.getDao().edit(new SysTipoOperacao(idTipoOperacao));
+		Gerenciador gerenciador = GerenciadorFactory.cria(sysTipoOperacao.getDescricao());
 		for (FinDocumento finDocumento : obj) {
-			System.out.println(finDocumento.getId());
+			gerenciador.gerencia(getDao(), finDocumento, sysTipoOperacao);
 		}
-		this.result.redirectTo(this).baixa(null);
+		this.result.redirectTo(this).baixa(null, null);
 	}
 	
 	@Post("")
 	@Override
 	public void salvar(FinDocumento obj) {
 		// TODO Auto-generated method stub
-		obj.novo();
-		super.salvar(obj);
+		super.salvar(obj.novo());
 	}
 	
 	private void validaParametrosWeb(List<ParametrosWeb> parametrosWeb) {

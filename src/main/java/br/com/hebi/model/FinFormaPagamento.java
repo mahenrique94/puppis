@@ -15,11 +15,14 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
 
 @Entity
 @Table(name = "fin_formapagamento")
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class FinFormaPagamento implements Serializable {
 	
 	@Id

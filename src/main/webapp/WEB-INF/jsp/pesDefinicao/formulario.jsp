@@ -28,7 +28,7 @@
 		</div>
 	</section>
 </form>
-<nav class="nav-group-lube nav-fixed-bottom" role="complementary">
+<nav class="nav-group-tie nav-fixed-bottom" role="complementary">
 	<ul>
 		<li><button form="formpesdefinicao" title="<fmt:message key="button.salvar"/>" type="submit"><i class="icon-floppy"></i>&nbsp;<fmt:message key="button.salvar"/></button></li>
 	</ul>

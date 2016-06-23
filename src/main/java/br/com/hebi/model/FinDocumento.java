@@ -22,6 +22,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
 
@@ -29,7 +30,8 @@ import br.com.hebi.util.Util;
 
 @Entity
 @Table(name = "fin_documento")
-public class FinDocumento implements Serializable {
+@DynamicUpdate(value = true)
+public class FinDocumento implements Serializable, Cloneable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,6 +45,9 @@ public class FinDocumento implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "idtipooperacao", referencedColumnName = "id", nullable = false)
 	private SysTipoOperacao idtipooperacao;
+	@ManyToOne
+	@JoinColumn(name = "iddocumento", referencedColumnName = "id", nullable = true)
+	private FinDocumento iddocumento;
 	@Min(0)
 	@Column(nullable = false)
 	private Long numero;
@@ -128,6 +133,12 @@ public class FinDocumento implements Serializable {
 	}
 	public void setIddefinicao(PesDefinicao iddefinicao) {
 		this.iddefinicao = iddefinicao;
+	}
+	public FinDocumento getIddocumento() {
+		return iddocumento;
+	}
+	public void setIddocumento(FinDocumento iddocumento) {
+		this.iddocumento = iddocumento;
 	}
 	public SysTipoOperacao getIdtipooperacao() {
 		return idtipooperacao;
@@ -237,12 +248,61 @@ public class FinDocumento implements Serializable {
 		setValortotal(getValortotal() / getIdformapagamento().getQuantidadeparcela());
 		setDatavencimento(new Util().calcularDataVencimento(this));
 	}
-	public void novo() {
-		setDatacreate(Calendar.getInstance());
-		setDataupdate(Calendar.getInstance());
+	
+	public FinDocumento novo() {
+		Calendar agora = Calendar.getInstance();
+		setDatacreate(agora);
+		setDataupdate(agora);
 		setValordesconto(0.0);
 		setValorjuros(0.0);
-		setSaldo(getValortotal());
+		setSaldo(calcula());
+		return this;
+	}
+	
+	public FinDocumento novoClonado() {
+		Calendar agora = Calendar.getInstance();
+		setId(null);
+		setDatacreate(agora);
+		setDataupdate(agora);
+		setDataemissao(agora);
+		setDatapagamento(agora);
+		setDatavencimento(agora);
+		setSaldo(0.0);
+		return this;
+	}
+	
+	public void paga(double valor) {
+		this.saldo -= valor;
+	}
+	
+	public void atualiza(double valor) {
+		paga(valor);
+		if (this.saldo == 0)
+			setDatapagamento(Calendar.getInstance());
+	}
+	
+	public void estorna() {
+		setDatapagamento(null);
+	}
+	
+	public void cancela() {
+		setDatapagamento(Calendar.getInstance());
+		setSaldo(0.0);
+	}
+	
+	public double calcula() {
+		return (this.valortotal + this.valorjuros) - this.valordesconto;
+	}
+	
+	@Override
+	public Object clone() {
+		// TODO Auto-generated method stub
+		try {
+			return super.clone();
+		} catch (CloneNotSupportedException e) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException(e);
+		}
 	}
 	
 }

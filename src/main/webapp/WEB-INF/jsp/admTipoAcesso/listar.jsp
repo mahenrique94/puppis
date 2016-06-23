@@ -43,7 +43,7 @@
 		<a class="btn-der btn-xs" href="<c:url value="/administrador/usuario/tipo-de-acesso/${obj.id}"/>" onclick="deletar(this);"><i class="icon-trash"></i>&nbsp;<fmt:message key="button.deletar"/></a>
 	</display:column>
 </display:table>
-<nav class="nav-group-lube nav-fixed-bottom" role="complementary">
+<nav class="nav-group-tie nav-fixed-bottom" role="complementary">
 	<ul>
 		<li><a href="<c:url value="/administrador/usuario/tipo-de-acesso/formulario"/>"><i class="icon-plus"></i>&nbsp;<fmt:message key="button.novo"/></a></li>
 	</ul>

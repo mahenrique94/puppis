@@ -15,10 +15,14 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "pes_estadocivil")
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class PesEstadoCivil implements Serializable {
 
 	@Id

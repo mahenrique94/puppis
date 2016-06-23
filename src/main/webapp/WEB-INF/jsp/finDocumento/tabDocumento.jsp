@@ -10,7 +10,7 @@
 	<div class="row-input" role="row">
 		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 			<label><fmt:message key="label.operacao"/></label>
-			<select class="form-data validate" data-class="slSysTipoOperacao" data-fields="idmodulo.id" data-parameters="2" id="slSystem_Tipo-de-operacao_Json_01" name="obj.idtipooperacao.id" required></select>
+			<select class="form-data validate" data-class="slSysTipoOperacao" data-fields="idmodulo.id, gruporesumo" data-parameters="2, DOCUMENTO" id="slSystem_Tipo-de-operacao_Json_01" name="obj.idtipooperacao.id" required></select>
 			<netsis:validationMessage name="obj.idtipooperacao.id"/>
 		</div>
 		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">

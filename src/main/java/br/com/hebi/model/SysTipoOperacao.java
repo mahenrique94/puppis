@@ -18,10 +18,14 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "sys_tipooperacao")
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class SysTipoOperacao implements Serializable {
 
 	@Id
@@ -34,12 +38,15 @@ public class SysTipoOperacao implements Serializable {
 	private String tipo;
 	@NotNull
 	@NotEmpty
-	@Size(min = 0, max = 10, message = "{minimo.0.maximo.10}")
-	@Column(length = 10, columnDefinition = "varchar(10)", nullable = false, unique = true)
+	@Size(min = 0, max = 30, message = "{minimo.0.maximo.30}")
+	@Column(length = 30, columnDefinition = "varchar(30)", nullable = false, unique = true)
 	private String descricao;
 	@ManyToOne
 	@JoinColumn(name = "idmodulo", referencedColumnName = "id", nullable = false)
 	private SysModulo idmodulo;
+	@Size(min = 0, max = 30, message = "{minimo.0.maximo.30}")
+	@Column(length = 30, columnDefinition = "varchar(30)", nullable = true)
+	private String gruporesumo;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Calendar datacreate;
@@ -73,6 +80,12 @@ public class SysTipoOperacao implements Serializable {
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	public String getGruporesumo() {
+		return gruporesumo;
+	}
+	public void setGruporesumo(String gruporesumo) {
+		this.gruporesumo = gruporesumo;
 	}
 	public Calendar getDatacreate() {
 		return datacreate;

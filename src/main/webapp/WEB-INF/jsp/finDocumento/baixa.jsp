@@ -2,6 +2,7 @@
 <form action="<c:url value="/financeiro/documento/baixa"/>" class="form-modern" id="formfindocumento" method="post" name="formfindocumento" role="form">
 	<input name="parametrosWeb[0].parametroInicialaux" type="hidden" value="${parametrosWeb[0].parametroInicial}">
 	<input name="parametrosWeb[1].parametroInicialaux" type="hidden" value="${parametrosWeb[1].parametroInicial}">
+	<input name="idTipoOperacaoaux" type="hidden" value="${idTipoOperacao}">
 	<nav class="band-nav-lube" role="complementary">
 		<div class="row" role="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
@@ -41,6 +42,12 @@
 						<input class="form-data validate" maxlength="10" min="01-01-1970" name="parametrosWeb[3].parametroFinal" pattern="data" type="text" value="${parametrosWeb[3].parametroFinal}">
 					</div>
 				</div>
+				<div class="row" role="row">
+					<div class="col-12" role="separator">
+						<label><fmt:message key="label.operacao"/></label>
+						<select class="form-data validate" data-class="slSysTipoOperacao" data-fields="idmodulo.id, gruporesumo" data-parameters="2, BAIXA" id="slSystem_Tipo-de-operacao_Json_01" name="idTipoOperacao" required></select>
+					</div>
+				</div>
 			</section>
 		</fieldset>
 		<c:if test="${not empty FinDocumentoList}">
@@ -48,7 +55,7 @@
 		</c:if>
 	</section>
 </form>
-<nav class="nav-group-lube nav-fixed-bottom" role="complementary">
+<nav class="nav-group-tie nav-fixed-bottom" role="complementary">
 	<ul>
 		<li><button form="formfindocumento" title="<fmt:message key="button.pesquisar"/>" type="submit"><i class="icon-search"></i>&nbsp;<fmt:message key="button.pesquisar"/></button></li>
 		<li><button form="formfindocumento" formaction="<c:url value="/financeiro/documento/processar"/>" title="<fmt:message key="button.processar"/>"><i class="icon-spin6"></i>&nbsp;<fmt:message key="button.processar"/></button></li>
