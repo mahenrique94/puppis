@@ -1,30 +1,43 @@
-<%@include file="/config/header.jsp"%>
-<div class="container-tie">
-	<div class="container-header">
-		<form action="<c:url value="/financeiro/extrato"/>" class="form-search" id="formlistarfinextrato" method="get" name="formlistarfinextrato" role="search">
-			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-					<h2><fmt:message key="nav.financeiro"/>&nbsp;<fmt:message key="label.barra"/>&nbsp;<fmt:message key="nav.operacional"/>&nbsp;<fmt:message key="label.barra"/>&nbsp;<fmt:message key="nav.financeiro.operacional.extrato"/></h2>					
-				</div>
-				<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
-					<select class="select-search" data-class="displaytagSelect" name="parametrosWeb[0].campo"></select>
-				</div>
-				<div class="col-xs-8 col-sm-8 col-md-9 col-lg-10">
-					<input autocomplete="off" class="input-search" name="parametrosWeb[0].parametro" pattern="letraNumeroEspacoPontoTracoBarra" type="search">
-				</div>
+<%@include file="/config/header.jsp" %>
+<form action="<c:url value="/financeiro/extrato/listar"/>" class="form-modern" id="formfinextrato" method="post" name="formfinextrato" role="form">
+	<input name="parametrosWeb[0].parametroInicialaux" type="hidden" value="${parametrosWeb[0].parametroInicial}">
+	<nav class="band-nav-lube" role="complementary">
+		<div class="row" role="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
+				<label><a href="<c:url value="/dashboard/financeiro"/>"><fmt:message key="nav.financeiro"/></a>&nbsp;<i class="icon-right-open"></i>&nbsp;<fmt:message key="nav.financeiro.extrato"/></label>					
 			</div>
-		</form>
-	</div>
-	<display:table class="table-default" export="false" id="obj" name="${FinExtratoList}" requestURI="/financeiro/extrato">
-		<display:column format="{0, date, dd/MM/yyyy}" headerScope="datacreate" property="datacreate.time" titleKey="displaytag.data.entrada"/>
-		<display:column format="{0, date, dd/MM/yyyy}" headerScope="iddocumentocusto.datavencimento" property="iddocumentocusto.datavencimento.time" titleKey="displaytag.data.vencimento"/>
-		<display:column headerScope="iddocumentocusto.iddocumento.numero" property="iddocumentocusto.iddocumento.numero" titleKey="displaytag.numero.documento"/>
-		<display:column headerScope="iddocumentocusto.iddocumento.idcontabancaria.idbanco.descricao" property="iddocumentocusto.iddocumento.idcontabancaria.idbanco.descricao" titleKey="displaytag.banco"/>
-		<display:column headerScope="iddocumentocusto.iddocumento.idcontabancaria.numeroconta" property="iddocumentocusto.iddocumento.idcontabancaria.numeroconta" titleKey="displaytag.conta"/>
-		<display:column headerScope="iddocumentocusto.iddocumento.idpessoa.nomerazaosocial" property="iddocumentocusto.iddocumento.idpessoa.nomerazaosocial" titleKey="displaytag.pessoa"/>
-		<display:column headerScope="idtipooperacao.descricao" property="idtipooperacao.descricao" titleKey="displaytag.operacao"/>
-		<display:column headerScope="creditodebito" property="creditodebito" titleKey="displaytag.tipo"/>
-		<display:column headerScope="valor" property="valor" titleKey="displaytag.valor"/>
-	</display:table>
-</div>
+		</div>
+	</nav>
+	<section aria-expanded="true" aria-hidden="false" class="form-body" role="form">
+		<fieldset class="block-lube m-bottom-15">
+			<legend class="block-header"><label class="block-title"><i class="font-5x icon-search"></i>&nbsp;<fmt:message key="titulo.pesquisar"/></label></legend>
+			<section class="block-body block-body-padding">
+				<div class="row" role="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
+						<label><fmt:message key="label.conta"/></label>
+						<select class="form-data validate" data-class="slFinContaBancaria" id="slFinanceiro_Conta-bancaria_Json_01" required name="parametrosWeb[0].parametroInicial"></select>
+					</div>
+				</div>
+				<div class="row" role="row">
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
+						<label><fmt:message key="label.data.emissao"/></label>
+						<input class="form-data validate" maxlength="10" min="01-01-1970" name="parametrosWeb[1].parametroInicial" pattern="data" type="text" value="${parametrosWeb[1].parametroInicial}">
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
+						<label><fmt:message key="label.ate"/></label>
+						<input class="form-data validate" maxlength="10" min="01-01-1970" name="parametrosWeb[1].parametroFinal" pattern="data" type="text" value="${parametrosWeb[1].parametroFinal}">
+					</div>
+				</div>
+			</section>
+		</fieldset>
+		<c:if test="${not empty FinExtratoList}">
+			<c:import url="lista.jsp"/>
+		</c:if>
+	</section>
+</form>
+<nav class="nav-group-tie nav-fixed-bottom" role="complementary">
+	<ul>
+		<li><button form="formfinextrato" title="<fmt:message key="button.pesquisar"/>" type="submit"><i class="icon-search"></i>&nbsp;<fmt:message key="button.pesquisar"/></button></li>
+	</ul>
+</nav>
 <%@include file="/config/footer.jsp"%>

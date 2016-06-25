@@ -1,6 +1,7 @@
 package br.com.hebi.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -51,12 +52,27 @@ public class FinDocumentoController extends GenericController<FinDocumento> {
 		super.editar(obj);
 	}
 	
+	@Get("")
+	@Override
+	public void listar(FinDocumento obj, List<ParametrosWeb> parametrosWeb) {
+		// TODO Auto-generated method stub
+		if (parametrosWeb == null) {
+			parametrosWeb = new ArrayList<ParametrosWeb>();
+		}
+		parametrosWeb.add(new ParametrosWeb("datapagamento", null, null, "is null"));
+		parametrosWeb.add(new ParametrosWeb("idtipooperacao.descricao", "BAIXA", null, "<>"));
+		super.listar(obj, parametrosWeb);
+	}
+	
 	@Post("processar")
 	public void processar(List<FinDocumento> obj, Integer idTipoOperacao) {
+		int i = 0;
 		SysTipoOperacao sysTipoOperacao = (SysTipoOperacao) this.getDao().edit(new SysTipoOperacao(idTipoOperacao));
 		Gerenciador gerenciador = GerenciadorFactory.cria(sysTipoOperacao.getDescricao());
 		for (FinDocumento finDocumento : obj) {
+			finDocumento.setValortotal(obj.get(i).getValortotal());
 			gerenciador.gerencia(getDao(), finDocumento, sysTipoOperacao);
+			i++;
 		}
 		this.result.redirectTo(this).baixa(null, null);
 	}

@@ -8,9 +8,9 @@
 			<div class="clearfix container-center">
 				<nav class="nav-square" role="navigation">
 					<ul class="nav-row" role="menubar">
-						<li role="menuitem"><a href="<c:url value="/produto-servico/grupo"/>"><i class="font-5x icon-cubes"></i><fmt:message key="nav.cadastro.produto.servico.grupo"/></a></li>
-						<li role="menuitem"><a href="<c:url value="/produto-servico/classe"/>"><i class="font-5x icon-cube"></i><fmt:message key="nav.cadastro.produto.servico.classe"/></a></li>
-						<li role="menuitem"><a href="<c:url value="/produto-servico"/>"><i class="font-5x icon-box"></i><fmt:message key="nav.cadastro.produto.servico"/></a></li>
+						<li role="menuitem"><a href="<c:url value="/produto-servico/grupo"/>"><label><i class="font-5x icon-cubes"></i><fmt:message key="nav.cadastro.produto.servico.grupo"/></label></a></li>
+						<li role="menuitem"><a href="<c:url value="/produto-servico/classe"/>"><label><i class="font-5x icon-cube"></i><fmt:message key="nav.cadastro.produto.servico.classe"/></label></a></li>
+						<li role="menuitem"><a href="<c:url value="/produto-servico"/>"><label><i class="font-5x icon-box"></i><fmt:message key="nav.cadastro.produto.servico"/></label></a></li>
 					</ul>
 				</nav>
 			</div>

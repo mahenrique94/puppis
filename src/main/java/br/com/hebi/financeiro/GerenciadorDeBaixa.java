@@ -2,6 +2,7 @@ package br.com.hebi.financeiro;
 
 import br.com.hebi.dao.GenericDao;
 import br.com.hebi.model.FinDocumento;
+import br.com.hebi.model.FinExtrato;
 import br.com.hebi.model.SysTipoOperacao;
 
 public class GerenciadorDeBaixa extends GerenciadorDeDocumento {
@@ -16,7 +17,9 @@ public class GerenciadorDeBaixa extends GerenciadorDeDocumento {
 		dao.save(finDocumento);
 		finDocumentoClonado.setIddocumento(finDocumento);
 		finDocumentoClonado.setIdtipooperacao(sysTipoOperacao);
+		finDocumentoClonado.setValortotal(valorTotal);
 		dao.save(finDocumentoClonado.novoClonado());
+		dao.save(this.criaExtrato(finDocumento, sysTipoOperacao, valorTotal));
 	}
 
 	@Override
@@ -35,5 +38,5 @@ public class GerenciadorDeBaixa extends GerenciadorDeDocumento {
 		// TODO Auto-generated method stub
 		return gerenciadorDeDocumento.pega(getOperacao());
 	}
-
+	
 }

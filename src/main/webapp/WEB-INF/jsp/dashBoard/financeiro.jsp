@@ -8,8 +8,9 @@
 			<div class="clearfix container-center">
 				<nav class="nav-square" role="navigation">
 					<ul class="nav-row" role="menubar">
-						<li role="menuitem"><a href="<c:url value="/financeiro/documento"/>"><i class="font-5x icon-doc-inv"></i><fmt:message key="nav.financeiro.documento"/></a></li>
-						<li role="menuitem"><a href="<c:url value="/financeiro/documento/baixa"/>"><i class="font-5x icon-money"></i><fmt:message key="nav.financeiro.baixa"/></a></li>
+						<li role="menuitem"><a href="<c:url value="/financeiro/documento"/>"><label><i class="font-5x icon-doc-inv"></i><fmt:message key="nav.financeiro.documento"/></label></a></li>
+						<li role="menuitem"><a href="<c:url value="/financeiro/documento/baixa"/>"><label><i class="font-5x icon-money"></i><fmt:message key="nav.financeiro.baixa"/></label></a></li>
+						<li role="menuitem"><a href="<c:url value="/financeiro/extrato/listar"/>"><label><i class="font-5x icon-list-bullet"></i><fmt:message key="nav.financeiro.extrato"/></label></a></li>
 					</ul>
 				</nav>
 			</div>

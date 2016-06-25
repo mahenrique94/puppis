@@ -2,6 +2,7 @@ package br.com.hebi.financeiro;
 
 
 
+
 public abstract class GerenciadorDeDocumento implements Gerenciador {
 
 	private String operacao;

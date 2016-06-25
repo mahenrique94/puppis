@@ -294,6 +294,13 @@ public class FinDocumento implements Serializable, Cloneable {
 		return (this.valortotal + this.valorjuros) - this.valordesconto;
 	}
 	
+	public String getCreditoDebito() {
+		if (getIddefinicao().getIdtipo().getDescricao().equals("CLIENTE"))
+			return "C";
+		else
+			return "D";
+	}
+	
 	@Override
 	public Object clone() {
 		// TODO Auto-generated method stub

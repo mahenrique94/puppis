@@ -2,7 +2,7 @@ package br.com.hebi.model;
 
 public class CreditoDebito {
 
-	public String getCreditoDebito(String tipoOperacao, String tipoPessoa) {
+	public static String getCreditoDebito(String tipoOperacao, String tipoPessoa) {
 		if (tipoOperacao.equals("ENTRADA"))
 			return "C";
 		else if (tipoOperacao.equals("SAIDA"))
