@@ -18,7 +18,7 @@
 			</div>
 			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
 				<label><fmt:message key="label.descricao.master"/></label>
-				<select class="form-data validate" data-class="sl" id="slCadastro_Centro-de-Custo_Json_01" required name="obj.idcentrocustomaster.id"></select>
+				<select class="form-data ss validate" data-class="sl" id="slCadastro_Centro-de-Custo_Json_01" required name="obj.idcentrocustomaster.id"></select>
 				<netsis:validationMessage name="obj.idcentrocustomaster.id"/>
 			</div>
 		</div>

@@ -19,12 +19,12 @@
 			</div>
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" role="separator">
 				<label><fmt:message key="label.celular"/></label>
-				<input class="form-data validate" maxlength="11" name="obj.celular" pattern="celular" type="text" value="${obj.celular}">
+				<input class="form-data validate" maxlength="11" name="obj.celular" onkeypress="format(this, event, celular);" pattern="celular" type="text" value="${obj.celular}">
 				<netsis:validationMessage name="obj.celular"/>
 			</div>
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" role="separator">
 				<label><fmt:message key="label.telefone"/></label>
-				<input class="form-data validate" maxlength="9" name="obj.telefone" pattern="telefone" type="text" value="${obj.telefone}">
+				<input class="form-data validate" maxlength="9" name="obj.telefone" onkeypress="format(this, event, telefone);" pattern="telefone" type="text" value="${obj.telefone}">
 				<netsis:validationMessage name="obj.telefone"/>
 			</div>
 		</div>

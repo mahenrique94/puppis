@@ -27,6 +27,7 @@
 				<li role="menuitem"><a href="#"><fmt:message key="nav.financeiro"/></a>
 					<ul aria-haspopup="true" role="menubar">
 						<li role="menuitem"><a href="<c:url value="/financeiro/documento"/>"><fmt:message key="nav.financeiro.documento"/></a></li>
+						<li role="menuitem"><a href="<c:url value="/financeiro/documento/parcelamento"/>"><fmt:message key="nav.financeiro.parcelamento"/></a></li>
 						<li role="menuitem"><a href="<c:url value="/financeiro/documento/baixa"/>"><fmt:message key="nav.financeiro.baixa"/></a></li>
 						<li role="menuitem"><a href="<c:url value="/financeiro/extrato/listar"/>"><fmt:message key="nav.financeiro.extrato"/></a></li>
 					</ul>	

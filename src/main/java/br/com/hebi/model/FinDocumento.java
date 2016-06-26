@@ -1,6 +1,7 @@
 package br.com.hebi.model;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
@@ -26,7 +27,10 @@ import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
 
+import com.lowagie.text.pdf.PRAcroForm;
+
 import br.com.hebi.util.Util;
+import br.com.mhc.parametrosweb.ParametrosWeb;
 
 @Entity
 @Table(name = "fin_documento")
@@ -243,12 +247,6 @@ public class FinDocumento implements Serializable, Cloneable {
 		this.datavencimento = datavencimento;
 	}
 	
-	public void criar(int numeroParcela) {
-		setDesdobramento(numeroParcela + "/" + getIdformapagamento().getQuantidadeparcela());
-		setValortotal(getValortotal() / getIdformapagamento().getQuantidadeparcela());
-		setDatavencimento(new Util().calcularDataVencimento(this));
-	}
-	
 	public FinDocumento novo() {
 		Calendar agora = Calendar.getInstance();
 		setDatacreate(agora);
@@ -269,6 +267,28 @@ public class FinDocumento implements Serializable, Cloneable {
 		setDatavencimento(agora);
 		setSaldo(0.0);
 		return this;
+	}
+	
+	public FinDocumento novoParcelamento(List<ParametrosWeb> parametrosWeb, FinFormaPagamento finFormaPagamento, int numeroParcela) {
+		setDataemissao(Calendar.getInstance());
+		setIdcontabancaria(new FinContaBancaria(Integer.parseInt(parametrosWeb.get(2).getParametroInicial())));
+		setIddefinicao(new PesDefinicao(Long.parseLong(parametrosWeb.get(1).getParametroInicial())));
+		setIdformapagamento(finFormaPagamento);
+		setIdhistorico(new FinHistorico(Integer.parseInt(parametrosWeb.get(8).getParametroInicial())));
+		setIdtipodocumento(new FinTipoDocumento(Integer.parseInt(parametrosWeb.get(3).getParametroInicial())));
+		setIdtipooperacao(new SysTipoOperacao(Integer.parseInt(parametrosWeb.get(9).getParametroInicial())));
+		setNumero(Long.parseLong(parametrosWeb.get(4).getParametroInicial()));
+		if (parametrosWeb.get(5).getParametroInicial() != null)
+			setSerie(Integer.parseInt(parametrosWeb.get(5).getParametroInicial()));
+		setValortotal(Double.parseDouble(parametrosWeb.get(7).getParametroInicial()) / finFormaPagamento.getQuantidadeparcela());
+		setSaldo(getValortotal());
+		criarParcela(numeroParcela);
+		return this;
+	}
+	
+	public void criarParcela(int numeroParcela) {
+		setDesdobramento(numeroParcela + "/" + getIdformapagamento().getQuantidadeparcela());
+		setDatavencimento(new Util().calcularDataVencimento(this, numeroParcela));
 	}
 	
 	public void paga(double valor) {

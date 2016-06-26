@@ -10,7 +10,7 @@
 		<div class="row" role="row">
 			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" role="separator">
 				<label><fmt:message key="label.cep"/></label>
-				<input class="form-data validate" maxlength="12" name="obj.endereco.cep" pattern="cep" required type="text" value="${obj.endereco.cep}">
+				<input class="form-data validate" maxlength="9" name="obj.endereco.cep" onkeypress="format(this, event, cep);" pattern="cep" required type="text" value="${obj.endereco.cep}">
 				<netsis:validationMessage name="obj.endereco.cep"/>
 			</div>
 			<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" role="separator">
@@ -39,7 +39,7 @@
 			</div>
 			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" role="separator">
 				<label class="align-left"><fmt:message key="label.cidade"/></label>
-				<select class="form-data validate" data-class="slCadCidade" id="slCadastro_Cidade_json_01" name="obj.endereco.idcidade.id" required></select>
+				<select class="form-data ss validate" data-class="slCadCidade" id="slCadastro_Cidade_json_01" name="obj.endereco.idcidade.id" required></select>
 				<netsis:validationMessage name="obj.enderecoid.idcidade.id"/>
 			</div>
 			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" role="separator">

@@ -14,6 +14,7 @@ import br.com.hebi.financeiro.GerenciadorDeBaixa;
 import br.com.hebi.financeiro.GerenciadorDeDocumento;
 import br.com.hebi.financeiro.GerenciadorFactory;
 import br.com.hebi.model.FinDocumento;
+import br.com.hebi.model.FinFormaPagamento;
 import br.com.hebi.model.SysTipoOperacao;
 import br.com.mhc.parametrosweb.ParametrosWeb;
 
@@ -60,8 +61,33 @@ public class FinDocumentoController extends GenericController<FinDocumento> {
 			parametrosWeb = new ArrayList<ParametrosWeb>();
 		}
 		parametrosWeb.add(new ParametrosWeb("datapagamento", null, null, "is null"));
-		parametrosWeb.add(new ParametrosWeb("idtipooperacao.descricao", "BAIXA", null, "<>"));
+		parametrosWeb.add(new ParametrosWeb("idtipooperacao.descricao", "ENTRADA", null, "="));
 		super.listar(obj, parametrosWeb);
+	}
+	
+	@Get
+	@Post
+	@Path("parcelamento")
+	public void parcelamento(List<ParametrosWeb> parametrosWeb) {
+		if (parametrosWeb != null) {
+			List<FinDocumento> documentos = new ArrayList<FinDocumento>();
+			FinFormaPagamento finFormaPagamento = (FinFormaPagamento) this.getDao().edit(new FinFormaPagamento(Integer.parseInt(parametrosWeb.get(0).getParametroInicial())));
+			for (int i = 1; i <= finFormaPagamento.getQuantidadeparcela(); i++) {
+				documentos.add(new FinDocumento().novoParcelamento(parametrosWeb, finFormaPagamento, i));
+			}
+			this.result.include("parametrosWeb", parametrosWeb).include("FinDocumentoList", documentos);
+		}
+	}
+	
+	@Post
+	@Path("parcelamento/confirmar")
+	public void parcelamentoConfirmar(List<FinDocumento> finDocumentoList) {
+		if (finDocumentoList != null) {
+			for (FinDocumento finDocumento : finDocumentoList) {
+				this.getDao().save(finDocumento);
+			}
+		}
+		this.result.redirectTo(this).parcelamento(null);
 	}
 	
 	@Post("processar")
