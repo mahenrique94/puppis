@@ -24,5 +24,14 @@
 	<display:column property="descricao" headerScope="descricao" titleKey="displaytag.descricao"/>
 	<display:column headerScope="quantidadeparcela" property="quantidadeparcela" style="width: 100px;text-align: center;" titleKey="displaytag.quantidade.parcela"/>
 	<display:column headerScope="intervalor" property="intervalo" style="width: 50px;text-align: center;" titleKey="displaytag.intervalo"/>
+	<display:column style="width: 150px;text-align: center;">
+		<a class="btn-lower btn-xs" href="<c:url value="/financeiro/forma-de-pagamento/${obj.id}"/>"><i class="icon-pencil"></i>&nbsp;<fmt:message key="button.editar"/></a>
+		<a class="btn-der btn-xs" href="<c:url value="/financeiro/forma-de-pagamento/${obj.id}"/>" onclick="deletar(this);"><i class="icon-trash"></i>&nbsp;<fmt:message key="button.deletar"/></a>
+	</display:column>
 </display:table>
+<nav class="nav-group-tie nav-fixed-bottom" role="complementary">
+	<ul>
+		<li><a href="<c:url value="/financeiro/forma-de-pagamento/formulario"/>"><i class="icon-plus"></i>&nbsp;<fmt:message key="button.novo"/></a></li>
+	</ul>
+</nav>
 <%@include file="/config/footer.jsp"%>

@@ -30,6 +30,7 @@ import org.hibernate.validator.constraints.Range;
 import com.lowagie.text.pdf.PRAcroForm;
 
 import br.com.hebi.util.Util;
+import br.com.mhc.function.DateFunction;
 import br.com.mhc.parametrosweb.ParametrosWeb;
 
 @Entity
@@ -270,7 +271,7 @@ public class FinDocumento implements Serializable, Cloneable {
 	}
 	
 	public FinDocumento novoParcelamento(List<ParametrosWeb> parametrosWeb, FinFormaPagamento finFormaPagamento, int numeroParcela) {
-		setDataemissao(Calendar.getInstance());
+		setDataemissao(DateFunction.stringToCalendar(parametrosWeb.get(6).getParametroInicial()));
 		setIdcontabancaria(new FinContaBancaria(Integer.parseInt(parametrosWeb.get(2).getParametroInicial())));
 		setIddefinicao(new PesDefinicao(Long.parseLong(parametrosWeb.get(1).getParametroInicial())));
 		setIdformapagamento(finFormaPagamento);

@@ -22,7 +22,7 @@ import org.hibernate.validator.constraints.Range;
 
 @Entity
 @Table(name = "fin_formapagamento")
-@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class FinFormaPagamento implements Serializable {
 	
 	@Id
@@ -33,10 +33,10 @@ public class FinFormaPagamento implements Serializable {
 	@Size(min = 0, max = 30, message = "{minimo.0.maximo.30}")
 	@Column(length = 30, columnDefinition = "varchar(30)", nullable = false, unique = true)
 	private String descricao;
-	@Range(min = 0, max = 10, message = "{intervalo.0.10}")
+	@Range(min = 0, message = "{intervalo.0}")
 	@Column(nullable = false)
 	private Integer quantidadeparcela;
-	@Range(min = 0, max = 120, message = "{intervalo.0.120}")
+	@Range(min = 0, message = "{intervalo.0}")
 	@Column(nullable = false)
 	private Integer intervalo;
 	@Temporal(TemporalType.DATE)

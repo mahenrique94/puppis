@@ -40,15 +40,19 @@
 			</div>
 		</div>
 		<div class="row" role="row">
-			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" role="separator">
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
 				<label><fmt:message key="label.numero"/></label>
 				<input class="form-data validate" min="0" name="parametrosWeb[4].parametroInicial" pattern="numero0a9" required type="number" value="${parametrosWeb[4].parametroInicial}">
 			</div>		
-			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" role="separator">
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
 				<label><fmt:message key="label.serie"/></label>
 				<input class="form-data validate" min="0" name="parametrosWeb[5].parametroInicial" pattern="numero0a9" type="number" value="${parametrosWeb[5].parametroInicial}">
 			</div>
-			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" role="separator">
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
+				<label><fmt:message key="label.desdobramento.inicial"/></label>
+				<input class="form-data validate" min="0" name="parametrosWeb[10].parametroInicial" pattern="numero0a9" type="number" value="${parametrosWeb[10].parametroInicial}">
+			</div>
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
 				<label><fmt:message key="label.data.emissao"/></label>
 				<input class="form-data validate" maxlength="10" min="01-01-1970" name="parametrosWeb[6].parametroInicial" onkeypress="format(this, event, data);" pattern="data" required type="text" value="${parametrosWeb[6].parametroInicial}">
 			</div>
