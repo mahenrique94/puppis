@@ -34,7 +34,7 @@
 						<input class="form-data validate" name="parametrosWeb[2].parametroFinal" pattern="numero0a9" step="1" type="text" value="${parametrosWeb[2].parametroFinal}">
 					</div>
 					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
-						<label><fmt:message key="label.data.emissao"/></label>
+						<label><fmt:message key="label.data.vencimento"/></label>
 						<input class="form-data validate" maxlength="10" min="01-01-1970" name="parametrosWeb[3].parametroInicial" onkeypress="format(this, event, data);" pattern="data" type="text" value="${parametrosWeb[3].parametroInicial}">
 					</div>
 					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">

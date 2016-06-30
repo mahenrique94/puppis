@@ -18,6 +18,8 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
@@ -28,7 +30,8 @@ public class FinExtrato implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@ManyToOne
-	@JoinColumn(name = "iddocumento", referencedColumnName = "id", nullable = false)
+	@Fetch(FetchMode.SELECT)
+	@JoinColumn(name = "iddocumento", referencedColumnName = "id", nullable = true)
 	private FinDocumento iddocumento;
 	@DecimalMin("0.0")
 	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")

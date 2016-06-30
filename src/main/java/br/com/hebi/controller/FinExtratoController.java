@@ -4,10 +4,13 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
+import br.com.caelum.vraptor.interceptor.IncludeParameters;
 import br.com.hebi.model.FinExtrato;
 import br.com.mhc.parametrosweb.ParametrosWeb;
 
@@ -26,9 +29,20 @@ public class FinExtratoController extends GenericController<FinExtrato> {
 		if (parametrosWeb != null) {
 			validaParametrosWeb(parametrosWeb);
 			parametrosWeb.get(0).setCampo("iddocumento.idcontabancaria.id");
+			parametrosWeb.get(0).setJuncao("or");
 			parametrosWeb.get(1).setCampo("datacreate");
+			parametrosWeb.add(new ParametrosWeb("iddocumento.id", null, null, "is null", "or"));
 			this.result.include("parametrosWeb", parametrosWeb).include("FinExtratoList", this.getDao().findAll(FinExtrato.class, parametrosWeb));
 		}
+	}
+	
+	@Post("")
+	@IncludeParameters
+	@Override
+	public void salvar(@Valid FinExtrato obj) {
+		// TODO Auto-generated method stub
+		obj.setIddocumento(null);
+		super.salvar(obj);
 	}
 	
 	private void validaParametrosWeb(List<ParametrosWeb> parametrosWeb) {

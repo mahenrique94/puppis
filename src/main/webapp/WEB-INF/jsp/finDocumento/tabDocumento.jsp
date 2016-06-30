@@ -38,7 +38,10 @@
 	<div class="row" role="row">
 		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" role="separator">
 			<label><fmt:message key="label.numero"/></label>
-			<input class="form-data validate" min="0" name="obj.numero" pattern="numero0a9" required type="number" value="${obj.numero}">
+			<div class="form-data-group">
+				<input class="form-data validate" id="code-target" min="0" name="obj.numero" pattern="numero0a9" required type="number" value="${obj.numero}">
+				<span class="form-data-group-btn"><button class="btn-default" onclick="gerarCode();" type="button"><i class="icon-cog"></i></button></span>
+			</div>
 			<netsis:validationMessage name="obj.numero"/>
 		</div>		
 		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" role="separator">

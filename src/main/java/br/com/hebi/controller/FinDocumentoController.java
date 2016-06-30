@@ -34,7 +34,7 @@ public class FinDocumentoController extends GenericController<FinDocumento> {
 			parametrosWeb.get(0).setCampo("idcontabancaria.id");
 			parametrosWeb.get(1).setCampo("iddefinicao.id");
 			parametrosWeb.get(2).setCampo("numero");
-			parametrosWeb.get(3).setCampo("dataemissao");
+			parametrosWeb.get(3).setCampo("datavencimento");
 			if (idTipoOperacao == 5) { // 5 = ESTORNO
 				parametrosWeb.add(new ParametrosWeb("datapagamento", null, null, "is not null"));
 				parametrosWeb.add(new ParametrosWeb("iddocumento.id", null, null, "is not null", "or"));
@@ -58,11 +58,20 @@ public class FinDocumentoController extends GenericController<FinDocumento> {
 	public void listar(FinDocumento obj, List<ParametrosWeb> parametrosWeb) {
 		// TODO Auto-generated method stub
 		if (parametrosWeb == null) {
+			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+			Calendar agora = Calendar.getInstance();
 			parametrosWeb = new ArrayList<ParametrosWeb>();
+			parametrosWeb.add(new ParametrosWeb());
+			parametrosWeb.add(new ParametrosWeb("datacreate", formatador.format(agora.getTime()), formatador.format(agora.getTime())));
 		}
+		if (parametrosWeb.get(0).getCampo() == null)
+			parametrosWeb.get(0).setCampo("id");
+		if (parametrosWeb.get(0).getOperador() == null)
+			parametrosWeb.get(0).setOperador("is not null");
 		parametrosWeb.add(new ParametrosWeb("datapagamento", null, null, "is null"));
 		parametrosWeb.add(new ParametrosWeb("idtipooperacao.descricao", "ENTRADA", null, "="));
 		super.listar(obj, parametrosWeb);
+		this.result.include("parametrosWeb", parametrosWeb);
 	}
 	
 	@Get
@@ -115,15 +124,15 @@ public class FinDocumentoController extends GenericController<FinDocumento> {
 		// ParametrosWeb[2] = Nro. Documento
 		if (parametrosWeb.get(2).getParametroInicial() != null && parametrosWeb.get(2).getParametroFinal() == null)
 			parametrosWeb.get(2).setParametroFinal(parametrosWeb.get(2).getParametroInicial());
-		else
-			parametrosWeb.get(2).setParametroFinal("999999");
+		if (parametrosWeb.get(2).getParametroInicial() == null && parametrosWeb.get(2).getParametroFinal() == null)
+			parametrosWeb.get(2).setParametroFinal("999999999999999");
 		if (parametrosWeb.get(2).getParametroInicial() == null)
 			parametrosWeb.get(2).setParametroInicial("0");
 		
-		// ParametrosWeb[3] = Data Emissão
+		// ParametrosWeb[3] = Data Vencimento
 		if (parametrosWeb.get(3).getParametroInicial() != null && parametrosWeb.get(3).getParametroFinal() == null)
 			parametrosWeb.get(3).setParametroFinal(parametrosWeb.get(3).getParametroInicial());
-		else
+		if (parametrosWeb.get(3).getParametroInicial() == null && parametrosWeb.get(3).getParametroFinal() == null)
 			parametrosWeb.get(3).setParametroFinal(formatador.format(agora.getTime()));
 		if (parametrosWeb.get(3).getParametroInicial() == null)
 			parametrosWeb.get(3).setParametroInicial(formatador.format(agora.getTime()));

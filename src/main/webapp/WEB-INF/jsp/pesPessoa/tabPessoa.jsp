@@ -17,14 +17,14 @@
 	<div class="row" role="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 			<label><fmt:message key="label.nome.razao.social"/></label>
-			<input autofocus class="form-data validate" maxlength="60" name="obj.nomerazaosocial" pattern="letraNumeroEspacoPonto" required type="text" value="${obj.nomerazaosocial}">
+			<input autofocus class="form-data validate" maxlength="60" name="obj.nomerazaosocial" pattern="letraNumeroEspacoPontoTracoBarra" required type="text" value="${obj.nomerazaosocial}">
 			<netsis:validationMessage name="obj.nomerazaosocial"/>
 		</div>
 	</div>
 	<div class="row" role="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 			<label><fmt:message key="label.nome.fantasia"/></label>
-			<input class="form-data validate" maxlength="60" name="obj.nomefantasia" pattern="letraNumeroEspacoPonto" type="text" value="${obj.nomefantasia}">
+			<input class="form-data validate" maxlength="60" name="obj.nomefantasia" pattern="letraNumeroEspacoPontoTracoBarra" type="text" value="${obj.nomefantasia}">
 			<netsis:validationMessage name="obj.nomefantasia"/>
 		</div>
 	</div>

@@ -28,6 +28,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class PsGrupo implements Serializable{
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@NotNull
 	@NotEmpty

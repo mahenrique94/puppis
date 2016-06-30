@@ -4,14 +4,9 @@
 <input name="obj.idclasse.idaux" type="hidden" value="${obj.idclasse.id}">
 <section aria-expanded="true" aria-hidden="false" class="form-body" role="form">
 	<div class="row" role="row">
-		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
-			<label><fmt:message key="label.id.grupo"/></label>
-			<input class="form-data validate" maxlength="10" name="obj.idclasse.idgrupo.id" pattern="numero0a9" readonly type="number" value="${obj.idclasse.idgrupo.id}">
-			<netsis:validationMessage name="obj.idclasse.idgrupo.id"/>
-		</div>
-		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
-			<label><fmt:message key="label.id.classe"/></label>
-			<select autofocus class="form-data ss validate" data-class="sl" id="slProduto-Servico_Classe_Json_01" name="obj.idclasse.id"></select>
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
+			<label><fmt:message key="label.grupo.classe"/></label>
+			<select autofocus class="form-data ss validate" data-class="slPsClasse" id="slProduto-Servico_Classe_Json_01" name="obj.idclasse.id"></select>
 			<netsis:validationMessage name="obj.idclasse.id"/>
 		</div>
 		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">

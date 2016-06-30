@@ -12,12 +12,12 @@
 	<section aria-expanded="true" aria-hidden="false" class="form-body" role="form">
 		<div class="row" role="row">
 			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
-				<label><fmt:message key="label.razao.social"/></label>
-				<input autofocus class="form-data validate" maxlength="60" name="obj.nomerazaosocial" pattern="letraNumeroEspacoPonto" required type="text" value="${obj.nomerazaosocial}">
+				<label><fmt:message key="label.nome.razao.social"/></label>
+				<input autofocus class="form-data validate" maxlength="60" name="obj.nomerazaosocial" pattern="letraNumeroEspacoPontoTracoBarra" required type="text" value="${obj.nomerazaosocial}">
 			</div>
 			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
 				<label><fmt:message key="label.nome.fantasia"/></label>
-				<input class="form-data validate" maxlength="60" name="obj.nomefantasia" pattern="letraNumeroEspacoPonto" required type="text" value="${obj.nomefantasia}">
+				<input class="form-data validate" maxlength="60" name="obj.nomefantasia" pattern="letraNumeroEspacoPontoTracoBarra" type="text" value="${obj.nomefantasia}">
 			</div>
 		</div>
 		<c:import url="../admDocumento/documento.jsp"/>

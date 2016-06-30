@@ -31,6 +31,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class PsClasse implements Serializable{
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@ManyToOne
 	@JoinColumn(name = "idgrupo", referencedColumnName = "id", nullable = false)

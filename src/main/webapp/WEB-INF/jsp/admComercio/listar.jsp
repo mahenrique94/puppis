@@ -21,7 +21,7 @@
 </form>
 <display:table class="table-default" export="false" id="obj" name="${AdmComercioList}" requestURI="/administrador/comercio">
 	<display:column headerScope="id" property="id" style="width: 50px;" titleKey="displaytag.id"/>
-	<display:column headerScope="nomerazaosocial" property="nomerazaosocial" titleKey="displaytag.razao.social"/>
+	<display:column headerScope="nomerazaosocial" property="nomerazaosocial" titleKey="displaytag.nome.razao.social"/>
 	<display:column headerScope="nomefantasia" property="nomefantasia" titleKey="displaytag.nome.fantasia"/>
 	<display:column headerScope="documento.cpfcnpj" property="documento.cpfcnpj" style="width: 110px;" titleKey="displaytag.cpf.cnpj"/>
 	<display:column headerScope="documento.rginscricaoestadual" property="documento.rginscricaoestadual" style="width: 130px;" titleKey="displaytag.rg.inscricao.estadual"/>

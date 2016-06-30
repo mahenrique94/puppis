@@ -37,6 +37,7 @@
 </form>
 <nav class="nav-group-tie nav-fixed-bottom" role="complementary">
 	<ul>
+		<li><a data-controller="ModalController" href="<c:url value="/financeiro/extrato/formulario"/>" onclick="ModalController.show(this, event);" title="<fmt:message key="button.novo"/>"><i class="icon-plus"></i>&nbsp;<fmt:message key="button.novo"/></a></li>
 		<li><button form="formfinextrato" title="<fmt:message key="button.pesquisar"/>" type="submit"><i class="icon-search"></i>&nbsp;<fmt:message key="button.pesquisar"/></button></li>
 	</ul>
 </nav>

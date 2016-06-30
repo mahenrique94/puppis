@@ -1,5 +1,6 @@
 <%@include file="/config/header.jsp"%>
 <form action="<c:url value="/financeiro/documento"/>" class="form-modern" id="formlistarfindocumento" method="get" name="formlistarfindocumento" role="search">
+	<input name="parametrosWeb[1].campo" type="hidden" value="datacreate">
 	<nav class="band-nav-lube" role="complementary">
 		<div class="row" role="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
@@ -7,10 +8,22 @@
 			</div>
 		</div>
 		<div class="row" role="row">
-			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" role="separator">
+				<div class="form-data-group">
+					<span class="form-data-group-text"><fmt:message key="label.de"/></span>
+					<input class="form-data" maxlength="10" min="01-01-1970" name="parametrosWeb[1].parametroInicial" onkeypress="format(this, event, data);" pattern="data" type="text" value="${parametrosWeb[1].parametroInicial}">
+				</div>
+			</div>
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" role="separator">
+				<div class="form-data-group">
+					<span class="form-data-group-text"><fmt:message key="label.ate"/></span>
+					<input class="form-data" maxlength="10" min="01-01-1970" name="parametrosWeb[1].parametroFinal" onkeypress="format(this, event, data);" pattern="data" type="text" value="${parametrosWeb[1].parametroFinal}">
+				</div>
+			</div>
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" role="separator">
 				<select class="form-data" data-class="displaytagSelect" name="parametrosWeb[0].campo"></select>
 			</div>
-			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" role="separator">
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
 				<div class="form-data-group">
 					<input autocomplete="off" class="form-data" name="parametrosWeb[0].parametroInicial" pattern="letraNumeroEspacoPontoTracoBarra" type="text">
 					<span class="form-data-group-btn"><button class="btn-default"><i class="icon-search"></i></button></span>
