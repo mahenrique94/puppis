@@ -29,7 +29,7 @@
 	</display:column>
 	<display:column style="text-align: center;width: 150px;">
 		<a class="btn-lower btn-xs" href="<c:url value="/administrador/usuario/${obj.id}"/>"><i class="icon-pencil"></i>&nbsp;<fmt:message key="button.editar"/></a>
-		<a class="btn-der btn-xs" href="<c:url value="/administrador/usuario/${obj.id}"/>" onclick="deletar(this);"><i class="icon-trash"></i>&nbsp;<fmt:message key="button.deletar"/></a>
+		<button class="btn-der btn-xs" formaction="<c:url value="/administrador/usuario?obj.id=${obj.id}"/>" onclick="deletar(this);" type="button"><span class="icon-trash"></span>&nbsp;<fmt:message key="button.deletar"/></button>
 	</display:column>
 </display:table>
 <nav class="nav-group-tie nav-fixed-bottom" role="complementary">

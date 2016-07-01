@@ -18,15 +18,13 @@ import br.com.mhc.parametrosweb.ParametrosWeb;
 @Path("pessoa/contato")
 public class PesContatoController extends GenericController<PesContato> {
 
-	@Delete("deletar/{obj.id}")
+	@Delete("")
 	@Override
 	public void deletar(PesContato obj) {
 		// TODO Auto-generated method stub
-		obj = (PesContato) this.edit(obj);
-		Long idPessoa = obj.getIdpessoa().getId();
 		this.setRedirect(false);
 		super.deletar(obj);
-		this.result.redirectTo("/pessoa/editar/" + idPessoa);
+		this.result.nothing();
 	}
 	
 	@Get("{obj.id}")
@@ -59,6 +57,6 @@ public class PesContatoController extends GenericController<PesContato> {
 		// TODO Auto-generated method stub
 		this.setRedirect(false);
 		super.salvar(obj);
-		this.result.redirectTo(PesPessoaController.class).editar(obj.getIdpessoa());
+		this.result.nothing();
 	}
 }

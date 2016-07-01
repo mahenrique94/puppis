@@ -9,6 +9,6 @@
 	</display:column>
 	<display:column style="width: 150px;text-align: center;">
 		<a class="btn-lower btn-xs" href="<c:url value="/pessoa/definicao/${obj.id}"/>" onclick="ModalController.show(this, event);"><i class="icon-pencil"></i>&nbsp;<fmt:message key="button.editar"/></a>
-		<a class="btn-der btn-xs" href="<c:url value="/pessoa/definicao/${obj.id}"/>" onclick="deletar(this);"><i class="icon-trash"></i>&nbsp;<fmt:message key="button.deletar"/></a>
+		<button class="btn-der btn-xs" formaction="<c:url value="/pessoa/definicao?obj.id=${obj.id}"/>" onclick="deletar(this);" type="button"><span class="icon-trash"></span>&nbsp;<fmt:message key="button.deletar"/></button>
 	</display:column>
 </display:table>

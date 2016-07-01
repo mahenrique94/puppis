@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import br.com.caelum.vraptor.Controller;
+import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
@@ -17,6 +18,15 @@ import br.com.mhc.parametrosweb.ParametrosWeb;
 @Controller
 @Path("pessoa/definicao")
 public class PesDefinicaoController extends GenericController<PesDefinicao> {
+
+	@Delete("")
+	@Override
+	public void deletar(PesDefinicao obj) {
+		// TODO Auto-generated method stub
+		this.setRedirect(false);
+		super.deletar(obj);
+		this.result.nothing();
+	}
 	
 	@Get("{obj.id}")
 	@Override
@@ -55,7 +65,7 @@ public class PesDefinicaoController extends GenericController<PesDefinicao> {
 		// TODO Auto-generated method stub
 		this.setRedirect(false);
 		super.salvar(obj);
-		this.result.redirectTo(PesPessoaController.class).editar(obj.getIdpessoa());
+		this.result.nothing();
 	}
 
 }

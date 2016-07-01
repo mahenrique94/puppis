@@ -104,6 +104,7 @@
 </form>
 <nav class="nav-group-tie nav-fixed-bottom" role="complementary">
 	<ul>
+		<li><a href="<c:url value="/financeiro/documento/parcelamento"/>"><i class="icon-plus"></i>&nbsp;<fmt:message key="button.novo"/></a></li>
 		<li><button form="formfindocumento" title="<fmt:message key="button.processar"/>" type="submit"><i class="icon-spin6"></i>&nbsp;<fmt:message key="button.processar"/></button></li>
 		<li><button ${disabled} form="formfindocumento" formaction="<c:url value="/financeiro/documento/parcelamento/confirmar"/>" title="<fmt:message key="button.confirmar"/>" type="submit"><i class="icon-thumbs-up"></i>&nbsp;<fmt:message key="button.confirmar"/></button></li>
 	</ul>

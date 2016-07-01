@@ -3,6 +3,7 @@ package br.com.hebi.controller;
 import java.util.List;
 
 import br.com.caelum.vraptor.Controller;
+import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.view.Results;

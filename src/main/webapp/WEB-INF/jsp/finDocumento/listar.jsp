@@ -41,7 +41,7 @@
 	<display:column headerScope="valortotal" property="valortotal" titleKey="displaytag.valor.total"/>
 	<display:column style="width: 150px;text-align: center;">
 		<a class="btn-lower btn-xs" href="<c:url value="/financeiro/documento/${obj.id}"/>"><span class="icon-pencil"></span>&nbsp;<fmt:message key="button.editar"/></a>
-		<a class="btn-der btn-xs" href="<c:url value="/financeiro/documento/${obj.id}"/>" onclick="deletar(this);"><span class="icon-trash"></span>&nbsp;<fmt:message key="button.deletar"/></a>
+		<button class="btn-der btn-xs" formaction="<c:url value="/financeiro/documento?obj.id=${obj.id}"/>" onclick="deletar(this);" type="button"><span class="icon-trash"></span>&nbsp;<fmt:message key="button.deletar"/></button>
 	</display:column>
 </display:table>
 <nav class="nav-group-lube nav-fixed-bottom" role="complementary">

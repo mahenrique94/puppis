@@ -16,15 +16,13 @@ import br.com.mhc.parametrosweb.ParametrosWeb;
 @Path("financeiro/documento/centro-de-custo")
 public class FinDocumentoCentroCustoController extends GenericController<FinDocumentoCentroCusto> {
 	
-	@Delete("deletar/{obj.id}")
+	@Delete("")
 	@Override
 	public void deletar(FinDocumentoCentroCusto obj) {
 		// TODO Auto-generated method stub
-		obj = (FinDocumentoCentroCusto) this.edit(obj);
-		Long idDocumento = obj.getIddocumento().getId();
 		this.setRedirect(false);
 		super.deletar(obj);
-		this.result.redirectTo("/financeiro/documento/centro-de-custo/" + idDocumento);
+		this.result.nothing();
 	}
 	
 	@Get("{obj.id}")
