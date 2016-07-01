@@ -4,7 +4,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
+import br.com.hebi.model.PesDefinicao;
 import br.com.mhc.paginator.Paginator;
 import br.com.mhc.parametrosweb.ParametrosWeb;
 import br.com.mhc.parametrosweb.ParametrosWebBuilder;
@@ -34,22 +36,20 @@ public class JPAGenericDao<T> implements GenericDao<T>{
 	}
 	
 	@Override
+	public List<T> executeNamedQuery(String namedQuery, Class clazz, Object[] parametros) {
+		// TODO Auto-generated method stub
+		TypedQuery query = this.em.createNamedQuery(namedQuery, clazz);
+		for (int i = 0; i < parametros.length; i++) {
+			query.setParameter(i, parametros[i]);
+		}
+		return query.getResultList();
+	}
+	
+	@Override
 	public T find(Class clazz, List<ParametrosWeb> parametrosWeb) {
 		// TODO Auto-generated method stub
 		try {
 			return (T) this.em.createQuery(new ParametrosWebBuilder().execute(clazz, parametrosWeb)).setFirstResult(0).setMaxResults(1).getSingleResult();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
-	}
-	
-	@Override
-	public List<T> findLimit(Class clazz, List<ParametrosWeb> parametrosWeb, Integer limite) {
-		// TODO Auto-generated method stub
-		try {
-			return this.em.createQuery(new ParametrosWebBuilder().execute(clazz, parametrosWeb)).setFirstResult(0).setMaxResults(limite).getResultList();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -63,6 +63,18 @@ public class JPAGenericDao<T> implements GenericDao<T>{
 		int max = parametrosWeb != null ? parametrosWeb.get(0).getLimit() : 100;
 		try {
 			return this.em.createQuery(new ParametrosWebBuilder().execute(clazz, parametrosWeb)).setFirstResult(0).setMaxResults(max).getResultList();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	@Override
+	public List<T> findLimit(Class clazz, List<ParametrosWeb> parametrosWeb, Integer limite) {
+		// TODO Auto-generated method stub
+		try {
+			return this.em.createQuery(new ParametrosWebBuilder().execute(clazz, parametrosWeb)).setFirstResult(0).setMaxResults(limite).getResultList();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

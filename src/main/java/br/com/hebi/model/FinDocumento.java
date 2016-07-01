@@ -312,7 +312,7 @@ public class FinDocumento implements Serializable, Cloneable {
 	}
 	
 	public double calcula() {
-		return (this.valortotal + this.valorjuros) - this.valordesconto;
+		return (this.valortotal - this.valorjuros) + this.valordesconto;
 	}
 	
 	public String getCreditoDebito() {

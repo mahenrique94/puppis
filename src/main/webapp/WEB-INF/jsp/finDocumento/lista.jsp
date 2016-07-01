@@ -4,13 +4,20 @@
 		<input class="form-data" name="obj[${obj_rowNum}].id" onclick="paintRow(this);" type="checkbox" value="${obj.id}">
 	</display:column>
 	<display:column headerScope="numero" property="numero" titleKey="displaytag.numero.documento"/>
-	<display:column headerScope="serie" property="serie" titleKey="displaytag.serie"/>
 	<display:column headerScope="idtipodocumento.descricao" property="idtipodocumento.descricao" titleKey="displaytag.tipo.documento"/>
 	<display:column headerScope="idformapagamento.descricao" property="idformapagamento.descricao" titleKey="displaytag.forma.pagamento"/>
 	<display:column headerScope="iddefinicao.idpessoa.nomerazaosocial" property="iddefinicao.idpessoa.nomerazaosocial" titleKey="displaytag.pessoa"/>
 	<display:column headerScope="valortotal" property="valortotal" titleKey="displaytag.valor.total"/>
+	<c:if test="${obj.iddocumento != null}">
+		<display:column headerScope="valordesconto" property="valordesconto" titleKey="displaytag.valor.desconto"/>
+		<display:column headerScope="valorjuros" property="valorjuros" titleKey="displaytag.valor.juros"/>
+	</c:if>
 	<display:column headerScope="saldo" property="saldo" titleKey="displaytag.saldo"/>
-	<display:column style="text-align: center;width: 110px;">
-		<input class="form-data" disabled name="obj[${obj_rowNum}].valortotal" style="margin-top: 0;width: 100px;" type="text">
-	</display:column>
+	<c:if test="${obj.iddocumento == null}">
+		<display:column style="text-align: center;width: 310px;">
+			<input class="form-data" disabled name="obj[${obj_rowNum}].valortotal" placeholder="Valor" style="margin-top: 0;width: 100px;" type="text">
+			<input class="form-data" disabled name="obj[${obj_rowNum}].valordesconto" placeholder="Descontos" style="margin-top: 0;width: 100px;" type="text">
+			<input class="form-data" disabled name="obj[${obj_rowNum}].valorjuros" placeholder="Juros" style="margin-top: 0;width: 100px;" type="text">
+		</display:column>
+	</c:if>
 </display:table>

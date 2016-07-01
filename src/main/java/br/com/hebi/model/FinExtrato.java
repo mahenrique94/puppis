@@ -10,6 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.NamedQueries;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,6 +25,21 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.validator.constraints.NotEmpty;
 
+@NamedNativeQueries(
+	@NamedNativeQuery(
+		name = "buscaExtrato",
+		query = "select ext.* " +
+				"from fin_extrato ext" +
+				" left join fin_documento doc on ext.iddocumento = doc.id" +
+				" left join fin_contabancaria cont on doc.idcontabancaria = cont.id and cont.id = ?0," +
+				" sys_tipooperacao op " +
+				"where ext.idtipooperacao = op.id" +
+				" and ext.datacreate >= ?1" +
+				" and ext.datacreate <= ?2 " +
+				"order by ext.datacreate",
+		resultClass = FinExtrato.class
+	)
+)
 @Entity
 @Table(name = "fin_extrato")
 public class FinExtrato implements Serializable {

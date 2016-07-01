@@ -6,6 +6,8 @@
 <input name="obj.idtipodocumento.idaux" type="hidden" value="${obj.idtipodocumento.id}">
 <input name="obj.idformapagamento.idaux" type="hidden" value="${obj.idformapagamento.id}">
 <input name="obj.idhistorico.idaux" type="hidden" value="${obj.idhistorico.id}">
+<input name="obj.valordesconto" type="hidden" value="${obj.valordesconto}">
+<input name="obj.valorjuros" type="hidden" value="${obj.valorjuros}">
 <section aria-expanded="true" aria-hidden="false" class="form-body" role="form">
 	<div class="row-input" role="row">
 		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -66,22 +68,12 @@
 		</div>
 	</div>
 	<div class="row" role="row">
-		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
 			<label><fmt:message key="label.valor.total"/></label>
 			<input class="form-data validate" maxlength="13" name="obj.valortotal" pattern="numeric10_2" required type="text" value="<fmt:formatNumber pattern="0.00" type="currency" value="${obj.valortotal}"/>"/>
 			<netsis:validationMessage name="obj.valortotal"/>
 		</div>
-		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
-			<label><fmt:message key="label.valor.desconto"/></label>
-			<input class="form-data validate" maxlength="13" name="obj.valordesconto" pattern="numeric10_2" type="text" value="<fmt:formatNumber pattern="0.00" type="currency" value="${obj.valordesconto}"/>"/>
-			<netsis:validationMessage name="obj.valordesconto"/>
-		</div>
-		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
-			<label><fmt:message key="label.valor.juros"/></label>
-			<input class="form-data validate" maxlength="13" name="obj.valorjuros" pattern="numeric10_2" type="text" value="<fmt:formatNumber pattern="0.00" type="currency" value="${obj.valorjuros}"/>"/>
-			<netsis:validationMessage name="obj.valorjuros"/>
-		</div>
-		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
 			<label><fmt:message key="label.saldo"/></label>
 			<input class="form-data validate" name="obj.saldo" readonly type="text" value="<fmt:formatNumber pattern="0.00" type="currency" value="${obj.saldo}"/>"/>
 			<netsis:validationMessage name="obj.saldo"/>

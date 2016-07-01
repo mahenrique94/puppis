@@ -13,10 +13,10 @@ public class GerenciadorDeEstorno extends GerenciadorDeDocumento {
 		if (finDocumento.getIdtipooperacao().getDescricao().equals("BAIXA")) { // Estornando uma baixa
 			FinDocumento finDocumentoEntrada = (FinDocumento) dao.edit(finDocumento.getIddocumento());
 			finDocumentoEntrada.estorna();
-			finDocumentoEntrada.setSaldo(finDocumentoEntrada.getSaldo() + finDocumento.getValortotal());
+			finDocumentoEntrada.setSaldo(finDocumentoEntrada.getSaldo() + finDocumento.calcula());
 			dao.save(finDocumentoEntrada);
+			dao.save(this.criaExtrato(finDocumentoEntrada, sysTipoOperacao, finDocumento.calcula()));
 			dao.delete(finDocumento);
-			dao.save(this.criaExtrato(finDocumentoEntrada, sysTipoOperacao, finDocumentoEntrada.getSaldo()));
 		} else { // Estornando um cancelamento
 			finDocumento.estorna();
 			finDocumento.setIdtipooperacao(new SysTipoOperacao(3)); // 3 = ENTRADA

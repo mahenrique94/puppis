@@ -63,6 +63,8 @@ public class FinDocumentoController extends GenericController<FinDocumento> {
 			parametrosWeb = new ArrayList<ParametrosWeb>();
 			parametrosWeb.add(new ParametrosWeb());
 			parametrosWeb.add(new ParametrosWeb("datacreate", formatador.format(agora.getTime()), formatador.format(agora.getTime())));
+		} else {
+			parametrosWeb.get(1).setCampo("datacreate");
 		}
 		if (parametrosWeb.get(0).getCampo() == null)
 			parametrosWeb.get(0).setCampo("id");

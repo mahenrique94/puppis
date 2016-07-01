@@ -10,8 +10,9 @@
 	<display:column class="${colorText} total-${obj.creditodebito}" headerScope="valor" property="valor" titleKey="displaytag.valor"/>
 	<display:footer><tr><td colspan="5" style="border-left: 1px solid #DCDCDC;"></td><td id="total"></td></tr></display:footer>
 </display:table>
-<%@include file="/config/libraries-js.jsp"%>
 <script>
+	NodeList.prototype.forEach = Array.prototype.forEach; 
+	HTMLCollection.prototype.forEach = Array.prototype.forEach;
 	let p = document.getElementById('total');
 	let total = 0.0;
 	let totalCredito = 0.0;

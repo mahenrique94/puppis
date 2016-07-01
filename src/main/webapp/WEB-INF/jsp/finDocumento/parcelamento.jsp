@@ -42,7 +42,10 @@
 		<div class="row" role="row">
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
 				<label><fmt:message key="label.numero"/></label>
-				<input class="form-data validate" min="0" name="parametrosWeb[4].parametroInicial" pattern="numero0a9" required type="number" value="${parametrosWeb[4].parametroInicial}">
+				<div class="form-data-group">
+					<input class="form-data validate" id="code-target" min="0" name="parametrosWeb[4].parametroInicial" pattern="numero0a9" required type="number" value="${parametrosWeb[4].parametroInicial}">
+					<span class="form-data-group-btn"><button class="btn-default" onclick="gerarCode();" type="button"><i class="icon-cog"></i></button></span>
+				</div>
 			</div>		
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
 				<label><fmt:message key="label.serie"/></label>

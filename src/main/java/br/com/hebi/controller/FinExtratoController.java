@@ -1,5 +1,6 @@
 package br.com.hebi.controller;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
@@ -29,10 +30,18 @@ public class FinExtratoController extends GenericController<FinExtrato> {
 		if (parametrosWeb != null) {
 			validaParametrosWeb(parametrosWeb);
 			parametrosWeb.get(0).setCampo("iddocumento.idcontabancaria.id");
-			parametrosWeb.get(0).setJuncao("or");
 			parametrosWeb.get(1).setCampo("datacreate");
-			parametrosWeb.add(new ParametrosWeb("iddocumento.id", null, null, "is null", "or"));
-			this.result.include("parametrosWeb", parametrosWeb).include("FinExtratoList", this.getDao().findAll(FinExtrato.class, parametrosWeb));
+			Object[] parametros = null;
+			try {
+				parametros = new Object[]{Integer.parseInt(parametrosWeb.get(0).getParametroInicial()), 
+										  formatador.parse(parametrosWeb.get(1).getParametroInicial()),
+										  formatador.parse(parametrosWeb.get(1).getParametroFinal())};
+			} catch (NumberFormatException | ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			List list = this.getDao().executeNamedQuery("buscaExtrato", FinExtrato.class, parametros);
+			this.result.include("parametrosWeb", parametrosWeb).include("FinExtratoList", list);
 		}
 	}
 	

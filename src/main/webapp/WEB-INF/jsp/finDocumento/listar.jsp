@@ -1,6 +1,5 @@
 <%@include file="/config/header.jsp"%>
 <form action="<c:url value="/financeiro/documento"/>" class="form-modern" id="formlistarfindocumento" method="get" name="formlistarfindocumento" role="search">
-	<input name="parametrosWeb[1].campo" type="hidden" value="datacreate">
 	<nav class="band-nav-lube" role="complementary">
 		<div class="row" role="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
