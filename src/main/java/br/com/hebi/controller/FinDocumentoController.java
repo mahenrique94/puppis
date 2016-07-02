@@ -61,15 +61,11 @@ public class FinDocumentoController extends GenericController<FinDocumento> {
 			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
 			Calendar agora = Calendar.getInstance();
 			parametrosWeb = new ArrayList<ParametrosWeb>();
-			parametrosWeb.add(new ParametrosWeb());
+			parametrosWeb.add(new ParametrosWeb("id", "0", null, ">"));
 			parametrosWeb.add(new ParametrosWeb("datacreate", formatador.format(agora.getTime()), formatador.format(agora.getTime())));
 		} else {
 			parametrosWeb.get(1).setCampo("datacreate");
 		}
-		if (parametrosWeb.get(0).getCampo() == null)
-			parametrosWeb.get(0).setCampo("id");
-		if (parametrosWeb.get(0).getOperador() == null)
-			parametrosWeb.get(0).setOperador("is not null");
 		parametrosWeb.add(new ParametrosWeb("datapagamento", null, null, "is null"));
 		parametrosWeb.add(new ParametrosWeb("idtipooperacao.descricao", "ENTRADA", null, "="));
 		super.listar(obj, parametrosWeb);
