@@ -44,7 +44,7 @@
 		<button class="btn-der btn-xs" formaction="<c:url value="/financeiro/documento?obj.id=${obj.id}"/>" onclick="deletar(this);" type="button"><span class="icon-trash"></span>&nbsp;<fmt:message key="button.deletar"/></button>
 	</display:column>
 </display:table>
-<nav class="nav-group-lube nav-fixed-bottom" role="complementary">
+<nav class="nav-group-tie nav-fixed-bottom" role="complementary">
 	<ul>
 		<li><a href="<c:url value="/financeiro/documento/formulario"/>"><i class="icon-plus"></i>&nbsp;<fmt:message key="button.novo"/></a></li>
 	</ul>

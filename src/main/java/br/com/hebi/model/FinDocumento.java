@@ -92,7 +92,7 @@ public class FinDocumento implements Serializable, Cloneable {
 	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = false)
 	private Double saldo;
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Calendar dataemissao;
 	@Temporal(TemporalType.DATE)

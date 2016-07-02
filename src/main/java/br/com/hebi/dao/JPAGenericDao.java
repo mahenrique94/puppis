@@ -49,7 +49,7 @@ public class JPAGenericDao<T> implements GenericDao<T>{
 	public T find(Class clazz, List<ParametrosWeb> parametrosWeb) {
 		// TODO Auto-generated method stub
 		try {
-			return (T) this.em.createQuery(new ParametrosWebBuilder().execute(clazz, parametrosWeb)).setFirstResult(0).setMaxResults(1).getSingleResult();
+			return (T) this.em.createQuery(new ParametrosWebBuilder().createQuery(clazz, parametrosWeb)).setFirstResult(0).setMaxResults(1).getSingleResult();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -60,9 +60,9 @@ public class JPAGenericDao<T> implements GenericDao<T>{
 	@Override
 	public List<T> findAll(Class clazz, List<ParametrosWeb> parametrosWeb) {
 		// TODO Auto-generated method stub
-		int max = parametrosWeb != null ? parametrosWeb.get(0).getLimit() : 100;
+		int max = parametrosWeb != null && parametrosWeb.get(0).getLimit() != null ? parametrosWeb.get(0).getLimit() : 100;
 		try {
-			return this.em.createQuery(new ParametrosWebBuilder().execute(clazz, parametrosWeb)).setFirstResult(0).setMaxResults(max).getResultList();
+			return this.em.createQuery(new ParametrosWebBuilder().createQuery(clazz, parametrosWeb)).setFirstResult(0).setMaxResults(max).getResultList();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -74,7 +74,7 @@ public class JPAGenericDao<T> implements GenericDao<T>{
 	public List<T> findLimit(Class clazz, List<ParametrosWeb> parametrosWeb, Integer limite) {
 		// TODO Auto-generated method stub
 		try {
-			return this.em.createQuery(new ParametrosWebBuilder().execute(clazz, parametrosWeb)).setFirstResult(0).setMaxResults(limite).getResultList();
+			return this.em.createQuery(new ParametrosWebBuilder().createQuery(clazz, parametrosWeb)).setFirstResult(0).setMaxResults(limite).getResultList();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -85,7 +85,7 @@ public class JPAGenericDao<T> implements GenericDao<T>{
 	@Override
 	public List<T> findPagination(Class clazz, List<ParametrosWeb> parametrosWeb, Paginator paginator) {
 		try {
-			return this.em.createQuery(new ParametrosWebBuilder().execute(clazz, parametrosWeb)).setFirstResult(paginator.getFirst()).setMaxResults(paginator.getInterval()).getResultList();
+			return this.em.createQuery(new ParametrosWebBuilder().createQuery(clazz, parametrosWeb)).setFirstResult(paginator.getFirst()).setMaxResults(paginator.getInterval()).getResultList();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
