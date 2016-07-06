@@ -1,19 +1,22 @@
-[class^=bg-dashboard] {
+[class^=dashboard] {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;	
 }
-.bg-dashboard {
-	background-image: url(../img/dashboard/bg-dashboard.jpg);
+.dashboard {
+	background-image: url(../img/dashboard/dashboard.jpg);
 }
-.bg-dashboard-administrador {
-	background-image: url(../img/dashboard/bg-dashboard-administrador.jpg);
+.dashboard-administrador {
+	background-image: url(../img/dashboard/dashboard-administrador.jpg);
 }
-.bg-dashboard-cadastro {
-	background-image: url(../img/dashboard/bg-dashboard-cadastro.jpg);
+.dashboard-cadastro {
+	background-image: url(../img/dashboard/dashboard-cadastro.jpg);
 }
-.bg-dashboard-financeiro {
-	background-image: url(../img/dashboard/bg-dashboard-financeiro.jpg);
+.dashboard-comercio {
+	background-image: url(../img/dashboard/dashboard-comercio.jpg);
+}
+.dashboard-financeiro {
+	background-image: url(../img/dashboard/dashboard-financeiro.jpg);
 }
 .welcome {	
 	float: left;

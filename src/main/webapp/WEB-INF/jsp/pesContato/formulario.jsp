@@ -36,10 +36,10 @@
 			</div>
 		</div>
 	</section>
+	<nav class="nav-group-tie nav-fixed-bottom" role="complementary">
+		<ul>
+			<li><button title="<fmt:message key="button.salvar"/>" type="submit"><i class="icon-floppy"></i>&nbsp;<fmt:message key="button.salvar"/></button></li>
+		</ul>
+	</nav>
 </form>
-<nav class="nav-group-tie nav-fixed-bottom" role="complementary">
-	<ul>
-		<li><button form="formpescontato" title="<fmt:message key="button.salvar"/>" type="submit"><i class="icon-floppy"></i>&nbsp;<fmt:message key="button.salvar"/></button></li>
-	</ul>
-</nav>
 <%@include file="/config/libraries-js.jsp"%>

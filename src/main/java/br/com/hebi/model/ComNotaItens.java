@@ -30,8 +30,8 @@ public class ComNotaItens implements Serializable {
 	@JoinColumn(name = "idnota", referencedColumnName = "id", nullable = false)
 	private ComNota idnota;
 	@ManyToOne
-	@JoinColumn(name = "iditem", referencedColumnName = "id", nullable = false)
-	private PsProdutoServico iditem;
+	@JoinColumn(name = "idprodutoservico", referencedColumnName = "id", nullable = false)
+	private PsProdutoServico idprodutoservico;
 	@DecimalMin("0.0")
 	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = false)
@@ -92,11 +92,11 @@ public class ComNotaItens implements Serializable {
 	public void setIdnota(ComNota idnota) {
 		this.idnota = idnota;
 	}
-	public PsProdutoServico getIditem() {
-		return iditem;
+	public PsProdutoServico getIdprodutoservico() {
+		return idprodutoservico;
 	}
-	public void setIditem(PsProdutoServico iditem) {
-		this.iditem = iditem;
+	public void setIdprodutoservico(PsProdutoServico idprodutoservico) {
+		this.idprodutoservico = idprodutoservico;
 	}
 	public Double getValorunitario() {
 		return valorunitario;

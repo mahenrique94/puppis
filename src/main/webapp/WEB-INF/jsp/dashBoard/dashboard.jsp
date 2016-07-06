@@ -1,5 +1,5 @@
 <%@include file="/config/header-dashboard.jsp"%>
-	<main class="bg-dashboard" id="wrap" role="main">
+	<main class="dashboard" id="wrap" role="main">
 		<header class="header-default" role="banner">
 			<%@include file="/config/nav.jsp"%>	
 		</header>

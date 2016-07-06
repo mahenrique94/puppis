@@ -78,15 +78,15 @@ public class Estoque {
 	
 	public Estoque criaEstoque(ComNotaItens comNotaItens) {
 		Estoque estoque = new Estoque();
-		estoque.setIdgrupo(comNotaItens.getIditem().getIdclasse().getIdgrupo().getId());
-		estoque.setIdclasse(comNotaItens.getIditem().getIdclasse().getId());
-		estoque.setIdproduto(comNotaItens.getIditem().getId());
-		estoque.setValoranterior(comNotaItens.getIditem().getCusto().getValoranterior() == 0.0 ? comNotaItens.getValorunitario() : comNotaItens.getIditem().getCusto().getValorpago());
+		estoque.setIdgrupo(comNotaItens.getIdprodutoservico().getIdclasse().getIdgrupo().getId());
+		estoque.setIdclasse(comNotaItens.getIdprodutoservico().getIdclasse().getId());
+		estoque.setIdproduto(comNotaItens.getIdprodutoservico().getId());
+		estoque.setValoranterior(comNotaItens.getIdprodutoservico().getCusto().getValoranterior() == 0.0 ? comNotaItens.getValorunitario() : comNotaItens.getIdprodutoservico().getCusto().getValorpago());
 		estoque.setValorpago(comNotaItens.getValorunitario());
 		estoque.setPorclucro(comNotaItens.getPorclucro() != null ? comNotaItens.getPorclucro() : 0.0);
 		estoque.setValorunitario(comNotaItens.getValorunitario());
 		estoque.setQuantidade(comNotaItens.getQuantidade());
-		estoque.setQuantidadevendida(comNotaItens.getIditem().getEstoque().getQuantidadeven());
+		estoque.setQuantidadevendida(comNotaItens.getIdprodutoservico().getEstoque().getQuantidadeven());
 		return estoque;
 	}
 	

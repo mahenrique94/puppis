@@ -54,11 +54,11 @@
 			<c:import url="lista.jsp"/>
 		</c:if>
 	</section>
+	<nav class="nav-group-tie nav-fixed-bottom" role="complementary">
+		<ul>
+			<li><button title="<fmt:message key="button.pesquisar"/>" type="submit"><i class="icon-search"></i>&nbsp;<fmt:message key="button.pesquisar"/></button></li>
+			<li><button formaction="<c:url value="/financeiro/documento/processar"/>" title="<fmt:message key="button.processar"/>"><i class="icon-spin6"></i>&nbsp;<fmt:message key="button.processar"/></button></li>
+		</ul>
+	</nav>
 </form>
-<nav class="nav-group-tie nav-fixed-bottom" role="complementary">
-	<ul>
-		<li><button form="formfindocumento" title="<fmt:message key="button.pesquisar"/>" type="submit"><i class="icon-search"></i>&nbsp;<fmt:message key="button.pesquisar"/></button></li>
-		<li><button form="formfindocumento" formaction="<c:url value="/financeiro/documento/processar"/>" title="<fmt:message key="button.processar"/>"><i class="icon-spin6"></i>&nbsp;<fmt:message key="button.processar"/></button></li>
-	</ul>
-</nav>
 <%@include file="/config/footer.jsp"%>

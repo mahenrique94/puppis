@@ -1,6 +1,7 @@
 package br.com.hebi.controller;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import br.com.caelum.vraptor.Controller;
@@ -40,7 +41,7 @@ public class ComNotaController extends GenericController<ComNota> {
 			gerenciador.atualizaEstoque(item, estoque);
 			this.getDao().save(item);
 		}
-		obj.setAtualizada(true);
+		obj.setDataatualizacao(Calendar.getInstance());
 		super.salvar(obj);
 	}
 	

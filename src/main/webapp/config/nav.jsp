@@ -23,7 +23,9 @@
 						</li>
 					</ul>	
 				</li>
-				<li role="menuitem"><a href="#"><fmt:message key="nav.comercio"/></a></li>
+				<li role="menuitem"><a href="#"><fmt:message key="nav.comercio"/></a>
+					<li role="menuitem"><a href="<c:url value="/comercio/nota"/>"><fmt:message key="nav.comercio.nota"/></a></li>
+				</li>
 				<li role="menuitem"><a href="#"><fmt:message key="nav.financeiro"/></a>
 					<ul aria-haspopup="true" role="menubar">
 						<li role="menuitem"><a href="<c:url value="/financeiro/documento"/>"><fmt:message key="nav.financeiro.documento"/></a></li>
