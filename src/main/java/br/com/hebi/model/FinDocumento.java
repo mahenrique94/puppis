@@ -270,7 +270,7 @@ public class FinDocumento implements Serializable, Cloneable {
 		return this;
 	}
 	
-	public FinDocumento novoParcelamento(List<ParametrosWeb> parametrosWeb, FinFormaPagamento finFormaPagamento, int numeroParcela) {
+	public FinDocumento novoParcelamento(List<ParametrosWeb> parametrosWeb, FinFormaPagamento finFormaPagamento, int numeroParcela, int qtdMes) {
 		setDataemissao(DateFunction.stringToCalendar(parametrosWeb.get(6).getParametroInicial()));
 		setIdcontabancaria(new FinContaBancaria(Integer.parseInt(parametrosWeb.get(2).getParametroInicial())));
 		setIddefinicao(new PesDefinicao(Long.parseLong(parametrosWeb.get(1).getParametroInicial())));
@@ -283,13 +283,13 @@ public class FinDocumento implements Serializable, Cloneable {
 			setSerie(Integer.parseInt(parametrosWeb.get(5).getParametroInicial()));
 		setValortotal(Double.parseDouble(parametrosWeb.get(7).getParametroInicial()) / finFormaPagamento.getQuantidadeparcela());
 		setSaldo(getValortotal());
-		criarParcela(numeroParcela);
+		criarParcela(numeroParcela, qtdMes);
 		return this;
 	}
 	
-	public void criarParcela(int numeroParcela) {
+	public void criarParcela(int numeroParcela, int qtdMes) {
 		setDesdobramento(numeroParcela + "/" + getIdformapagamento().getQuantidadeparcela());
-		setDatavencimento(new Util().calcularDataVencimento(this, numeroParcela));
+		setDatavencimento(new Util().calcularDataVencimento(this, qtdMes));
 	}
 	
 	public void paga(double valor) {

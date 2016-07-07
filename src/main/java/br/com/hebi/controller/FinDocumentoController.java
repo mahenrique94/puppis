@@ -80,8 +80,10 @@ public class FinDocumentoController extends GenericController<FinDocumento> {
 			List<FinDocumento> documentos = new ArrayList<FinDocumento>();
 			FinFormaPagamento finFormaPagamento = (FinFormaPagamento) this.getDao().edit(new FinFormaPagamento(Integer.parseInt(parametrosWeb.get(0).getParametroInicial())));
 			int desdobramentoInicial = parametrosWeb.get(10).getParametroInicial() != null ? Integer.parseInt(parametrosWeb.get(10).getParametroInicial()) : 1;
+			int qtdMes = 1;
 			for (int i = desdobramentoInicial; i <= finFormaPagamento.getQuantidadeparcela(); i++) {
-				documentos.add(new FinDocumento().novoParcelamento(parametrosWeb, finFormaPagamento, i));
+				documentos.add(new FinDocumento().novoParcelamento(parametrosWeb, finFormaPagamento, i, qtdMes));
+				qtdMes++;
 			}
 			this.result.include("parametrosWeb", parametrosWeb).include("FinDocumentoList", documentos);
 		}

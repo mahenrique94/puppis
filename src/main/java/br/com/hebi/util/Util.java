@@ -7,9 +7,9 @@ import br.com.mhc.function.DateFunction;
 
 public class Util {
 
-	public Calendar calcularDataVencimento(FinDocumento finDocumento, int numeroParcela) {
-		if (finDocumento.getIdformapagamento().getDescricao().startsWith("CREDITO"))
-			return DateFunction.setMonthInDate(finDocumento.getDataemissao(), numeroParcela);
+	public Calendar calcularDataVencimento(FinDocumento finDocumento, int qtdMes) {
+		if (finDocumento.getIdformapagamento().getDescricao().startsWith("CREDITO") || finDocumento.getIdformapagamento().getDescricao().startsWith("FINANCIAMENTO"))
+			return DateFunction.setMonthInDate(finDocumento.getDataemissao(), qtdMes);
 		else
 			return DateFunction.setDaysInDate(finDocumento.getDataemissao(), finDocumento.getIdformapagamento().getIntervalo());
 	}
