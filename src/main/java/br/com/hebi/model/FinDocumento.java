@@ -281,7 +281,7 @@ public class FinDocumento implements Serializable, Cloneable {
 		setNumero(Long.parseLong(parametrosWeb.get(4).getParametroInicial()));
 		if (parametrosWeb.get(5).getParametroInicial() != null)
 			setSerie(Integer.parseInt(parametrosWeb.get(5).getParametroInicial()));
-		setValortotal(Double.parseDouble(parametrosWeb.get(7).getParametroInicial()) / finFormaPagamento.getQuantidadeparcela());
+		setValortotal(Double.parseDouble(parametrosWeb.get(7).getParametroInicial().replace(",", ".")) / finFormaPagamento.getQuantidadeparcela());
 		setSaldo(getValortotal());
 		criarParcela(numeroParcela);
 		return this;

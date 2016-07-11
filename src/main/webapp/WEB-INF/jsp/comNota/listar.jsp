@@ -21,9 +21,8 @@
 </form>
 <display:table class="table-default" export="false" id="obj" name="${ComNotaList}" requestURI="/nota">
 	<display:column headerScope="id" property="id" style="width: 50px;" titleKey="displaytag.id"/>
-	<display:column headerScope="idcliente.nomerazaosocial" property="idcliente.nomerazaosocial" titleKey="displaytag.nome"/>
-	<display:column headerScope="idfornecedor.nomerazaosocial" property="idfornecedor.nomerazaosocial" titleKey="displaytag.razao.social"/>
-	<display:column headerScope="idfuncionario.nome" property="idfuncionario.nome" titleKey="displaytag.funcionario"/>
+	<display:column headerScope="iddefinicao.idpessoa.nomerazaosocial" property="iddefinicao.idpessoa.nomerazaosocial" titleKey="displaytag.razao.social"/>
+	<display:column headerScope="idusuario.usuario" property="idusuario.usuario" titleKey="displaytag.usuario"/>
 	<display:column headerScope="idtipooperacao.descricao" property="idtipooperacao.descricao" style="width: 70px;" titleKey="displaytag.operacao"/>
 	<display:column style="width: 150px;text-align: center;">
 		<a class="btn-lower btn-xs" href="<c:url value="/comercio/nota/${obj.id}"/>"><span class="icon-pencil"></span>&nbsp;<fmt:message key="button.editar"/></a>
