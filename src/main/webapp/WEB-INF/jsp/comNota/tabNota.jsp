@@ -18,7 +18,7 @@
 		</div>
 		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
 			<label><fmt:message key="label.data.emissao"/></label>
-			<input class="form-data validate" maxlength="10" name="obj.dataemissao" pattern="data" type="text" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${obj.dataemissao.time}" type="date"/>">
+			<input class="form-data validate" maxlength="10" name="obj.dataemissao" onkeypress="format(this, event, dataMask);" pattern="data" type="text" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${obj.dataemissao.time}" type="date"/>">
 			<netsis:validationMessage name="obj.dataemissao"/>
 		</div>
 		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">

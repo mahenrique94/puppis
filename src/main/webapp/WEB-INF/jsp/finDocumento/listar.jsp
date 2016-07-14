@@ -10,13 +10,13 @@
 			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" role="separator">
 				<div class="form-data-group">
 					<span class="form-data-group-text"><fmt:message key="label.de"/></span>
-					<input class="form-data" maxlength="10" min="01-01-1970" name="parametrosWeb[1].parametroInicial" onkeypress="format(this, event, data);" pattern="data" type="text" value="${parametrosWeb[1].parametroInicial}">
+					<input class="form-data" maxlength="10" min="01-01-1970" name="parametrosWeb[1].parametroInicial" onkeypress="format(this, event, dataMask);" pattern="data" type="text" value="${parametrosWeb[1].parametroInicial}">
 				</div>
 			</div>
 			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" role="separator">
 				<div class="form-data-group">
 					<span class="form-data-group-text"><fmt:message key="label.ate"/></span>
-					<input class="form-data" maxlength="10" min="01-01-1970" name="parametrosWeb[1].parametroFinal" onkeypress="format(this, event, data);" pattern="data" type="text" value="${parametrosWeb[1].parametroFinal}">
+					<input class="form-data" maxlength="10" min="01-01-1970" name="parametrosWeb[1].parametroFinal" onkeypress="format(this, event, dataMask);" pattern="data" type="text" value="${parametrosWeb[1].parametroFinal}">
 				</div>
 			</div>
 			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" role="separator">
@@ -39,7 +39,7 @@
 	<display:column headerScope="idformapagamento.descricao" property="idformapagamento.descricao" titleKey="displaytag.forma.pagamento"/>
 	<display:column headerScope="iddefinicao.idpessoa.nomerazaosocial" property="iddefinicao.idpessoa.nomerazaosocial" titleKey="displaytag.pessoa"/>
 	<display:column headerScope="valortotal" property="valortotal" titleKey="displaytag.valor.total"/>
-	<display:column style="width: 150px;text-align: center;">
+	<display:column style="text-align: center;width: 165px;">
 		<a class="btn-lower btn-xs" href="<c:url value="/financeiro/documento/${obj.id}"/>"><span class="icon-pencil"></span>&nbsp;<fmt:message key="button.editar"/></a>
 		<button class="btn-der btn-xs" formaction="<c:url value="/financeiro/documento?obj.id=${obj.id}"/>" onclick="deletar(this);" type="button"><span class="icon-trash"></span>&nbsp;<fmt:message key="button.deletar"/></button>
 	</display:column>

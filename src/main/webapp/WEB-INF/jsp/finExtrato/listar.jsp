@@ -21,11 +21,11 @@
 				<div class="row" role="row">
 					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
 						<label><fmt:message key="label.data.emissao"/></label>
-						<input class="form-data validate" maxlength="10" min="01-01-1970" name="parametrosWeb[1].parametroInicial" onkeypress="format(this, event, data);" pattern="data" type="text" value="${parametrosWeb[1].parametroInicial}">
+						<input class="form-data validate" maxlength="10" min="01-01-1970" name="parametrosWeb[1].parametroInicial" onkeypress="format(this, event, dataMask);" pattern="data" type="text" value="${parametrosWeb[1].parametroInicial}">
 					</div>
 					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
 						<label><fmt:message key="label.ate"/></label>
-						<input class="form-data validate" maxlength="10" min="01-01-1970" name="parametrosWeb[1].parametroFinal" onkeypress="format(this, event, data);" pattern="data" type="text" value="${parametrosWeb[1].parametroFinal}">
+						<input class="form-data validate" maxlength="10" min="01-01-1970" name="parametrosWeb[1].parametroFinal" onkeypress="format(this, event, dataMask);" pattern="data" type="text" value="${parametrosWeb[1].parametroFinal}">
 					</div>
 				</div>
 			</section>

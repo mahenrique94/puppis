@@ -57,7 +57,7 @@
 			</div>
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
 				<label><fmt:message key="label.data.emissao"/></label>
-				<input class="form-data validate" maxlength="10" min="01-01-1970" name="parametrosWeb[6].parametroInicial" onkeypress="format(this, event, data);" pattern="data" required type="text" value="${parametrosWeb[6].parametroInicial}">
+				<input class="form-data validate" maxlength="10" min="01-01-1970" name="parametrosWeb[6].parametroInicial" onkeypress="format(this, event, dataMask);" pattern="data" required type="text" value="${parametrosWeb[6].parametroInicial}">
 			</div>
 		</div>
 		<div class="row" role="row">

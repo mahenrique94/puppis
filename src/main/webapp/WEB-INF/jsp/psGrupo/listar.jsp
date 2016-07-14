@@ -22,7 +22,7 @@
 <display:table class="table-default" export="false" id="obj" name="${PsGrupoList}" requestURI="/produto-servico/grupo">
 	<display:column headerScope="id" property="id" style="width: 50px;" titleKey="displaytag.id"/>
 	<display:column headerScope="descricao" property="descricao" titleKey="displaytag.descricao"/>
-	<display:column style="width: 150px;text-align: center;">
+	<display:column style="text-align: center;width: 165px;">
 		<a class="btn-lower btn-xs" href="<c:url value="/produto-servico/grupo/${obj.id}"/>"><span class="icon-pencil"></span>&nbsp;<fmt:message key="button.editar"/></a>
 		<button class="btn-der btn-xs" formaction="<c:url value="/produto-servico/grupo?obj.id=${obj.id}"/>" onclick="deletar(this);" type="button"><span class="icon-trash"></span>&nbsp;<fmt:message key="button.deletar"/></button>
 	</display:column>

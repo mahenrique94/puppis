@@ -8,7 +8,7 @@
 <div class="row" role="row">
 	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" role="separator">
 		<label><fmt:message key="label.cep"/></label>
-		<input class="form-data validate" maxlength="9" name="obj.endereco.cep" onkeypress="format(this, event, cep);" pattern="cep" required type="text" value="${obj.endereco.cep}">
+		<input class="form-data validate" maxlength="9" name="obj.endereco.cep" onkeypress="format(this, event, cepMask);" pattern="cep" required type="text" value="${obj.endereco.cep}">
 		<netsis:validationMessage name="obj.endereco.cep"/>
 	</div>
 	<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" role="separator">

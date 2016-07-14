@@ -25,7 +25,7 @@
 	<display:column headerScope="nomefantasia" property="nomefantasia" titleKey="displaytag.nome.fantasia"/>
 	<display:column headerScope="documento.cpfcnpj" property="documento.cpfcnpj" style="width: 110px;" titleKey="displaytag.cpf.cnpj"/>
 	<display:column headerScope="documento.rginscricaoestadual" property="documento.rginscricaoestadual" style="width: 130px;" titleKey="displaytag.rg.inscricao.estadual"/>
-	<display:column style="text-align: center;width: 150px;">
+	<display:column style="text-align: center;width: 165px;">
 		<a class="btn-lower btn-xs" href="<c:url value="/administrador/comercio/${obj.id}"/>"><i class="icon-pencil"></i>&nbsp;<fmt:message key="button.editar"/></a>
 		<button class="btn-der btn-xs" formaction="<c:url value="/administrador/comercio?obj.id=${obj.id}"/>" onclick="deletar(this);" type="button"><span class="icon-trash"></span>&nbsp;<fmt:message key="button.deletar"/></button>
 	</display:column>

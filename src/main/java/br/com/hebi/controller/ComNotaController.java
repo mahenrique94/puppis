@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
@@ -43,6 +45,31 @@ public class ComNotaController extends GenericController<ComNota> {
 		}
 		obj.setDataatualizacao(Calendar.getInstance());
 		super.salvar(obj);
+	}
+	
+	@Post("calcular")
+	public void calcular(ComNota obj) {
+		this.setRedirect(false);
+		obj = (ComNota) this.getDao().edit(obj);
+		double icms = 0.0;
+		double ipi = 0.0;
+		double desconto = 0.0;
+		double total = 0.0;
+		if (obj.getItens() != null && !obj.getItens().isEmpty()) {
+			for (ComNotaItens item : obj.getItens()) {
+				icms += item.getPorcicms();
+				ipi += item.getPorcipi();
+				desconto += item.getPorcdesconto();
+				total += item.getValortotal();
+			}
+		}
+		obj.getCusto().setPorcicms(icms);
+		obj.getCusto().setPorcipi(ipi);
+		obj.getCusto().setPorcdesconto(desconto);
+		obj.getCusto().setValortotal(total);
+		super.salvar(obj);
+		this.result.redirectTo(this).editar(obj);
+		
 	}
 	
 	@Get("{obj.id}")

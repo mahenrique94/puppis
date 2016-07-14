@@ -38,7 +38,7 @@
 		<c:if test="${obj.salvar == true}"><i class="color-success icon-ok"></i></c:if>
 		<c:if test="${obj.salvar == false}"><i class="color-error icon-cancel"></i></c:if>
 	</display:column>
-	<display:column style="text-align: center;width: 150px;">
+	<display:column style="text-align: center;width: 165px;">
 		<a class="btn-lower btn-xs" href="<c:url value="/administrador/usuario/tipo-de-acesso/${obj.id}"/>"><i class="icon-pencil"></i>&nbsp;<fmt:message key="button.editar"/></a>
 		<button class="btn-der btn-xs" formaction="<c:url value="/administrador/usuario/tipo-de-acesso?obj.id=${obj.id}"/>" onclick="deletar(this);" type="button"><span class="icon-trash"></span>&nbsp;<fmt:message key="button.deletar"/></button>
 	</display:column>

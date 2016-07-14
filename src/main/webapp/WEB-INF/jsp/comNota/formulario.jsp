@@ -14,7 +14,7 @@
 		<ul>
 			<li><button title="<fmt:message key="button.salvar"/>" type="submit"><i class="icon-floppy"></i>&nbsp;<fmt:message key="button.salvar"/></button></li>
 			<li><a href="<c:url value="/comercio/nota"/>" title="<fmt:message key="button.pesquisar"/>"><i class="icon-search"></i>&nbsp;<fmt:message key="button.pesquisar"/></a></li>
-			<li><button formaction="<c:url value="/comercio/nota/calcula"/>" title="<fmt:message key="button.calcular"/>" type="submit"><i class="icon-calc"></i>&nbsp;<fmt:message key="button.calcular"/></button></li>
+			<li><button formaction="<c:url value="/comercio/nota/calcular"/>" title="<fmt:message key="button.calcular"/>" type="submit"><i class="icon-calc"></i>&nbsp;<fmt:message key="button.calcular"/></button></li>
 			<li><button formaction="<c:url value="/comercio/nota/atualizar"/>" title="<fmt:message key="button.processar"/>" type="submit"><i class="icon-arrows-cw"></i>&nbsp;<fmt:message key="button.atualizar"/></button></li>
 		</ul>
 	</nav>

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.caelum.vraptor.Controller;
+import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
@@ -15,15 +16,13 @@ import br.com.mhc.parametrosweb.ParametrosWeb;
 @Path("comercio/nota-itens")
 public class ComNotaItensController extends GenericController<ComNotaItens> {
 
-	@Get("deletar/{obj.id}")
+	@Delete("")
 	@Override
 	public void deletar(ComNotaItens obj) {
 		// TODO Auto-generated method stub
-		obj = (ComNotaItens) this.edit(obj);
-		Long idNota = obj.getIdnota().getId();
 		this.setRedirect(false);
 		super.deletar(obj);
-		this.result.redirectTo("/nota/editar/" + idNota);
+		this.result.nothing();
 	}
 	
 	@Get("{obj.id}")
@@ -54,7 +53,7 @@ public class ComNotaItensController extends GenericController<ComNotaItens> {
 	public void salvar(ComNotaItens obj) {
 		// TODO Auto-generated method stub
 		this.setRedirect(false);
-		obj.calculaTotal(obj);
+		obj.calculaTotal();
 		super.salvar(obj);
 		this.result.redirectTo(ComNotaController.class).editar(obj.getIdnota());
 	}

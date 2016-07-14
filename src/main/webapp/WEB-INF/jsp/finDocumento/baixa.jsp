@@ -35,11 +35,11 @@
 					</div>
 					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
 						<label><fmt:message key="label.data.vencimento"/></label>
-						<input class="form-data validate" maxlength="10" min="01-01-1970" name="parametrosWeb[3].parametroInicial" onkeypress="format(this, event, data);" pattern="data" type="text" value="${parametrosWeb[3].parametroInicial}">
+						<input class="form-data validate" maxlength="10" min="01-01-1970" name="parametrosWeb[3].parametroInicial" onkeypress="format(this, event, dataMask);" pattern="data" type="text" value="${parametrosWeb[3].parametroInicial}">
 					</div>
 					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
 						<label><fmt:message key="label.ate"/></label>
-						<input class="form-data validate" maxlength="10" min="01-01-1970" name="parametrosWeb[3].parametroFinal" onkeypress="format(this, event, data);" pattern="data" type="text" value="${parametrosWeb[3].parametroFinal}">
+						<input class="form-data validate" maxlength="10" min="01-01-1970" name="parametrosWeb[3].parametroFinal" onkeypress="format(this, event, dataMask);" pattern="data" type="text" value="${parametrosWeb[3].parametroFinal}">
 					</div>
 				</div>
 				<div class="row" role="row">

@@ -58,12 +58,12 @@
 		</div>
 		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
 			<label><fmt:message key="label.data.emissao"/></label>
-			<input class="form-data validate" maxlength="10" min="01-01-1970" name="obj.dataemissao" onkeypress="format(this, event, data);" pattern="data" required type="text" value="<fmt:formatDate pattern="dd/MM/yyyy" type="date" value="${obj.dataemissao.time}"/>">
+			<input class="form-data validate" maxlength="10" min="01-01-1970" name="obj.dataemissao" onkeypress="format(this, event, dataMask);" pattern="data" required type="text" value="<fmt:formatDate pattern="dd/MM/yyyy" type="date" value="${obj.dataemissao.time}"/>">
 			<netsis:validationMessage name="obj.dataemissao"/>
 		</div>
 		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
 			<label><fmt:message key="label.data.vencimento"/></label>
-			<input class="form-data validate" maxlength="10" min="01-01-1970" name="obj.datavencimento" onkeypress="format(this, event, data);" required type="text" value="<fmt:formatDate pattern="dd/MM/yyyy" type="date" value="${obj.datavencimento.time}"/>">
+			<input class="form-data validate" maxlength="10" min="01-01-1970" name="obj.datavencimento" onkeypress="format(this, event, dataMask);" required type="text" value="<fmt:formatDate pattern="dd/MM/yyyy" type="date" value="${obj.datavencimento.time}"/>">
 			<netsis:validationMessage name="obj.datavencimento"/>
 		</div>
 	</div>

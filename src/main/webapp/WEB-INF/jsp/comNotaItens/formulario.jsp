@@ -2,7 +2,7 @@
 <%@include file="/config/libraries-style.jsp"%>
 <c:set var="readOnly" value="${obj.id != null ? 'readonly' : ''}"/>
 <c:set var="disabled" value="${obj.id != null ? 'disabled' : ''}"/>
-<form action="<c:url value="/comericio/nota-itens"/>" class="form-modern" id="formcomnotaitens" method="post" name="formcomnotaitens" onsubmit="return enviarPost(this);" role="form">
+<form action="<c:url value="/comercio/nota-itens"/>" class="form-modern" id="formcomnotaitens" method="post" name="formcomnotaitens" onsubmit="return enviarPost(this);" role="form">
 	<input name="obj.id" type="hidden" value="${obj.id}">
 	<input name="obj.idnota.id" type="hidden" value="${obj.idnota.id}">
 	<nav class="band-nav-lube" role="complementary">
@@ -23,7 +23,7 @@
 		<div class="row" role="row">
 			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
 				<label><fmt:message key="label.quantidade"/></label>
-				<input class="form-data validate" maxlength="10" name="obj.quantidade" pattern="numeric10_2" required type="text" value="${obj.quantidade}">
+				<input class="form-data validate" maxlength="10" name="obj.quantidade" pattern="numeric10_2" required type="text" value="<fmt:formatNumber pattern="0.00" type="currency" value="${obj.quantidade}"/>">
 				<netsis:validationMessage name="obj.quantidade"/>
 			</div>
 			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
