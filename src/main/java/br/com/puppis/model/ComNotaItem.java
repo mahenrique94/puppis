@@ -20,8 +20,8 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 
 @Entity
-@Table(name = "com_notaitens")
-public class ComNotaItens implements Serializable {
+@Table(name = "com_notaitem")
+public class ComNotaItem implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -67,7 +67,7 @@ public class ComNotaItens implements Serializable {
 	@Column(nullable = false)
 	private Calendar dataupdate;
 	
-	public ComNotaItens() {
+	public ComNotaItem() {
 		setPorcdesconto(0.0);
 		setPorcicms(0.0);
 		setPorcipi(0.0);
@@ -75,7 +75,7 @@ public class ComNotaItens implements Serializable {
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
 	}
-	public ComNotaItens(Long id) {
+	public ComNotaItem(Long id) {
 		this();
 		setId(id);
 	}
@@ -157,8 +157,7 @@ public class ComNotaItens implements Serializable {
 		double desconto = (getPorcdesconto() / 100) * basePorcentagem();
 		double icms = (getPorcicms() / 100) * basePorcentagem();
 		double ipi = (getPorcipi() / 100) * basePorcentagem();
-		double lucro = (getPorclucro() / 100) * basePorcentagem();
-		double total = ((getQuantidade() * getValorunitario()) + icms + ipi + lucro) - desconto;
+		double total = ((getQuantidade() * getValorunitario()) + icms + ipi) - desconto;
 		setValortotal(total);
 	}
 	
@@ -170,6 +169,9 @@ public class ComNotaItens implements Serializable {
 	}
 	public double getDesconto() {
 		return (getPorcdesconto() / 100) * getValorunitario();
+	}
+	public double getValorVenda() {
+		return ((getPorclucro() / 100) * getValorunitario()) + getValorunitario();
 	}
 	
 	private double basePorcentagem() {

@@ -45,10 +45,6 @@ public class PsEstoque implements Serializable {
 	@DecimalMin("0.0")
 	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = true)
-	private Double quantidadeven;
-	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
-	@Column(nullable = true)
 	private Double quantidademax;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
@@ -61,7 +57,6 @@ public class PsEstoque implements Serializable {
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
 		setQuantidade(0.0);
-		setQuantidadeven(0.0);
 	}
 	public PsEstoque(Long id) {
 		this();
@@ -92,12 +87,6 @@ public class PsEstoque implements Serializable {
 	public void setQuantidademin(Double quantidademin) {
 		this.quantidademin = quantidademin;
 	}
-	public Double getQuantidadeven() {
-		return quantidadeven;
-	}
-	public void setQuantidadeven(Double quantidadeven) {
-		this.quantidadeven = quantidadeven;
-	}
 	public Double getQuantidademax() {
 		return quantidademax;
 	}
@@ -121,7 +110,6 @@ public class PsEstoque implements Serializable {
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
 		setQuantidade(0.0);
-		setQuantidadeven(0.0);
 	}
 	
 }

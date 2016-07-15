@@ -1,10 +1,7 @@
 package br.com.puppis.controller;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-
-import javax.inject.Inject;
 
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
@@ -12,14 +9,8 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.interceptor.IncludeParameters;
 import br.com.mhc.parametrosweb.ParametrosWeb;
-import br.com.mhc.parametrosweb.ParametrosWebBuilder;
-import br.com.puppis.estoque.Compra;
-import br.com.puppis.estoque.Estoque;
-import br.com.puppis.estoque.GerenciadorEstoque;
-import br.com.puppis.estoque.Venda;
 import br.com.puppis.model.ComNota;
-import br.com.puppis.model.ComNotaItens;
-import br.com.puppis.model.PsProdutoServico;
+import br.com.puppis.model.ComNotaItem;
 
 @Controller
 @Path("comercio/nota")
@@ -27,24 +18,7 @@ public class ComNotaController extends GenericController<ComNota> {
 	
 	@Post("atualizar")
 	public void atualizar(ComNota obj) {
-		Estoque estoque = new Estoque();
-		GerenciadorEstoque gerenciador;
-		if (obj.getIdtipooperacao().getTipo().toString().equals("E"))
-			gerenciador = new Compra();
-		else
-			gerenciador = new Venda();
-		List<ParametrosWeb> parametrosWeb = new ArrayList<ParametrosWeb>();
-		parametrosWeb.add(new ParametrosWeb("idnota", obj.getId().toString()));
-		List<ComNotaItens> itens = this.getDao().findAll(ComNotaItens.class, parametrosWeb);
-		for (ComNotaItens comNotaItens : itens) {
-			estoque = estoque.criaEstoque(comNotaItens);
-			PsProdutoServico item = new PsProdutoServico(estoque.getIdproduto());
-			item = (PsProdutoServico) this.getDao().edit(item); 
-			gerenciador.atualizaEstoque(item, estoque);
-			this.getDao().save(item);
-		}
-		obj.setDataatualizacao(Calendar.getInstance());
-		super.salvar(obj);
+		
 	}
 	
 	@Post("calcular")
@@ -56,7 +30,7 @@ public class ComNotaController extends GenericController<ComNota> {
 		double desconto = 0.0;
 		double total = 0.0;
 		if (obj.getItens() != null && !obj.getItens().isEmpty()) {
-			for (ComNotaItens item : obj.getItens()) {
+			for (ComNotaItem item : obj.getItens()) {
 				icms += item.getPorcicms();
 				ipi += item.getPorcipi();
 				desconto += item.getPorcdesconto();
@@ -86,7 +60,7 @@ public class ComNotaController extends GenericController<ComNota> {
 		if (parametrosWeb == null) {
 			parametrosWeb = new ArrayList<ParametrosWeb>();
 		} 
-		parametrosWeb.add(new ParametrosWeb("atualizada", "T", "<>"));
+		parametrosWeb.add(new ParametrosWeb("dataatualizacao", null, null, "is not null"));
 		super.listar(obj, parametrosWeb);
 	}
 	

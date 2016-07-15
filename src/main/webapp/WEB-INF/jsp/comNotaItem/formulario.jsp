@@ -2,7 +2,7 @@
 <%@include file="/config/libraries-style.jsp"%>
 <c:set var="readOnly" value="${obj.id != null ? 'readonly' : ''}"/>
 <c:set var="disabled" value="${obj.id != null ? 'disabled' : ''}"/>
-<form action="<c:url value="/comercio/nota-itens"/>" class="form-modern" id="formcomnotaitens" method="post" name="formcomnotaitens" onsubmit="return enviarPost(this);" role="form">
+<form action="<c:url value="/comercio/nota-item"/>" class="form-modern" id="formcomnotaitem" method="post" name="formcomnotaitem" onsubmit="return enviarPost(this);" role="form">
 	<input name="obj.id" type="hidden" value="${obj.id}">
 	<input name="obj.idnota.id" type="hidden" value="${obj.idnota.id}">
 	<nav class="band-nav-lube" role="complementary">

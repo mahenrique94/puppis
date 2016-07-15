@@ -37,7 +37,7 @@ public class PsCusto implements Serializable {
 	@DecimalMin("0.0")
 	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = false)
-	private Double valorvenda;
+	private Double valor;
 	@DecimalMin("0.0")
 	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = true)
@@ -46,22 +46,6 @@ public class PsCusto implements Serializable {
 	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = true)
 	private Double valormax;
-	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
-	@Column(nullable = false)
-	private Double valorpago;
-	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
-	@Column(nullable = false)
-	private Double valortotal;
-	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
-	@Column(nullable = true)
-	private Double valoranterior;
-	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
-	@Column(nullable = false)
-	private Double porclucro;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Calendar datacreate;
@@ -72,11 +56,7 @@ public class PsCusto implements Serializable {
 	public PsCusto() {
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
-		setPorclucro(0.0);
-		setValoranterior(0.0);
-		setValorvenda(0.0);
-		setValorpago(0.0);
-		setValortotal(0.0);
+		setValor(0.0);
 	}
 	public PsCusto(Long id) {
 		this();
@@ -95,12 +75,6 @@ public class PsCusto implements Serializable {
 	public void setIdprodutoservico(PsProdutoServico idprodutoservico) {
 		this.idprodutoservico = idprodutoservico;
 	}
-	public Double getValorvenda() {
-		return valorvenda;
-	}
-	public void setValorvenda(Double valorvenda) {
-		this.valorvenda = valorvenda;
-	}
 	public Double getValormin() {
 		return valormin;
 	}
@@ -113,23 +87,11 @@ public class PsCusto implements Serializable {
 	public void setValormax(Double valormax) {
 		this.valormax = valormax;
 	}
-	public Double getValorpago() {
-		return valorpago;
+	public Double getValor() {
+		return valor;
 	}
-	public void setValorpago(Double valorpago) {
-		this.valorpago = valorpago;
-	}
-	public Double getValortotal() {
-		return valortotal;
-	}
-	public void setValortotal(Double valortotal) {
-		this.valortotal = valortotal;
-	}
-	public Double getValoranterior() {
-		return valoranterior;
-	}
-	public void setValoranterior(Double valoranterior) {
-		this.valoranterior = valoranterior;
+	public void setValor(Double valor) {
+		this.valor = valor;
 	}
 	public Calendar getDatacreate() {
 		return datacreate;
@@ -143,21 +105,11 @@ public class PsCusto implements Serializable {
 	public void setDataupdate(Calendar dataupdate) {
 		this.dataupdate = dataupdate;
 	}
-	public Double getPorclucro() {
-		return porclucro;
-	}
-	public void setPorclucro(Double porclucro) {
-		this.porclucro = porclucro;
-	}
 	
 	public void novo() {
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
-		setPorclucro(0.0);
-		setValoranterior(0.0);
-		setValorvenda(0.0);
-		setValorpago(0.0);
-		setValortotal(0.0);
+		setValor(0.0);
 	}
 	
 }

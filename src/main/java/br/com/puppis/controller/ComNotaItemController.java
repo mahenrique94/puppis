@@ -10,15 +10,15 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.interceptor.IncludeParameters;
 import br.com.mhc.parametrosweb.ParametrosWeb;
-import br.com.puppis.model.ComNotaItens;
+import br.com.puppis.model.ComNotaItem;
 
 @Controller
-@Path("comercio/nota-itens")
-public class ComNotaItensController extends GenericController<ComNotaItens> {
+@Path("comercio/nota-item")
+public class ComNotaItemController extends GenericController<ComNotaItem> {
 
 	@Delete("")
 	@Override
-	public void deletar(ComNotaItens obj) {
+	public void deletar(ComNotaItem obj) {
 		// TODO Auto-generated method stub
 		this.setRedirect(false);
 		super.deletar(obj);
@@ -27,35 +27,35 @@ public class ComNotaItensController extends GenericController<ComNotaItens> {
 	
 	@Get("{obj.id}")
 	@Override
-	public void editar(ComNotaItens obj) {
+	public void editar(ComNotaItem obj) {
 		// TODO Auto-generated method stub
 		super.editar(obj);
 	}
 	
 	@Get("formulario/{obj.idnota.id}")
 	@Override
-	public void formulario(ComNotaItens obj) {
+	public void formulario(ComNotaItem obj) {
 		// TODO Auto-generated method stub
 		this.result.include("obj", obj);
 		super.formulario(obj);
 	}
 	
 	@Get("loadgrid/{obj.idnota.id}")
-	public void loadGrid(ComNotaItens obj) {
+	public void loadGrid(ComNotaItem obj) {
 		List<ParametrosWeb> parametrosWeb = new ArrayList<ParametrosWeb>();
-		parametrosWeb.add(new ParametrosWeb("idnota", obj.getIdnota().getId().toString()));
+		parametrosWeb.add(new ParametrosWeb("idnota.id", obj.getIdnota().getId().toString()));
 		this.listar(obj, parametrosWeb);
 	}
 
 	@Post("")
 	@IncludeParameters
 	@Override
-	public void salvar(ComNotaItens obj) {
+	public void salvar(ComNotaItem obj) {
 		// TODO Auto-generated method stub
 		this.setRedirect(false);
 		obj.calculaTotal();
 		super.salvar(obj);
-		this.result.redirectTo(ComNotaController.class).editar(obj.getIdnota());
+		this.result.nothing();
 	}
 	
 }

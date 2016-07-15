@@ -123,9 +123,9 @@ public class ComNotaCusto implements Serializable {
 		this.dataupdate = dataupdate;
 	}
 
-	public void calcularTotal(ComNotaCusto obj, List<ComNotaItens> itens) {
+	public void calcularTotal(ComNotaCusto obj, List<ComNotaItem> itens) {
 		double totalItens = 0.0;
-		for(ComNotaItens item : itens) {
+		for(ComNotaItem item : itens) {
 			totalItens += item.getValortotal();
 		}
 		double desconto = ((obj.getPorcdesconto() != null ? obj.getPorcdesconto() : 0.0) / 100) * totalItens;

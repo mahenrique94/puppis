@@ -66,7 +66,7 @@ public class ComNota implements Serializable {
 	private ComNotaCusto custo;
 	@OneToMany
 	@JoinColumn(name="idnota", referencedColumnName = "id", insertable = false, updatable = false)
-	private List<ComNotaItens> itens;
+	private List<ComNotaItem> itens;
 	
 	public ComNota() {
 		setDatacreate(Calendar.getInstance());
@@ -149,10 +149,10 @@ public class ComNota implements Serializable {
 	public void setCusto(ComNotaCusto custo) {
 		this.custo = custo;
 	}
-	public List<ComNotaItens> getItens() {
+	public List<ComNotaItem> getItens() {
 		return itens;
 	}
-	public void setItens(List<ComNotaItens> itens) {
+	public void setItens(List<ComNotaItem> itens) {
 		this.itens = itens;
 	}
 	
