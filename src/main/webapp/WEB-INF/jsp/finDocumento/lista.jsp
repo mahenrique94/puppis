@@ -14,7 +14,7 @@
 	</c:if>
 	<display:column headerScope="saldo" property="saldo" titleKey="displaytag.saldo"/>
 	<c:if test="${obj.iddocumento == null}">
-		<display:column style="text-align: center;width: 310px;">
+		<display:column style="text-align: center;width: 330px;">
 			<input class="form-data" disabled name="obj[${obj_rowNum}].valortotal" placeholder="Valor" style="margin-top: 0;width: 100px;" type="text">
 			<input class="form-data" disabled name="obj[${obj_rowNum}].valordesconto" placeholder="Descontos" style="margin-top: 0;width: 100px;" type="text">
 			<input class="form-data" disabled name="obj[${obj_rowNum}].valorjuros" placeholder="Juros" style="margin-top: 0;width: 100px;" type="text">

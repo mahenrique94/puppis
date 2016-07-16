@@ -1,7 +1,11 @@
 package br.com.puppis.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
@@ -18,6 +22,9 @@ import br.com.puppis.model.ComNotaItem;
 @Path("comercio/nota")
 public class ComNotaController extends GenericController<ComNota> {
 	
+	@Inject
+	private FinDocumentoController finDocumentoController;
+	
 	@Post("atualizar")
 	public void atualizar(ComNota obj) {
 		obj = (ComNota) this.getDao().edit(obj);
@@ -25,6 +32,8 @@ public class ComNotaController extends GenericController<ComNota> {
 		for (ComNotaItem item : obj.getItens()) {
 			gerenciador.gerencia(this.getDao(), item.getIdprodutoservico().getId(), item.getQuantidade(), item.getValorVenda());
 		}
+		finDocumentoController.atualizaFinanceiro(criaParametrosAtualizarFinanceiro(obj));
+		obj.setDataatualizacao(Calendar.getInstance());
 		this.result.include("mensagem", "Nota atualizada com sucesso");
 		this.result.redirectTo(this).listar(obj, null);
 	}
@@ -82,6 +91,23 @@ public class ComNotaController extends GenericController<ComNota> {
 			obj.getCusto().calcularTotal(obj.getCusto(), comNota.getItens());
 		}
 		super.salvar(obj);
+	}
+	
+	private List<ParametrosWeb> criaParametrosAtualizarFinanceiro(ComNota obj) {
+		// TODO Auto-generated method stub
+		List<ParametrosWeb> parametrosWeb = new ArrayList<ParametrosWeb>();
+		parametrosWeb.add(new ParametrosWeb(null, obj.getCusto().getIdformapagamento().getId().toString())); // FORMAPAGAMENTO
+		parametrosWeb.add(new ParametrosWeb(null, obj.getIddefinicao().getId().toString())); // DEFINICAO
+		parametrosWeb.add(new ParametrosWeb(null, "1")); // CONTABANCARIA
+		parametrosWeb.add(new ParametrosWeb(null, "1")); // TIPODOCUMENTO, 1 = CUPOM FISCAL
+		parametrosWeb.add(new ParametrosWeb(null, obj.getNumero() != null ? obj.getNumero().toString() : obj.getId().toString())); // NUMERODOCUMENTO
+		parametrosWeb.add(new ParametrosWeb(null, obj.getSerie().toString())); // SERIE
+		parametrosWeb.add(new ParametrosWeb(null, obj.getDataemissao() != null ? new SimpleDateFormat("dd/MM/yyyy").format(obj.getDataemissao().getTime()) : new SimpleDateFormat("dd/MM/yyyy").format(obj.getDatacreate().getTime()))); // DATAEMISSAO
+		parametrosWeb.add(new ParametrosWeb(null, obj.getCusto().getValortotal().toString())); // VALORTOTAL
+		parametrosWeb.add(new ParametrosWeb(null, "0")); // HISTORICO, 0 = EM BRANCO
+		parametrosWeb.add(new ParametrosWeb(null, "3")); // OPERACAO, 3 = ENTRADA FINANCEIRO
+		parametrosWeb.add(new ParametrosWeb(null, null)); // DESDOBRAMENTOINICIAL
+		return parametrosWeb;
 	}
 	
 }

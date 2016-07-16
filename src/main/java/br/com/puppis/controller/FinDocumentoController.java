@@ -77,12 +77,7 @@ public class FinDocumentoController extends GenericController<FinDocumento> {
 	@Path("parcelamento")
 	public void parcelamento(List<ParametrosWeb> parametrosWeb) {
 		if (parametrosWeb != null) {
-			List<FinDocumento> documentos = new ArrayList<FinDocumento>();
-			FinFormaPagamento finFormaPagamento = (FinFormaPagamento) this.getDao().edit(new FinFormaPagamento(Integer.parseInt(parametrosWeb.get(0).getParametroInicial())));
-			int desdobramentoInicial = parametrosWeb.get(10).getParametroInicial() != null ? Integer.parseInt(parametrosWeb.get(10).getParametroInicial()) : 1;
-			for (int i = desdobramentoInicial; i <= finFormaPagamento.getQuantidadeparcela(); i++) {
-				documentos.add(new FinDocumento().novoParcelamento(parametrosWeb, finFormaPagamento, i));
-			}
+			List<FinDocumento> documentos = geraDocumentos(parametrosWeb);
 			this.result.include("parametrosWeb", parametrosWeb).include("FinDocumentoList", documentos);
 		}
 	}
@@ -92,7 +87,7 @@ public class FinDocumentoController extends GenericController<FinDocumento> {
 	public void parcelamentoConfirmar(List<FinDocumento> finDocumentoList) {
 		if (finDocumentoList != null) {
 			for (FinDocumento finDocumento : finDocumentoList) {
-				this.getDao().save(finDocumento);
+				criaDocumento(finDocumento);
 			}
 		}
 		this.result.redirectTo(this).parcelamento(null);
@@ -116,6 +111,27 @@ public class FinDocumentoController extends GenericController<FinDocumento> {
 	public void salvar(FinDocumento obj) {
 		// TODO Auto-generated method stub
 		super.salvar(obj.novo());
+	}
+	
+	protected void atualizaFinanceiro(List<ParametrosWeb> parametrosWeb) {
+		List<FinDocumento> documentos = geraDocumentos(parametrosWeb);
+		for (FinDocumento finDocumento : documentos) {
+			criaDocumento(finDocumento);
+		}
+	}
+	
+	private List<FinDocumento> geraDocumentos(List<ParametrosWeb> parametrosWeb) {
+		List<FinDocumento> documentos = new ArrayList<FinDocumento>();
+		FinFormaPagamento finFormaPagamento = (FinFormaPagamento) this.getDao().edit(new FinFormaPagamento(Integer.parseInt(parametrosWeb.get(0).getParametroInicial())));
+		int desdobramentoInicial = parametrosWeb.get(10).getParametroInicial() != null ? Integer.parseInt(parametrosWeb.get(10).getParametroInicial()) : 1;
+		for (int i = desdobramentoInicial; i <= finFormaPagamento.getQuantidadeparcela(); i++) {
+			documentos.add(new FinDocumento().novoParcelamento(parametrosWeb, finFormaPagamento, i));
+		}
+		return documentos;
+	}
+	
+	private void criaDocumento(FinDocumento finDocumento) {
+		this.getDao().save(finDocumento);
 	}
 	
 	private void validaParametrosWeb(List<ParametrosWeb> parametrosWeb) {
