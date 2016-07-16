@@ -9,6 +9,8 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.interceptor.IncludeParameters;
 import br.com.mhc.parametrosweb.ParametrosWeb;
+import br.com.puppis.estoque.Gerenciador;
+import br.com.puppis.estoque.GerenciadorFactory;
 import br.com.puppis.model.ComNota;
 import br.com.puppis.model.ComNotaItem;
 
@@ -18,7 +20,13 @@ public class ComNotaController extends GenericController<ComNota> {
 	
 	@Post("atualizar")
 	public void atualizar(ComNota obj) {
-		
+		obj = (ComNota) this.getDao().edit(obj);
+		Gerenciador gerenciador = GerenciadorFactory.cria(obj.getIdtipooperacao().getDescricao());
+		for (ComNotaItem item : obj.getItens()) {
+			gerenciador.gerencia(this.getDao(), item.getIdprodutoservico().getId(), item.getQuantidade(), item.getValorVenda());
+		}
+		this.result.include("mensagem", "Nota atualizada com sucesso");
+		this.result.redirectTo(this).listar(obj, null);
 	}
 	
 	@Post("calcular")

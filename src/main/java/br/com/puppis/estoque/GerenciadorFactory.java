@@ -1,10 +1,9 @@
-package br.com.puppis.financeiro;
-
+package br.com.puppis.estoque;
 
 public class GerenciadorFactory {
 
 	public static Gerenciador cria(String operacao) {
-		return new GerenciadorBaixa().pega(operacao);
+		return new GerenciadorVenda().pega(operacao);
 	}
 	
 }

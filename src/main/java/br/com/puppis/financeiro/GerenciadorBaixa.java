@@ -5,7 +5,7 @@ import br.com.puppis.model.FinDocumento;
 import br.com.puppis.model.FinExtrato;
 import br.com.puppis.model.SysTipoOperacao;
 
-public class GerenciadorDeBaixa extends GerenciadorDeDocumento {
+public class GerenciadorBaixa extends GerenciadorDocumento {
 
 	@Override
 	public void gerencia(GenericDao dao, FinDocumento finDocumento, SysTipoOperacao sysTipoOperacao) {
@@ -34,7 +34,7 @@ public class GerenciadorDeBaixa extends GerenciadorDeDocumento {
 			return this;
 		} else {
 			setOperacao(operacao);
-			return proximo(new GerenciadorDeEstorno()); 
+			return proximo(new GerenciadorEstorno()); 
 		}
 	}
 

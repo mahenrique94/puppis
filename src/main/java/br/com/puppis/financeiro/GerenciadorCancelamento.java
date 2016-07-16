@@ -4,7 +4,7 @@ import br.com.puppis.dao.GenericDao;
 import br.com.puppis.model.FinDocumento;
 import br.com.puppis.model.SysTipoOperacao;
 
-public class GerenciadorDeCancelamento extends GerenciadorDeDocumento {
+public class GerenciadorCancelamento extends GerenciadorDocumento {
 
 	@Override
 	public void gerencia(GenericDao dao, FinDocumento finDocumento, SysTipoOperacao sysTipoOperacao) {

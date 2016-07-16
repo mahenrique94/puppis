@@ -13,7 +13,6 @@
 		<div class="login-panel">
 			<figure class="login-logo">
 				<img alt="Hebi" src="<c:url value="/img/logo.png"/>">
-				<figcaption class="login-logo-legend"><fmt:message key="titulo.nome.sistema"/></figcaption>
 			</figure>
 			<fieldset class="login-form">
 				<legend><fmt:message key="titulo.controle.de.acesso"/></legend>
