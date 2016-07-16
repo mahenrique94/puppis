@@ -60,7 +60,6 @@ public class ComNotaController extends GenericController<ComNota> {
 		obj.getCusto().setValortotal(total);
 		super.salvar(obj);
 		this.result.redirectTo(this).editar(obj);
-		
 	}
 	
 	@Get("{obj.id}")
@@ -101,7 +100,7 @@ public class ComNotaController extends GenericController<ComNota> {
 		parametrosWeb.add(new ParametrosWeb(null, "1")); // CONTABANCARIA
 		parametrosWeb.add(new ParametrosWeb(null, "1")); // TIPODOCUMENTO, 1 = CUPOM FISCAL
 		parametrosWeb.add(new ParametrosWeb(null, obj.getNumero() != null ? obj.getNumero().toString() : obj.getId().toString())); // NUMERODOCUMENTO
-		parametrosWeb.add(new ParametrosWeb(null, obj.getSerie().toString())); // SERIE
+		parametrosWeb.add(new ParametrosWeb(null, obj.getSerie() != null ? obj.getSerie().toString() : null)); // SERIE
 		parametrosWeb.add(new ParametrosWeb(null, obj.getDataemissao() != null ? new SimpleDateFormat("dd/MM/yyyy").format(obj.getDataemissao().getTime()) : new SimpleDateFormat("dd/MM/yyyy").format(obj.getDatacreate().getTime()))); // DATAEMISSAO
 		parametrosWeb.add(new ParametrosWeb(null, obj.getCusto().getValortotal().toString())); // VALORTOTAL
 		parametrosWeb.add(new ParametrosWeb(null, "0")); // HISTORICO, 0 = EM BRANCO

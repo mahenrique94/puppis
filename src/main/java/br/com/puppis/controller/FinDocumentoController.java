@@ -77,8 +77,7 @@ public class FinDocumentoController extends GenericController<FinDocumento> {
 	@Path("parcelamento")
 	public void parcelamento(List<ParametrosWeb> parametrosWeb) {
 		if (parametrosWeb != null) {
-			List<FinDocumento> documentos = geraDocumentos(parametrosWeb);
-			this.result.include("parametrosWeb", parametrosWeb).include("FinDocumentoList", documentos);
+			this.result.include("parametrosWeb", parametrosWeb).include("FinDocumentoList", geraDocumentos(parametrosWeb));
 		}
 	}
 	
