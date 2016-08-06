@@ -11,16 +11,6 @@ public class PermissionDelete implements CustomBrutauthRule {
 	@Inject
 	private UserName userName;
 	
-	public PermissionDelete(UserName userName) {
-		// TODO Auto-generated constructor stub
-		this.userName = userName;
-	}
-	
-	@Deprecated
-	public PermissionDelete() {
-		// TODO Auto-generated constructor stub
-	}
-	
 	public boolean isAllowed() {
 		return this.userName.getUsuario().getIdgrupo().getIdtipoacesso().getDeletar() == true;
 	}

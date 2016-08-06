@@ -9,7 +9,7 @@
 		</div>
 	</nav>
 	<section aria-expanded="true" aria-hidden="false" class="form-body" role="form">
-		<div class="row-input" role="row">
+		<div class="row" role="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 				<label><fmt:message key="label.historico"/></label>
 				<textarea autofocus class="form-data validate" name="obj.descricao" pattern="textarea" required rows="10">${obj.descricao}</textarea>

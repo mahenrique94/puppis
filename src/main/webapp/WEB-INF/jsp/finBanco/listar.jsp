@@ -20,7 +20,7 @@
 	</nav>
 </form>
 <display:table class="table-default" export="false" id="obj" name="${FinBancoList}" requestURI="/financeiro/banco">
-	<display:column headerScope="id" property="id" style="width: 50px;" titleKey="displaytag.id"/>
+	<display:column headerScope="codigo" property="codigo" style="width: 50px;" titleKey="displaytag.codigo"/>
 	<display:column headerScope="descricao" property="descricao" titleKey="displaytag.descricao"/>
 </display:table>
 <%@include file="/config/footer.jsp"%>

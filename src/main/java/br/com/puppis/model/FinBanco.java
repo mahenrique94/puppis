@@ -25,9 +25,13 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class FinBanco implements Serializable {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	@NotNull
+	@NotEmpty
 	@Size(min = 0, max = 10, message = "{minimo.0.maximo.10}")
-	@Column(length = 10, columnDefinition = "varchar(10)", nullable = false)
-	private String id;
+	@Column(length = 10, columnDefinition = "varchar(10)", nullable = false, unique = true)
+	private String codigo;
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 30, message = "{minimo.0.maximo.30}")
@@ -44,16 +48,22 @@ public class FinBanco implements Serializable {
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
 	}
-	public FinBanco(String id) {
+	public FinBanco(Integer id) {
 		this();
 		setId(id);
 	}
 	
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
+	}
+	public String getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 	public String getDescricao() {
 		return descricao;

@@ -11,16 +11,6 @@ public class PermissionList implements CustomBrutauthRule {
 	@Inject
 	private UserName userName;
 	
-	public PermissionList(UserName userName) {
-		// TODO Auto-generated constructor stub
-		this.userName = userName;
-	}
-	
-	@Deprecated
-	public PermissionList() {
-		// TODO Auto-generated constructor stub
-	}
-	
 	public boolean isAllowed() {
 		return this.userName.getUsuario().getIdgrupo().getIdtipoacesso().getListar() == true;
 	}

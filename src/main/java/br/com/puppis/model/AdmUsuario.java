@@ -2,6 +2,9 @@ package br.com.puppis.model;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,17 +13,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedNativeQuery;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.AssertFalse;
-import javax.validation.constraints.AssertTrue;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cache;
@@ -40,16 +38,19 @@ public class AdmUsuario implements Serializable {
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 60, message = "{minimo.0.maximo.60}")
+	@Pattern(regexp = "^([\\dA-Z]+(\\s[\\dA-Z]+)*)$")
 	@Column(length = 60, columnDefinition = "varchar(60)", nullable = false, unique = true)
 	private String nome;
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 20, message = "{minimo.0.maximo.20}")
+	@Pattern(regexp = "^([\\dA-Z]*)$")
 	@Column(length = 20, columnDefinition = "varchar(20)", nullable = false, unique = true)
 	private String usuario;
 	@NotNull
 	@NotEmpty
 	@Size(min = 8, max = 8, message = "{minimo.8.maximo.8}")
+	@Pattern(regexp = "^([\\dA-Z]+([\\dA-Z]+)*){8,8}$")
 	@Column(length = 8, columnDefinition = "varchar(8)", nullable = false)
 	private String senha;
 	@ManyToOne
@@ -63,6 +64,9 @@ public class AdmUsuario implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
 	private Calendar dataupdate;
+	@OneToMany
+	@JoinColumn(name = "idusuario", referencedColumnName = "id", insertable = false, updatable = false)
+	private Set<AdmUsuarioComercio> comercios;
 	
 	public AdmUsuario() {
 		setInativo(false);
@@ -121,6 +125,9 @@ public class AdmUsuario implements Serializable {
 	}
 	public void setDataupdate(Calendar dataupdate) {
 		this.dataupdate = dataupdate;
+	}
+	public Set<AdmUsuarioComercio> getComercios() {
+		return Collections.unmodifiableSet(comercios);
 	}
 	
 	public boolean isAdministrador(AdmUsuario admUsuario) {

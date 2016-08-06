@@ -14,6 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cache;
@@ -38,9 +39,11 @@ public class AdmContato implements Serializable {
 	@Column(nullable = true)
 	private Integer ddd;
 	@Size(min = 0, max = 9, message = "{telefone}")
+	@Pattern(regexp = "^(\\d{4}-?\\d{4})$")
 	@Column(length = 9, columnDefinition = "varchar(9)", nullable = true)
 	private String telefone;
 	@Size(min = 0, max = 11, message = "{celular}")
+	@Pattern(regexp = "^(\\d.\\d{4}-?\\d{4})$")
 	@Column(length = 11, columnDefinition = "varchar(11)", nullable = true)
 	private String celular;
 	@Email

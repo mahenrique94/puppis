@@ -15,6 +15,9 @@ import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.validator.Validator;
 import br.com.mhc.parametrosweb.ParametrosWeb;
 import br.com.puppis.dao.Dao;
+import br.com.puppis.dao.GenericDao;
+import br.com.puppis.model.AdmComercio;
+import br.com.puppis.model.AdmModulo;
 import br.com.puppis.model.AdmUsuario;
 import br.com.puppis.security.UserName;
 import br.com.puppis.validator.ValidatorUser;
@@ -32,31 +35,32 @@ public class LoginController {
 	@Inject
 	private Validator validator;
 
-	public LoginController(Dao dao, Result result, UserName userName, Validator validator) {
-		this.dao = dao;
-		this.result = result;
-		this.userName = userName;
-		this.validator = validator;
-	}
-	
-	@Deprecated
-	public LoginController() {}
-	
 	@Get("formulario")
 	@Public
 	public void formulario() {}
 	
 	@Post("")
 	@Public
-	public void login(String usuario, String senha) {
+	public void login(String usuario, String senha, Integer idComercio) {
 		List<ParametrosWeb> parametrosWeb = new ArrayList<ParametrosWeb>();
 		parametrosWeb.add(new ParametrosWeb("usuario", usuario));
 		parametrosWeb.add(new ParametrosWeb("senha", senha));
 		parametrosWeb.add(new ParametrosWeb("inativo", "true", null, "<>"));
-		AdmUsuario admUsuario = (AdmUsuario) this.dao.getDao().find(AdmUsuario.class, parametrosWeb);
+		AdmUsuario admUsuario = (AdmUsuario) getDao().find(AdmUsuario.class, parametrosWeb);
 		if (admUsuario != null && new ValidatorUser().validar(admUsuario, usuario, senha)) {
-			this.userName.login(admUsuario);
-			this.result.redirectTo(DashBoardController.class).dashboard();
+			if (admUsuario.getComercios() != null && admUsuario.getComercios().size() > 1) {
+				if (idComercio != null && idComercio >= 0) {
+					AdmComercio admComercio = (AdmComercio) getDao().edit(new AdmComercio(idComercio));
+					this.userName.login(admUsuario, admComercio);
+					this.result.redirectTo(DashBoardController.class).dashboard();
+				} else {
+					this.result.include("usuario", usuario).include("senha", senha).include("AdmUsuarioComercioList", admUsuario.getComercios());
+					this.result.redirectTo(this).formulario();
+				}
+			} else {
+				this.userName.login(admUsuario, admUsuario.getComercios().iterator().next().getIdcomercio());
+				this.result.redirectTo(DashBoardController.class).dashboard();
+			}
 		} else {
 			this.validator.add(new SimpleMessage("login.invalido", "Usuário ou senha inválidos"));
 			this.validator.onErrorRedirectTo(this).formulario();
@@ -67,6 +71,10 @@ public class LoginController {
 	public void logout() {
 		this.userName.logout();
 		this.result.redirectTo(this).formulario();
+	}
+	
+	private GenericDao getDao() {
+		return this.dao.getDao();
 	}
 	
 }

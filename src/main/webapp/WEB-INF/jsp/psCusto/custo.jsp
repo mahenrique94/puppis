@@ -16,7 +16,7 @@
 	</div>
 	<div class="row" role="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
-			<label><fmt:message key="label.valor.venda"/></label>
+			<label><fmt:message key="label.valor.pago"/></label>
 			<input class="form-data validate" maxlength="13" name="obj.custo.valor" pattern="numeric10_2" readonly required type="text" value="<fmt:formatNumber pattern="0.00" type="currency" value="${obj.custo.valor}"/>"/>
 			<netsis:validationMessage name="obj.custo.valor"/>
 		</div>

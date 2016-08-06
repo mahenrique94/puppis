@@ -13,6 +13,7 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cache;
@@ -28,35 +29,34 @@ public class Endereco implements Serializable {
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 60, message = "{minimo.0.maximo.60}")
+	@Pattern(regexp = "^([A-Z]+(\\s[A-Z]+)*)$")
 	@Column(length = 60, columnDefinition = "varchar(60)", nullable = false)
 	private String rua;
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 10, message = "{minimo.0.maximo.10}")
+	@Pattern(regexp = "^^((S/N)|[\\d-]*)$")
 	@Column(length = 10, columnDefinition = "varchar(10)", nullable = false)
 	private String numero;
 	@NotNull
 	@NotEmpty
 	@Size(min = 9, max = 9, message = "{cep}")
+	@Pattern(regexp = "\\d{5}-\\d{3}")
 	@Column(length = 9, columnDefinition = "varchar(9)", nullable = false)
 	private String cep;
 	@Size(min = 0, max = 30, message = "{minimo.0.maximo.30}")
+	@Pattern(regexp = "^([A-Z]+(\\s[A-Z]+)*)$")
 	@Column(length = 30, columnDefinition = "varchar(30)", nullable = true)
 	private String complemento;
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 60, message = "{minimo.0.maximo.60}")
+	@Pattern(regexp = "^([A-Z]+(\\s[A-Z]+)*)$")
 	@Column(length = 60, columnDefinition = "varchar(60)", nullable = false)
 	private String bairro;
 	@ManyToOne
-	@JoinColumn(name = "idestado", referencedColumnName = "id", nullable = false)
-	private CadEstado idestado;
-	@ManyToOne
 	@JoinColumn(name = "idcidade", referencedColumnName = "id", nullable = false)
 	private CadCidade idcidade;
-	@ManyToOne
-	@JoinColumn(name = "idpais", referencedColumnName = "id", nullable = false)
-	private CadPais idpais;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Calendar datacreate;
@@ -65,9 +65,6 @@ public class Endereco implements Serializable {
 	private Calendar dataupdate;
 	
 	public Endereco() {
-		setIdcidade(new CadCidade(0));
-		setIdestado(new CadEstado(0));
-		setIdpais(new CadPais(1058));
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
 	}
@@ -112,23 +109,11 @@ public class Endereco implements Serializable {
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
 	}
-	public CadEstado getIdestado() {
-		return idestado;
-	}
-	public void setIdestado(CadEstado idestado) {
-		this.idestado = idestado;
-	}
 	public CadCidade getIdcidade() {
 		return idcidade;
 	}
 	public void setIdcidade(CadCidade idcidade) {
 		this.idcidade = idcidade;
-	}
-	public CadPais getIdpais() {
-		return idpais;
-	}
-	public void setIdpais(CadPais idpais) {
-		this.idpais = idpais;
 	}
 	public Calendar getDatacreate() {
 		return datacreate;

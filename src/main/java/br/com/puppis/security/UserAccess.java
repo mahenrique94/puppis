@@ -15,13 +15,6 @@ public class UserAccess implements CustomBrutauthRule {
 	@Inject
 	private UserName userName;
 
-	public UserAccess(UserName userName) {
-		this.userName = userName;
-	}
-	
-	@Deprecated
-	public UserAccess() {}
-	
 	public boolean isAllowed() {
 		return this.userName.isLogado();
 	}

@@ -13,15 +13,18 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
 
 @Entity
 @Table(name = "fin_formapagamento")
+@DynamicUpdate(value = true)
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class FinFormaPagamento implements Serializable {
 	
@@ -31,6 +34,7 @@ public class FinFormaPagamento implements Serializable {
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 30, message = "{minimo.0.maximo.30}")
+	@Pattern(regexp = "^([A-Z]+(\\s[A-Z]+)*)$")
 	@Column(length = 30, columnDefinition = "varchar(30)", nullable = false, unique = true)
 	private String descricao;
 	@Range(min = 0, message = "{intervalo.0}")

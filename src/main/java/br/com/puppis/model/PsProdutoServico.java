@@ -18,6 +18,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cache;
@@ -41,6 +42,7 @@ public class PsProdutoServico implements Serializable{
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 120, message = "{minimo.0.maximo.120}")
+	@Pattern(regexp = "^([A-Z]+(\\s[A-Z]+)*)$")
 	@Column(length = 120, columnDefinition = "varchar(120)", nullable = false, unique = true)
 	private String descricao;
 	@Column(nullable = false)
@@ -54,11 +56,14 @@ public class PsProdutoServico implements Serializable{
 	@Column(nullable = false)
 	private Boolean inativo;
 	@Size(min = 0, max = 30, message = "{minimo.0.maximo.30}")
+	@Pattern(regexp = "^([A-Z]+(\\s[A-Z]+)*)$")
 	@Column(length = 30, columnDefinition = "varchar(30)", nullable = true)
 	private String marca;
 	@Size(min = 0, max = 120, message = "{minimo.0.maximo.120}")
+	@Pattern(regexp = "^([\\dA-Z]*)$")
 	@Column(length = 120, columnDefinition = "varchar(120)", nullable = true, unique = true)
 	private String codigobarra;
+	@Pattern(regexp = "[aA-zZ0-9\"\'(){}*,.\\/\\s-]*")
 	@Column(columnDefinition = "text", nullable = true)
 	private String observacao;
 	@Size(min = 0, max = 255, message = "{minimo.0.maximo.255}")
@@ -163,6 +168,18 @@ public class PsProdutoServico implements Serializable{
 	}
 	public void setEstoque(PsEstoque estoque) {
 		this.estoque = estoque;
+	}
+	public String getObservacao() {
+		return observacao;
+	}
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
+	}
+	public String getPathimagem() {
+		return pathimagem;
+	}
+	public void setPathimagem(String pathimagem) {
+		this.pathimagem = pathimagem;
 	}
 	
 }

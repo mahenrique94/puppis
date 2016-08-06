@@ -21,7 +21,7 @@
 						<div class="row" role="row">
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 								<div class="form-data-group">
-									<input autocomplete="off" autofocus class="form-data" maxlength="20" name="usuario" pattern="letraNumero" placeholder="<fmt:message key="label.usuario"/>" required type="text">
+									<input autocomplete="off" autofocus class="form-data" maxlength="20" name="usuario" pattern="letraNumero" placeholder="<fmt:message key="label.usuario"/>" required type="text" value="${usuario}">
 									<span class="form-data-group-text"><i class="icon-user"></i></span>
 								</div>
 							</div>
@@ -29,11 +29,22 @@
 						<div class="row" role="row">
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 								<div class="form-data-group">
-									<input autocomplete="off" class="form-data" maxlength="8" name="senha" pattern="letraNumero" placeholder="<fmt:message key="label.senha"/>" required type="password">
+									<input autocomplete="off" class="form-data" maxlength="8" name="senha" pattern="letraNumero" placeholder="<fmt:message key="label.senha"/>" required type="password" value="${senha}">
 									<div class="form-data-group-text"><i class="icon-lock"></i></div>
 								</div>
 							</div>
 						</div>
+						<c:if test="${not empty AdmUsuarioComercioList}">
+							<div class="row" role="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
+									<select class="form-data validate" required name="idComercio" style="margin-top: 0;">
+										<c:forEach items="${AdmUsuarioComercioList}" var="comercio">
+											<option value="${comercio.idcomercio.id}">${comercio.idcomercio.id} - ${comercio.idcomercio.nomerazaosocial}</option>
+										</c:forEach>
+									</select>
+								</div>
+							</div>
+						</c:if>
 						<div class="row" role="row">
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 								<button class="btn-lube-modern btn-lg btn-full"><fmt:message key="button.entrar"/></button>

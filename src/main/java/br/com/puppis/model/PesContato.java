@@ -13,14 +13,19 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 
 @Entity
-@Table(name = "pes_contato")
+@Table(name = "pes_contato", uniqueConstraints = @UniqueConstraint(columnNames = {"idpessoa", "nome"}))
 @DynamicUpdate(value = true)
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class PesContato implements Serializable {
@@ -31,10 +36,18 @@ public class PesContato implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "idpessoa", referencedColumnName = "id", nullable = true)
 	private PesPessoa idpessoa;
+	@NotNull
+	@NotEmpty
+	@Pattern(regexp = "^([A-Z]+(\\s[A-Z]+)*)$")
+	@Column(length = 60, columnDefinition = "varchar(60)", nullable = false)
+	private String nome;
+	@Range(min = 0, message = "{minimo.0}")
 	@Column(nullable = true)
 	private Integer ddd;
+	@Pattern(regexp = "^(\\d{4}-?\\d{4})$")
 	@Column(length = 10, columnDefinition = "varchar(10)", nullable = true)
 	private String telefone;
+	@Pattern(regexp = "^(\\d.\\d{4}-?\\d{4})$")
 	@Column(length = 12, columnDefinition = "varchar(12)", nullable = true)
 	private String celular;
 	@Email
@@ -67,6 +80,12 @@ public class PesContato implements Serializable {
 	}
 	public void setIdpessoa(PesPessoa idpessoa) {
 		this.idpessoa = idpessoa;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	public Integer getDdd() {
 		return ddd;

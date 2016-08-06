@@ -20,10 +20,12 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "cad_estado")
+@DynamicUpdate(value = true)
 @Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class CadEstado implements Serializable {
 

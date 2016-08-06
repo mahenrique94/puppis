@@ -35,12 +35,3 @@ nav.nav-tie {
 		}
 	}
 }
-nav.nav-square {
-	a {
-		@include transition("all .25s linear");
-	}
-	a:hover {
-		background: $color-primary !important;
-		color: $color-text-primary !important;		
-	}
-}

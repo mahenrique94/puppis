@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,6 +19,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cache;
@@ -37,12 +39,15 @@ public class PesPessoa implements Serializable {
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 60, message = "{minimo.0.maximo.60}")
+	@Pattern(regexp = "^([-./\\dA-Z]+(\\s[-./\\dA-Z]+)*)$")
 	@Column(length = 60, columnDefinition = "varchar(60)", nullable = false, unique = true)
 	private String nomerazaosocial;
 	@Size(min = 0, max = 60, message = "{minimo.0.maximo.60}")
+	@Pattern(regexp = "^([-./\\dA-Z]+(\\s[-./\\dA-Z]+)*)$")
 	@Column(length = 60, columnDefinition = "varchar(60)", nullable = true, unique = true)
 	private String nomefantasia;
 	@Size(min = 0, max = 30, message = "{minimo.0.maximo.30}")
+	@Pattern(regexp = "^([A-Z]+(\\s[A-Z]+)*)$")
 	@Column(length = 30, columnDefinition = "varchar(30)", nullable = true)
 	private String apelido;
 	@ManyToOne
@@ -53,18 +58,19 @@ public class PesPessoa implements Serializable {
 	private PesEstadoCivil idestadocivil;
 	@Column(nullable = false)
 	private Boolean inativo;
+	@Pattern(regexp = "[aA-zZ0-9\"\'(){}*,.\\/\\s-]*")
 	@Column(columnDefinition = "text", nullable = true)
 	private String observacao;
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "idpessoa")
-	private PesDocumento documento;
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "idpessoa")
-	private PesEndereco endereco;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Calendar datacreate;
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
 	private Calendar dataupdate;
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "idpessoa")
+	private PesDocumento documento;
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "idpessoa")
+	private PesEndereco endereco;
 	
 	public PesPessoa() {
 		setDatacreate(Calendar.getInstance());

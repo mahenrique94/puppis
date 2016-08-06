@@ -1,5 +1,6 @@
 package br.com.puppis.dao;
 
+import java.sql.Connection;
 import java.util.List;
 
 import br.com.mhc.paginator.Paginator;
@@ -14,6 +15,8 @@ public interface GenericDao<T> {
 	List<T> findAll(Class clazz, List<ParametrosWeb> parametrosWeb);
 	List<T> findLimit(Class clazz, List<ParametrosWeb> parametrosWeb, Integer limit);
 	List<T> findPagination(Class clazz, List<ParametrosWeb> parametrosWeb, Paginator paginator);
+	Connection getConnection();
+	T getObj();
 	T refresh(T obj);
 	void save(T obj);
 	

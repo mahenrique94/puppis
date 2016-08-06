@@ -12,6 +12,13 @@
 	</nav>
 	<section aria-expanded="true" aria-hidden="false" class="form-body" role="form">
 		<div class="row" role="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
+				<label><fmt:message key="label.nome"/></label>
+				<input autofocus class="form-data validate" maxlength="60" name="obj.nome" pattern="letraNumeroEspaco" required type="text" value="${obj.nome}">
+				<netsis:validationMessage name="obj.nome"/>
+			</div>
+		</div>
+		<div class="row" role="row">
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" role="separator">
 				<label><fmt:message key="label.ddd"/></label>
 				<input class="form-data validate" maxlength="2" name="obj.ddd" type="number" value="${obj.ddd}">
@@ -19,12 +26,12 @@
 			</div>
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" role="separator">
 				<label><fmt:message key="label.celular"/></label>
-				<input class="form-data validate" maxlength="11" name="obj.celular" onkeypress="format(this, event, celularMask);" pattern="celular" type="text" value="${obj.celular}">
+				<input class="form-data validate" maxlength="11" name="obj.celular" onkeypress="format(this, event, maskCelular);" pattern="celular" type="text" value="${obj.celular}">
 				<netsis:validationMessage name="obj.celular"/>
 			</div>
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" role="separator">
 				<label><fmt:message key="label.telefone"/></label>
-				<input class="form-data validate" maxlength="9" name="obj.telefone" onkeypress="format(this, event, telefoneMask);" pattern="telefone" type="text" value="${obj.telefone}">
+				<input class="form-data validate" maxlength="9" name="obj.telefone" onkeypress="format(this, event, maskTelefone);" pattern="telefone" type="text" value="${obj.telefone}">
 				<netsis:validationMessage name="obj.telefone"/>
 			</div>
 		</div>

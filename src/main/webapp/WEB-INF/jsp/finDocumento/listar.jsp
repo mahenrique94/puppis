@@ -22,17 +22,20 @@
 			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" role="separator">
 				<select class="form-data" data-class="displaytagSelect" name="parametrosWeb[0].campo"></select>
 			</div>
-			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" role="separator">
 				<div class="form-data-group">
 					<input autocomplete="off" class="form-data" name="parametrosWeb[0].parametroInicial" pattern="letraNumeroEspacoPontoTracoBarra" type="text">
 					<span class="form-data-group-btn"><button class="btn-default"><i class="icon-search"></i></button></span>
 				</div>
 			</div>
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" role="separator">
+				<label class="no-margin"><fmt:message key="label.baixados"/></label>
+				<input <c:if test="${parametrosWeb[2].operador.equals('is not null')}">checked</c:if> class="form-data" name="parametrosWeb[2].operador" type="checkbox" value="is not null">
+			</div>
 		</div>
 	</nav>
 </form>
 <display:table class="table-default" export="false" id="obj" name="${FinDocumentoList}" requestURI="/financeiro/documento">
-	<display:column headerScope="idtipooperacao.descricao" property="idtipooperacao.descricao" titleKey="displaytag.operacao"/>
 	<display:column headerScope="numero" property="numero" titleKey="displaytag.numero.documento"/>
 	<display:column headerScope="serie" property="serie" titleKey="displaytag.serie"/>
 	<display:column headerScope="idtipodocumento.descricao" property="idtipodocumento.descricao" titleKey="displaytag.tipo.documento"/>

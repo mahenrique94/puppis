@@ -1,6 +1,7 @@
 <%@include file="/config/taglibraries.jsp"%>
 <display:table class="table-default" export="false" id="obj" name="${PesContatoList}" requestURI="/pessoa/contato">
 	<display:column headerScope="id" property="id" style="width: 50px;" titleKey="displaytag.id"/>
+	<display:column headerScope="nome" property="nome" titleKey="displaytag.nome"/>
 	<display:column headerScope="ddd" property="ddd" titleKey="displaytag.ddd"/>
 	<display:column headerScope="celular" property="celular" titleKey="displaytag.celular"/>
 	<display:column headerScope="telefone" property="telefone" titleKey="displaytag.telefone"/>

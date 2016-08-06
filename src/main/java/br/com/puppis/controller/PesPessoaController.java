@@ -1,16 +1,17 @@
 package br.com.puppis.controller;
 
-import javax.validation.Valid;
-
+import br.com.caelum.brutauth.auth.annotations.CustomBrutauthRules;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
-import br.com.caelum.vraptor.interceptor.IncludeParameters;
 import br.com.puppis.model.PesPessoa;
+import br.com.puppis.security.ModuleCadastroAccess;
+import br.com.puppis.security.UserModuleCadastroAccess;
 
 @Controller
 @Path("pessoa")
+@CustomBrutauthRules({ModuleCadastroAccess.class, UserModuleCadastroAccess.class})
 public class PesPessoaController extends GenericController<PesPessoa> {
 
 	@Get("{obj.id}")
@@ -21,15 +22,16 @@ public class PesPessoaController extends GenericController<PesPessoa> {
 	}
 	
 	@Post("")
-	@IncludeParameters
 	@Override
-	public void salvar(@Valid PesPessoa obj) {
+	public void salvar(PesPessoa obj) {
 		// TODO Auto-generated method stub
-		if (obj.getId() == null && obj.getEndereco().getId() == null && obj.getDocumento().getId() == null) {
+		this.setRedirect(false);
+		if (obj.getId() == null) {
 			obj.getEndereco().setIdpessoa(obj);
 			obj.getDocumento().setIdpessoa(obj);
 		}
 		super.salvar(obj);
+		this.result.redirectTo(this).editar(this.getObj());
 	}
 	
 }

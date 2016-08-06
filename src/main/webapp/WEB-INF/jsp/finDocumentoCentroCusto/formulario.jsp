@@ -14,7 +14,7 @@
 	<section aria-expanded="true" aria-hidden="false" class="form-body" role="form">
 		<div class="row" role="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
-				<label><fmt:message key="label.id.centro.custo"/></label>
+				<label><fmt:message key="label.centro.custo"/></label>
 				<select class="form-data ss validate" data-class="sl" id="slCadastro_Centro-de-custo_Json_01" name="obj.idcentrocusto.id"></select>
 				<netsis:validationMessage name="obj.idcentrocusto.id"/>
 			</div>

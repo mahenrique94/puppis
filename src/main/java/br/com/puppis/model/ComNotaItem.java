@@ -19,8 +19,14 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.DynamicUpdate;
+
 @Entity
 @Table(name = "com_notaitem")
+@DynamicUpdate(value = true)
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class ComNotaItem implements Serializable {
 	
 	@Id
@@ -32,6 +38,9 @@ public class ComNotaItem implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "idprodutoservico", referencedColumnName = "id", nullable = false)
 	private PsProdutoServico idprodutoservico;
+	@ManyToOne
+	@JoinColumn(name = "idtabelapreco", referencedColumnName = "id", nullable = true)
+	private TblPreco idtabelapreco;
 	@DecimalMin("0.0")
 	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = false)
@@ -43,7 +52,7 @@ public class ComNotaItem implements Serializable {
 	@DecimalMin("0.0")
 	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = true)
-	private Double porclucro;
+	private Double porcjuros;
 	@DecimalMin("0.0")
 	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = true)
@@ -71,7 +80,7 @@ public class ComNotaItem implements Serializable {
 		setPorcdesconto(0.0);
 		setPorcicms(0.0);
 		setPorcipi(0.0);
-		setPorclucro(0.0);
+		setPorcjuros(0.0);
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
 	}
@@ -98,6 +107,12 @@ public class ComNotaItem implements Serializable {
 	public void setIdprodutoservico(PsProdutoServico idprodutoservico) {
 		this.idprodutoservico = idprodutoservico;
 	}
+	public TblPreco getIdtabelapreco() {
+		return idtabelapreco;
+	}
+	public void setIdtabelapreco(TblPreco idtabelapreco) {
+		this.idtabelapreco = idtabelapreco;
+	}
 	public Double getValorunitario() {
 		return valorunitario;
 	}
@@ -110,11 +125,11 @@ public class ComNotaItem implements Serializable {
 	public void setValortotal(Double valortotal) {
 		this.valortotal = valortotal;
 	}
-	public Double getPorclucro() {
-		return porclucro;
+	public Double getPorcjuros() {
+		return porcjuros;
 	}
-	public void setPorclucro(Double porclucro) {
-		this.porclucro = porclucro;
+	public void setPorcjuros(Double porcjuros) {
+		this.porcjuros = porcjuros;
 	}
 	public Double getPorcicms() {
 		return porcicms;
@@ -154,28 +169,21 @@ public class ComNotaItem implements Serializable {
 	}
 
 	public void calculaTotal() {
-		double desconto = (getPorcdesconto() / 100) * basePorcentagem();
-		double icms = (getPorcicms() / 100) * basePorcentagem();
-		double ipi = (getPorcipi() / 100) * basePorcentagem();
-		double total = ((getQuantidade() * getValorunitario()) + icms + ipi) - desconto;
+		double total = ((getQuantidade() * getValorunitario()) + getValorIcms() + getValorIpi() + getValorJuros()) - getValorDesconto();
 		setValortotal(total);
 	}
 	
-	public double getIcms() {
+	public double getValorIcms() {
 		return (getPorcicms() / 100) * getValorunitario();
 	}
-	public double getIpi() {
+	public double getValorIpi() {
 		return (getPorcipi() / 100) * getValorunitario();
 	}
-	public double getDesconto() {
+	public double getValorDesconto() {
 		return (getPorcdesconto() / 100) * getValorunitario();
 	}
-	public double getValorVenda() {
-		return ((getPorclucro() / 100) * getValorunitario()) + getValorunitario();
-	}
-	
-	private double basePorcentagem() {
-		return getValorunitario() * getQuantidade();
+	public double getValorJuros() {
+		return (getPorcjuros() / 100) * getValorunitario();
 	}
 	
 }

@@ -1,5 +1,5 @@
 <%@include file="/config/header.jsp" %>
-<form action="<c:url value="/financeiro/extrato/listar"/>" class="form-modern" id="formfinextrato" method="post" name="formfinextrato" role="form">
+<form action="<c:url value="/financeiro/extrato"/>" class="form-modern" id="formfinextrato" method="get" name="formfinextrato" role="form">
 	<input name="parametrosWeb[0].parametroInicialaux" type="hidden" value="${parametrosWeb[0].parametroInicial}">
 	<nav class="band-nav-lube" role="complementary">
 		<div class="row" role="row">
@@ -21,11 +21,11 @@
 				<div class="row" role="row">
 					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
 						<label><fmt:message key="label.data.emissao"/></label>
-						<input class="form-data validate" maxlength="10" min="01-01-1970" name="parametrosWeb[1].parametroInicial" onkeypress="format(this, event, dataMask);" pattern="data" type="text" value="${parametrosWeb[1].parametroInicial}">
+						<input class="form-data validate" maxlength="10" min="01-01-1970" name="parametrosWeb[1].parametroInicial" onkeypress="format(this, event, maskData);" pattern="data" type="text" value="${parametrosWeb[1].parametroInicial}">
 					</div>
 					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
 						<label><fmt:message key="label.ate"/></label>
-						<input class="form-data validate" maxlength="10" min="01-01-1970" name="parametrosWeb[1].parametroFinal" onkeypress="format(this, event, dataMask);" pattern="data" type="text" value="${parametrosWeb[1].parametroFinal}">
+						<input class="form-data validate" maxlength="10" min="01-01-1970" name="parametrosWeb[1].parametroFinal" onkeypress="format(this, event, maskData);" pattern="data" type="text" value="${parametrosWeb[1].parametroFinal}">
 					</div>
 				</div>
 			</section>
@@ -34,11 +34,11 @@
 			<c:import url="lista.jsp"/>
 		</c:if>
 	</section>
+	<nav class="nav-group-tie nav-fixed-bottom" role="complementary">
+		<ul>
+			<li><a data-controller="ModalController" href="<c:url value="/financeiro/extrato/formulario"/>" onclick="ModalController.show(this, event);" title="<fmt:message key="button.novo"/>"><i class="icon-plus"></i>&nbsp;<fmt:message key="button.novo"/></a></li>
+			<li><button title="<fmt:message key="button.pesquisar"/>" type="submit"><i class="icon-search"></i>&nbsp;<fmt:message key="button.pesquisar"/></button></li>
+		</ul>
+	</nav>
 </form>
-<nav class="nav-group-tie nav-fixed-bottom" role="complementary">
-	<ul>
-		<li><a data-controller="ModalController" href="<c:url value="/financeiro/extrato/formulario"/>" onclick="ModalController.show(this, event);" title="<fmt:message key="button.novo"/>"><i class="icon-plus"></i>&nbsp;<fmt:message key="button.novo"/></a></li>
-		<li><button form="formfinextrato" title="<fmt:message key="button.pesquisar"/>" type="submit"><i class="icon-search"></i>&nbsp;<fmt:message key="button.pesquisar"/></button></li>
-	</ul>
-</nav>
 <%@include file="/config/footer.jsp"%>

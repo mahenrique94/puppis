@@ -22,6 +22,8 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicUpdate;
 
+import br.com.mhc.function.NumberFunction;
+
 @Entity
 @Table(name = "ps_custo")
 @DynamicUpdate(value = true)

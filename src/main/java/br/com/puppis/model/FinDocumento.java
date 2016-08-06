@@ -1,6 +1,7 @@
 package br.com.puppis.model;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
@@ -21,8 +22,11 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
@@ -30,12 +34,14 @@ import org.hibernate.validator.constraints.Range;
 import com.lowagie.text.pdf.PRAcroForm;
 
 import br.com.mhc.function.DateFunction;
+import br.com.mhc.function.NumberFunction;
 import br.com.mhc.parametrosweb.ParametrosWeb;
 import br.com.puppis.util.Util;
 
 @Entity
 @Table(name = "fin_documento")
 @DynamicUpdate(value = true)
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class FinDocumento implements Serializable, Cloneable {
 	
 	@Id
@@ -53,10 +59,10 @@ public class FinDocumento implements Serializable, Cloneable {
 	@ManyToOne
 	@JoinColumn(name = "iddocumento", referencedColumnName = "id", nullable = true)
 	private FinDocumento iddocumento;
-	@Min(0)
+	@Range(min = 0, message = "{minimo.0}")
 	@Column(nullable = false)
 	private Long numero;
-	@Min(0)
+	@Range(min = 0, message = "{minimo.0}")
 	@Column(nullable = true)
 	private Integer serie;
 	@NotNull
@@ -68,6 +74,7 @@ public class FinDocumento implements Serializable, Cloneable {
 	@JoinColumn(name = "idtipodocumento", referencedColumnName = "id", nullable = false)
 	private FinTipoDocumento idtipodocumento;
 	@Size(min = 0, max = 120, message = "{minimo.0.maximo.120}")
+	@Pattern(regexp = "^([\\dA-Z]*)$")
 	@Column(length = 120, columnDefinition = "varchar(120)", nullable = true)
 	private String codigobarra;
 	@OneToOne
@@ -281,7 +288,7 @@ public class FinDocumento implements Serializable, Cloneable {
 		setNumero(Long.parseLong(parametrosWeb.get(4).getParametroInicial()));
 		if (parametrosWeb.get(5).getParametroInicial() != null)
 			setSerie(Integer.parseInt(parametrosWeb.get(5).getParametroInicial()));
-		setValortotal(Double.parseDouble(parametrosWeb.get(7).getParametroInicial().replace(",", ".")) / finFormaPagamento.getQuantidadeparcela());
+		setValortotal(NumberFunction.round(Double.parseDouble(parametrosWeb.get(7).getParametroInicial().replace(",", "."))));
 		setSaldo(getValortotal());
 		criarParcela(numeroParcela);
 		return this;

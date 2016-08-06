@@ -32,6 +32,13 @@
 				<netsis:validationMessage name="obj.valor"/>
 			</div>
 		</div>
+		<div class="row" role="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
+				<label><fmt:message key="label.historico"/></label>
+				<textarea class="form-data validate" name="obj.historico" pattern="textarea" rows="10">${obj.historico}</textarea>
+				<netsis:validationMessage name="obj.historico"/>
+			</div>
+		</div>
 	</section>
 	<nav class="nav-group-tie nav-fixed-bottom" role="complementary">
 		<ul>

@@ -5,36 +5,33 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import br.com.caelum.brutauth.auth.annotations.CustomBrutauthRules;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.mhc.parametrosweb.ParametrosWeb;
 import br.com.puppis.financeiro.Gerenciador;
-import br.com.puppis.financeiro.GerenciadorBaixa;
-import br.com.puppis.financeiro.GerenciadorDocumento;
 import br.com.puppis.financeiro.GerenciadorFactory;
+import br.com.puppis.model.CadCentroCusto;
 import br.com.puppis.model.FinDocumento;
+import br.com.puppis.model.FinDocumentoCentroCusto;
 import br.com.puppis.model.FinFormaPagamento;
 import br.com.puppis.model.SysTipoOperacao;
+import br.com.puppis.security.ModuleFinanceiroAccess;
+import br.com.puppis.security.UserModuleFinanceiroAccess;
 
 @Controller
 @Path("financeiro/documento")
+@CustomBrutauthRules({ModuleFinanceiroAccess.class, UserModuleFinanceiroAccess.class})
 public class FinDocumentoController extends GenericController<FinDocumento> {
-	
-	private final SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-	private final Calendar agora = Calendar.getInstance();
 	
 	@Get
 	@Post
 	@Path("baixa")
 	public void baixa(List<ParametrosWeb> parametrosWeb, Integer idTipoOperacao) {
 		if (parametrosWeb != null && !parametrosWeb.isEmpty()) {
-			validaParametrosWeb(parametrosWeb);
-			parametrosWeb.get(0).setCampo("idcontabancaria.id");
-			parametrosWeb.get(1).setCampo("iddefinicao.id");
-			parametrosWeb.get(2).setCampo("numero");
-			parametrosWeb.get(3).setCampo("datavencimento");
+			parametrosWeb = validaParametrosWebBaixa(parametrosWeb);
 			if (idTipoOperacao == 5) { // 5 = ESTORNO
 				parametrosWeb.add(new ParametrosWeb("datapagamento", null, null, "is not null"));
 				parametrosWeb.add(new ParametrosWeb("iddocumento.id", null, null, "is not null", "or"));
@@ -57,19 +54,9 @@ public class FinDocumentoController extends GenericController<FinDocumento> {
 	@Override
 	public void listar(FinDocumento obj, List<ParametrosWeb> parametrosWeb) {
 		// TODO Auto-generated method stub
-		if (parametrosWeb == null) {
-			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-			Calendar agora = Calendar.getInstance();
-			parametrosWeb = new ArrayList<ParametrosWeb>();
-			parametrosWeb.add(new ParametrosWeb("id", "0", null, ">"));
-			parametrosWeb.add(new ParametrosWeb("datacreate", formatador.format(agora.getTime()), formatador.format(agora.getTime())));
-		} else {
-			parametrosWeb.get(1).setCampo("datacreate");
-		}
-		parametrosWeb.add(new ParametrosWeb("datapagamento", null, null, "is null"));
-		parametrosWeb.add(new ParametrosWeb("idtipooperacao.descricao", "ENTRADA", null, "="));
-		super.listar(obj, parametrosWeb);
+		parametrosWeb = validaParamerosWebListar(parametrosWeb);
 		this.result.include("parametrosWeb", parametrosWeb);
+		super.listar(obj, parametrosWeb);
 	}
 	
 	@Get
@@ -83,10 +70,10 @@ public class FinDocumentoController extends GenericController<FinDocumento> {
 	
 	@Post
 	@Path("parcelamento/confirmar")
-	public void parcelamentoConfirmar(List<FinDocumento> finDocumentoList) {
+	public void parcelamentoConfirmar(List<ParametrosWeb> parametrosWeb, List<FinDocumento> finDocumentoList) {
 		if (finDocumentoList != null) {
 			for (FinDocumento finDocumento : finDocumentoList) {
-				criaDocumento(finDocumento);
+				criaDocumento(finDocumento, Integer.parseInt(parametrosWeb.get(11).getParametroInicial()));
 			}
 		}
 		this.result.redirectTo(this).parcelamento(null);
@@ -94,13 +81,8 @@ public class FinDocumentoController extends GenericController<FinDocumento> {
 	
 	@Post("processar")
 	public void processar(List<FinDocumento> obj, Integer idTipoOperacao) {
-		int i = 0;
-		SysTipoOperacao sysTipoOperacao = (SysTipoOperacao) this.getDao().edit(new SysTipoOperacao(idTipoOperacao));
-		Gerenciador gerenciador = GerenciadorFactory.cria(sysTipoOperacao.getDescricao());
 		for (FinDocumento finDocumento : obj) {
-			finDocumento.setValortotal(obj.get(i).getValortotal());
-			gerenciador.gerencia(getDao(), finDocumento, sysTipoOperacao);
-			i++;
+			atualizar(finDocumento, idTipoOperacao);
 		}
 		this.result.redirectTo(this).baixa(null, null);
 	}
@@ -109,14 +91,18 @@ public class FinDocumentoController extends GenericController<FinDocumento> {
 	@Override
 	public void salvar(FinDocumento obj) {
 		// TODO Auto-generated method stub
+		this.setRedirect(false);
 		super.salvar(obj.novo());
+		this.result.redirectTo(this).editar(this.getObj());
 	}
 	
-	protected void atualizaFinanceiro(List<ParametrosWeb> parametrosWeb) {
+	protected void criaFinanceiro(List<ParametrosWeb> parametrosWeb) {
 		List<FinDocumento> documentos = geraDocumentos(parametrosWeb);
 		for (FinDocumento finDocumento : documentos) {
-			criaDocumento(finDocumento);
-		}
+			FinDocumento finDocumentoCriado = criaDocumento(finDocumento);
+			if (finDocumentoCriado.getIdformapagamento().getDescricao().equals("A VISTA") || finDocumentoCriado.getIdformapagamento().getDescricao().equals("DEBITO"))
+				atualizar(finDocumentoCriado, 4); // 4 = OPERACAO DE BAIXA
+		}		
 	}
 	
 	private List<FinDocumento> geraDocumentos(List<ParametrosWeb> parametrosWeb) {
@@ -129,11 +115,33 @@ public class FinDocumentoController extends GenericController<FinDocumento> {
 		return documentos;
 	}
 	
-	private void criaDocumento(FinDocumento finDocumento) {
+	private FinDocumento criaDocumento(FinDocumento finDocumento) {
 		this.getDao().save(finDocumento);
+		return this.getObj();
 	}
 	
-	private void validaParametrosWeb(List<ParametrosWeb> parametrosWeb) {
+	private void criaDocumento(FinDocumento finDocumento, int idCentroCusto) {
+		this.getDao().save(finDocumento);
+		if (idCentroCusto > 0) {
+			FinDocumentoCentroCusto finDocumentoCentroCusto = new FinDocumentoCentroCusto(this.getObj().getId(), idCentroCusto);
+			this.getDao().save(finDocumentoCentroCusto);
+		}
+	}
+	
+	private void atualizar(FinDocumento finDocumento, Integer idTipoOperacao) {
+		// TODO Auto-generated method stub
+		SysTipoOperacao sysTipoOperacao = (SysTipoOperacao) this.getDao().edit(new SysTipoOperacao(idTipoOperacao));
+		Gerenciador gerenciador = GerenciadorFactory.cria(sysTipoOperacao.getDescricao());
+		gerenciador.gerencia(getDao(), finDocumento, sysTipoOperacao);
+	}
+	
+	private List<ParametrosWeb> validaParametrosWebBaixa(List<ParametrosWeb> parametrosWeb) {
+		SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+		Calendar agora = Calendar.getInstance();
+		// ParametrosWeb[1] = Id Definicao
+		if (parametrosWeb.get(1).getParametroInicial().equals("0"))
+			parametrosWeb.get(1).setParametroFinal("999999");
+		
 		// ParametrosWeb[2] = Nro. Documento
 		if (parametrosWeb.get(2).getParametroInicial() != null && parametrosWeb.get(2).getParametroFinal() == null)
 			parametrosWeb.get(2).setParametroFinal(parametrosWeb.get(2).getParametroInicial());
@@ -149,6 +157,44 @@ public class FinDocumentoController extends GenericController<FinDocumento> {
 			parametrosWeb.get(3).setParametroFinal(formatador.format(agora.getTime()));
 		if (parametrosWeb.get(3).getParametroInicial() == null)
 			parametrosWeb.get(3).setParametroInicial(formatador.format(agora.getTime()));
+		
+		parametrosWeb.get(0).setCampo("idcontabancaria.id");
+		parametrosWeb.get(1).setCampo("iddefinicao.id");
+		parametrosWeb.get(2).setCampo("numero");
+		parametrosWeb.get(3).setCampo("datavencimento");
+		return parametrosWeb;
+	}
+	
+	private List<ParametrosWeb> validaParamerosWebListar(List<ParametrosWeb> parametrosWeb) {
+		SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+		Calendar agora = Calendar.getInstance();
+		if (parametrosWeb == null) {
+			parametrosWeb = new ArrayList<ParametrosWeb>();
+			parametrosWeb.add(new ParametrosWeb("id", "0", null, ">"));
+			parametrosWeb.add(new ParametrosWeb("datacreate", formatador.format(agora.getTime()), formatador.format(agora.getTime())));
+			parametrosWeb.add(new ParametrosWeb("datapagamento", "", null, "is null"));
+		} else {
+			if (parametrosWeb.get(0).getCampo() == null || parametrosWeb.get(0).getParametroInicial() == null) {
+				parametrosWeb.get(0).setCampo("id");
+				parametrosWeb.get(0).setParametroInicial("0");
+				parametrosWeb.get(0).setOperador(">");	
+			}
+			if (parametrosWeb.get(1).getParametroInicial() == null && parametrosWeb.get(1).getParametroFinal() == null) {
+				parametrosWeb.get(1).setParametroInicial(formatador.format(agora.getTime()));
+				parametrosWeb.get(1).setParametroFinal(formatador.format(agora.getTime()));
+			}
+			if (parametrosWeb.get(1).getParametroInicial() != null && parametrosWeb.get(1).getParametroFinal() == null)
+				parametrosWeb.get(1).setParametroFinal(parametrosWeb.get(1).getParametroInicial());
+			parametrosWeb.get(1).setCampo("datacreate");
+			if (parametrosWeb.size() > 2) {
+				parametrosWeb.get(2).setCampo("datapagamento");
+				parametrosWeb.get(2).setParametroInicial("");
+			} else {
+				parametrosWeb.add(new ParametrosWeb("datapagamento", "", null, "is null"));
+			}
+		}
+		parametrosWeb.add(new ParametrosWeb("idtipooperacao.descricao", "ENTRADA", null, "="));
+		return parametrosWeb;
 	}
 	
 }

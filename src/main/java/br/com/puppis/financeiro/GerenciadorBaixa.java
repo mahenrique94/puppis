@@ -24,7 +24,7 @@ public class GerenciadorBaixa extends GerenciadorDocumento {
 		finDocumentoClonado.setValordesconto(valorDesconto);
 		finDocumentoClonado.setValorjuros(valorJuros);
 		dao.save(finDocumentoClonado.novoClonado());
-		dao.save(this.criaExtrato(finDocumento, sysTipoOperacao, valor));
+		dao.save(this.criaExtrato(finDocumento, sysTipoOperacao, valorTotal, finDocumentoClonado.getIdhistorico().getDescricao()));
 	}
 
 	@Override

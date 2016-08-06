@@ -3,17 +3,20 @@ package br.com.puppis.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.caelum.brutauth.auth.annotations.CustomBrutauthRules;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
-import br.com.caelum.vraptor.interceptor.IncludeParameters;
 import br.com.mhc.parametrosweb.ParametrosWeb;
 import br.com.puppis.model.FinDocumentoCentroCusto;
+import br.com.puppis.security.ModuleFinanceiroAccess;
+import br.com.puppis.security.UserModuleFinanceiroAccess;
 
 @Controller
 @Path("financeiro/documento/centro-de-custo")
+@CustomBrutauthRules({ModuleFinanceiroAccess.class, UserModuleFinanceiroAccess.class})
 public class FinDocumentoCentroCustoController extends GenericController<FinDocumentoCentroCusto> {
 	
 	@Delete("")
@@ -49,13 +52,12 @@ public class FinDocumentoCentroCustoController extends GenericController<FinDocu
 	}
 	
 	@Post("")
-	@IncludeParameters
 	@Override
 	public void salvar(FinDocumentoCentroCusto obj) {
 		// TODO Auto-generated method stub
 		this.setRedirect(false);
 		super.salvar(obj);
-		this.result.redirectTo(FinDocumentoController.class).editar(obj.getIddocumento());
+		this.result.nothing();
 	}
 	
 }

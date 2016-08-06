@@ -45,15 +45,22 @@
 		</div>
 		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" role="separator">
 			<label><fmt:message key="label.aceita.desconto"/></label>
-			 <input <c:if test="${obj.aceitadesconto == true}">checked</c:if> class="form-data" name="obj.aceitadesconto" type="checkbox" value="T">
+			<input <c:if test="${obj.aceitadesconto == true}">checked</c:if> class="form-data" name="obj.aceitadesconto" type="checkbox" value="true">
 			<netsis:validationMessage name="obj.aceitadesconto"/>
 		</div>
 	</div>
 	<div class="row" role="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 			<label><fmt:message key="label.inativo"/></label>
-			 <input <c:if test="${obj.inativo == true}">checked</c:if> class="form-data" name="obj.inativo" type="checkbox" value="T">
+			 <input <c:if test="${obj.inativo == true}">checked</c:if> class="form-data" name="obj.inativo" type="checkbox" value="true">
 			<netsis:validationMessage name="obj.inativo"/>
+		</div>
+	</div>
+	<div class="row" role="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
+			<label><fmt:message key="label.observacao"/></label>
+			<textarea class="form-data validate" name="obj.observacao" pattern="textarea" rows="10">${obj.observacao}</textarea>
+			<netsis:validationMessage name="obj.observacao"/>
 		</div>
 	</div>
 </section>

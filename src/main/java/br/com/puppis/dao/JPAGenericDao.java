@@ -1,27 +1,26 @@
 package br.com.puppis.dao;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import org.hibernate.Session;
+import org.hibernate.engine.spi.SessionFactoryImplementor;
+
 import br.com.mhc.paginator.Paginator;
 import br.com.mhc.parametrosweb.ParametrosWeb;
 import br.com.mhc.parametrosweb.ParametrosWebBuilder;
 import br.com.puppis.model.PesDefinicao;
 
-public class JPAGenericDao<T> implements GenericDao<T>{
+public class JPAGenericDao<T> implements GenericDao<T> {
 
 	@Inject
 	private EntityManager em;
-
-	public JPAGenericDao(EntityManager em) {
-		this.em = em;
-	}
-	
-	@Deprecated
-	public JPAGenericDao() {}
+	private T obj;
 
 	@Override
 	public void delete(T obj) {
@@ -94,6 +93,24 @@ public class JPAGenericDao<T> implements GenericDao<T>{
 	}
 	
 	@Override
+	public Connection getConnection() {
+		Session session = (Session) this.em.getDelegate();
+		SessionFactoryImplementor sessionFactory = (SessionFactoryImplementor) session.getSessionFactory();
+		try {
+			return sessionFactory.getConnectionProvider().getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			return null;
+		}
+	}
+	
+	@Override
+	public T getObj() {
+		// TODO Auto-generated method stub
+		return this.obj;
+	}
+	
+	@Override
 	public T refresh(T obj) {
 		// TODO Auto-generated method stub
 		this.em.refresh(obj);
@@ -103,7 +120,7 @@ public class JPAGenericDao<T> implements GenericDao<T>{
 	@Override
 	public void save(T obj) {
 		// TODO Auto-generated method stub
-		this.em.merge(obj);
+		this.obj = this.em.merge(obj);
 	}
 	
 }

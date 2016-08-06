@@ -1,34 +1,41 @@
 package br.com.puppis.estoque;
 
+import java.util.Calendar;
+
 import br.com.puppis.dao.GenericDao;
+import br.com.puppis.model.ComNota;
 import br.com.puppis.model.PsProdutoServico;
+import br.com.puppis.movimento.MovimentoTipo;
 
 public class GerenciadorCompra extends GerenciadorEstoque {
 
 	@Override
-	public void gerencia(GenericDao dao, long idProdutoServico, double quantidade, double valorVenda) {
+	public void gerencia(GenericDao dao, long idNota, long idProdutoServico, double quantidade, double valorVenda) {
 		// TODO Auto-generated method stub
 		PsProdutoServico produto = (PsProdutoServico) dao.edit(new PsProdutoServico(idProdutoServico));
-		produto.getEstoque().setQuantidade(produto.getEstoque().getQuantidade() + quantidade);
+		ComNota nota = (ComNota) dao.edit(new ComNota(idNota));
 		produto.getCusto().setValor(valorVenda);
+		produto.getEstoque().setQuantidade(produto.getEstoque().getQuantidade() + quantidade);
 		dao.save(produto);
+		getMovimento().movimenta(dao, nota, MovimentoTipo.COMPRA);
 	}
 
 	@Override
-	public Gerenciador pega(String operacao) {
+	public Gerenciador pega(String operacao, Calendar dataAtualizacao) {
 		// TODO Auto-generated method stub
-		if (operacao.equals("COMPRA")) {
+		if (operacao.equals("COMPRA") && dataAtualizacao == null) {
 			return this;
 		} else {
 			setOperacao(operacao);
-			return proximo(null);
+			setDataAtualizacao(dataAtualizacao);
+			return proximo(new GerenciadorEstornaVenda());
 		}
 	}
 
 	@Override
 	public Gerenciador proximo(Gerenciador proximo) {
 		// TODO Auto-generated method stub
-		throw new RuntimeException("Não foi possível obter o gerenciador da operação" + getOperacao());
+		return proximo.pega(getOperacao(), getDataAtualizacao());
 	}
 
 }

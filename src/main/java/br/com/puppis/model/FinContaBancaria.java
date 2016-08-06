@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cache;
@@ -39,16 +40,19 @@ public class FinContaBancaria implements Serializable {
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 10, message = "{minimo.0.maximo.10}")
+	@Pattern(regexp = "^([/.\\d-]{1,})$")
 	@Column(length = 10, columnDefinition = "varchar(10)", nullable = false)
 	private String agencia;
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 10, message = "{minimo.0.maximo.10}")
+	@Pattern(regexp = "^([/.\\d-]{1,})$")
 	@Column(length = 10, columnDefinition = "varchar(10)", nullable = false)
 	private String numeroconta;
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 60, message = "{minimo.0.maximo.60}")
+	@Pattern(regexp = "^([A-Z]+(\\s[A-Z]+)*)$")
 	@Column(length = 60, columnDefinition = "varchar(60)", nullable = false)
 	private String nometitular;
 	@Column(nullable = false)

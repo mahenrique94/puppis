@@ -1,5 +1,6 @@
 package br.com.puppis.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -19,6 +20,7 @@ import br.com.puppis.dao.Dao;
 import br.com.puppis.dao.GenericDao;
 import br.com.puppis.security.PermissionDelete;
 import br.com.puppis.security.PermissionEdit;
+import br.com.puppis.security.PermissionForm;
 import br.com.puppis.security.PermissionList;
 import br.com.puppis.security.PermissionSave;
 
@@ -48,17 +50,22 @@ public abstract class GenericController<T> {
 	}
 	
 	@Get("formulario")
+	@CustomBrutauthRules(PermissionForm.class)
 	public void formulario(T obj) {}
 	
 	@Get("")
 	@CustomBrutauthRules(PermissionList.class)
 	public void listar(T obj, List<ParametrosWeb> parametrosWeb) {
+		if (parametrosWeb == null) {
+			parametrosWeb = new ArrayList<ParametrosWeb>();
+		}
+		parametrosWeb.add(new ParametrosWeb("id", "0", null, ">"));
 		this.result.include(getClassName(obj) + "List", getDao().findAll(obj.getClass(), parametrosWeb));
 	}
 	
 	@Get("listarsl")
 	@CustomBrutauthRules(PermissionList.class)
-	public void listarSl(T obj, List<ParametrosWeb> parametrosWeb) {
+	public void listarSL(T obj, List<ParametrosWeb> parametrosWeb) {
 		this.result.include(getClassName(obj) + "List", getDao().findAll(obj.getClass(), parametrosWeb));
 	}
 	
@@ -109,6 +116,10 @@ public abstract class GenericController<T> {
 	
 	protected GenericDao getDao() {
 		return this.dao.getDao();
+	}
+	
+	protected T getObj() {
+		return (T) getDao().getObj();
 	}
 	
 	private boolean isRedirect() {

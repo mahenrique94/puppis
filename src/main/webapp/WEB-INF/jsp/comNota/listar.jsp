@@ -7,14 +7,30 @@
 			</div>
 		</div>
 		<div class="row" role="row">
-			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" role="separator">
+				<div class="form-data-group">
+					<span class="form-data-group-text"><fmt:message key="label.de"/></span>
+					<input class="form-data" maxlength="10" min="01-01-1970" name="parametrosWeb[1].parametroInicial" onkeypress="format(this, event, dataMask);" pattern="data" type="text" value="${parametrosWeb[1].parametroInicial}">
+				</div>
+			</div>
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" role="separator">
+				<div class="form-data-group">
+					<span class="form-data-group-text"><fmt:message key="label.ate"/></span>
+					<input class="form-data" maxlength="10" min="01-01-1970" name="parametrosWeb[1].parametroFinal" onkeypress="format(this, event, dataMask);" pattern="data" type="text" value="${parametrosWeb[1].parametroFinal}">
+				</div>
+			</div>
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" role="separator">
 				<select class="form-data" data-class="displaytagSelect" name="parametrosWeb[0].campo"></select>
 			</div>
-			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" role="separator">
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" role="separator">
 				<div class="form-data-group">
 					<input autocomplete="off" class="form-data" name="parametrosWeb[0].parametroInicial" pattern="letraNumeroEspacoPontoTracoBarra" type="text">
 					<span class="form-data-group-btn"><button class="btn-default"><i class="icon-search"></i></button></span>
 				</div>
+			</div>
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" role="separator">
+				<label class="no-margin"><fmt:message key="label.atualizadas"/></label>
+				<input <c:if test="${parametrosWeb[2].operador.equals('is not null')}">checked</c:if> class="form-data" name="parametrosWeb[2].operador" type="checkbox" value="is not null">
 			</div>
 		</div>
 	</nav>

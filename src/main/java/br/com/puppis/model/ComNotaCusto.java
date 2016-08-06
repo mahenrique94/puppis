@@ -20,8 +20,14 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.DynamicUpdate;
+
 @Entity
 @Table(name = "com_notacusto")
+@DynamicUpdate(value = true)
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class ComNotaCusto implements Serializable {
 
 	@Id
@@ -36,15 +42,19 @@ public class ComNotaCusto implements Serializable {
 	@DecimalMin("0.0")
 	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = true)
-	private Double porcdesconto;
+	private Double valordesconto;
 	@DecimalMin("0.0")
 	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = true)
-	private Double porcicms;
+	private Double valorjuros;
 	@DecimalMin("0.0")
 	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = true)
-	private Double porcipi;
+	private Double valoricms;
+	@DecimalMin("0.0")
+	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
+	@Column(nullable = true)
+	private Double valoripi;
 	@DecimalMin("0.0")
 	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = false)
@@ -57,9 +67,12 @@ public class ComNotaCusto implements Serializable {
 	private Calendar dataupdate;
 	
 	public ComNotaCusto() {
-		setPorcdesconto(0.0);
-		setPorcicms(0.0);
-		setPorcipi(0.0);
+		setIdformapagamento(new FinFormaPagamento(0));
+		setValordesconto(0.0);
+		setValorjuros(0.0);
+		setValoricms(0.0);
+		setValoripi(0.0);
+		setValortotal(0.0);
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
 	}
@@ -86,23 +99,29 @@ public class ComNotaCusto implements Serializable {
 	public void setIdformapagamento(FinFormaPagamento idformapagamento) {
 		this.idformapagamento = idformapagamento;
 	}
-	public Double getPorcdesconto() {
-		return porcdesconto;
+	public Double getValordesconto() {
+		return valordesconto;
 	}
-	public void setPorcdesconto(Double porcdesconto) {
-		this.porcdesconto = porcdesconto;
+	public void setValordesconto(Double valordesconto) {
+		this.valordesconto = valordesconto;
 	}
-	public Double getPorcicms() {
-		return porcicms;
+	public Double getValoricms() {
+		return valoricms;
 	}
-	public void setPorcicms(Double porcicms) {
-		this.porcicms = porcicms;
+	public void setValoricms(Double valoricms) {
+		this.valoricms = valoricms;
 	}
-	public Double getPorcipi() {
-		return porcipi;
+	public Double getValoripi() {
+		return valoripi;
 	}
-	public void setPorcipi(Double porcipi) {
-		this.porcipi = porcipi;
+	public void setValoripi(Double valoripi) {
+		this.valoripi = valoripi;
+	}
+	public Double getValorjuros() {
+		return valorjuros;
+	}
+	public void setValorjuros(Double valorjuros) {
+		this.valorjuros = valorjuros;
 	}
 	public Double getValortotal() {
 		return valortotal;
@@ -128,10 +147,11 @@ public class ComNotaCusto implements Serializable {
 		for(ComNotaItem item : itens) {
 			totalItens += item.getValortotal();
 		}
-		double desconto = ((obj.getPorcdesconto() != null ? obj.getPorcdesconto() : 0.0) / 100) * totalItens;
-		double icms = ((obj.getPorcicms() != null ? obj.getPorcicms() : 0.0) / 100) * totalItens;
-		double ipi = ((obj.getPorcipi() != null ? obj.getPorcipi() : 0.0) / 100) * totalItens;
-		double total = (icms + ipi + totalItens) - desconto;
+		double desconto = ((obj.getValordesconto() != null ? obj.getValordesconto() : 0.0) / 100) * totalItens;
+		double juros= ((obj.getValorjuros() != null ? obj.getValorjuros() : 0.0) / 100) * totalItens;
+		double icms = ((obj.getValoricms() != null ? obj.getValoricms() : 0.0) / 100) * totalItens;
+		double ipi = ((obj.getValoripi() != null ? obj.getValoripi() : 0.0) / 100) * totalItens;
+		double total = (icms + ipi + totalItens + juros) - desconto;
 		obj.setValortotal(total);
 	}
 	

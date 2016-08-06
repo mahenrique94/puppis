@@ -12,6 +12,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -29,6 +30,7 @@ public class FinHistorico implements Serializable {
 	private Integer id;
 	@NotNull
 	@NotEmpty
+	@Pattern(regexp = "[aA-zZ0-9\"\'(){}*,.\\/\\s-]*")
 	@Column(columnDefinition = "text", nullable = false)
 	private String descricao;
 	@Temporal(TemporalType.DATE)

@@ -7,6 +7,6 @@
 	<display:column headerScope="valortotal" class="valortotal" property="valortotal" titleKey="displaytag.valor.total"/>
 	<display:column style="text-align: center;width: 165px;">
 		<a class="btn-lower btn-xs" href="<c:url value="/comercio/nota-item/${obj.id}"/>" onclick="ModalController.show(this, event);"><i class="icon-pencil"></i>&nbsp;<fmt:message key="button.editar"/></a>
-		<a class="btn-der btn-xs" href="<c:url value="/comercio/nota-item/${obj.id}"/>" onclick="deletar(this);"><i class="icon-trash"></i>&nbsp;<fmt:message key="button.deletar"/></a>
+		<button class="btn-der btn-xs" formaction="<c:url value="/comercio/nota-item?obj.id=${obj.id}"/>" onclick="deletar(this);" type="button"><i class="icon-trash"></i>&nbsp;<fmt:message key="button.deletar"/></button>
 	</display:column>
 </display:table>

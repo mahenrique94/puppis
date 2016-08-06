@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
+import br.com.puppis.model.AdmComercio;
 import br.com.puppis.model.AdmUsuario;
 
 @SessionScoped
@@ -12,9 +13,11 @@ import br.com.puppis.model.AdmUsuario;
 public class UserName implements Serializable {
 	
 	private AdmUsuario usuario;
+	private AdmComercio comercio;
 	
-	public void login(AdmUsuario usuario) {
+	public void login(AdmUsuario usuario, AdmComercio comercio) {
 		this.usuario = usuario;
+		this.comercio = comercio;
 	}
 	
 	public void logout() {
@@ -23,6 +26,9 @@ public class UserName implements Serializable {
 	
 	public AdmUsuario getUsuario() {
 		return this.usuario;
+	}
+	public AdmComercio getComercio() {
+		return comercio;
 	}
 	
 	public boolean isLogado() {

@@ -3,17 +3,20 @@ package br.com.puppis.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.caelum.brutauth.auth.annotations.CustomBrutauthRules;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
-import br.com.caelum.vraptor.interceptor.IncludeParameters;
 import br.com.mhc.parametrosweb.ParametrosWeb;
 import br.com.puppis.model.ComNotaItem;
+import br.com.puppis.security.ModuleComercioAccess;
+import br.com.puppis.security.UserModuleComercioAccess;
 
 @Controller
 @Path("comercio/nota-item")
+@CustomBrutauthRules({ModuleComercioAccess.class, UserModuleComercioAccess.class})
 public class ComNotaItemController extends GenericController<ComNotaItem> {
 
 	@Delete("")
@@ -48,7 +51,6 @@ public class ComNotaItemController extends GenericController<ComNotaItem> {
 	}
 
 	@Post("")
-	@IncludeParameters
 	@Override
 	public void salvar(ComNotaItem obj) {
 		// TODO Auto-generated method stub

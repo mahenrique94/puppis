@@ -15,13 +15,13 @@ public class GerenciadorEstorno extends GerenciadorDocumento {
 			finDocumentoEntrada.estorna();
 			finDocumentoEntrada.setSaldo(finDocumentoEntrada.getSaldo() + finDocumento.calcula());
 			dao.save(finDocumentoEntrada);
-			dao.save(this.criaExtrato(finDocumentoEntrada, sysTipoOperacao, finDocumento.calcula()));
+			dao.save(this.criaExtrato(finDocumentoEntrada, sysTipoOperacao, finDocumento.calcula(), finDocumentoEntrada.getIdhistorico().getDescricao()));
 			dao.delete(finDocumento);
 		} else { // Estornando um cancelamento
 			finDocumento.estorna();
 			finDocumento.setIdtipooperacao(new SysTipoOperacao(3)); // 3 = ENTRADA
 			finDocumento.setSaldo(finDocumento.calcula());
-			dao.save(this.criaExtrato(finDocumento, sysTipoOperacao, finDocumento.getSaldo()));
+			dao.save(finDocumento);
 		}
 	}
 	

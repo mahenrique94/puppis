@@ -13,7 +13,6 @@ public class GerenciadorCancelamento extends GerenciadorDocumento {
 		finDocumento.cancela();
 		finDocumento.setIdtipooperacao(sysTipoOperacao);
 		dao.save(finDocumento);
-		dao.save(this.criaExtrato(finDocumento, sysTipoOperacao, 0.0));
 	}
 	
 	@Override

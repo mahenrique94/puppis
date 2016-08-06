@@ -3,20 +3,21 @@ package br.com.puppis.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.validation.Valid;
-
+import br.com.caelum.brutauth.auth.annotations.CustomBrutauthRules;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
-import br.com.caelum.vraptor.interceptor.IncludeParameters;
 import br.com.caelum.vraptor.view.Results;
 import br.com.mhc.parametrosweb.ParametrosWeb;
 import br.com.puppis.model.PesDefinicao;
+import br.com.puppis.security.ModuleCadastroAccess;
+import br.com.puppis.security.UserModuleCadastroAccess;
 
 @Controller
 @Path("pessoa/definicao")
+@CustomBrutauthRules({ModuleCadastroAccess.class, UserModuleCadastroAccess.class})
 public class PesDefinicaoController extends GenericController<PesDefinicao> {
 
 	@Delete("")
@@ -59,9 +60,8 @@ public class PesDefinicaoController extends GenericController<PesDefinicao> {
 	}
 	
 	@Post("")
-	@IncludeParameters
 	@Override
-	public void salvar(@Valid PesDefinicao obj) {
+	public void salvar(PesDefinicao obj) {
 		// TODO Auto-generated method stub
 		this.setRedirect(false);
 		super.salvar(obj);

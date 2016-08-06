@@ -13,13 +13,6 @@ public class LoginHandler implements RuleHandler {
 	@Inject
 	private Result result;
 	
-	public LoginHandler(Result result) {
-		this.result = result;
-	}
-	
-	@Deprecated
-	public LoginHandler() {}
-	
 	@Override
 	public void handle() {
 		// TODO Auto-generated method stub

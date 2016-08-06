@@ -2,21 +2,22 @@ package br.com.puppis.model;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
-import javax.persistence.Version;
-import javax.validation.constraints.AssertFalse;
-import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cache;
@@ -36,8 +37,11 @@ public class AdmTipoAcesso implements Serializable {
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 30, message = "{minimo.0.maximo.30}")
+	@Pattern(regexp = "^([A-Z]+(\\s[A-Z]+)*)$")
 	@Column(length = 30, columnDefinition = "varchar(30)", nullable = false, unique = true)
 	private String descricao;
+	@Column(nullable = false)
+	private Boolean formulario;
 	@Column(nullable = false)
 	private Boolean salvar;
 	@Column(nullable = false)
@@ -52,12 +56,16 @@ public class AdmTipoAcesso implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
 	private Calendar dataupdate;
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name = "idtipoacesso", referencedColumnName = "id", insertable = false, updatable = false)
+	private Set<AdmTipoAcessoModulo> modulos;
 //	@Version
 //	private Integer versao;
 	
 	public AdmTipoAcesso() {
 		setDatacreate(getDatacreate() != null ? getDatacreate() : Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
+		setFormulario(false);
 		setDeletar(false);
 		setEditar(false);
 		setListar(false);
@@ -79,6 +87,12 @@ public class AdmTipoAcesso implements Serializable {
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	public Boolean getFormulario() {
+		return formulario;
+	}
+	public void setFormulario(Boolean formulario) {
+		this.formulario = formulario;
 	}
 	public Boolean getSalvar() {
 		return salvar;
@@ -116,11 +130,22 @@ public class AdmTipoAcesso implements Serializable {
 	public void setDataupdate(Calendar dataupdate) {
 		this.dataupdate = dataupdate;
 	}
+	public Set<AdmTipoAcessoModulo> getModulos() {
+		return Collections.unmodifiableSet(modulos);
+	}
 //	public Integer getVersao() {
 //		return versao;
 //	}
 //	public void setVersao(Integer versao) {
 //		this.versao = versao;
 //	}
+	
+	public boolean possuiModulo(String modulo) {
+		for (AdmTipoAcessoModulo admTipoAcessoModulo : modulos) {
+			if (admTipoAcessoModulo.getIdmodulo().getDescricao().equals(modulo))
+				return true;
+		}
+		return false;
+	}
 	
 }

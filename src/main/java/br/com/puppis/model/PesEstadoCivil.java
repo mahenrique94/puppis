@@ -22,6 +22,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "pes_estadocivil")
+@DynamicUpdate(value = true)
 @Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class PesEstadoCivil implements Serializable {
 

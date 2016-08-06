@@ -16,6 +16,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cache;
@@ -25,6 +26,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "sys_tipooperacao")
+@DynamicUpdate(value = true)
 @Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class SysTipoOperacao implements Serializable {
 
@@ -34,11 +36,13 @@ public class SysTipoOperacao implements Serializable {
 	@NotNull
 	@NotEmpty
 	@Size(min = 1, max = 1, message = "{minimo.1.maximo.1}")
+	@Pattern(regexp = "^([A-Z]*)$")
 	@Column(length = 1, columnDefinition = "char(1)", nullable = false)
 	private String tipo;
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 30, message = "{minimo.0.maximo.30}")
+	@Pattern(regexp = "^([A-Z]+(\\s[A-Z]+)*)$")
 	@Column(length = 30, columnDefinition = "varchar(30)", nullable = false, unique = true)
 	private String descricao;
 	@ManyToOne

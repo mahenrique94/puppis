@@ -11,16 +11,6 @@ public class FuncionarioAccess implements CustomBrutauthRule {
 	@Inject
 	private UserName userName;
 	
-	public FuncionarioAccess(UserName userName) {
-		// TODO Auto-generated constructor stub
-		this.userName = userName;
-	}
-	
-	@Deprecated
-	public FuncionarioAccess() {
-		// TODO Auto-generated constructor stub
-	}
-	
 	public boolean isAllowed() {
 		return this.userName.getUsuario().getIdgrupo().getDescricao().equals("FUNCIONARIO");
 	}

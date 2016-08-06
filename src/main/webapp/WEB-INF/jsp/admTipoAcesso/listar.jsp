@@ -30,6 +30,10 @@
 		<c:if test="${obj.editar == true}"><i class="color-success icon-ok"></i></c:if>
 		<c:if test="${obj.editar == false}"><i class="color-error icon-cancel"></i></c:if>
 	</display:column>
+	<display:column style="text-align: center;width: 50px;" titleKey="displaytag.formulario">
+		<c:if test="${obj.formulario == true}"><i class="color-success icon-ok"></i></c:if>
+		<c:if test="${obj.formulario == false}"><i class="color-error icon-cancel"></i></c:if>
+	</display:column>
 	<display:column style="text-align: center;width: 50px;" titleKey="displaytag.listar">
 		<c:if test="${obj.listar == true}"><i class="color-success icon-ok"></i></c:if>
 		<c:if test="${obj.listar == false}"><i class="color-error icon-cancel"></i></c:if>

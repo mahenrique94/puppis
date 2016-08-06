@@ -3,7 +3,9 @@ package br.com.puppis.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -21,6 +24,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cache;
@@ -40,9 +44,11 @@ public class AdmComercio implements Serializable {
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 60, message = "{minimo.0.maximo.60}")
+	@Pattern(regexp = "^([-./\\dA-Z]+(\\s[-./\\dA-Z]+)*)$")
 	@Column(length = 60, columnDefinition = "varchar(60)", nullable = false, unique = true)
 	private String nomerazaosocial;
 	@Size(min = 0, max = 60, message = "{minimo.0.maximo.60}")
+	@Pattern(regexp = "^([-./\\dA-Z]+(\\s[-./\\dA-Z]+)*)$")
 	@Column(length = 60, columnDefinition = "varchar(60)", nullable = true, unique = true)
 	private String nomefantasia;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "idcomercio")
@@ -51,6 +57,8 @@ public class AdmComercio implements Serializable {
 	private AdmDocumento documento;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "idcomercio")
 	private AdmContato contato;
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "idcomercio")
+	private AdmPagamento pagamento;
 	@Column(nullable = false)
 	private Boolean inativo;
 	@Temporal(TemporalType.DATE)
@@ -59,6 +67,9 @@ public class AdmComercio implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
 	private Calendar dataupdate;
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name = "idcomercio", referencedColumnName = "id", insertable = false, updatable = false)
+	private Set<AdmModulo> modulos;
 	
 	public AdmComercio() {
 		setDatacreate(Calendar.getInstance());
@@ -109,6 +120,12 @@ public class AdmComercio implements Serializable {
 	public Boolean getInativo() {
 		return inativo;
 	}
+	public AdmPagamento getPagamento() {
+		return pagamento;
+	}
+	public void setPagamento(AdmPagamento pagamento) {
+		this.pagamento = pagamento;
+	}
 	public void setInativo(Boolean inativo) {
 		this.inativo = inativo;
 	}
@@ -123,6 +140,17 @@ public class AdmComercio implements Serializable {
 	}
 	public void setDataupdate(Calendar dataupdate) {
 		this.dataupdate = dataupdate;
+	}
+	public Set<AdmModulo> getModulos() {
+		return Collections.unmodifiableSet(modulos);
+	}
+	
+	public boolean possuiModulo(String modulo) {
+		for (AdmModulo admModulo : this.modulos) {
+			if (admModulo.getIdmodulo().getDescricao().equals(modulo))
+				return true;
+		}
+		return false;
 	}
 	
 }

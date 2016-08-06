@@ -50,6 +50,12 @@ public class FinDocumentoCentroCusto implements Serializable {
 		this();
 		setId(id);
 	}
+	public FinDocumentoCentroCusto(long idDocumento, int idCentroCusto) {
+		// TODO Auto-generated constructor stub
+		this();
+		setIddocumento(new FinDocumento(idDocumento));
+		setIdcentrocusto(new CadCentroCusto(idCentroCusto));
+	}
 	
 	public Integer getId() {
 		return id;

@@ -7,8 +7,8 @@ import br.com.puppis.model.SysTipoOperacao;
 
 public interface Gerenciador {
 
-	default public FinExtrato criaExtrato(FinDocumento finDocumento, SysTipoOperacao sysTipoOperacao, double valor) {
-		return FinExtrato.criaExtratoDeBaixa(finDocumento, sysTipoOperacao, valor);
+	default public FinExtrato criaExtrato(FinDocumento finDocumento, SysTipoOperacao sysTipoOperacao, double valor, String historico) {
+		return FinExtrato.cria(finDocumento, sysTipoOperacao, valor, historico);
 	};
 	
 	public Gerenciador pega(String operacao);

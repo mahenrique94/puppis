@@ -19,23 +19,33 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 
 @Entity
 @Table(name = "com_nota")
+@DynamicUpdate(value = true)
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class ComNota implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@OneToOne(fetch = FetchType.LAZY)
+	@ManyToOne
+	@JoinColumn(name = "idcomercio", referencedColumnName = "id", nullable = false)
+	private AdmComercio idcomercio;
+	@OneToOne
 	@JoinColumn(name = "idusuario", referencedColumnName = "id", nullable = false)
 	private AdmUsuario idusuario;
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "iddefinicao", referencedColumnName = "id", nullable = true)
 	private PesDefinicao iddefinicao;
 	@Temporal(TemporalType.DATE)
@@ -47,10 +57,10 @@ public class ComNota implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = true)
 	private Calendar datacancelamento;
-	@Min(0)
+	@Range(min = 0, message = "{minimo.0}")
 	@Column(nullable = true)
 	private Integer numero;
-	@Min(0)
+	@Range(min = 0, message = "{minimo.0}")
 	@Column(nullable = true)
 	private Integer serie;
 	@OneToOne
@@ -82,6 +92,12 @@ public class ComNota implements Serializable {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	public AdmComercio getIdcomercio() {
+		return idcomercio;
+	}
+	public void setIdcomercio(AdmComercio idcomercio) {
+		this.idcomercio = idcomercio;
 	}
 	public AdmUsuario getIdusuario() {
 		return idusuario;

@@ -6,6 +6,7 @@
 	<input name="parametrosWeb[3].parametroInicialaux" type="hidden" value="${parametrosWeb[3].parametroInicial}">
 	<input name="parametrosWeb[8].parametroInicialaux" type="hidden" value="${parametrosWeb[8].parametroInicial}">
 	<input name="parametrosWeb[9].parametroInicialaux" type="hidden" value="${parametrosWeb[9].parametroInicial}">
+	<input name="parametrosWeb[11].parametroInicialaux" type="hidden" value="${parametrosWeb[11].parametroInicial}">
 	<c:set var="disabled" value="disabled"/>
 	<nav class="band-nav-lube" role="complementary">
 		<div class="row" role="row">
@@ -57,12 +58,12 @@
 			</div>
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
 				<label><fmt:message key="label.data.emissao"/></label>
-				<input class="form-data validate" maxlength="10" min="01-01-1970" name="parametrosWeb[6].parametroInicial" onkeypress="format(this, event, dataMask);" pattern="data" required type="text" value="${parametrosWeb[6].parametroInicial}">
+				<input class="form-data validate" maxlength="10" min="01-01-1970" name="parametrosWeb[6].parametroInicial" onkeypress="format(this, event, maskData);" pattern="data" required type="text" value="${parametrosWeb[6].parametroInicial}">
 			</div>
 		</div>
 		<div class="row" role="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
-				<label><fmt:message key="label.valor.total"/></label>
+				<label><fmt:message key="label.valor.parcela"/></label>
 				<input class="form-data validate" maxlength="13" name="parametrosWeb[7].parametroInicial" pattern="numeric10_2" required type="text" value="${parametrosWeb[7].parametroInicial}"/>
 			</div>
 		</div>
@@ -70,6 +71,12 @@
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 				<label><fmt:message key="label.id.historico"/></label>
 				<select class="form-data ss validate" data-class="sl" id="slFinanceiro_Historico_Json_01" name="parametrosWeb[8].parametroInicial"></select>
+			</div>
+		</div>
+		<div class="row" role="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
+				<label><fmt:message key="label.centro.custo"/></label>
+				<select class="form-data ss validate" data-class="sl" id="slCadastro_Centro-de-custo_Json_01" name="parametrosWeb[11].parametroInicial"></select>
 			</div>
 		</div>
 		<c:if test="${not empty FinDocumentoList}">
