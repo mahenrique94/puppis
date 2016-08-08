@@ -34,7 +34,7 @@ public class RelatorioController {
 	private Result result;
 	private final String PATH_RELATORIO = "/WEB-INF/jsp/relatorio/";
 	private final String PATH_JASPER = this.PATH_RELATORIO + "jasper/";
-	private final String PATH_LOGOTIPO = this.PATH_RELATORIO + "img/";			 
+	private final String LOGOTIPO = this.PATH_RELATORIO + "img/logo.png";			 
 	
 	@Get("{operacao*}")
 	public void operacao(String operacao) {
@@ -51,11 +51,10 @@ public class RelatorioController {
 			String dataAtual = formatador.format(Calendar.getInstance().getTime());
 			String nomeRelatorio = request.getServletContext().getRealPath(String.format(getPathJasper() + "%s.jasper", parametrosWeb.get(0).getParametroInicial()));
 			parameters.put("IDCOMERCIO", Integer.parseInt(parametrosWeb.get(2).getParametroInicial()));
-			parameters.put("PATH_LOGO", "/Users/matheus/workspace/puppis/src/main/webapp/WEB-INF/jsp/relatorio/img/");
+			parameters.put("LOGOTIPO", "/Users/matheus/workspace/puppis/src/main/webapp/WEB-INF/jsp/relatorio/img/logo.png");
 			
 			switch (parametrosWeb.get(0).getParametroInicial()) {
-			case "IRPESSOA" :
-				
+			case "IRPESSOA" :				
 				// IDPESSOA
 				if (parametrosWeb.get(3).getParametroFinal() == null && parametrosWeb.get(3).getParametroInicial() != null)
 					parametrosWeb.get(3).setParametroFinal(parametrosWeb.get(3).getParametroInicial());
@@ -82,6 +81,19 @@ public class RelatorioController {
 				parameters.put("DATACADASTRO_FINAL", formatador.parse(parametrosWeb.get(4).getParametroFinal()));
 				parameters.put("INATIVO", Boolean.parseBoolean(parametrosWeb.get(5).getParametroInicial()));
 				break;
+			case "IREXTRATO" :				
+				// DATACREATE
+				if (parametrosWeb.get(3).getParametroFinal() == null && parametrosWeb.get(3).getParametroInicial() != null)
+					parametrosWeb.get(3).setParametroFinal(parametrosWeb.get(3).getParametroInicial());
+				if (parametrosWeb.get(3).getParametroFinal() == null)
+					parametrosWeb.get(3).setParametroFinal(dataAtual);
+				if (parametrosWeb.get(3).getParametroInicial() == null)
+					parametrosWeb.get(3).setParametroInicial(dataAtual);
+				
+				parameters.put("DATA_INICIAL", formatador.parse(parametrosWeb.get(3).getParametroInicial()));
+				parameters.put("DATA_FINAL", formatador.parse(parametrosWeb.get(3).getParametroFinal()));
+				parameters.put("CREDITODEBITO", parametrosWeb.get(4).getParametroInicial());
+				break;
 			default :
 				throw new RuntimeException("Não foi possível localizar o relatório " + parametrosWeb.get(0).getParametroInicial());
 			}
@@ -103,10 +115,10 @@ public class RelatorioController {
 		return this.PATH_RELATORIO;
 	}
 	public String getPathJasper() {
-		return PATH_JASPER;
+		return this.PATH_JASPER;
 	}
-	public String getPathLogoTipo() {
-		return this.PATH_LOGOTIPO;
+	public String getLogoTipo() {
+		return this.LOGOTIPO;
 	}
 	
 }

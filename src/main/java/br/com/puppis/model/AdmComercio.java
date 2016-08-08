@@ -1,7 +1,6 @@
 package br.com.puppis.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
@@ -15,14 +14,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -142,7 +138,7 @@ public class AdmComercio implements Serializable {
 		this.dataupdate = dataupdate;
 	}
 	public Set<AdmModulo> getModulos() {
-		return Collections.unmodifiableSet(modulos);
+		return modulos;
 	}
 	
 	public boolean possuiModulo(String modulo) {

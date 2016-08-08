@@ -8,6 +8,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -64,7 +65,7 @@ public class AdmUsuario implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
 	private Calendar dataupdate;
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idusuario", referencedColumnName = "id", insertable = false, updatable = false)
 	private Set<AdmUsuarioComercio> comercios;
 	
@@ -127,7 +128,7 @@ public class AdmUsuario implements Serializable {
 		this.dataupdate = dataupdate;
 	}
 	public Set<AdmUsuarioComercio> getComercios() {
-		return Collections.unmodifiableSet(comercios);
+		return comercios;
 	}
 	
 	public boolean isAdministrador(AdmUsuario admUsuario) {

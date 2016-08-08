@@ -3,6 +3,7 @@ package br.com.puppis.model;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -56,7 +57,7 @@ public class AdmTipoAcesso implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
 	private Calendar dataupdate;
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToMany
 	@JoinColumn(name = "idtipoacesso", referencedColumnName = "id", insertable = false, updatable = false)
 	private Set<AdmTipoAcessoModulo> modulos;
 //	@Version
@@ -131,7 +132,7 @@ public class AdmTipoAcesso implements Serializable {
 		this.dataupdate = dataupdate;
 	}
 	public Set<AdmTipoAcessoModulo> getModulos() {
-		return Collections.unmodifiableSet(modulos);
+		return modulos;
 	}
 //	public Integer getVersao() {
 //		return versao;
@@ -141,7 +142,7 @@ public class AdmTipoAcesso implements Serializable {
 //	}
 	
 	public boolean possuiModulo(String modulo) {
-		for (AdmTipoAcessoModulo admTipoAcessoModulo : modulos) {
+		for (AdmTipoAcessoModulo admTipoAcessoModulo : this.modulos) {
 			if (admTipoAcessoModulo.getIdmodulo().getDescricao().equals(modulo))
 				return true;
 		}

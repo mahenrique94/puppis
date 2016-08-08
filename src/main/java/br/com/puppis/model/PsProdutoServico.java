@@ -6,6 +6,7 @@ import java.util.Calendar;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -75,9 +76,9 @@ public class PsProdutoServico implements Serializable{
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
 	private Calendar dataupdate;
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "idprodutoservico")
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "idprodutoservico")
 	private PsEstoque estoque;
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "idprodutoservico")
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "idprodutoservico")
 	private PsCusto custo;
 	
 	public PsProdutoServico() {

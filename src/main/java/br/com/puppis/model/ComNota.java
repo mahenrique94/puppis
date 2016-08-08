@@ -72,7 +72,7 @@ public class ComNota implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
 	private Calendar dataupdate;
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "idnota")
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "idnota")
 	private ComNotaCusto custo;
 	@OneToMany
 	@JoinColumn(name="idnota", referencedColumnName = "id", insertable = false, updatable = false)

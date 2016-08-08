@@ -2,6 +2,7 @@
 <%@include file="/config/libraries-style.jsp"%>
 <form action="<c:url value="/financeiro/extrato"/>" class="form-modern" id="formfinextrato" method="post" name="formfinextrato" onsubmit="return enviarPost(this);" role="form">
 	<input name="obj.id" type="hidden" value="${obj.id}">
+	<input name="obj.idcontabancaria.idaux" type="hidden" value="${obj.idcontabancaria.id}">
 	<nav class="band-nav-lube" role="complementary">
 		<div class="row" role="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
@@ -10,6 +11,13 @@
 		</div>
 	</nav>
 	<section aria-expanded="true" aria-hidden="false" class="form-body" role="form">
+		<div class="row" role="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
+				<label><fmt:message key="label.conta"/></label>
+				<select class="form-data validate" data-class="slFinContaBancaria" id="slFinanceiro_Conta-bancaria_Json_01" name="obj.idcontabancaria.id" required></select>
+				<netsis:validationMessage name="obj.idcontabancaria.id"/>
+			</div>
+		</div>
 		<div class="row" role="row">
 			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
 				<label><fmt:message key="label.operacao"/></label>

@@ -13,6 +13,7 @@
 						<li class="${disabledFinanceiro}" role="menuitem"><a href="<c:url value="/financeiro/documento/parcelamento"/>"><label><i class="font-5x icon-docs"></i><fmt:message key="nav.financeiro.parcelamento"/></label></a></li>
 						<li class="${disabledFinanceiro}" role="menuitem"><a href="<c:url value="/financeiro/documento/baixa"/>"><label><i class="font-5x icon-money"></i><fmt:message key="nav.financeiro.baixa"/></label></a></li>
 						<li class="${disabledFinanceiro}" role="menuitem"><a href="<c:url value="/financeiro/extrato"/>"><label><i class="font-5x icon-list-bullet"></i><fmt:message key="nav.financeiro.extrato"/></label></a></li>
+						<li class="${disabledFinanceiro}" role="menuitem"><a href="<c:url value="/dashboard/relatorios/financeiro"/>"><label><i class="font-5x icon-chart-bar"></i><fmt:message key="nav.financeiro.relatorios"/></label></a></li>
 					</ul>
 				</nav>
 			</div>

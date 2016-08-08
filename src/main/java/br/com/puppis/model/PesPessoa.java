@@ -67,7 +67,7 @@ public class PesPessoa implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
 	private Calendar dataupdate;
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "idpessoa")
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "idpessoa")
 	private PesDocumento documento;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "idpessoa")
 	private PesEndereco endereco;
