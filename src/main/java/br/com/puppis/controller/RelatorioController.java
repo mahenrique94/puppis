@@ -50,39 +50,19 @@ public class RelatorioController {
 			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
 			String dataAtual = formatador.format(Calendar.getInstance().getTime());
 			String nomeRelatorio = request.getServletContext().getRealPath(String.format(getPathJasper() + "%s.jasper", parametrosWeb.get(0).getParametroInicial()));
-			parameters.put("IDCOMERCIO", Integer.parseInt(parametrosWeb.get(2).getParametroInicial()));
 			parameters.put("LOGOTIPO", "/Users/matheus/workspace/puppis/src/main/webapp/WEB-INF/jsp/relatorio/img/logo.png");
 			
 			switch (parametrosWeb.get(0).getParametroInicial()) {
 			case "IRPESSOA" :				
 				// IDPESSOA
-				if (parametrosWeb.get(3).getParametroFinal() == null && parametrosWeb.get(3).getParametroInicial() != null)
-					parametrosWeb.get(3).setParametroFinal(parametrosWeb.get(3).getParametroInicial());
-				if (parametrosWeb.get(3).getParametroFinal() == null)
-					parametrosWeb.get(3).setParametroFinal("999999999");
-				if (parametrosWeb.get(3).getParametroInicial() == null)
-					parametrosWeb.get(3).setParametroInicial("0");
+				if (parametrosWeb.get(2).getParametroFinal() == null && parametrosWeb.get(2).getParametroInicial() != null)
+					parametrosWeb.get(2).setParametroFinal(parametrosWeb.get(2).getParametroInicial());
+				if (parametrosWeb.get(2).getParametroFinal() == null)
+					parametrosWeb.get(2).setParametroFinal("999999999");
+				if (parametrosWeb.get(2).getParametroInicial() == null)
+					parametrosWeb.get(2).setParametroInicial("0");
 				
 				// DATACADASTRO
-				if (parametrosWeb.get(4).getParametroFinal() == null && parametrosWeb.get(4).getParametroInicial() != null)
-					parametrosWeb.get(4).setParametroFinal(parametrosWeb.get(4).getParametroInicial());
-				if (parametrosWeb.get(4).getParametroFinal() == null)
-					parametrosWeb.get(4).setParametroFinal(dataAtual);
-				if (parametrosWeb.get(4).getParametroInicial() == null)
-					parametrosWeb.get(4).setParametroInicial(dataAtual);
-				
-				// INATIVO
-				if (parametrosWeb.size() == 5)
-					parametrosWeb.add(new ParametrosWeb(null, "false"));
-				
-				parameters.put("IDPESSOA_INICIAL", Long.parseLong(parametrosWeb.get(3).getParametroInicial()));
-				parameters.put("IDPESSOA_FINAL", Long.parseLong(parametrosWeb.get(3).getParametroFinal()));
-				parameters.put("DATACADASTRO_INICIAL", formatador.parse(parametrosWeb.get(4).getParametroInicial()));
-				parameters.put("DATACADASTRO_FINAL", formatador.parse(parametrosWeb.get(4).getParametroFinal()));
-				parameters.put("INATIVO", Boolean.parseBoolean(parametrosWeb.get(5).getParametroInicial()));
-				break;
-			case "IREXTRATO" :				
-				// DATACREATE
 				if (parametrosWeb.get(3).getParametroFinal() == null && parametrosWeb.get(3).getParametroInicial() != null)
 					parametrosWeb.get(3).setParametroFinal(parametrosWeb.get(3).getParametroInicial());
 				if (parametrosWeb.get(3).getParametroFinal() == null)
@@ -90,9 +70,28 @@ public class RelatorioController {
 				if (parametrosWeb.get(3).getParametroInicial() == null)
 					parametrosWeb.get(3).setParametroInicial(dataAtual);
 				
-				parameters.put("DATA_INICIAL", formatador.parse(parametrosWeb.get(3).getParametroInicial()));
-				parameters.put("DATA_FINAL", formatador.parse(parametrosWeb.get(3).getParametroFinal()));
-				parameters.put("CREDITODEBITO", parametrosWeb.get(4).getParametroInicial());
+				// INATIVO
+				if (parametrosWeb.size() == 4)
+					parametrosWeb.add(new ParametrosWeb(null, "false"));
+				
+				parameters.put("IDPESSOA_INICIAL", Long.parseLong(parametrosWeb.get(2).getParametroInicial()));
+				parameters.put("IDPESSOA_FINAL", Long.parseLong(parametrosWeb.get(2).getParametroFinal()));
+				parameters.put("DATACADASTRO_INICIAL", formatador.parse(parametrosWeb.get(3).getParametroInicial()));
+				parameters.put("DATACADASTRO_FINAL", formatador.parse(parametrosWeb.get(3).getParametroFinal()));
+				parameters.put("INATIVO", Boolean.parseBoolean(parametrosWeb.get(4).getParametroInicial()));
+				break;
+			case "IREXTRATO" :				
+				// DATACREATE
+				if (parametrosWeb.get(2).getParametroFinal() == null && parametrosWeb.get(2).getParametroInicial() != null)
+					parametrosWeb.get(2).setParametroFinal(parametrosWeb.get(2).getParametroInicial());
+				if (parametrosWeb.get(2).getParametroFinal() == null)
+					parametrosWeb.get(2).setParametroFinal(dataAtual);
+				if (parametrosWeb.get(2).getParametroInicial() == null)
+					parametrosWeb.get(2).setParametroInicial(dataAtual);
+				
+				parameters.put("DATA_INICIAL", formatador.parse(parametrosWeb.get(2).getParametroInicial()));
+				parameters.put("DATA_FINAL", formatador.parse(parametrosWeb.get(2).getParametroFinal()));
+				parameters.put("CREDITODEBITO", parametrosWeb.get(3).getParametroInicial());
 				break;
 			default :
 				throw new RuntimeException("Não foi possível localizar o relatório " + parametrosWeb.get(0).getParametroInicial());

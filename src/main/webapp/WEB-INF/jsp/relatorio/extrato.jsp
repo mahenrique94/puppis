@@ -2,7 +2,6 @@
 <form action="<c:url value="/relatorio/processar"/>" class="form-modern" data-controller="ModalController" id="relatorio" method="post" name="relatorio" role="form" target="_blank">
 	<input name="parametrosWeb[0].parametroInicial" type="hidden" value="IREXTRATO">
 	<input name="parametrosWeb[1].parametroInicial" type="hidden" value="PDF">
-	<input name="parametrosWeb[2].parametroInicial" type="hidden" value="${username.comercio.id}">
 	<nav class="band-nav-lube" role="complementary">
 		<div class="row" role="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
@@ -18,15 +17,15 @@
 					<div class="row" role="row">
 						<div class="col-12" role="separator">
 							<label><fmt:message key="label.data"/></label>
-							<input autocomplete="off" class="form-data validate" maxlength="10" name="parametrosWeb[3].parametroInicial" onkeypress="format(this, event, maskData);" pattern="data" placeholder="<fmt:message key="placeholder.data"/>" type="text">
+							<input autocomplete="off" class="form-data validate" maxlength="10" name="parametrosWeb[2].parametroInicial" onkeypress="format(this, event, maskData);" pattern="data" placeholder="<fmt:message key="placeholder.data"/>" type="text">
 						</div>
 					</div>
 					<div class="row" role="row">
 						<div class="col-12" role="separator">
 							<label></label>
-							<label><input class="form-data" name="parametrosWeb[4].parametroInicial" required type="radio" value="D">&nbsp;<fmt:message key="label.credito"/></label>
-							<label><input class="form-data" name="parametrosWeb[4].parametroInicial" required type="radio" value="C">&nbsp;<fmt:message key="label.debito"/></label>
-							<label><input checked class="form-data" name="parametrosWeb[4].parametroInicial" required type="radio" value="X">&nbsp;<fmt:message key="label.todos"/></label>
+							<label><input class="form-data" name="parametrosWeb[3].parametroInicial" required type="radio" value="D">&nbsp;<fmt:message key="label.credito"/></label>
+							<label><input class="form-data" name="parametrosWeb[3].parametroInicial" required type="radio" value="C">&nbsp;<fmt:message key="label.debito"/></label>
+							<label><input checked class="form-data" name="parametrosWeb[3].parametroInicial" required type="radio" value="X">&nbsp;<fmt:message key="label.todos"/></label>
 						</div>
 					</div>
 				</section>
@@ -37,7 +36,7 @@
 					<div class="row" role="row">
 						<div class="col-12" role="separator">
 							<label><fmt:message key="label.data"/></label>
-							<input autocomplete="off" class="form-data validate" maxlength="10" name="parametrosWeb[3].parametroFinal" onkeypress="format(this, event, maskData);" pattern="data" placeholder="<fmt:message key="placeholder.data"/>" type="text">
+							<input autocomplete="off" class="form-data validate" maxlength="10" name="parametrosWeb[2].parametroFinal" onkeypress="format(this, event, maskData);" pattern="data" placeholder="<fmt:message key="placeholder.data"/>" type="text">
 						</div>
 					</div>
 				</section>

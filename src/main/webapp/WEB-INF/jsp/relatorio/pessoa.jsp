@@ -2,7 +2,6 @@
 <form action="<c:url value="/relatorio/processar"/>" class="form-modern" data-controller="ModalController" id="relatorio" method="post" name="relatorio" role="form" target="_blank">
 	<input name="parametrosWeb[0].parametroInicial" type="hidden" value="IRPESSOA">
 	<input name="parametrosWeb[1].parametroInicial" type="hidden" value="PDF">
-	<input name="parametrosWeb[2].parametroInicial" type="hidden" value="${username.comercio.id}">
 	<nav class="band-nav-lube" role="complementary">
 		<div class="row" role="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
@@ -19,7 +18,7 @@
 						<div class="col-12" role="separator">
 							<label><fmt:message key="label.id"/></label>
 							<div class="form-data-group">
-								<input autocomplete="off" class="form-data validate" min="0" name="parametrosWeb[3].parametroInicial" step="1" type="number">
+								<input autocomplete="off" class="form-data validate" min="0" name="parametrosWeb[2].parametroInicial" step="1" type="number">
 								<span class="form-data-group-btn"><a class="btn-default" href="<c:url value="/pessoa/listarsl"/>" onclick="ModalController.show(this, event);"><i class="icon-search"></i></a></span>
 							</div>
 						</div>
@@ -27,13 +26,13 @@
 					<div class="row" role="row">
 						<div class="col-12" role="separator">
 							<label><fmt:message key="label.data.cadastro"/></label>
-							<input autocomplete="off" class="form-data validate" maxlength="10" name="parametrosWeb[4].parametroInicial" onkeypress="format(this, event, maskData);" pattern="data" placeholder="<fmt:message key="placeholder.data"/>" type="text">
+							<input autocomplete="off" class="form-data validate" maxlength="10" name="parametrosWeb[3].parametroInicial" onkeypress="format(this, event, maskData);" pattern="data" placeholder="<fmt:message key="placeholder.data"/>" type="text">
 						</div>
 					</div>
 					<div class="row" role="row">
 						<div class="col-12" role="separator">
 							<label><fmt:message key="label.inativo"/></label>
-							<input class="form-data" name="parametrosWeb[5].parametroInicial" value="true" type="checkbox">
+							<input class="form-data" name="parametrosWeb[4].parametroInicial" value="true" type="checkbox">
 						</div>
 					</div>
 				</section>
@@ -45,7 +44,7 @@
 						<div class="col-12" role="separator">
 							<label><fmt:message key="label.id"/></label>
 							<div class="form-data-group">
-								<input autocomplete="off" class="form-data validate" min="0" name="parametrosWeb[3].parametroFinal" step="1" type="number">
+								<input autocomplete="off" class="form-data validate" min="0" name="parametrosWeb[2].parametroFinal" step="1" type="number">
 								<span class="form-data-group-btn"><a class="btn-default" href="<c:url value="/pessoa/listarsl"/>" onclick="ModalController.show(this, event);"><i class="icon-search"></i></a></span>
 							</div>
 						</div>
@@ -53,7 +52,7 @@
 					<div class="row" role="row">
 						<div class="col-12" role="separator">
 							<label><fmt:message key="label.data.cadastro"/></label>
-							<input autocomplete="off" class="form-data validate" maxlength="10" name="parametrosWeb[4].parametroFinal" onkeypress="format(this, event, maskData);" pattern="data" placeholder="<fmt:message key="placeholder.data"/>" type="text">
+							<input autocomplete="off" class="form-data validate" maxlength="10" name="parametrosWeb[3].parametroFinal" onkeypress="format(this, event, maskData);" pattern="data" placeholder="<fmt:message key="placeholder.data"/>" type="text">
 						</div>
 					</div>
 				</section>

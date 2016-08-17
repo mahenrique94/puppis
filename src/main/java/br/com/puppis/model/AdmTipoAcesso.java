@@ -57,7 +57,7 @@ public class AdmTipoAcesso implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
 	private Calendar dataupdate;
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idtipoacesso", referencedColumnName = "id", insertable = false, updatable = false)
 	private Set<AdmTipoAcessoModulo> modulos;
 //	@Version
