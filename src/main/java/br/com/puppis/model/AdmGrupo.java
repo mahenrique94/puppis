@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -30,7 +31,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class AdmGrupo implements Serializable {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name = "adm_grupo", sequenceName = "sqadm_grupo", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "adm_grupo")
 	private Integer id;
 	@OneToOne
 	@JoinColumn(name = "idtipoacesso", referencedColumnName = "id", nullable = false)

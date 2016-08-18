@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -45,7 +46,8 @@ import br.com.puppis.util.Util;
 public class FinDocumento implements Serializable, Cloneable {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name = "fin_documento", sequenceName = "sqfin_documento", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "fin_documento")
 	private Long id;
 	@ManyToOne
 	@JoinColumn(name = "idcontabancaria", referencedColumnName = "id", nullable = false)

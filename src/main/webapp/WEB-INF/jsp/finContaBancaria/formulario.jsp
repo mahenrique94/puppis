@@ -26,7 +26,7 @@
 		<div class="row-input" role="row">
 			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
 				<label><fmt:message key="label.agencia"/></label>
-				<input class="form-data validate" maxlength="10" name="obj.agencia" pattern="numeroPontoTracoBarra" required type="text" value="${obj.agencia}">
+				<input class="form-data validate" maxlength="10" name="obj.agencia" pattern="letraNumeroPontoTracoBarra" required type="text" value="${obj.agencia}">
 				<netsis:validationMessage name="obj.agencia"/>
 			</div>
 			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">

@@ -25,7 +25,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class FinBanco implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name = "fin_banco", sequenceName = "sqfin_banco", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "fin_banco")
 	private Integer id;
 	@NotNull
 	@NotEmpty

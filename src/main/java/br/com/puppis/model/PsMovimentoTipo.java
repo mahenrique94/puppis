@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,7 +30,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class PsMovimentoTipo implements Serializable {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name = "ps_movimentotipo", sequenceName = "sqps_movimentotipo", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ps_movimentotipo")
 	private Integer id;
 	@ManyToOne
 	@JoinColumn(name  = "idtipooperacao", referencedColumnName = "id", nullable = false)

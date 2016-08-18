@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,7 +27,8 @@ import org.hibernate.annotations.DynamicUpdate;
 public class AdmTipoAcessoModulo implements Serializable {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name = "adm_tipoacessomodulo", sequenceName = "sqadm_tipoacessomodulo", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "adm_tipoacessomodulo")
 	private Integer id;
 	@ManyToOne
 	@JoinColumn(name = "idtipoacesso", referencedColumnName = "id", nullable = false)

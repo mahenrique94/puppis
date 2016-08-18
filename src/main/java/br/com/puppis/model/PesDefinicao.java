@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,7 +26,8 @@ import org.hibernate.annotations.DynamicUpdate;
 public class PesDefinicao implements Serializable {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name = "pes_definicao", sequenceName = "sqpes_definicao", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pes_definicao")
 	private Long id;
 	@ManyToOne
 	@JoinColumn(name = "idpessoa", referencedColumnName = "id", nullable = false)

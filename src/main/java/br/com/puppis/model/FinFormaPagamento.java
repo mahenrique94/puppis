@@ -29,7 +29,8 @@ import org.hibernate.validator.constraints.Range;
 public class FinFormaPagamento implements Serializable {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name = "fin_formapagamento", sequenceName = "sqfin_formapagamento", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "fin_formapagamento")
 	private Integer id;
 	@NotNull
 	@NotEmpty

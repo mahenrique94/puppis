@@ -15,7 +15,7 @@
 				<legend class="block-header"><label class="block-title"><fmt:message key="titulo.inicial"/></label></legend>
 				<section class="block-body block-body-padding">
 					<div class="row" role="row">
-						<div class="col-12" role="separator">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 							<label><fmt:message key="label.id"/></label>
 							<div class="form-data-group">
 								<input autocomplete="off" class="form-data validate" min="0" name="parametrosWeb[2].parametroInicial" step="1" type="number">
@@ -24,13 +24,13 @@
 						</div>
 					</div>
 					<div class="row" role="row">
-						<div class="col-12" role="separator">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 							<label><fmt:message key="label.data.cadastro"/></label>
 							<input autocomplete="off" class="form-data validate" maxlength="10" name="parametrosWeb[3].parametroInicial" onkeypress="format(this, event, maskData);" pattern="data" placeholder="<fmt:message key="placeholder.data"/>" type="text">
 						</div>
 					</div>
 					<div class="row" role="row">
-						<div class="col-12" role="separator">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 							<label><fmt:message key="label.inativo"/></label>
 							<input class="form-data" name="parametrosWeb[4].parametroInicial" value="true" type="checkbox">
 						</div>
@@ -41,7 +41,7 @@
 				<legend class="block-header"><label class="block-title"><fmt:message key="titulo.final"/></label></legend>
 				<section class="block-body block-body-padding">
 					<div class="row" role="row">
-						<div class="col-12" role="separator">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 							<label><fmt:message key="label.id"/></label>
 							<div class="form-data-group">
 								<input autocomplete="off" class="form-data validate" min="0" name="parametrosWeb[2].parametroFinal" step="1" type="number">
@@ -50,7 +50,7 @@
 						</div>
 					</div>
 					<div class="row" role="row">
-						<div class="col-12" role="separator">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 							<label><fmt:message key="label.data.cadastro"/></label>
 							<input autocomplete="off" class="form-data validate" maxlength="10" name="parametrosWeb[3].parametroFinal" onkeypress="format(this, event, maskData);" pattern="data" placeholder="<fmt:message key="placeholder.data"/>" type="text">
 						</div>

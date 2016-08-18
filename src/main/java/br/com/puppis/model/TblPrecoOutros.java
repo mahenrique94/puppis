@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -31,7 +32,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class TblPrecoOutros implements Serializable {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name = "tbl_precooutros", sequenceName = "sqtbl_precooutros", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tbl_precooutros")
 	private Integer id;
 	@ManyToOne
 	@JoinColumn(name = "idprecopessoa", referencedColumnName = "id", nullable = false)

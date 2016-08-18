@@ -30,7 +30,7 @@
 	</div>
 	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" role="separator">
 		<label><fmt:message key="label.complemento"/></label>
-		<input class="form-data validate" maxlength="30" name="obj.endereco.complemento" pattern="letraEspaco" type="text" value="${obj.endereco.complemento}">
+		<input class="form-data validate" maxlength="30" name="obj.endereco.complemento" pattern="letraNumeroEspacoPontoTracoBarra" type="text" value="${obj.endereco.complemento}">
 		<netsis:validationMessage name="obj.endereco.complemento"/>
 	</div>
 </div>

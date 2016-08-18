@@ -27,7 +27,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class PsUnidadeMedida implements Serializable {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name = "ps_unidademedida", sequenceName = "sqps_unidademedida", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ps_unidademedida")
 	private Integer id;
 	@NotNull
 	@NotEmpty

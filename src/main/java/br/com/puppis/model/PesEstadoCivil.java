@@ -27,7 +27,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class PesEstadoCivil implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name = "pes_estadocivil", sequenceName = "sqpes_estadocivil", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pes_estadocivil")
 	private Integer id;
 	@NotNull
 	@NotEmpty

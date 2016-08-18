@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -37,7 +38,8 @@ import org.hibernate.validator.constraints.Range;
 public class ComNota implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name = "com_nota", sequenceName = "sqcom_nota", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "com_nota")
 	private Long id;
 	@ManyToOne
 	@JoinColumn(name = "idcomercio", referencedColumnName = "id", nullable = false)

@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -30,7 +31,8 @@ import org.hibernate.annotations.DynamicUpdate;
 public class ComNotaItem implements Serializable {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name = "com_notaitem", sequenceName = "sqcom_notaitem", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "com_notaitem")
 	private Long id;
 	@ManyToOne
 	@JoinColumn(name = "idnota", referencedColumnName = "id", nullable = false)

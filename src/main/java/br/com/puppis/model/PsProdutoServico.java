@@ -35,7 +35,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class PsProdutoServico implements Serializable{
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name = "ps_produtoservico", sequenceName = "sqps_produtoservico", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ps_produtoservico")
 	private Long id;
 	@ManyToOne
 	@JoinColumn(name = "idclasse", referencedColumnName = "id", nullable = false)

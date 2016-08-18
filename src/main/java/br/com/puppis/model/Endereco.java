@@ -45,7 +45,7 @@ public class Endereco implements Serializable {
 	@Column(length = 9, columnDefinition = "varchar(9)", nullable = false)
 	private String cep;
 	@Size(min = 0, max = 30, message = "{minimo.0.maximo.30}")
-	@Pattern(regexp = "^([A-Z]+(\\s[A-Z]+)*)$")
+	@Pattern(regexp = "^([-./\\dA-Z]+(\\s[-./\\dA-Z]+)*)$")
 	@Column(length = 30, columnDefinition = "varchar(30)", nullable = true)
 	private String complemento;
 	@NotNull

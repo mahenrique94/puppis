@@ -12,7 +12,7 @@
 	<div class="row" role="row">
 		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
 			<label><fmt:message key="label.usuario"/></label>
-			<input class="form-data" maxlength="20" name="obj.usuario" pattern="letraNumero" required type="text" value="${obj.usuario}">
+			<input class="form-data validate" maxlength="20" name="obj.usuario" pattern="letraNumero" required type="text" value="${obj.usuario}">
 			<netsis:validationMessage name="obj.usuario"/>
 		</div>
 		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">

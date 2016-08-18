@@ -93,6 +93,132 @@ public class RelatorioController {
 				parameters.put("DATA_FINAL", formatador.parse(parametrosWeb.get(2).getParametroFinal()));
 				parameters.put("CREDITODEBITO", parametrosWeb.get(3).getParametroInicial());
 				break;
+			case "IRFINDOCPESSOA" :
+				// IDDEFINICAO
+				if (parametrosWeb.get(2).getParametroFinal() == null && parametrosWeb.get(2).getParametroInicial() != null)
+					parametrosWeb.get(2).setParametroFinal(parametrosWeb.get(2).getParametroInicial());
+				if (parametrosWeb.get(2).getParametroFinal() == null)
+					parametrosWeb.get(2).setParametroFinal("999999999");
+				if (parametrosWeb.get(2).getParametroInicial() == null)
+					parametrosWeb.get(2).setParametroInicial("0");
+				
+				// DATAEMISSAO
+				if (parametrosWeb.get(3).getParametroFinal() == null && parametrosWeb.get(3).getParametroInicial() != null)
+					parametrosWeb.get(3).setParametroFinal(parametrosWeb.get(3).getParametroInicial());
+				if (parametrosWeb.get(3).getParametroFinal() == null)
+					parametrosWeb.get(3).setParametroFinal(dataAtual);
+				if (parametrosWeb.get(3).getParametroInicial() == null)
+					parametrosWeb.get(3).setParametroInicial(dataAtual);
+				
+				// DATAPAGAMENTO
+				if (parametrosWeb.get(4).getParametroFinal() == null && parametrosWeb.get(4).getParametroInicial() != null)
+					parametrosWeb.get(4).setParametroFinal(parametrosWeb.get(4).getParametroInicial());
+				if (parametrosWeb.get(4).getParametroFinal() == null)
+					parametrosWeb.get(4).setParametroFinal(dataAtual);
+				if (parametrosWeb.get(4).getParametroInicial() == null)
+					parametrosWeb.get(4).setParametroInicial(dataAtual);
+				
+				// DATAVENCIMENTO
+				if (parametrosWeb.get(5).getParametroFinal() == null && parametrosWeb.get(5).getParametroInicial() != null)
+					parametrosWeb.get(5).setParametroFinal(parametrosWeb.get(5).getParametroInicial());
+				if (parametrosWeb.get(5).getParametroFinal() == null)
+					parametrosWeb.get(5).setParametroFinal(dataAtual);
+				if (parametrosWeb.get(5).getParametroInicial() == null)
+					parametrosWeb.get(5).setParametroInicial(dataAtual);
+				
+				parameters.put("IDDEFINICAO_INICIAL", Long.parseLong(parametrosWeb.get(2).getParametroInicial()));
+				parameters.put("IDDEFINICAO_FINAL", Long.parseLong(parametrosWeb.get(2).getParametroFinal()));
+				parameters.put("DATAEMISSAO_INICIAL", formatador.parse(parametrosWeb.get(3).getParametroInicial()));
+				parameters.put("DATAEMISSAO_FINAL", formatador.parse(parametrosWeb.get(3).getParametroFinal()));
+				parameters.put("DATAPAGAMENTO_INICIAL", formatador.parse(parametrosWeb.get(4).getParametroInicial()));
+				parameters.put("DATAPAGAMENTO_FINAL", formatador.parse(parametrosWeb.get(4).getParametroFinal()));
+				parameters.put("DATAVENCIMENTO_INICIAL", formatador.parse(parametrosWeb.get(5).getParametroInicial()));
+				parameters.put("DATAVENCIMENTO_FINAL", formatador.parse(parametrosWeb.get(5).getParametroFinal()));
+				break;
+			case "IRFINDOCCUSTO" :
+				// IDCENTROCUSTO
+				if (parametrosWeb.get(2).getParametroFinal() == null && parametrosWeb.get(2).getParametroInicial() != null)
+					parametrosWeb.get(2).setParametroFinal(parametrosWeb.get(2).getParametroInicial());
+				if (parametrosWeb.get(2).getParametroFinal() == null)
+					parametrosWeb.get(2).setParametroFinal("999999999");
+				if (parametrosWeb.get(2).getParametroInicial() == null)
+					parametrosWeb.get(2).setParametroInicial("0");
+				
+				// DATAEMISSAO
+				if (parametrosWeb.get(3).getParametroFinal() == null && parametrosWeb.get(3).getParametroInicial() != null)
+					parametrosWeb.get(3).setParametroFinal(parametrosWeb.get(3).getParametroInicial());
+				if (parametrosWeb.get(3).getParametroFinal() == null)
+					parametrosWeb.get(3).setParametroFinal(dataAtual);
+				if (parametrosWeb.get(3).getParametroInicial() == null)
+					parametrosWeb.get(3).setParametroInicial(dataAtual);
+				
+				// DATAPAGAMENTO
+				if (parametrosWeb.get(4).getParametroFinal() == null && parametrosWeb.get(4).getParametroInicial() != null)
+					parametrosWeb.get(4).setParametroFinal(parametrosWeb.get(4).getParametroInicial());
+				if (parametrosWeb.get(4).getParametroFinal() == null)
+					parametrosWeb.get(4).setParametroFinal(dataAtual);
+				if (parametrosWeb.get(4).getParametroInicial() == null)
+					parametrosWeb.get(4).setParametroInicial(dataAtual);
+				
+				// DATAVENCIMENTO
+				if (parametrosWeb.get(5).getParametroFinal() == null && parametrosWeb.get(5).getParametroInicial() != null)
+					parametrosWeb.get(5).setParametroFinal(parametrosWeb.get(5).getParametroInicial());
+				if (parametrosWeb.get(5).getParametroFinal() == null)
+					parametrosWeb.get(5).setParametroFinal(dataAtual);
+				if (parametrosWeb.get(5).getParametroInicial() == null)
+					parametrosWeb.get(5).setParametroInicial(dataAtual);
+				
+				parameters.put("IDCENTROCUSTO_INICIAL", Integer.parseInt(parametrosWeb.get(2).getParametroInicial()));
+				parameters.put("IDCENTROCUSTO_FINAL", Integer.parseInt(parametrosWeb.get(2).getParametroFinal()));
+				parameters.put("DATAEMISSAO_INICIAL", formatador.parse(parametrosWeb.get(3).getParametroInicial()));
+				parameters.put("DATAEMISSAO_FINAL", formatador.parse(parametrosWeb.get(3).getParametroFinal()));
+				parameters.put("DATAPAGAMENTO_INICIAL", formatador.parse(parametrosWeb.get(4).getParametroInicial()));
+				parameters.put("DATAPAGAMENTO_FINAL", formatador.parse(parametrosWeb.get(4).getParametroFinal()));
+				parameters.put("DATAVENCIMENTO_INICIAL", formatador.parse(parametrosWeb.get(5).getParametroInicial()));
+				parameters.put("DATAVENCIMENTO_FINAL", formatador.parse(parametrosWeb.get(5).getParametroFinal()));
+				break;
+			case "IRFINDOCPAGAMENTO" :
+				// IDFORMAPAGAMENTO
+				if (parametrosWeb.get(2).getParametroFinal() == null && parametrosWeb.get(2).getParametroInicial() != null)
+					parametrosWeb.get(2).setParametroFinal(parametrosWeb.get(2).getParametroInicial());
+				if (parametrosWeb.get(2).getParametroFinal() == null)
+					parametrosWeb.get(2).setParametroFinal("999999999");
+				if (parametrosWeb.get(2).getParametroInicial() == null)
+					parametrosWeb.get(2).setParametroInicial("0");
+				
+				// DATAEMISSAO
+				if (parametrosWeb.get(3).getParametroFinal() == null && parametrosWeb.get(3).getParametroInicial() != null)
+					parametrosWeb.get(3).setParametroFinal(parametrosWeb.get(3).getParametroInicial());
+				if (parametrosWeb.get(3).getParametroFinal() == null)
+					parametrosWeb.get(3).setParametroFinal(dataAtual);
+				if (parametrosWeb.get(3).getParametroInicial() == null)
+					parametrosWeb.get(3).setParametroInicial(dataAtual);
+				
+				// DATAPAGAMENTO
+				if (parametrosWeb.get(4).getParametroFinal() == null && parametrosWeb.get(4).getParametroInicial() != null)
+					parametrosWeb.get(4).setParametroFinal(parametrosWeb.get(4).getParametroInicial());
+				if (parametrosWeb.get(4).getParametroFinal() == null)
+					parametrosWeb.get(4).setParametroFinal(dataAtual);
+				if (parametrosWeb.get(4).getParametroInicial() == null)
+					parametrosWeb.get(4).setParametroInicial(dataAtual);
+				
+				// DATAVENCIMENTO
+				if (parametrosWeb.get(5).getParametroFinal() == null && parametrosWeb.get(5).getParametroInicial() != null)
+					parametrosWeb.get(5).setParametroFinal(parametrosWeb.get(5).getParametroInicial());
+				if (parametrosWeb.get(5).getParametroFinal() == null)
+					parametrosWeb.get(5).setParametroFinal(dataAtual);
+				if (parametrosWeb.get(5).getParametroInicial() == null)
+					parametrosWeb.get(5).setParametroInicial(dataAtual);
+				
+				parameters.put("IDFORMAPAGAMENTO_INICIAL", Integer.parseInt(parametrosWeb.get(2).getParametroInicial()));
+				parameters.put("IDFORMAPAGAMENTO_FINAL", Integer.parseInt(parametrosWeb.get(2).getParametroFinal()));
+				parameters.put("DATAEMISSAO_INICIAL", formatador.parse(parametrosWeb.get(3).getParametroInicial()));
+				parameters.put("DATAEMISSAO_FINAL", formatador.parse(parametrosWeb.get(3).getParametroFinal()));
+				parameters.put("DATAPAGAMENTO_INICIAL", formatador.parse(parametrosWeb.get(4).getParametroInicial()));
+				parameters.put("DATAPAGAMENTO_FINAL", formatador.parse(parametrosWeb.get(4).getParametroFinal()));
+				parameters.put("DATAVENCIMENTO_INICIAL", formatador.parse(parametrosWeb.get(5).getParametroInicial()));
+				parameters.put("DATAVENCIMENTO_FINAL", formatador.parse(parametrosWeb.get(5).getParametroFinal()));
+				break;
 			default :
 				throw new RuntimeException("Não foi possível localizar o relatório " + parametrosWeb.get(0).getParametroInicial());
 			}

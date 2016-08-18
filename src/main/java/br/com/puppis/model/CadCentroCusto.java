@@ -31,7 +31,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class CadCentroCusto implements Serializable{
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name = "cad_centrocusto", sequenceName = "sqcad_centrocusto", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cad_centrocusto")
 	private Integer id;
 	@ManyToOne
 	@JoinColumn(name = "idcentrocustomaster", referencedColumnName = "id", nullable = false)

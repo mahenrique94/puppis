@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,7 +30,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class FinContaBancaria implements Serializable {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name = "fin_contabancaria", sequenceName = "sqfin_contabancaria", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "fin_contabancaria")
 	private Integer id;
 	@ManyToOne
 	@JoinColumn(name = "idbanco", referencedColumnName = "id", nullable = false)
@@ -40,7 +42,7 @@ public class FinContaBancaria implements Serializable {
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 10, message = "{minimo.0.maximo.10}")
-	@Pattern(regexp = "^([/.\\d-]{1,})$")
+	@Pattern(regexp = "^([-/.\\dA-Z]+([\\dA-Z]+)*)$")
 	@Column(length = 10, columnDefinition = "varchar(10)", nullable = false)
 	private String agencia;
 	@NotNull
