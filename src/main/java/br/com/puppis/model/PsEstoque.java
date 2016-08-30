@@ -108,10 +108,4 @@ public class PsEstoque implements Serializable {
 		this.dataupdate = dataupdate;
 	}
 	
-	public void novo() {
-		setDatacreate(Calendar.getInstance());
-		setDataupdate(Calendar.getInstance());
-		setQuantidade(0.0);
-	}
-	
 }

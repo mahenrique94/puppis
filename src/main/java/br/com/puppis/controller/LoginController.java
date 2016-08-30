@@ -2,6 +2,7 @@ package br.com.puppis.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.inject.Inject;
 
@@ -18,6 +19,7 @@ import br.com.puppis.dao.Dao;
 import br.com.puppis.dao.GenericDao;
 import br.com.puppis.model.AdmComercio;
 import br.com.puppis.model.AdmModulo;
+import br.com.puppis.model.AdmPermissao;
 import br.com.puppis.model.AdmUsuario;
 import br.com.puppis.security.UserName;
 import br.com.puppis.validator.ValidatorUser;
@@ -34,6 +36,7 @@ public class LoginController {
 	private UserName userName;
 	@Inject
 	private Validator validator;
+	
 
 	@Get("formulario")
 	@Public
@@ -51,14 +54,14 @@ public class LoginController {
 			if (admUsuario.getComercios() != null && admUsuario.getComercios().size() > 1) {
 				if (idComercio != null && idComercio >= 0) {
 					AdmComercio admComercio = (AdmComercio) getDao().edit(new AdmComercio(idComercio));
-					this.userName.login(admUsuario, admComercio);
+					this.userName.login(admUsuario, admComercio, admUsuario.getPermissoes());
 					this.result.redirectTo(DashBoardController.class).dashboard();
 				} else {
 					this.result.include("usuario", usuario).include("senha", senha).include("AdmUsuarioComercioList", admUsuario.getComercios());
 					this.result.redirectTo(this).formulario();
 				}
 			} else {
-				this.userName.login(admUsuario, admUsuario.getComercios().iterator().next().getIdcomercio());
+				this.userName.login(admUsuario, admUsuario.getComercios().iterator().next().getIdcomercio(), admUsuario.getPermissoes());
 				this.result.redirectTo(DashBoardController.class).dashboard();
 			}
 		} else {

@@ -6,6 +6,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.ParameterMode;
+import javax.persistence.Query;
+import javax.persistence.StoredProcedureQuery;
 import javax.persistence.TypedQuery;
 
 import org.hibernate.Session;
@@ -35,13 +38,23 @@ public class JPAGenericDao<T> implements GenericDao<T> {
 	}
 	
 	@Override
-	public List<T> executeNamedQuery(String namedQuery, Class clazz, Object[] parametros) {
+	public List<T> executeNamedQuery(String namedQuery, Class clazz, Object[] parameters) {
 		// TODO Auto-generated method stub
 		TypedQuery query = this.em.createNamedQuery(namedQuery, clazz);
-		for (int i = 0; i < parametros.length; i++) {
-			query.setParameter(i, parametros[i]);
-		}
+		addParameters(query, parameters);
 		return query.getResultList();
+	}
+	
+
+	@Override
+	public void executeProcedure(String procedure, Object[] parameters, Class[] clazzs) {
+		// TODO Auto-generated method stub
+		StoredProcedureQuery query = this.em.createStoredProcedureQuery(procedure);
+		for (int i = 0; i < clazzs.length; i++) {
+			query.registerStoredProcedureParameter(i, clazzs[i], ParameterMode.IN);
+		}
+		addParameters(query, parameters);
+		query.execute();
 	}
 	
 	@Override
@@ -121,6 +134,12 @@ public class JPAGenericDao<T> implements GenericDao<T> {
 	public void save(T obj) {
 		// TODO Auto-generated method stub
 		this.obj = this.em.merge(obj);
+	}
+	
+	private void addParameters(Query query, Object[] parameters) {
+		for (int i = 0; i < parameters.length; i++) {
+			query.setParameter(i, parameters[i]);
+		}
 	}
 	
 }

@@ -83,6 +83,8 @@ public class ComNotaItem implements Serializable {
 		setPorcicms(0.0);
 		setPorcipi(0.0);
 		setPorcjuros(0.0);
+		setValortotal(0.0);
+		setValorunitario(0.0);
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
 	}

@@ -31,7 +31,7 @@ public class TblPrecoPessoaController extends GenericController<TblPrecoPessoa> 
 		super.editar(obj);
 	}
 	
-	@Get("formulario/{obj.idpreco.id}")
+	@Get("formulario/{obj.idtabelapreco.id}")
 	@Override
 	public void formulario(TblPrecoPessoa obj) {
 		// TODO Auto-generated method stub
@@ -39,10 +39,10 @@ public class TblPrecoPessoaController extends GenericController<TblPrecoPessoa> 
 		super.formulario(obj);
 	}
 	
-	@Get("loadgrid/{obj.idpreco.id}")
+	@Get("loadgrid/{obj.idtabelapreco.id}")
 	public void loadGrid(TblPrecoPessoa obj) {
 		List<ParametrosWeb> parametrosWeb = new ArrayList<ParametrosWeb>();
-		parametrosWeb.add(new ParametrosWeb("idpreco.id", obj.getIdpreco().getId().toString()));
+		parametrosWeb.add(new ParametrosWeb("idtabelapreco.id", obj.getIdtabelapreco().getId().toString()));
 		this.listar(obj, parametrosWeb);
 	}
 	

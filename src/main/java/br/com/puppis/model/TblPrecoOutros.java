@@ -36,8 +36,8 @@ public class TblPrecoOutros implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tbl_precooutros")
 	private Integer id;
 	@ManyToOne
-	@JoinColumn(name = "idprecopessoa", referencedColumnName = "id", nullable = false)
-	private TblPrecoPessoa idprecopessoa;
+	@JoinColumn(name = "idtabelaprecopessoa", referencedColumnName = "id", nullable = false)
+	private TblPrecoPessoa idtabelaprecopessoa;
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 30, message = "{minimo.0.maximo.30}")
@@ -72,11 +72,11 @@ public class TblPrecoOutros implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public TblPrecoPessoa getIdprecopessoa() {
-		return idprecopessoa;
+	public TblPrecoPessoa getIdtabelaprecopessoa() {
+		return idtabelaprecopessoa;
 	}
-	public void setIdprecopessoa(TblPrecoPessoa idprecopessoa) {
-		this.idprecopessoa = idprecopessoa;
+	public void setIdtabelaprecopessoa(TblPrecoPessoa idtabelaprecopessoa) {
+		this.idtabelaprecopessoa = idtabelaprecopessoa;
 	}
 	public String getDescricao() {
 		return descricao;

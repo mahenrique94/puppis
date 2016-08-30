@@ -1,6 +1,6 @@
 <%@include file="/config/taglibraries.jsp"%>
 <display:table class="table-default table-disabled" export="false" id="obj" name="${FinDocumentoList}" requestURI="/financeiro/documento">
-	<display:column headerClass="checkAll" style="text-align: center;width: 15px;">
+	<display:column headerClass="checkGrid" style="text-align: center;width: 15px;">
 		<input class="form-data" name="obj[${obj_rowNum}].id" onclick="checkGrid(this);" style="margin-top: 0;" type="checkbox" value="${obj.id}">
 	</display:column>
 	<display:column headerScope="numero" property="numero" titleKey="displaytag.numero.documento"/>

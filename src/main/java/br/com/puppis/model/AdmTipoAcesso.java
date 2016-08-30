@@ -43,36 +43,18 @@ public class AdmTipoAcesso implements Serializable {
 	@Pattern(regexp = "^([A-Z]+(\\s[A-Z]+)*)$")
 	@Column(length = 30, columnDefinition = "varchar(30)", nullable = false, unique = true)
 	private String descricao;
-	@Column(nullable = false)
-	private Boolean formulario;
-	@Column(nullable = false)
-	private Boolean salvar;
-	@Column(nullable = false)
-	private Boolean editar;
-	@Column(nullable = false)
-	private Boolean deletar;
-	@Column(nullable = false)
-	private Boolean listar;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Calendar datacreate;
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
 	private Calendar dataupdate;
-	@OneToMany(fetch = FetchType.EAGER)
-	@JoinColumn(name = "idtipoacesso", referencedColumnName = "id", insertable = false, updatable = false)
-	private Set<AdmTipoAcessoModulo> modulos;
 //	@Version
 //	private Integer versao;
 	
 	public AdmTipoAcesso() {
 		setDatacreate(getDatacreate() != null ? getDatacreate() : Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
-		setFormulario(false);
-		setDeletar(false);
-		setEditar(false);
-		setListar(false);
-		setSalvar(false);
 	}
 	public AdmTipoAcesso(Integer id) {
 		this();
@@ -91,36 +73,6 @@ public class AdmTipoAcesso implements Serializable {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public Boolean getFormulario() {
-		return formulario;
-	}
-	public void setFormulario(Boolean formulario) {
-		this.formulario = formulario;
-	}
-	public Boolean getSalvar() {
-		return salvar;
-	}
-	public void setSalvar(Boolean salvar) {
-		this.salvar = salvar;
-	}
-	public Boolean getEditar() {
-		return editar;
-	}
-	public void setEditar(Boolean editar) {
-		this.editar = editar;
-	}
-	public Boolean getDeletar() {
-		return deletar;
-	}
-	public void setDeletar(Boolean deletar) {
-		this.deletar = deletar;
-	}
-	public Boolean getListar() {
-		return listar;
-	}
-	public void setListar(Boolean listar) {
-		this.listar = listar;
-	}
 	public Calendar getDatacreate() {
 		return datacreate;
 	}
@@ -133,22 +85,11 @@ public class AdmTipoAcesso implements Serializable {
 	public void setDataupdate(Calendar dataupdate) {
 		this.dataupdate = dataupdate;
 	}
-	public Set<AdmTipoAcessoModulo> getModulos() {
-		return modulos;
-	}
 //	public Integer getVersao() {
 //		return versao;
 //	}
 //	public void setVersao(Integer versao) {
 //		this.versao = versao;
 //	}
-	
-	public boolean possuiModulo(String modulo) {
-		for (AdmTipoAcessoModulo admTipoAcessoModulo : this.modulos) {
-			if (admTipoAcessoModulo.getIdmodulo().getDescricao().equals(modulo))
-				return true;
-		}
-		return false;
-	}
 	
 }

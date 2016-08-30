@@ -34,9 +34,6 @@ public class AdmGrupo implements Serializable {
 	@SequenceGenerator(name = "adm_grupo", sequenceName = "sqadm_grupo", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "adm_grupo")
 	private Integer id;
-	@OneToOne
-	@JoinColumn(name = "idtipoacesso", referencedColumnName = "id", nullable = false)
-	private AdmTipoAcesso idtipoacesso;
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 30, message = "{minimo.0.maximo.30}")
@@ -66,12 +63,6 @@ public class AdmGrupo implements Serializable {
 	}
 	public void setId(Integer id) {
 		this.id = id;
-	}
-	public AdmTipoAcesso getIdtipoacesso() {
-		return idtipoacesso;
-	}
-	public void setIdtipoacesso(AdmTipoAcesso idtipoacesso) {
-		this.idtipoacesso = idtipoacesso;
 	}
 	public String getDescricao() {
 		return descricao;

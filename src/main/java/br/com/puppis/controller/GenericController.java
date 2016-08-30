@@ -6,7 +6,6 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.validation.Valid;
 
-import br.com.caelum.brutauth.auth.annotations.CustomBrutauthRules;
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
@@ -14,15 +13,11 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.interceptor.IncludeParameters;
 import br.com.caelum.vraptor.validator.Validator;
 import br.com.caelum.vraptor.view.Results;
+import br.com.mhc.function.ClassFunction;
 import br.com.mhc.paginator.Paginator;
 import br.com.mhc.parametrosweb.ParametrosWeb;
 import br.com.puppis.dao.Dao;
 import br.com.puppis.dao.GenericDao;
-import br.com.puppis.security.PermissionDelete;
-import br.com.puppis.security.PermissionEdit;
-import br.com.puppis.security.PermissionForm;
-import br.com.puppis.security.PermissionList;
-import br.com.puppis.security.PermissionSave;
 
 public abstract class GenericController<T> {
 	
@@ -35,7 +30,6 @@ public abstract class GenericController<T> {
 	private boolean redirect = true;
 	
 	@Delete("")
-	@CustomBrutauthRules(PermissionDelete.class)
 	public void deletar(T obj) {
 		this.getDao().delete(obj);
 		if(this.isRedirect())
@@ -43,18 +37,18 @@ public abstract class GenericController<T> {
 	}
 	
 	@Get
-	@CustomBrutauthRules(PermissionEdit.class)
 	public void editar(T obj) {
 		this.result.include("obj", edit(obj));
 		this.result.of(this).formulario(obj);
 	}
 	
 	@Get("formulario")
-	@CustomBrutauthRules(PermissionForm.class)
-	public void formulario(T obj) {}
+	public void formulario(T obj) {
+		if (obj == null)
+			this.result.include("obj", ClassFunction.newInstance(obj.getClass()));
+	}
 	
 	@Get("")
-	@CustomBrutauthRules(PermissionList.class)
 	public void listar(T obj, List<ParametrosWeb> parametrosWeb) {
 		if (parametrosWeb == null) {
 			parametrosWeb = new ArrayList<ParametrosWeb>();
@@ -64,13 +58,11 @@ public abstract class GenericController<T> {
 	}
 	
 	@Get("listarsl")
-	@CustomBrutauthRules(PermissionList.class)
 	public void listarSL(T obj, List<ParametrosWeb> parametrosWeb) {
 		this.result.include(getClassName(obj) + "List", getDao().findAll(obj.getClass(), parametrosWeb));
 	}
 	
 	@Get("pagina/{paginator.currentPage}")
-	@CustomBrutauthRules(PermissionList.class)
 	public void paginacao(T obj, List<ParametrosWeb> parametrosWeb, Paginator paginator) {
 		paginator.setFirst((paginator.getCurrentPage() * 10) - 10);
 		paginator.setInterval(10);
@@ -84,7 +76,6 @@ public abstract class GenericController<T> {
 	}
 	
 	@Post("")
-	@CustomBrutauthRules(PermissionSave.class)
 	@IncludeParameters
 	public void salvar(@Valid T obj) {
 		this.validator.onErrorForwardTo(this).formulario(obj);

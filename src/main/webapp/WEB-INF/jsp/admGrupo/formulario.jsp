@@ -1,7 +1,6 @@
 <%@include file="/config/header.jsp" %>
 <form action="<c:url value="/administrador/usuario/grupo"/>" class="form-modern" id="formadmusuariogrupo" method="post" name="formadmusuariogrupo" role="form">
 	<input name="obj.id" type="hidden" value="${obj.id}">
-	<input name="obj.idtipoacesso.idaux" type="hidden" value="${obj.idtipoacesso.id}">
 	<nav class="band-nav-lube" role="complementary">
 		<div class="row" role="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
@@ -11,15 +10,10 @@
 	</nav>
 	<section aria-expanded="true" aria-hidden="false" class="form-body" role="form">
 		<div class="row" role="row">
-			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 				<label><fmt:message key="label.descricao"/></label>
 				<input autofocus class="form-data validate" maxlength="60" name="obj.descricao" pattern="letraNumeroEspaco" required type="text" value="${obj.descricao}">
 				<netsis:validationMessage name="obj.descricao"/>
-			</div>
-			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
-				<label><fmt:message key="label.tipo.acesso"/></label>
-				<select class="form-data validate" data-class="slAdmTipoAcesso" id="slAdministrador_Usuario_Tipo-de-acesso_Json_01" name="obj.idtipoacesso.id"></select>
-				<netsis:validationMessage name="obj.idtipoacesso.id"/>
 			</div>
 		</div>
 	</section>

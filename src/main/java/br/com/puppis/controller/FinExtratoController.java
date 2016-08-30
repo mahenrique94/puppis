@@ -4,19 +4,15 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
-import br.com.caelum.brutauth.auth.annotations.CustomBrutauthRules;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.mhc.parametrosweb.ParametrosWeb;
 import br.com.puppis.model.FinExtrato;
-import br.com.puppis.security.ModuleFinanceiroAccess;
-import br.com.puppis.security.UserModuleFinanceiroAccess;
 
 @Controller
 @Path("financeiro/extrato")
-@CustomBrutauthRules({ModuleFinanceiroAccess.class, UserModuleFinanceiroAccess.class})
 public class FinExtratoController extends GenericController<FinExtrato> {
 	
 	@Get("")

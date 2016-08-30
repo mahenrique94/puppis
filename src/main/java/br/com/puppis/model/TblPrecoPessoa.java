@@ -21,7 +21,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
-@Table(name = "tbl_precopessoa", uniqueConstraints = {@UniqueConstraint(columnNames = {"idpreco", "iddefinicao"})})
+@Table(name = "tbl_precopessoa", uniqueConstraints = {@UniqueConstraint(columnNames = {"idtabelapreco", "iddefinicao"})})
 @DynamicUpdate(value = true)
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class TblPrecoPessoa implements Serializable {
@@ -31,8 +31,8 @@ public class TblPrecoPessoa implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tbl_precopessoa")
 	private Integer id;
 	@ManyToOne
-	@JoinColumn(name = "idpreco", referencedColumnName = "id", nullable = false)
-	private TblPreco idpreco;
+	@JoinColumn(name = "idtabelapreco", referencedColumnName = "id", nullable = false)
+	private TblPreco idtabelapreco;
 	@ManyToOne
 	@JoinColumn(name = "iddefinicao", referencedColumnName = "id", nullable = false)
 	private PesDefinicao iddefinicao;
@@ -60,11 +60,11 @@ public class TblPrecoPessoa implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public TblPreco getIdpreco() {
-		return idpreco;
+	public TblPreco getIdtabelapreco() {
+		return idtabelapreco;
 	}
-	public void setIdpreco(TblPreco idpreco) {
-		this.idpreco = idpreco;
+	public void setIdtabelapreco(TblPreco idtabelapreco) {
+		this.idtabelapreco = idtabelapreco;
 	}
 	public PesDefinicao getIddefinicao() {
 		return iddefinicao;

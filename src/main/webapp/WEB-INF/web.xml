@@ -19,7 +19,7 @@
 		<session-timeout>20</session-timeout>
 	</session-config>
   
-	<error-page>
+	<!-- <error-page>
 		<error-code>403</error-code>
 		<location>/WEB-INF/jsp/error/error403.jsp</location>
 	</error-page>
@@ -30,6 +30,6 @@
 	<error-page>
 		<error-code>500</error-code>
 		<location>/WEB-INF/jsp/error/error500.jsp</location>
-	</error-page>
+	</error-page> -->
   
 </web-app>

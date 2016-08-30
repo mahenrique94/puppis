@@ -1,4 +1,6 @@
 <%@include file="/config/taglibraries.jsp"%>
+<c:set var="readOnly" value="${obj.dataatualizacao != null ? 'readonly' : ''}"/>
+<c:set var="disabled" value="${obj.dataatualizacao != null ? 'disabled' : ''}"/>
 <section aria-expanded="true" aria-hidden="false" class="form-body" role="form">
 	<input name="obj.idcomercio.id" type="hidden" value="${username.comercio.id}">
 	<input name="obj.idusuario.id" type="hidden" value="${username.usuario.id}">
@@ -32,14 +34,14 @@
 	<div class="row" role="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 			<label><fmt:message key="label.forma.pagamento"/></label>
-			<select class="form-data validate" data-class="slFinFormaPagamento" id="slFinanceiro_Forma-de-pagamento_json_1" name="obj.custo.idformapagamento.id"></select>
+			<select class="form-data validate" data-class="slFinFormaPagamento" id="slFinanceiro_Forma-de-pagamento_json_1" name="obj.custo.idformapagamento.id" ${readOnly}></select>
 			<netsis:validationMessage name="obj.custo.idformapagamento.id"/>
 		</div>
 	</div>
 	<div class="row" role="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 			<label><fmt:message key="label.pessoa"/></label>
-			<select class="form-data ss validate" data-class="slPesDefinicao" data-fields="idtipo.descricao" data-parameters="CLIENTE" id="slPessoa_Definicao_Json_01" required name="obj.iddefinicao.id"></select>
+			<select class="form-data ss validate" data-class="slPesDefinicao" data-fields="idtipo.descricao" data-parameters="CLIENTE" id="slPessoa_Definicao_Json_01" ${readOnly} required name="obj.iddefinicao.id"></select>
 			<netsis:validationMessage name="obj.operacao"/>
 		</div>
 	</div>

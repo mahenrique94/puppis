@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import br.com.caelum.brutauth.auth.annotations.CustomBrutauthRules;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
@@ -18,12 +17,9 @@ import br.com.puppis.estoque.GerenciadorFactory;
 import br.com.puppis.model.ComNota;
 import br.com.puppis.model.ComNotaItem;
 import br.com.puppis.model.FinDocumento;
-import br.com.puppis.security.ModuleComercioAccess;
-import br.com.puppis.security.UserModuleComercioAccess;
 
 @Controller
 @Path("comercio/nota")
-@CustomBrutauthRules({ModuleComercioAccess.class, UserModuleComercioAccess.class})
 public class ComNotaController extends GenericController<ComNota> {
 	
 	@Inject
@@ -51,6 +47,10 @@ public class ComNotaController extends GenericController<ComNota> {
 		double total = 0.0;
 		if (obj.getItens() != null && !obj.getItens().isEmpty()) {
 			for (ComNotaItem item : obj.getItens()) {
+				if (obj.getIdtipooperacao().getDescricao().equals("COMPRA"))
+					item.calculaTotal();
+				else
+					this.getDao().executeProcedure("fn_calcularTabelaPreco", new Object[]{item.getId()}, new Class[]{Long.class});
 				icms += item.getValorIcms();
 				ipi += item.getValorIpi();
 				desconto += item.getValorDesconto();

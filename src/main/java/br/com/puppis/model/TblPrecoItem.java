@@ -32,8 +32,8 @@ public class TblPrecoItem implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tbl_precoitem")
 	private Integer id;	
 	@ManyToOne
-	@JoinColumn(name = "idprecopessoa", referencedColumnName = "id", nullable = false)
-	private TblPrecoPessoa idprecopessoa;
+	@JoinColumn(name = "idtabelaprecopessoa", referencedColumnName = "id", nullable = false)
+	private TblPrecoPessoa idtabelaprecopessoa;
 	@ManyToOne
 	@JoinColumn(name = "idprodutoservico", referencedColumnName = "id", nullable = false)
 	private PsProdutoServico idprodutoservico;
@@ -43,19 +43,19 @@ public class TblPrecoItem implements Serializable {
 	private Double valor;
 	@DecimalMin("0.0")
 	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
-	@Column(nullable = true)
+	@Column(nullable = false)
 	private Double valorpromocao;
 	@DecimalMin("0.0")
 	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
-	@Column(nullable = true)
+	@Column(nullable = false)
 	private Double valordesconto;
 	@DecimalMin("0.0")
 	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
-	@Column(nullable = true)
+	@Column(nullable = false)
 	private Double valorparcelamento;
 	@DecimalMin("0.0")
 	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
-	@Column(nullable = true)
+	@Column(nullable = false)
 	private Double valorfaturado;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
@@ -66,6 +66,10 @@ public class TblPrecoItem implements Serializable {
 	
 	public TblPrecoItem() {
 		// TODO Auto-generated constructor stub
+		setValordesconto(0.0);
+		setValorfaturado(0.0);
+		setValorparcelamento(0.0);
+		setValorpromocao(0.0);
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
 	}
@@ -81,11 +85,11 @@ public class TblPrecoItem implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public TblPrecoPessoa getIdprecopessoa() {
-		return idprecopessoa;
+	public TblPrecoPessoa getIdtabelaprecopessoa() {
+		return idtabelaprecopessoa;
 	}
-	public void setIdprecopessoa(TblPrecoPessoa idprecopessoa) {
-		this.idprecopessoa = idprecopessoa;
+	public void setIdtabelaprecopessoa(TblPrecoPessoa idtabelaprecopessoa) {
+		this.idtabelaprecopessoa = idtabelaprecopessoa;
 	}
 	public PsProdutoServico getIdprodutoservico() {
 		return idprodutoservico;

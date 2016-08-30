@@ -2,7 +2,7 @@
 <%@include file="/config/libraries-style.jsp"%>
 <form action="<c:url value="/tabela-de-preco/item"/>" class="form-modern" id="formtblprecoitem" method="post" name="formtblprecoitem" onsubmit="return enviarPost(this);" role="form">
 	<input name="obj.id" type="hidden" value="${obj.id}">
-	<input name="obj.idprecopessoa.id" type="hidden" value="${obj.idprecopessoa.id}">
+	<input name="obj.idtabelaprecopessoa.id" type="hidden" value="${obj.idtabelaprecopessoa.id}">
 	<input name="obj.idprodutoservico.idaux" type="hidden" value="${obj.idprodutoservico.id}">
 	<nav class="band-nav-lube" role="complementary">
 		<div class="row" role="row">

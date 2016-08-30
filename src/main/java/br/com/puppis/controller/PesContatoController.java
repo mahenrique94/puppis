@@ -3,7 +3,6 @@ package br.com.puppis.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.caelum.brutauth.auth.annotations.CustomBrutauthRules;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
@@ -11,12 +10,9 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.mhc.parametrosweb.ParametrosWeb;
 import br.com.puppis.model.PesContato;
-import br.com.puppis.security.ModuleCadastroAccess;
-import br.com.puppis.security.UserModuleCadastroAccess;
 
 @Controller
 @Path("pessoa/contato")
-@CustomBrutauthRules({ModuleCadastroAccess.class, UserModuleCadastroAccess.class})
 public class PesContatoController extends GenericController<PesContato> {
 
 	@Delete("")

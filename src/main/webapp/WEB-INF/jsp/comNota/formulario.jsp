@@ -1,6 +1,4 @@
 <%@include file="/config/header.jsp" %>
-<c:set var="readOnly" value="${obj.id != null ? 'readonly' : ''}"/>
-<c:set var="disabled" value="${obj.id != null ? 'disabled' : ''}"/>
 <form action="<c:url value="/comercio/nota"/>" class="form-modern" id="formcomnota" method="post" name="formcomnota" role="form">
 	<nav class="band-nav-lube" role="complementary">
 		<div class="row" role="row">

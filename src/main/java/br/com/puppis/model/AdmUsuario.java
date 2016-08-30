@@ -2,8 +2,8 @@ package br.com.puppis.model;
 
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.Collections;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -14,7 +14,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -59,6 +61,9 @@ public class AdmUsuario implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "idgrupo", referencedColumnName = "id", nullable = false)
 	private AdmGrupo idgrupo;
+	@OneToOne
+	@JoinColumn(name = "idtipoacesso", referencedColumnName = "id", nullable = false)
+	private AdmTipoAcesso idtipoacesso;
 	@Column(nullable = false)
 	private Boolean inativo;
 	@Temporal(TemporalType.DATE)
@@ -70,6 +75,10 @@ public class AdmUsuario implements Serializable {
 	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idusuario", referencedColumnName = "id", insertable = false, updatable = false)
 	private Set<AdmUsuarioComercio> comercios;
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name = "idusuario", referencedColumnName = "id", insertable = false, updatable = false)
+	@MapKeyColumn(name = "tabela")
+	private Map<String, AdmPermissao> permissoes;
 	
 	public AdmUsuario() {
 		setInativo(false);
@@ -111,6 +120,12 @@ public class AdmUsuario implements Serializable {
 	public void setIdgrupo(AdmGrupo idgrupo) {
 		this.idgrupo = idgrupo;
 	}
+	public AdmTipoAcesso getIdtipoacesso() {
+		return idtipoacesso;
+	}
+	public void setIdtipoacesso(AdmTipoAcesso idtipoacesso) {
+		this.idtipoacesso = idtipoacesso;
+	}
 	public Boolean getInativo() {
 		return inativo;
 	}
@@ -132,12 +147,8 @@ public class AdmUsuario implements Serializable {
 	public Set<AdmUsuarioComercio> getComercios() {
 		return comercios;
 	}
-	
-	public boolean isAdministrador(AdmUsuario admUsuario) {
-		if (admUsuario.getIdgrupo().getDescricao().equals("ADMINISTRADOR"))
-			return true;
-		else
-			return false;
+	public Map<String, AdmPermissao> getPermissoes() {
+		return permissoes;
 	}
 	
 }

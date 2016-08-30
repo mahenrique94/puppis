@@ -110,10 +110,4 @@ public class PsCusto implements Serializable {
 		this.dataupdate = dataupdate;
 	}
 	
-	public void novo() {
-		setDatacreate(Calendar.getInstance());
-		setDataupdate(Calendar.getInstance());
-		setValor(0.0);
-	}
-	
 }

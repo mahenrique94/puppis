@@ -4,7 +4,6 @@
 	<%@page isErrorPage="true"%>
 	<%@include file="/config/taglibraries.jsp"%>
 	<%@include file="/config/libraries-style.jsp"%>
-	<%@ page contentType="text/html; charset=ISO-8859-1" language="java" pageEncoding="ISO-8859-1"%>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
    	<title>PUPPIS - Página não encontrada</title>

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import br.com.caelum.brutauth.auth.annotations.CustomBrutauthRules;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
@@ -13,17 +12,13 @@ import br.com.caelum.vraptor.Post;
 import br.com.mhc.parametrosweb.ParametrosWeb;
 import br.com.puppis.financeiro.Gerenciador;
 import br.com.puppis.financeiro.GerenciadorFactory;
-import br.com.puppis.model.CadCentroCusto;
 import br.com.puppis.model.FinDocumento;
 import br.com.puppis.model.FinDocumentoCentroCusto;
 import br.com.puppis.model.FinFormaPagamento;
 import br.com.puppis.model.SysTipoOperacao;
-import br.com.puppis.security.ModuleFinanceiroAccess;
-import br.com.puppis.security.UserModuleFinanceiroAccess;
 
 @Controller
 @Path("financeiro/documento")
-@CustomBrutauthRules({ModuleFinanceiroAccess.class, UserModuleFinanceiroAccess.class})
 public class FinDocumentoController extends GenericController<FinDocumento> {
 	
 	@Get

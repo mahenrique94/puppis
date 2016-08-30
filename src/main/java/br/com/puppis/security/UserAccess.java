@@ -16,7 +16,7 @@ public class UserAccess implements CustomBrutauthRule {
 	private UserName userName;
 
 	public boolean isAllowed() {
-		return this.userName.isLogado();
+		return this.userName.getUsuario() != null && this.userName.isLogged();
 	}
 	
 }
