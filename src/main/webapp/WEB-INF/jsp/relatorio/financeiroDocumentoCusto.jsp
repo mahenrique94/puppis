@@ -18,8 +18,8 @@
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 							<label><fmt:message key="label.id.centro.custo"/></label>
 							<div class="form-data-group">
-								<input autocomplete="off" class="form-data validate" min="0" name="parametrosWeb[2].parametroInicial" step="1" type="number">
-								<span class="form-data-group-btn"><a class="btn-default" href="<c:url value="/cadastro/centro-de-custo/listarsl"/>" onclick="ModalController.show(this, event);"><i class="icon-search"></i></a></span>
+								<input autocomplete="off" class="form-data validate" id="centrocustoinicial_id" min="0" name="parametrosWeb[2].parametroInicial" step="1" type="number">
+								<span class="form-data-group-btn"><a class="btn-default" href="<c:url value="/cadastro/centro-de-custo/listarsl?search=centrocustoinicial"/>" onclick="ModalController.show(this, event);"><i class="icon-search"></i></a></span>
 							</div>
 						</div>
 					</div>
@@ -41,6 +41,12 @@
 							<input autocomplete="off" class="form-data validate" maxlength="10" name="parametrosWeb[5].parametroInicial" onkeypress="format(this, event, maskData);" pattern="data" type="text">
 						</div>
 					</div>
+					<div class="row" role="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
+							<label><fmt:message key="label.baixado"/></label>
+							<input autocomplete="off" class="form-data" name="parametrosWeb[6].parametroInicial" type="checkbox" value="true">
+						</div>
+					</div>
 				</section>
 			</fieldset>
 			<fieldset class="block-lube">
@@ -50,8 +56,8 @@
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 							<label><fmt:message key="label.id.centro.custo"/></label>
 							<div class="form-data-group">
-								<input autocomplete="off" class="form-data validate" min="0" name="parametrosWeb[2].parametroFinal" step="1" type="number">
-								<span class="form-data-group-btn"><a class="btn-default" href="<c:url value="/cadastro/centro-de-custo/listarsl"/>" onclick="ModalController.show(this, event);"><i class="icon-search"></i></a></span>
+								<input autocomplete="off" class="form-data validate" id="centrocustofinal_id" min="0" name="parametrosWeb[2].parametroFinal" step="1" type="number">
+								<span class="form-data-group-btn"><a class="btn-default" href="<c:url value="/cadastro/centro-de-custo/listarsl?search=centrocustofinal"/>" onclick="ModalController.show(this, event);"><i class="icon-search"></i></a></span>
 							</div>
 						</div>
 					</div>

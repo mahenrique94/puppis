@@ -41,6 +41,12 @@
 							<input autocomplete="off" class="form-data validate" maxlength="10" name="parametrosWeb[5].parametroInicial" onkeypress="format(this, event, maskData);" pattern="data" type="text">
 						</div>
 					</div>
+					<div class="row" role="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
+							<label><fmt:message key="label.baixado"/></label>
+							<input autocomplete="off" class="form-data" name="parametrosWeb[6].parametroInicial" type="checkbox" value="true">
+						</div>
+					</div>
 				</section>
 			</fieldset>
 			<fieldset class="block-lube">

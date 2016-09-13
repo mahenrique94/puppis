@@ -151,4 +151,20 @@ public class AdmUsuario implements Serializable {
 		return permissoes;
 	}
 	
+	public AdmComercio getComercio() {
+		return getComercios().iterator().next().getIdcomercio();
+	}
+	
+	public boolean isActive() {
+		return !getInativo();
+	}
+	
+	public boolean possuiComercio() {
+		return getComercios() != null && !getComercios().isEmpty();
+	}
+	
+	public boolean possuiMaisDeUmComercio() {
+		return possuiComercio() && getComercios().size() > 1;
+	}
+	
 }

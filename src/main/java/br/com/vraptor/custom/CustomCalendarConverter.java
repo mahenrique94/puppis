@@ -40,7 +40,7 @@ public class CustomCalendarConverter extends CalendarConverter {
 					date.setTime(new SimpleDateFormat("dd/MM/yyyy").parse(value));
 				// Verificando se a data esta apenas com hora
 				if (value.indexOf("/") < 0 && value.indexOf(":") >= 0) {
-					// Verificando se a data esta com segundos
+					// Verificando se a hora esta com segundos
 					if (value.length() == 5)
 						value += ":00";
 					date.setTime(new SimpleDateFormat("HH:mm:ss").parse(value));

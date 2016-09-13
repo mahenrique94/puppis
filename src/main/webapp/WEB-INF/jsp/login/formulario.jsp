@@ -9,6 +9,7 @@
 	<title><fmt:message key="titulo.pagina"/></title>
 </head>
 <body>
+	<%@include file="/config/messages.jsp"%>
 	<section class="login">
 		<div class="login-panel">
 			<figure class="login-logo">

@@ -56,6 +56,11 @@ public class AdmPermissao implements Serializable {
 	
 	public AdmPermissao() {
 		// TODO Auto-generated constructor stub
+		setDeletar(false);
+		setEditar(false);
+		setFormulario(false);
+		setListar(false);
+		setSalvar(false);
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
 	}
@@ -63,6 +68,11 @@ public class AdmPermissao implements Serializable {
 		// TODO Auto-generated constructor stub
 		this();
 		setId(id);
+	}
+	public AdmPermissao(String tabela) {
+		// TODO Auto-generated constructor stub
+		this();
+		setTabela(tabela);
 	}
 	
 	public Integer getId() {

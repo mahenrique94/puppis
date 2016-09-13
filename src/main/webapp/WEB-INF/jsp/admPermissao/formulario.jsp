@@ -17,7 +17,11 @@
 			</div>
 			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
 				<label><fmt:message key="label.usuario"/></label>
-				<select class="form-data validate" data-class="slAdmUsuario" id="slAdministrador_Usuario_Json_01" name="obj.idusuario.id" required></select>
+				<select class="form-data validate" data-class="slCad" name="obj.idusuario.id" required>
+					<c:forEach items="${AdmUsuarioList}" var="usuario">
+						<option value="${usuario.id}">${usuario.usuario}</option>
+					</c:forEach>
+				</select>
 			</div>
 		</div>
 		<div class="row" role="row">

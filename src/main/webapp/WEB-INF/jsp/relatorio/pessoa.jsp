@@ -18,8 +18,8 @@
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 							<label><fmt:message key="label.id"/></label>
 							<div class="form-data-group">
-								<input autocomplete="off" class="form-data validate" min="0" name="parametrosWeb[2].parametroInicial" step="1" type="number">
-								<span class="form-data-group-btn"><a class="btn-default" href="<c:url value="/pessoa/listarsl"/>" onclick="ModalController.show(this, event);"><i class="icon-search"></i></a></span>
+								<input autocomplete="off" class="form-data validate" id="pessoainicial_id" min="0" name="parametrosWeb[2].parametroInicial" step="1" type="number">
+								<span class="form-data-group-btn"><a class="btn-default" href="<c:url value="/pessoa/listarsl?search=pessoainicial"/>" onclick="ModalController.show(this, event);"><i class="icon-search"></i></a></span>
 							</div>
 						</div>
 					</div>
@@ -44,8 +44,8 @@
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 							<label><fmt:message key="label.id"/></label>
 							<div class="form-data-group">
-								<input autocomplete="off" class="form-data validate" min="0" name="parametrosWeb[2].parametroFinal" step="1" type="number">
-								<span class="form-data-group-btn"><a class="btn-default" href="<c:url value="/pessoa/listarsl"/>" onclick="ModalController.show(this, event);"><i class="icon-search"></i></a></span>
+								<input autocomplete="off" class="form-data validate" id="pessoafinal_id" min="0" name="parametrosWeb[2].parametroFinal" step="1" type="number">
+								<span class="form-data-group-btn"><a class="btn-default" href="<c:url value="/pessoa/listarsl?search=pessoafinal"/>" onclick="ModalController.show(this, event);"><i class="icon-search"></i></a></span>
 							</div>
 						</div>
 					</div>

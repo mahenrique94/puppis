@@ -15,7 +15,7 @@ public class GerenciadorEstorno extends GerenciadorDocumento {
 			finDocumentoEntrada.estorna();
 			finDocumentoEntrada.setSaldo(finDocumentoEntrada.getSaldo() + finDocumento.calcula());
 			dao.save(finDocumentoEntrada);
-			dao.save(this.criaExtrato(finDocumentoEntrada, sysTipoOperacao, finDocumento.calcula(), finDocumentoEntrada.getIdhistorico().getDescricao()));
+			dao.save(this.criaExtrato(finDocumentoEntrada, sysTipoOperacao, finDocumento.getValortotal(), finDocumentoEntrada.getIdhistorico().getDescricao()));
 			dao.delete(finDocumento);
 		} else { // Estornando um cancelamento
 			finDocumento.estorna();

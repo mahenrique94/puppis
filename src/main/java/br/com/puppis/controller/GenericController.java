@@ -54,7 +54,7 @@ public abstract class GenericController<T> {
 			parametrosWeb = new ArrayList<ParametrosWeb>();
 		}
 		parametrosWeb.add(new ParametrosWeb("id", "0", null, ">"));
-		this.result.include(getClassName(obj) + "List", getDao().findAll(obj.getClass(), parametrosWeb));
+		this.result.include(getClassName(obj) + "List", getDao().findAll(obj.getClass(), parametrosWeb)).include("parametrosWeb", parametrosWeb);
 	}
 	
 	@Get("listarsl")

@@ -124,6 +124,10 @@ public class RelatorioController {
 					parametrosWeb.get(5).setParametroFinal(dataAtual);
 				if (parametrosWeb.get(5).getParametroInicial() == null)
 					parametrosWeb.get(5).setParametroInicial(dataAtual);
+
+				// BAIXADO
+				if (parametrosWeb.size() == 6)
+					parametrosWeb.add(new ParametrosWeb(null, "false"));
 				
 				parameters.put("IDDEFINICAO_INICIAL", Long.parseLong(parametrosWeb.get(2).getParametroInicial()));
 				parameters.put("IDDEFINICAO_FINAL", Long.parseLong(parametrosWeb.get(2).getParametroFinal()));
@@ -133,6 +137,7 @@ public class RelatorioController {
 				parameters.put("DATAPAGAMENTO_FINAL", formatador.parse(parametrosWeb.get(4).getParametroFinal()));
 				parameters.put("DATAVENCIMENTO_INICIAL", formatador.parse(parametrosWeb.get(5).getParametroInicial()));
 				parameters.put("DATAVENCIMENTO_FINAL", formatador.parse(parametrosWeb.get(5).getParametroFinal()));
+				parameters.put("BAIXADO", Boolean.parseBoolean(parametrosWeb.get(6).getParametroInicial()));
 				break;
 			case "IRFINDOCCUSTO" :
 				// IDCENTROCUSTO
@@ -167,6 +172,10 @@ public class RelatorioController {
 				if (parametrosWeb.get(5).getParametroInicial() == null)
 					parametrosWeb.get(5).setParametroInicial(dataAtual);
 				
+				// BAIXADO
+				if (parametrosWeb.size() == 6)
+					parametrosWeb.add(new ParametrosWeb(null, "false"));
+				
 				parameters.put("IDCENTROCUSTO_INICIAL", Integer.parseInt(parametrosWeb.get(2).getParametroInicial()));
 				parameters.put("IDCENTROCUSTO_FINAL", Integer.parseInt(parametrosWeb.get(2).getParametroFinal()));
 				parameters.put("DATAEMISSAO_INICIAL", formatador.parse(parametrosWeb.get(3).getParametroInicial()));
@@ -175,6 +184,7 @@ public class RelatorioController {
 				parameters.put("DATAPAGAMENTO_FINAL", formatador.parse(parametrosWeb.get(4).getParametroFinal()));
 				parameters.put("DATAVENCIMENTO_INICIAL", formatador.parse(parametrosWeb.get(5).getParametroInicial()));
 				parameters.put("DATAVENCIMENTO_FINAL", formatador.parse(parametrosWeb.get(5).getParametroFinal()));
+				parameters.put("BAIXADO", Boolean.parseBoolean(parametrosWeb.get(6).getParametroInicial()));
 				break;
 			case "IRFINDOCPAGAMENTO" :
 				// IDFORMAPAGAMENTO
@@ -209,6 +219,10 @@ public class RelatorioController {
 				if (parametrosWeb.get(5).getParametroInicial() == null)
 					parametrosWeb.get(5).setParametroInicial(dataAtual);
 				
+				// BAIXADO
+				if (parametrosWeb.size() == 6)
+					parametrosWeb.add(new ParametrosWeb(null, "false"));
+				
 				parameters.put("IDFORMAPAGAMENTO_INICIAL", Integer.parseInt(parametrosWeb.get(2).getParametroInicial()));
 				parameters.put("IDFORMAPAGAMENTO_FINAL", Integer.parseInt(parametrosWeb.get(2).getParametroFinal()));
 				parameters.put("DATAEMISSAO_INICIAL", formatador.parse(parametrosWeb.get(3).getParametroInicial()));
@@ -217,6 +231,7 @@ public class RelatorioController {
 				parameters.put("DATAPAGAMENTO_FINAL", formatador.parse(parametrosWeb.get(4).getParametroFinal()));
 				parameters.put("DATAVENCIMENTO_INICIAL", formatador.parse(parametrosWeb.get(5).getParametroInicial()));
 				parameters.put("DATAVENCIMENTO_FINAL", formatador.parse(parametrosWeb.get(5).getParametroFinal()));
+				parameters.put("BAIXADO", Boolean.parseBoolean(parametrosWeb.get(6).getParametroInicial()));
 				break;
 			default :
 				throw new RuntimeException("Não foi possível localizar o relatório " + parametrosWeb.get(0).getParametroInicial());
