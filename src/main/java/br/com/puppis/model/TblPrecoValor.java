@@ -22,10 +22,10 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
-@Table(name = "tbl_precoitem")
+@Table(name = "tbl_precovalor")
 @DynamicUpdate(value = true)
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class TblPrecoItem implements Serializable {
+public class TblPrecoValor implements Serializable {
 	
 	@Id
 	@SequenceGenerator(name = "tbl_precoitem", sequenceName = "sqtbl_precoitem", allocationSize = 1)
@@ -34,9 +34,6 @@ public class TblPrecoItem implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "idtabelaprecopessoa", referencedColumnName = "id", nullable = false)
 	private TblPrecoPessoa idtabelaprecopessoa;
-	@ManyToOne
-	@JoinColumn(name = "idprodutoservico", referencedColumnName = "id", nullable = false)
-	private PsProdutoServico idprodutoservico;
 	@DecimalMin("0.0")
 	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = false)
@@ -57,6 +54,14 @@ public class TblPrecoItem implements Serializable {
 	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = false)
 	private Double valorfaturado;
+	@Column(nullable = false)
+	private Boolean inativo;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(nullable = false)
+	private Calendar datavigenciainicial;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(nullable = false)
+	private Calendar datavigenciafinal;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Calendar datacreate;
@@ -64,16 +69,17 @@ public class TblPrecoItem implements Serializable {
 	@Column(nullable = false)
 	private Calendar dataupdate;
 	
-	public TblPrecoItem() {
+	public TblPrecoValor() {
 		// TODO Auto-generated constructor stub
 		setValordesconto(0.0);
 		setValorfaturado(0.0);
 		setValorparcelamento(0.0);
 		setValorpromocao(0.0);
+		setInativo(false);
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
 	}
-	public TblPrecoItem(Integer id) {
+	public TblPrecoValor(Integer id) {
 		// TODO Auto-generated constructor stub
 		this();
 		setId(id);
@@ -90,12 +96,6 @@ public class TblPrecoItem implements Serializable {
 	}
 	public void setIdtabelaprecopessoa(TblPrecoPessoa idtabelaprecopessoa) {
 		this.idtabelaprecopessoa = idtabelaprecopessoa;
-	}
-	public PsProdutoServico getIdprodutoservico() {
-		return idprodutoservico;
-	}
-	public void setIdprodutoservico(PsProdutoServico idprodutoservico) {
-		this.idprodutoservico = idprodutoservico;
 	}
 	public Double getValor() {
 		return valor;
@@ -126,6 +126,24 @@ public class TblPrecoItem implements Serializable {
 	}
 	public void setValorfaturado(Double valorfaturado) {
 		this.valorfaturado = valorfaturado;
+	}
+	public Boolean getInativo() {
+		return inativo;
+	}
+	public void setInativo(Boolean inativo) {
+		this.inativo = inativo;
+	}
+	public Calendar getDatavigenciafinal() {
+		return datavigenciafinal;
+	}
+	public void setDatavigenciafinal(Calendar datavigenciafinal) {
+		this.datavigenciafinal = datavigenciafinal;
+	}
+	public Calendar getDatavigenciainicial() {
+		return datavigenciainicial;
+	}
+	public void setDatavigenciainicial(Calendar datavigenciainicial) {
+		this.datavigenciainicial = datavigenciainicial;
 	}
 	public Calendar getDatacreate() {
 		return datacreate;

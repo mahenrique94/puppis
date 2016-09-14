@@ -2,8 +2,8 @@
 <c:set var="readOnly" value="${obj.dataatualizacao != null ? 'readonly' : ''}"/>
 <c:set var="disabled" value="${obj.dataatualizacao != null ? 'disabled' : ''}"/>
 <section aria-expanded="true" aria-hidden="false" class="form-body" role="form">
-	<input name="obj.idcomercio.id" type="hidden" value="${username.comercio.id}">
-	<input name="obj.idusuario.id" type="hidden" value="${username.usuario.id}">
+	<input name="obj.idcomercio.id" type="hidden" value="${obj.idcomercio.id}">
+	<input name="obj.idusuario.id" type="hidden" value="${obj.idusuario.id}">
 	<input name="obj.idtipooperacao.idaux" type="hidden" value="${obj.idtipooperacao.id}">
 	<input name="obj.iddefinicao.idaux" type="hidden" value="${obj.iddefinicao.id}">
 	<input name="obj.custo.idformapagamento.idaux" type="hidden" value="${obj.custo.idformapagamento.id}">

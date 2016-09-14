@@ -21,12 +21,7 @@
 </form>
 <display:table class="table-default" export="false" id="obj" name="${TblPrecoList}" requestURI="/tabela-de-preco">
 	<display:column headerScope="id" property="id" style="width: 50px;" titleKey="displaytag.id"/>
-	<display:column format="{0, date, dd/MM/yyyy HH:mm}" headerScope="datavigenciainicial" property="datavigenciainicial.time" titleKey="displaytag.data.vigencia.inicial"/>
-	<display:column format="{0, date, dd/MM/yyyy HH:mm}" headerScope="datavigenciafinal" property="datavigenciafinal.time" titleKey="displaytag.data.vigencia.final"/>
-	<display:column style="text-align: center;width: 50px;">
-		<c:if test="${obj.inativo == false}"><i class="color-green icon-ok"></i></c:if>
-		<c:if test="${obj.inativo == true}"><i class="color-red icon-cancel"></i></c:if>
-	</display:column>
+	<display:column headerScope="idprodutoservico.descricao" property="idprodutoservico.descricao" titleKey="displaytag.produto"/>
 	<display:column style="text-align: center;width: 165px;">
 		<a class="btn-lower btn-xs" href="<c:url value="/tabela-de-preco/${obj.id}"/>"><span class="icon-pencil"></span>&nbsp;<fmt:message key="button.editar"/></a>
 		<button class="btn-der btn-xs" formaction="<c:url value="/tabela-de-preco?obj.id=${obj.id}"/>" onclick="deletar(this);" type="button"><span class="icon-trash"></span>&nbsp;<fmt:message key="button.deletar"/></button>

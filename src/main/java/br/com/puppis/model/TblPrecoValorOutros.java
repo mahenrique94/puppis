@@ -26,10 +26,10 @@ import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "tbl_precooutros")
+@Table(name = "tbl_precovaloroutros")
 @DynamicUpdate(value = true)
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class TblPrecoOutros implements Serializable {
+public class TblPrecoValorOutros implements Serializable {
 	
 	@Id
 	@SequenceGenerator(name = "tbl_precooutros", sequenceName = "sqtbl_precooutros", allocationSize = 1)
@@ -55,12 +55,12 @@ public class TblPrecoOutros implements Serializable {
 	@Column(nullable = false)
 	private Calendar dataupdate;
 	
-	public TblPrecoOutros() {
+	public TblPrecoValorOutros() {
 		// TODO Auto-generated constructor stub
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
 	}
-	public TblPrecoOutros(Integer id) {
+	public TblPrecoValorOutros(Integer id) {
 		// TODO Auto-generated constructor stub
 		this();
 		setId(id);

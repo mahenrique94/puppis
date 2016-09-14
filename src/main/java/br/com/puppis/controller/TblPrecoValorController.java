@@ -9,15 +9,15 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.mhc.parametrosweb.ParametrosWeb;
-import br.com.puppis.model.TblPrecoItem;
+import br.com.puppis.model.TblPrecoValor;
 
 @Controller
-@Path("tabela-de-preco/item")
-public class TblPrecoItemController extends GenericController<TblPrecoItem> {
+@Path("tabela-de-preco/valor")
+public class TblPrecoValorController extends GenericController<TblPrecoValor> {
 	
 	@Delete("")
 	@Override
-	public void deletar(TblPrecoItem obj) {
+	public void deletar(TblPrecoValor obj) {
 		// TODO Auto-generated method stub
 		this.setRedirect(false);
 		super.deletar(obj);
@@ -26,21 +26,21 @@ public class TblPrecoItemController extends GenericController<TblPrecoItem> {
 	
 	@Get("{obj.id}")
 	@Override
-	public void editar(TblPrecoItem obj) {
+	public void editar(TblPrecoValor obj) {
 		// TODO Auto-generated method stub
 		super.editar(obj);
 	}
 	
 	@Get("formulario/{obj.idtabelaprecopessoa.id}")
 	@Override
-	public void formulario(TblPrecoItem obj) {
+	public void formulario(TblPrecoValor obj) {
 		// TODO Auto-generated method stub
 		this.result.include("obj", obj);
 		super.formulario(obj);
 	}
 	
 	@Get("loadgrid/{obj.idtabelaprecopessoa.id}")
-	public void loadGrid(TblPrecoItem obj) {
+	public void loadGrid(TblPrecoValor obj) {
 		List<ParametrosWeb> parametrosWeb = new ArrayList<ParametrosWeb>();
 		parametrosWeb.add(new ParametrosWeb("idtabelaprecopessoa.id", obj.getIdtabelaprecopessoa().getId().toString()));
 		this.listar(obj, parametrosWeb);
@@ -48,7 +48,7 @@ public class TblPrecoItemController extends GenericController<TblPrecoItem> {
 	
 	@Post("")
 	@Override
-	public void salvar(TblPrecoItem obj) {
+	public void salvar(TblPrecoValor obj) {
 		// TODO Auto-generated method stub
 		this.setRedirect(false);
 		super.salvar(obj);

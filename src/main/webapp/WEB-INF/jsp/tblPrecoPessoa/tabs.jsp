@@ -10,9 +10,9 @@
 		<c:import url="tabPrecoPessoa.jsp"/>
 	</div>
 	<div aria-expanded="false" aria-hidden="true" aria-labelledby="tab2" class="no-padding" id="content-tab2" role="tabpanel">
-		<c:import url="../tblPrecoItem/precoItem.jsp"/>
+		<c:import url="../tblPrecoValor/precoValor.jsp"/>
 	</div>
 	<div aria-expanded="false" aria-hidden="true" aria-labelledby="tab3" class="no-padding" id="content-tab3" role="tabpanel">
-		<c:import url="../tblPrecoOutros/precoOutros.jsp"/>
+		<c:import url="../tblPrecoValorOutros/precoValorOutros.jsp"/>
 	</div>
 </div>

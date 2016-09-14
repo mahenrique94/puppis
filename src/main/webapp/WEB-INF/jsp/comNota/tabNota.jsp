@@ -1,7 +1,7 @@
 <%@include file="/config/taglibraries.jsp"%>
 <section aria-expanded="true" aria-hidden="false" class="form-body" role="form">
-	<input name="obj.idcomercio.id" type="hidden" value="${username.comercio.id}">
-	<input name="obj.idusuario.id" type="hidden" value="${username.usuario.id}">
+	<input name="obj.idcomercio.id" type="hidden" value="${username.idComercio}">
+	<input name="obj.idusuario.id" type="hidden" value="${username.id}">
 	<input name="obj.custo.id" type="hidden" value="${obj.custo.id}">
 	<input name="obj.custo.idnota.id" type="hidden" value="${obj.id}">
 	<div class="row" role="row">

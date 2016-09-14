@@ -1,6 +1,6 @@
 <%@include file="/config/taglibraries.jsp" %>
 <%@include file="/config/libraries-style.jsp"%>
-<form action="<c:url value="/tabela-de-preco/outros"/>" class="form-modern" id="formtblprecooutros" method="post" name="formtblprecooutros" onsubmit="return enviarPost(this);" role="form">
+<form action="<c:url value="/tabela-de-preco/valor/outros"/>" class="form-modern" id="formtblprecooutros" method="post" name="formtblprecooutros" onsubmit="return enviarPost(this);" role="form">
 	<input name="obj.id" type="hidden" value="${obj.id}">
 	<input name="obj.idtabelaprecopessoa.id" type="hidden" value="${obj.idtabelaprecopessoa.id}">
 	<nav class="band-nav-lube" role="complementary">
@@ -18,7 +18,7 @@
 				<netsis:validationMessage name="obj.descricao"/>
 			</div>
 			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
-				<label><fmt:message key="label.valor.max"/></label>
+				<label><fmt:message key="label.valor"/></label>
 				<input class="form-data validate" maxlength="13" name="obj.valor" pattern="numeric10_2" type="text" value="<fmt:formatNumber pattern="0.00" type="currency" value="${obj.valor}"/>"/>
 				<netsis:validationMessage name="obj.valor"/>
 			</div>
