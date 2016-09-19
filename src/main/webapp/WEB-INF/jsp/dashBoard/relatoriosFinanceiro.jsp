@@ -12,7 +12,7 @@
 						<li class="${disabledFinanceiro}" role="menuitem"><a href="<c:url value="/relatorio/financeiro/documento/custo"/>"><label><i class="font-5x icon-money"></i><fmt:message key="nav.financeiro.relatorios.documento.custo"/></label></a></li>
 						<li class="${disabledFinanceiro}" role="menuitem"><a href="<c:url value="/relatorio/financeiro/documento/pagamento"/>"><label><i class="font-5x icon-dollar"></i><fmt:message key="nav.financeiro.relatorios.documento.pagamento"/></label></a></li>
 						<li class="${disabledFinanceiro}" role="menuitem"><a href="<c:url value="/relatorio/financeiro/documento/pessoa"/>"><label><i class="font-5x icon-male"></i><fmt:message key="nav.financeiro.relatorios.documento.pessoa"/></label></a></li>
-						<li class="${disabledFinanceiro}" role="menuitem"><a href="<c:url value="/relatorio/extrato"/>"><label><i class="font-5x icon-list-alt"></i><fmt:message key="nav.financeiro.relatorios.extrato"/></label></a></li>
+						<li class="${disabledFinanceiro}" role="menuitem"><a href="<c:url value="/relatorio/financeiro/extrato"/>"><label><i class="font-5x icon-list-alt"></i><fmt:message key="nav.financeiro.relatorios.extrato"/></label></a></li>
 					</ul>
 				</nav>
 			</div>

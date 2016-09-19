@@ -44,6 +44,7 @@ public class RelatorioController {
 	public void processar(List<ParametrosWeb> parametrosWeb, HttpServletRequest request, HttpServletResponse response) throws ParseException {
 		// 0 = NOME RELATORIO
 		// 1 = EXCEL - HTML - PDF - TXT - WORD
+		System.setProperty("java.awt.headless", "true");
 		if (parametrosWeb != null && !parametrosWeb.isEmpty()) {
 			Map<String, Object> parameters = new HashMap<String, Object>();
 			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
