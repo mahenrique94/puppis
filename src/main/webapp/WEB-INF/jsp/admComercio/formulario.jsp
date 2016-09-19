@@ -10,6 +10,7 @@
 	<c:import url="tabs.jsp"/>
 	<nav class="nav-group-tie nav-fixed-bottom" role="complementary">
 		<ul>
+			<li><a href="<c:url value="/administrador/comercio/formulario"/>" title="<fmt:message key="button.novo"/>"><i class="icon-plus"></i>&nbsp;<fmt:message key="button.novo"/></a></li>
 			<li><button title="<fmt:message key="button.salvar"/>" type="submit"><i class="icon-floppy"></i>&nbsp;<fmt:message key="button.salvar"/></button></li>
 			<li><a href="<c:url value="/administrador/comercio"/>" title="<fmt:message key="button.pesquisar"/>"><i class="icon-search"></i>&nbsp;<fmt:message key="button.pesquisar"/></a></li>
 		</ul>
