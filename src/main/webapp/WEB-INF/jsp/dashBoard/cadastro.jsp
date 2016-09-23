@@ -19,7 +19,7 @@
 						<li class="${disabledCadastro}" role="menuitem"><a href="<c:url value="/cadastro/pais"/>"><label><i class="font-5x icon-globe"></i><fmt:message key="nav.cadastro.pais"/></label></a></li>
 						<li class="${disabledCadastro}" role="menuitem"><a href="<c:url value="/pessoa"/>"><label><i class="font-5x icon-male"></i><fmt:message key="nav.cadastro.pessoa"/></label></a></li>
 						<li class="${disabledCadastro}" role="menuitem"><a href="<c:url value="/dashboard/produto/servico"/>"><label><i class="font-5x icon-box"></i><fmt:message key="nav.cadastro.produto.servico"/></label></a></li>
-						<li class="${disabledCadastro}" role="menuitem"><a href="<c:url value="/tabela-de-preco"/>"><label><i class="font-5x icon-dollar"></i><fmt:message key="nav.cadastro.tabela.preco"/></label></a></li>
+						<li class="${disabledCadastro}" role="menuitem"><a href="<c:url value="/tabela-de-preco"/>"><label><i class="font-5x icon-money"></i><fmt:message key="nav.cadastro.tabela.preco"/></label></a></li>
 						<li class="${disabledCadastro}" role="menuitem"><a href="<c:url value="/dashboard/relatorios/cadastro"/>"><label><i class="font-5x icon-chart-bar"></i><fmt:message key="nav.cadastro.relatorios"/></label></a></li>
 					</ul>
 				</nav>

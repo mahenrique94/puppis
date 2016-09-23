@@ -1,5 +1,7 @@
-<%@include file="/config/header.jsp"%>
-<form action="<c:url value="/produto-servico/classe"/>" class="form-modern" id="formlistarpsclasse" method="get" name="formlistarpsclasse" role="search">
+<%@include file="/config/taglibraries.jsp"%>
+<%@include file="/config/libraries-style.jsp"%>
+<form action="<c:url value="/produto-servico/classe/listarsl"/>" class="form-modern" id="formlistarpsclasse" method="get" name="formlistarpsclasse" role="search">
+	<input name="openBoxSearch" type="hidden" value="${param.search}">
 	<nav class="band-nav-lube" role="complementary">
 		<div class="row" role="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
@@ -23,14 +25,10 @@
 	<display:column headerScope="idgrupo.id" property="idgrupo.id" style="width: 90px;" titleKey="displaytag.id.grupo"/>
 	<display:column headerScope="id" property="id" style="width: 50px;" titleKey="displaytag.id"/>
 	<display:column headerScope="descricao" property="descricao" titleKey="displaytag.descricao"/>
-	<display:column style="text-align: center;width: 165px;">
-		<a class="btn-lower btn-xs" href="<c:url value="/produto-servico/classe/${obj.id}"/>"><span class="icon-pencil"></span>&nbsp;<fmt:message key="button.editar"/></a>
-		<button class="btn-der btn-xs" formaction="<c:url value="/produto-servico/classe?obj.id=${obj.id}"/>" onclick="deletar(this);" type="button"><span class="icon-trash"></span>&nbsp;<fmt:message key="button.deletar"/></button>
+	<display:column class="hidden" headerClass="hidden">
+		<select class="selectOpenBox">
+			<option id="id" value="${obj.id}"></option>
+		</select>
 	</display:column>
 </display:table>
-<nav class="nav-group-tie nav-fixed-bottom" role="complementary">
-	<ul>
-		<li><a href="<c:url value="/produto-servico/classe/formulario"/>"><i class="icon-plus"></i>&nbsp;<fmt:message key="button.novo"/></a></li>
-	</ul>
-</nav>
-<%@include file="/config/footer.jsp"%>
+<%@include file="/config/libraries-js.jsp"%>
