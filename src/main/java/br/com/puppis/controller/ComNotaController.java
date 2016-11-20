@@ -30,7 +30,7 @@ public class ComNotaController extends GenericController<ComNota> {
 		this.setRedirect(false);
 		obj = (ComNota) this.edit(obj);
 		atualiza(obj);
-		finDocumentoController.criaFinanceiro(criaParametrosAtualizarFinanceiro(obj));
+		this.finDocumentoController.criaFinanceiro(criaParametrosAtualizarFinanceiro(obj));
 		super.salvar(obj);
 		this.result.include("mensagem", "Nota atualizada com sucesso");
 		this.result.redirectTo(this).listar(obj, null);

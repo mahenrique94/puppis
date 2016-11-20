@@ -17,7 +17,7 @@ public class GerenciadorEstornaCompra extends GerenciadorEstoque {
 		produto.getCusto().setValor(0.0);
 		produto.getEstoque().setQuantidade(produto.getEstoque().getQuantidade() - quantidade);
 		dao.save(produto);
-		getMovimento().movimenta(dao, nota, MovimentoTipo.ESTORNO_COMPRA);
+		getMovimento().movimenta(dao, nota.getNumero() != null ? nota.getNumero() : nota.getId(), idProdutoServico, quantidade, MovimentoTipo.ESTORNO_COMPRA);
 	}
 
 	@Override

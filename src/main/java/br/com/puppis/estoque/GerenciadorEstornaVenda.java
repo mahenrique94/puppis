@@ -16,7 +16,7 @@ public class GerenciadorEstornaVenda extends GerenciadorEstoque {
 		ComNota nota = (ComNota) dao.edit(new ComNota(idNota));
 		produto.getEstoque().setQuantidade(produto.getEstoque().getQuantidade() + quantidade);
 		dao.save(produto);
-		getMovimento().movimenta(dao, nota, MovimentoTipo.ESTORNO_VENDA);
+		getMovimento().movimenta(dao, nota.getNumero() != null ? nota.getNumero() : nota.getId(), idProdutoServico, quantidade, MovimentoTipo.ESTORNO_VENDA);
 	}
 
 	@Override

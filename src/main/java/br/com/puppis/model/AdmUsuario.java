@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -42,6 +43,7 @@ public class AdmUsuario implements Serializable {
 	private Integer id;
 	@NotNull
 	@NotEmpty
+	@Basic(optional = false)
 	@Size(min = 0, max = 60, message = "{minimo.0.maximo.60}")
 	@Pattern(regexp = "^([\\dA-Z]+(\\s[\\dA-Z]+)*)$")
 	@Column(length = 60, columnDefinition = "varchar(60)", nullable = false, unique = true)

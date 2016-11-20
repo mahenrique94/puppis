@@ -7,7 +7,7 @@
 	<div class="row" role="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
 			<label><fmt:message key="label.operacao"/></label>
-			<select class="form-data validate" data-class="slSysTipoOperacao" data-fields="idmodulo.id" data-parameters="1" id="slSystem_Tipo-de-operacao_json_1" name="obj.idtipooperacao.id" ${readOnly}></select>
+			<select class="form-data validate" data-class="slSysTipoOperacao" data-fields="gruporesumo" data-parameters="NOTA" id="slSystem_Tipo-de-operacao_json_1" name="obj.idtipooperacao.id" ${readOnly}></select>
 			<netsis:validationMessage name="obj.operacao"/>
 		</div>
 	</div>
