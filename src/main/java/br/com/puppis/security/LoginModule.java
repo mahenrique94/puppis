@@ -1,5 +1,8 @@
 package br.com.puppis.security;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,11 +45,21 @@ public class LoginModule {
 	}
 	
 	private AdmUsuario buscaUsuario(String usuario, String senha) {
-		List<ParametrosWeb> parametrosWeb = new ArrayList<ParametrosWeb>();
-		parametrosWeb.add(new ParametrosWeb("usuario", usuario));
-		parametrosWeb.add(new ParametrosWeb("senha", senha));
-		parametrosWeb.add(new ParametrosWeb("inativo", "true", null, "<>"));
-		return (AdmUsuario) getDao().find(AdmUsuario.class, parametrosWeb);
+		PreparedStatement query = null;
+		ResultSet result = null;
+		try {
+			query = getDao().getConnection().prepareStatement("select * from adm_usuario where usuario like ? and senha like ? and inativo <> true");
+			query.setString(1, usuario);
+			query.setString(2, senha);
+			result = query.executeQuery();
+			result.next();
+			if (result.getRow() > 0)
+				return getUsuario(result);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	private void erro() {
@@ -80,6 +93,16 @@ public class LoginModule {
 	
 	private boolean selecionouComercio(Integer idComercio) {
 		return idComercio != null && idComercio >= 0;
+	}
+	
+	private AdmUsuario getUsuario(ResultSet result) {
+		try {
+			return (AdmUsuario) getDao().edit(new AdmUsuario(result.getInt("id")));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 }
