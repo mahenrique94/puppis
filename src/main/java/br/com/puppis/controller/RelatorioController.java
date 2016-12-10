@@ -1,6 +1,5 @@
 package br.com.puppis.controller;
 
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -10,16 +9,19 @@ import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.observer.download.Download;
+import br.com.caelum.vraptor.observer.download.InputStreamDownload;
 import br.com.mhc.function.StringFunction;
 import br.com.mhc.parametrosweb.ParametrosWeb;
-import br.com.mhc.relatorio.RelatorioBuilder;
+import br.com.mhc.report.Report;
+import br.com.mhc.report.ReportBuilder;
+import br.com.mhc.report.ReportTypeFactory;
 import br.com.puppis.dao.Dao;
 import br.com.puppis.dao.GenericDao;
 
@@ -31,26 +33,29 @@ public class RelatorioController {
 	private Dao dao;
 	@Inject
 	private Result result;
-	private final String PATH_RELATORIO = "/WEB-INF/jsp/relatorio/";
-	private final String PATH_JASPER = this.PATH_RELATORIO + "jasper/";
-	private final String LOGOTIPO = this.PATH_RELATORIO + "img/logo.png";			 
+	
+	private final ReportBuilder reportBuilder = new ReportBuilder();
+	private final String PATH_RELATORIO = "/WEB-INF/jsp/relatorios";
+	private final String PATH_JRXML = this.PATH_RELATORIO + "/jrxml";
+	private final String PATH_LOGOTIPO = this.PATH_RELATORIO + "/img/logo.png";			 
 	
 	@Get("{operacao*}")
 	public void operacao(String operacao) {
-		this.result.forwardTo(String.format(getPathRelatorio() + "%s.jsp", StringFunction.splitBarToFirstUpper(operacao)));
+		this.result.forwardTo(String.format("%s/%s.jsp", PATH_RELATORIO, StringFunction.splitBarToFirstUpper(operacao)));
 	}
 	
 	@Post("processar")
-	public void processar(List<ParametrosWeb> parametrosWeb, HttpServletRequest request, HttpServletResponse response) throws ParseException {
+	public Download processar(List<ParametrosWeb> parametrosWeb, HttpServletRequest request) throws ParseException {
 		// 0 = NOME RELATORIO
 		// 1 = EXCEL - HTML - PDF - TXT - WORD
-		System.setProperty("java.awt.headless", "true");
 		if (parametrosWeb != null && !parametrosWeb.isEmpty()) {
 			Map<String, Object> parameters = new HashMap<String, Object>();
 			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
 			String dataAtual = formatador.format(Calendar.getInstance().getTime());
-			String nomeRelatorio = request.getServletContext().getRealPath(String.format(getPathJasper() + "%s.jasper", parametrosWeb.get(0).getParametroInicial()));
-			parameters.put("LOGOTIPO", "/Users/matheus/workspace/puppis/src/main/webapp/WEB-INF/jsp/relatorio/img/logo.png");
+			String pathRelatorio = request.getServletContext().getRealPath(PATH_JRXML);
+			String nomeRelatorio = parametrosWeb.get(0).getParametroInicial();
+			String type = parametrosWeb.get(1).getParametroInicial();
+			parameters.put("LOGOTIPO", "/Users/matheus/workspace/puppis/src/main/webapp/WEB-INF/jsp/relatorios/img/logo.png");
 			
 			switch (parametrosWeb.get(0).getParametroInicial()) {
 				case "IRPESSOA" :				
@@ -374,27 +379,15 @@ public class RelatorioController {
 				default :
 					throw new RuntimeException("Não foi possível localizar o relatório " + parametrosWeb.get(0).getParametroInicial());
 				}
-			RelatorioBuilder builder = new RelatorioBuilder(nomeRelatorio, parameters, getDao().getConnection());
-			try {
-				builder.gera(response.getOutputStream());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
+			Report report = new Report(getDao().getConnection(), parameters, pathRelatorio, nomeRelatorio, ReportTypeFactory.findType(type));
+			return new InputStreamDownload(this.reportBuilder.build(report), report.getType().getType().getApplication(), report.getFinalName());
 		}
+		return null;
 	}
 	
 	private GenericDao getDao() {
 		return this.dao.getDao();
-	}
-	private String getPathRelatorio() {
-		return this.PATH_RELATORIO;
-	}
-	public String getPathJasper() {
-		return this.PATH_JASPER;
-	}
-	public String getLogoTipo() {
-		return this.LOGOTIPO;
 	}
 	
 }

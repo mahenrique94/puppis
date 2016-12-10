@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2016-12-10T15:39:11 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IRPESSOA" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="783cace9-cb3f-4d78-b865-bb360c1109e7">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="PUPPIS LOCAL"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<subDataset name="DataSet_Definicao" uuid="3b386e46-16ba-4c18-9084-bea949c651c3">
+		<parameter name="IDPESSOA" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select ptip.descricao
+from pes_definicao def, pes_tipo ptip
+where def.idpessoa = $P{IDPESSOA}
+  and def.idtipo = ptip.id]]>
+		</queryString>
+		<field name="descricao" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="IDPESSOA_INICIAL" class="java.lang.Long" isForPrompting="false"/>
+	<parameter name="IDPESSOA_FINAL" class="java.lang.Long" isForPrompting="false"/>
+	<parameter name="DATACADASTRO_INICIAL" class="java.util.Date" isForPrompting="false"/>
+	<parameter name="DATACADASTRO_FINAL" class="java.util.Date" isForPrompting="false"/>
+	<parameter name="INATIVO" class="java.lang.Boolean" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/Volumes/PROJETOS/ireport/puppis/"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select pes.id, max(pes.nomerazaosocial) as nomerazaosocial, max(pes.datacreate) as datacreate, max(pes.apelido) as apelido,
+  max(case when pes.inativo = 'F' then 'ATIVO' else 'INATIVO' end) as inativo,
+  max(pdoc.cpfcnpj) as cpfcnpj, max(pdoc.rginscricaoestadual) as rginscricaoestadual, max(pdoc.cnh) as cnh,
+  max(pestc.descricao) as estadocivil,
+  max(psex.descricao) as sexo,
+  max(pend.rua) as rua, max(pend.numero) as numero, max(pend.cep) as cep, max(pend.bairro) as bairro, max(pend.complemento) as complemento,
+  max(pais.descricao) as pais,
+  max(est.descricao) as uf,
+  max(cid.descricao) as cidade,
+  max(ptip.descricao) as tipopessoa
+from pes_pessoa pes, pes_definicao pdef, pes_endereco pend, pes_documento pdoc, pes_tipo ptip, pes_sexo psex, pes_estadocivil pestc,
+  cad_pais pais, cad_estado est, cad_cidade cid
+where pes.id >= $P{IDPESSOA_INICIAL}
+  and pes.id <= $P{IDPESSOA_FINAL}
+  and pes.datacreate >= $P{DATACADASTRO_INICIAL}
+  and pes.datacreate <= $P{DATACADASTRO_FINAL}
+  and pes.inativo = $P{INATIVO}
+  and pes.idsexo = psex.id
+  and pes.idestadocivil = pestc.id
+  and pdef.idpessoa = pes.id
+  and pdef.idtipo = ptip.id
+  and pend.idpessoa = pes.id
+  and pend.idcidade = cid.id
+  and pdoc.idpessoa = pes.id
+  and cid.idestado = est.id
+  and est.idpais = pais.id
+group by pes.id
+order by pes.nomerazaosocial]]>
+	</queryString>
+	<field name="id" class="java.lang.Long"/>
+	<field name="nomerazaosocial" class="java.lang.String"/>
+	<field name="datacreate" class="java.sql.Date"/>
+	<field name="apelido" class="java.lang.String"/>
+	<field name="inativo" class="java.lang.String"/>
+	<field name="cpfcnpj" class="java.lang.String"/>
+	<field name="rginscricaoestadual" class="java.lang.String"/>
+	<field name="cnh" class="java.lang.String"/>
+	<field name="estadocivil" class="java.lang.String"/>
+	<field name="sexo" class="java.lang.String"/>
+	<field name="rua" class="java.lang.String"/>
+	<field name="numero" class="java.lang.String"/>
+	<field name="cep" class="java.lang.String"/>
+	<field name="bairro" class="java.lang.String"/>
+	<field name="complemento" class="java.lang.String"/>
+	<field name="pais" class="java.lang.String"/>
+	<field name="uf" class="java.lang.String"/>
+	<field name="cidade" class="java.lang.String"/>
+	<field name="tipopessoa" class="java.lang.String"/>
+	<group name="Group_Pessoa">
+		<groupExpression><![CDATA[$F{id}]]></groupExpression>
+		<groupHeader>
+			<band height="15">
+				<staticText>
+					<reportElement x="0" y="0" width="555" height="15" uuid="13fd5073-0ff7-4bce-ab13-0edfc4b774a8"/>
+					<box>
+						<bottomPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial"/>
+					</textElement>
+					<text><![CDATA[Dados Pessoais]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band height="802" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="555" height="802" uuid="0c956226-f100-4e7d-a5fd-7792969ec939"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+			</frame>
+		</band>
+	</background>
+	<title>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="555" height="20" uuid="0e59f10c-19a5-40f2-a797-58a3d03a2ea0"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RELATÓRIO DE PESSOA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="145" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="555" height="75" uuid="d1ff2352-05ef-4d11-92c3-c81ca1f12ce0"/>
+				<box>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<staticText>
+					<reportElement x="243" y="0" width="29" height="15" uuid="b6e8115f-2da6-49a9-b154-8a8b8394983c"/>
+					<box leftPadding="2"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Tipo:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="15" width="123" height="15" uuid="d9843c05-919d-45bd-95da-19bac1065aaa"/>
+					<box leftPadding="2"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Razão Social / Nome:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="123" y="15" width="216" height="15" uuid="2b795c43-b396-46eb-b3ae-26799c1d0898"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nomerazaosocial}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="339" y="15" width="106" height="15" uuid="772ef822-ebd4-4e78-9ff4-efef8925d0e2"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Data do Cadastro:]]></text>
+				</staticText>
+				<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+					<reportElement x="445" y="15" width="110" height="15" uuid="6b1acfc9-646f-4579-a68a-c85012b2769c"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{datacreate}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="30" width="67" height="15" uuid="42e105a5-fedb-4c03-b683-d16c53465042"/>
+					<box leftPadding="2"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CNPJ / CPF:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="67" y="30" width="147" height="15" uuid="df5781f1-046d-49be-9d1f-952aa4c85aa5"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cpfcnpj}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="214" y="30" width="45" height="15" uuid="dc8c5bb3-34a2-48ad-afc3-61e290129318"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[RG / I.E:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="259" y="30" width="124" height="15" uuid="2fe0d847-0fa5-4788-b0a0-4034924659b1"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{rginscricaoestadual}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="383" y="30" width="40" height="15" uuid="7f6168f4-de63-481b-a843-edc8bf55780a"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CNH:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="423" y="30" width="132" height="15" uuid="6cef36af-b39f-4dd0-8022-4b73ab3ee0fb"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cnh}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="45" width="67" height="15" uuid="38dfdb6a-17bd-4343-9cbf-3fdfba011505"/>
+					<box leftPadding="2"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Estado Civil:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="67" y="45" width="147" height="15" uuid="2fd37d6a-52ed-4c64-8832-f3411f0cb8ea"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{estadocivil}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="214" y="45" width="29" height="15" uuid="66ede66e-6093-4468-b266-321503867aaa"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Sexo:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="243" y="45" width="140" height="15" uuid="c09cefc3-292d-474d-9b30-20311840cde0"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{sexo}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="383" y="45" width="42" height="15" uuid="b314e73d-5f85-4716-999d-b2a023136306"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Apelido:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="423" y="45" width="132" height="15" uuid="52dee544-b125-46fa-8555-eef8017931f2"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{apelido}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="60" width="51" height="15" uuid="e0322a21-3774-4e20-8a70-cb2a2ecc15d4"/>
+					<box leftPadding="2"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Situação:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="51" y="60" width="163" height="15" uuid="73621c2e-72e9-44e4-937a-d98d531af6fb"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{inativo}]]></textFieldExpression>
+				</textField>
+				<componentElement>
+					<reportElement x="272" y="0" width="283" height="15" uuid="bbe3657f-f10e-4210-bf40-b972e8b95bd5"/>
+					<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Horizontal" ignoreWidth="true">
+						<datasetRun subDataset="DataSet_Definicao" uuid="55e4a6f5-56bb-4565-a82b-aed5b6d085b2">
+							<datasetParameter name="IDPESSOA">
+								<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+							</datasetParameter>
+						</datasetRun>
+						<jr:listContents height="15" width="80">
+							<textField pattern="" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="80" height="15" uuid="2be69912-8f0d-4b20-bbb0-03e298f26254"/>
+								<textElement verticalAlignment="Middle">
+									<font fontName="Arial" size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+							</textField>
+						</jr:listContents>
+					</jr:list>
+				</componentElement>
+			</frame>
+			<frame>
+				<reportElement x="0" y="75" width="555" height="60" uuid="bce8356f-6080-48d2-b050-e19d2b0be380"/>
+				<box>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<staticText>
+					<reportElement x="0" y="0" width="555" height="15" uuid="6951b492-9954-4110-884a-732a20390eef"/>
+					<box>
+						<bottomPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial"/>
+					</textElement>
+					<text><![CDATA[Endereço]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="15" width="27" height="15" uuid="8afa24b3-744c-4ed3-8939-127d9095cdf8"/>
+					<box leftPadding="2"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Rua:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="27" y="15" width="290" height="15" uuid="22e05737-b888-43ae-9cf5-48ceac31d415"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{rua}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="317" y="15" width="46" height="15" uuid="a4e36ae6-539e-434c-b8bb-0d0649e6da6b"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Numero:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="363" y="15" width="92" height="15" uuid="6ec55dd5-3d8c-43ec-a906-61a90ddd3ddf"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="454" y="15" width="27" height="15" uuid="c11fffb4-5079-4202-b7a7-5d7b89179da0"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CEP:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="481" y="15" width="74" height="15" uuid="4e4998cd-7120-4d7a-917f-2e93d7e2b660"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cep}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="30" width="37" height="15" uuid="04e2579f-e833-40f8-bf36-5fbc8dde4dbb"/>
+					<box leftPadding="2"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Bairro:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="37" y="30" width="280" height="15" uuid="0577b46c-69aa-4230-a074-a8d98307394f"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{bairro}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="317" y="30" width="76" height="15" uuid="c4a1306c-859e-4987-bcb5-236ea1a02c6a"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Complemento:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="393" y="30" width="162" height="15" uuid="0a50bfb9-8c1d-4746-9dba-f4e09cda24e5"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{complemento}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="45" width="88" height="15" uuid="2eabee26-ad56-43a7-a12f-3464d602c898"/>
+					<box leftPadding="2"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Cidade / Estado:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="88" y="45" width="229" height="15" uuid="fe15da1d-0e3c-4f13-95e0-741992fb0408"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cidade} + " / " + $F{uf}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="317" y="45" width="27" height="15" uuid="1a45355e-cb09-461c-999d-159412f9be28"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[País:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="344" y="45" width="211" height="15" uuid="eee50f2c-1c91-4423-ad62-bf4de0de1c1b"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{pais}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<subreport>
+				<reportElement x="0" y="135" width="555" height="10" uuid="4fd29d81-a915-490f-9ddf-24914e9fadbc"/>
+				<subreportParameter name="IDPESSOA">
+					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "IRPESSOASUB.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="555" height="15" uuid="0c5cc45e-712f-4155-9de5-b7730c604316"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+				</box>
+				<textField pattern="dd/MM/yyyy HH:mm" isBlankWhenNull="true">
+					<reportElement x="0" y="0" width="100" height="15" uuid="94f4dad9-a331-4e8f-96a9-c3bc58f69a88"/>
+					<box leftPadding="2"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="445" y="0" width="80" height="15" uuid="f885a5ad-a7fb-4104-be2f-f9a26afae41a"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER} + " de "]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Report" isBlankWhenNull="true">
+					<reportElement x="527" y="0" width="28" height="15" uuid="6a6354ce-acf1-4be7-8956-56875ef4847a"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+</jasperReport>
