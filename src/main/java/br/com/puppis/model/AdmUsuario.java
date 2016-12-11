@@ -50,9 +50,9 @@ public class AdmUsuario implements Serializable {
 	private String nome;
 	@NotNull
 	@NotEmpty
-	@Size(min = 0, max = 20, message = "{minimo.0.maximo.20}")
+	@Size(min = 0, max = 30, message = "{minimo.0.maximo.30}")
 	@Pattern(regexp = "^([\\dA-Z]*)$")
-	@Column(length = 20, columnDefinition = "varchar(20)", nullable = false, unique = true)
+	@Column(length = 20, columnDefinition = "varchar(30)", nullable = false, unique = true)
 	private String usuario;
 	@NotNull
 	@NotEmpty

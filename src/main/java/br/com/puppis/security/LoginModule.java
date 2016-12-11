@@ -41,6 +41,8 @@ public class LoginModule {
 			} else {
 				erro();
 			}
+		} else {
+			erro();
 		}
 	}
 	

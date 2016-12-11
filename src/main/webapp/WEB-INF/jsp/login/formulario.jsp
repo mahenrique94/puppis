@@ -22,7 +22,7 @@
 						<div class="row" role="row">
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 								<div class="form-data-group">
-									<input autocomplete="off" autofocus class="form-data" maxlength="20" name="usuario" pattern="letraNumero" placeholder="<fmt:message key="label.usuario"/>" required type="text" value="${usuario}">
+									<input autocomplete="off" autofocus class="form-data" maxlength="30" name="usuario" pattern="letraNumeroPonto" placeholder="<fmt:message key="label.usuario"/>" required type="text">
 									<span class="form-data-group-text"><i class="icon-user"></i></span>
 								</div>
 							</div>
@@ -30,7 +30,7 @@
 						<div class="row" role="row">
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 								<div class="form-data-group">
-									<input autocomplete="off" class="form-data" maxlength="8" name="senha" pattern="letraNumero" placeholder="<fmt:message key="label.senha"/>" required type="password" value="${senha}">
+									<input autocomplete="off" class="form-data" maxlength="8" name="senha" pattern="letraNumero" placeholder="<fmt:message key="label.senha"/>" required type="password">
 									<div class="form-data-group-text"><i class="icon-lock"></i></div>
 								</div>
 							</div>

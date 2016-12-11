@@ -17,7 +17,6 @@ import org.hibernate.engine.spi.SessionFactoryImplementor;
 import br.com.mhc.paginator.Paginator;
 import br.com.mhc.parametrosweb.ParametrosWeb;
 import br.com.mhc.parametrosweb.ParametrosWebBuilder;
-import br.com.puppis.model.PesDefinicao;
 
 public class JPAGenericDao<T> implements GenericDao<T> {
 
@@ -141,5 +140,5 @@ public class JPAGenericDao<T> implements GenericDao<T> {
 			query.setParameter(i, parameters[i]);
 		}
 	}
-	
+
 }
