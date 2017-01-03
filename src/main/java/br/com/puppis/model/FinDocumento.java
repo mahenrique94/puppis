@@ -274,7 +274,7 @@ public class FinDocumento implements Serializable, Cloneable {
 	}
 	
 	public FinDocumento novoParcelamento(List<ParametrosWeb> parametrosWeb, FinFormaPagamento finFormaPagamento, int numeroParcela) {
-		setDataemissao(DateFunction.stringToCalendar(parametrosWeb.get(6).getParametroInicial()));
+		setDataemissao(DateFunction.stringFromBrazilianWithDateToCalendar(parametrosWeb.get(6).getParametroInicial()));
 		setIdcontabancaria(new FinContaBancaria(Integer.parseInt(parametrosWeb.get(2).getParametroInicial())));
 		setIddefinicao(new PesDefinicao(Long.parseLong(parametrosWeb.get(1).getParametroInicial())));
 		setIdformapagamento(finFormaPagamento);

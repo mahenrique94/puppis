@@ -34,10 +34,10 @@ public class RelatorioController {
 	@Inject
 	private Result result;
 	
-	private final ReportBuilder reportBuilder = new ReportBuilder();
-	private final String PATH_RELATORIO = "/WEB-INF/jsp/relatorios";
-	private final String PATH_JRXML = this.PATH_RELATORIO + "/jrxml";
-	private final String PATH_LOGOTIPO = this.PATH_RELATORIO + "/img/logo.png";			 
+	private static final ReportBuilder reportBuilder = new ReportBuilder();
+	private static final String PATH_RELATORIO = "/WEB-INF/jsp/relatorios";
+	private static final String PATH_JRXML = PATH_RELATORIO + "/jrxml";
+	private static final String PATH_LOGOTIPO = PATH_RELATORIO + "/img/logo.png";			 
 	
 	@Get("{operacao*}")
 	public void operacao(String operacao) {
