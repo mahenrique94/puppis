@@ -1,24 +1,33 @@
 <%@include file="/config/header-dashboard.jsp"%>
 <%@include file="/config/modulos.jsp"%>
-	<main class="dashboard" id="wrap" role="main">
-		<header class="header-default" role="banner">
-			<%@include file="/config/nav.jsp"%>	
+<section class="o-dashboard">
+	<div class="o-dashboard__breadcrumb">
+		<div class="o-breadcrumb--arrow">
+			<span class="o-breadcrumb__link"><a class="is-inactive" href="#" role="link" title="<fmt:message key="nav.dashboard"/>"><fmt:message key="nav.dashboard"/></a></span>
+			<c:import url="loginInfo.jsp"/>
+		</div>
+	</div>
+	<div class="o-dashboard__content">
+		<header class="o-dashboard__header has-background">
+			<hgroup>
+				<h1 class="o-dashboard__title" style="color: #595959"><fmt:message key="titulo.dashboard"/></h1>
+				<h2 class="o-dashboard__subtitle" style="color: #595959"><fmt:message key="subtitulo.dashboard"/></h2>
+			</hgroup>
 		</header>
-		<section id="content">
-			<div class="clearfix container-center-sm">
-				<div class="welcome">
-					<h1><fmt:message key="titulo.bem.vindo"/></h1>
-					<h2>Plataforma online para gestão comercial</h2>
-				</div>
-				<nav class="nav-square-default nav-square-hover-lube" role="navigation">
-					<ul role="menubar">
-						<li class="${disabledCadastro}" role="menuitem"><a href="<c:url value="/dashboard/cadastro"/>"><label><i class="font-5x icon-vcard"></i><fmt:message key="nav.cadastro"/></label></a></li>
-						<li class="${disabledComercio}" role="menuitem"><a href="<c:url value="/dashboard/comercio"/>"><label><i class="font-5x icon-basket"></i><fmt:message key="nav.comercio"/></label></a></li>
-						<li class="${disabledFinanceiro}" role="menuitem"><a href="<c:url value="/dashboard/financeiro"/>"><label><i class="font-5x icon-dollar"></i><fmt:message key="nav.financeiro"/></label></a></li>
-						<li class="${disabledAdministrador}" role="menuitem"><a href="<c:url value="/dashboard/administrador"/>"><label><i class="font-5x icon-cog-alt"></i><fmt:message key="nav.administrador"/></label></a></li>
-					</ul>
-				</nav>
-			</div>
-		</section>
-	</main>
+		<nav class="c-square--gary" role="navigation">
+			<menu aria-haspopup="true" class="c-square__menu" role="menubar">
+				<menuitem class="c-square__item ${disabledCadastro}" role="menuitem"><a href="<c:url value="/dashboard/cadastro"/>" role="link" title="<fmt:message key="nav.cadastro"/>"><i class="icon-address-book"></i><fmt:message key="nav.cadastro"/></a></menuitem>
+				<menuitem class="c-square__item ${disabledComercio}" role="menuitem"><a href="<c:url value="/dashboard/comercio"/>" role="link" title="<fmt:message key="nav.comercio"/>"><i class="icon-address-book"></i><fmt:message key="nav.comercio"/></a></menuitem>
+				<menuitem class="c-square__item ${disabledFinanceiro}" role="menuitem"><a href="<c:url value="/dashboard/financeiro"/>" role="link" title="<fmt:message key="nav.financeiro"/>"><i class="icon-address-book"></i><fmt:message key="nav.financeiro"/></a></menuitem>
+				<menuitem class="c-square__item ${disabledAdministrador}" role="menuitem"><a href="<c:url value="/dashboard/administrador"/>" role="link" title="<fmt:message key="nav.administrador"/>"><i class="icon-address-book"></i><fmt:message key="nav.administrador"/></a></menuitem>
+			</menu>
+		</nav>
+	</div>
+</section>
 <%@include file="/config/footer-dashboard.jsp"%>
+<script>
+	let main = document.body.children[0];
+	let section = document.body.children[0].children[0];
+	main.style.background = 'url(/puppis/assets/img/dashboard/dashboard.jpg)  no-repeat center / cover';
+	section.style.padding = '0';
+</script>

@@ -5,40 +5,37 @@
 	<%@include file="/config/libraries-style.jsp"%>
 	<meta charset="UTF-8">
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport"/>
-	<link href="<c:url value="/img/favicon.ico"/>" rel="icon">
+	<link href="<c:url value="/assets/img/favicon.ico"/>" rel="icon">
 	<title><fmt:message key="titulo.pagina"/></title>
 </head>
 <body>
-	<%@include file="/config/messages.jsp"%>
-	<section class="login">
-		<div class="login-panel">
-			<figure class="login-logo">
-				<img alt="Hebi" src="<c:url value="/img/logo.png"/>">
-			</figure>
-			<fieldset class="login-form">
-				<legend><fmt:message key="titulo.controle.de.acesso"/></legend>
-				<form action="<c:url value="/login"/>" class="form-modern" id="formlogin" method="post" name="formlogin">
-					<section class="form-body">
-						<div class="row" role="row">
-							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-								<div class="form-data-group">
-									<input autocomplete="off" autofocus class="form-data" maxlength="30" name="usuario" pattern="letraNumeroPonto" placeholder="<fmt:message key="label.usuario"/>" required type="text">
-									<span class="form-data-group-text"><i class="icon-user"></i></span>
+	<%@include file="/config/mensagens.jsp"%>
+	<section class="o-login">
+		<div class="o-login__panel">
+			<img alt="Hebi" class="o-login__logo" src="<c:url value="/assets/img/logo.png"/>">
+			<fieldset class="o-login__form">
+				<form action="<c:url value="/login"/>" class="o-form" id="formlogin" method="post" name="formlogin">
+					<section class="o-form__body">
+						<div class="l-row" role="row">
+							<div class="u-grid--12" role="grid">
+								<div class="o-form__group">
+									<input aria-required="true" autofocus class="o-form__data o-login__data" maxlength="30" name="usuario" pattern="letraNumeroPonto" placeholder="<fmt:message key="label.usuario"/>" required type="text">
+									<span class="o-form__groupElement"><label class="o-button--lube o-login__icon"><i class="icon-user"></i></label></span>
 								</div>
 							</div>
 						</div>
-						<div class="row" role="row">
-							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-								<div class="form-data-group">
-									<input autocomplete="off" class="form-data" maxlength="8" name="senha" pattern="letraNumero" placeholder="<fmt:message key="label.senha"/>" required type="password">
-									<div class="form-data-group-text"><i class="icon-lock"></i></div>
+						<div class="l-row" role="row">
+							<div class="u-grid--12" role="grid">
+								<div class="o-form__group">
+									<input aria-required="true" class="o-form__data o-login__data" maxlength="8" name="senha" pattern="letraNumero" placeholder="<fmt:message key="label.senha"/>" required type="password">
+									<span class="o-form__groupElement"><label class="o-button--lube o-login__icon"><i class="icon-lock"></i></label></span>
 								</div>
 							</div>
 						</div>
 						<c:if test="${not empty AdmUsuarioComercioList}">
-							<div class="row" role="row">
-								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
-									<select class="form-data validate" required name="idComercio" style="margin-top: 0;">
+							<div class="l-row" role="row">
+								<div class="u-grid--12" role="grid">
+									<select aria-required="true" class="o-form__data" name="idComercio" required>
 										<c:forEach items="${AdmUsuarioComercioList}" var="comercio">
 											<option value="${comercio.idcomercio.id}">${comercio.idcomercio.id} - ${comercio.idcomercio.nomerazaosocial}</option>
 										</c:forEach>
@@ -46,13 +43,13 @@
 								</div>
 							</div>
 						</c:if>
-						<div class="row" role="row">
-							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-								<button class="btn-lube-modern btn-lg btn-full"><fmt:message key="button.entrar"/></button>
+						<div class="l-row" role="row">
+							<div class="u-grid--12" role="grid">
+								<button class="o-button--ren o-button--large o-button--full"><fmt:message key="button.entrar"/></button>
 							</div>
 						</div>
-						<div class="row">
-							<p class="login-remember">Esqueceu sua senha ? <a href="#">clique aqui</a></p>
+						<div class="l-row" role="row">
+							<p class="o-login__remember">Esqueceu sua senha ? <a class="o-login__rememberLink" href="#">clique aqui.</a></p>
 						</div>
 					</section>
 				</form>

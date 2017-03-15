@@ -1,22 +1,29 @@
 <%@include file="/config/header-dashboard.jsp"%>
 <%@include file="/config/modulos.jsp"%>
-	<main class="dashboard-financeiro" id="wrap" role="main">
-		<header class="header-default" role="banner">
-			<%@include file="/config/nav.jsp"%>	
-		</header>
-		<section id="content">
-			<div class="current"><a href="<c:url value="/dashboard"/>"><fmt:message key="nav.dashboard"/></a>&nbsp;<i class="icon-right-open"></i>&nbsp;<fmt:message key="nav.financeiro"/></div>
-			<div class="clearfix container-center-sm">
-				<nav class="nav-square-default nav-square-hover-lube" role="navigation">
-					<ul role="menubar">
-						<li class="${disabledFinanceiro}" role="menuitem"><a href="<c:url value="/financeiro/documento"/>"><label><i class="font-5x icon-doc-inv"></i><fmt:message key="nav.financeiro.documento"/></label></a></li>
-						<li class="${disabledFinanceiro}" role="menuitem"><a href="<c:url value="/financeiro/documento/parcelamento"/>"><label><i class="font-5x icon-docs"></i><fmt:message key="nav.financeiro.parcelamento"/></label></a></li>
-						<li class="${disabledFinanceiro}" role="menuitem"><a href="<c:url value="/financeiro/documento/baixa"/>"><label><i class="font-5x icon-money"></i><fmt:message key="nav.financeiro.baixa"/></label></a></li>
-						<li class="${disabledFinanceiro}" role="menuitem"><a href="<c:url value="/financeiro/extrato"/>"><label><i class="font-5x icon-list-bullet"></i><fmt:message key="nav.financeiro.extrato"/></label></a></li>
-						<li class="${disabledFinanceiro}" role="menuitem"><a href="<c:url value="/dashboard/relatorios/financeiro"/>"><label><i class="font-5x icon-chart-bar"></i><fmt:message key="nav.financeiro.relatorios"/></label></a></li>
-					</ul>
-				</nav>
-			</div>
-		</section>
-	</main>
+<section class="o-dashboard">
+	<div class="o-dashboard__breadcrumb">
+		<div class="o-breadcrumb--arrow">
+			<span class="o-breadcrumb__link"><a href="<c:url value="/dashboard"/>" role="link" title="<fmt:message key="nav.dashboard"/>"><fmt:message key="nav.dashboard"/></a></span>
+			<span class="o-breadcrumb__link"><a class="is-inactive" href="#" role="link" title="<fmt:message key="nav.financeiro"/>"><fmt:message key="nav.financeiro"/></a></span>
+			<c:import url="loginInfo.jsp"/>
+		</div>
+	</div>
+	<div class="o-dashboard__content">
+		<nav class="c-square--gary" role="navigation">
+			<menu aria-haspopup="true" class="c-square__menu" role="menubar">
+				<menuitem class="c-square__item ${disabledFinanceiro}" role="menuitem"><a href="<c:url value="/financeiro/documento"/>" role="link" title="<fmt:message key="nav.financeiro.documento"/>"><i class="icon-doc-inv"></i><fmt:message key="nav.financeiro.documento"/></a></menuitem>
+				<menuitem class="c-square__item ${disabledFinanceiro}" role="menuitem"><a href="<c:url value="/financeiro/documento/parcelamento"/>" role="link" title="<fmt:message key="nav.financeiro.parcelamento"/>"><i class="icon-docs"></i><fmt:message key="nav.financeiro.parcelamento"/></a></menuitem>
+				<menuitem class="c-square__item ${disabledFinanceiro}" role="menuitem"><a href="<c:url value="/financeiro/documento/baixa"/>" role="link" title="<fmt:message key="nav.financeiro.baixa"/>"><i class="icon-money"></i><fmt:message key="nav.financeiro.baixa"/></a></menuitem>
+				<menuitem class="c-square__item ${disabledFinanceiro}" role="menuitem"><a href="<c:url value="/financeiro/extrato"/>" role="link" title="<fmt:message key="nav.financeiro.extrato"/>"><i class="icon-list-bullet"></i><fmt:message key="nav.financeiro.extrato"/></a></menuitem>
+				<menuitem class="c-square__item ${disabledFinanceiro}" role="menuitem"><a href="<c:url value="/dashboard/relatorios/financeiro"/>" role="link" title="<fmt:message key="nav.financeiro.relatorios"/>"><i class="icon-chart-bar"></i><fmt:message key="nav.financeiro.relatorios"/></a></menuitem>
+			</menu>
+		</nav>
+	</div>
+</section>
 <%@include file="/config/footer-dashboard.jsp"%>
+<script>
+	let main = document.body.children[0];
+	let section = document.body.children[0].children[0];
+	main.style.background = 'url(/puppis/assets/img/dashboard/dashboard-financeiro.jpg) no-repeat center / cover';
+	section.style.padding = '0';
+</script>
