@@ -14,7 +14,7 @@ import br.com.puppis.model.AdmPermissao;
 import br.com.puppis.model.AdmUsuario;
 
 @SessionScoped
-@Named("username")
+@Named("userName")
 public class UserName implements Serializable {
 	
 	private Integer id;

@@ -1,3 +1,6 @@
-[submodule "src/main/webapp/stylesheet/stilize"]
-	path = src/main/webapp/stylesheet/stilize
+[submodule "src/main/webapp/assets/js/jlib"]
+	path = src/main/webapp/assets/js/jlib
+	url = git@github.com:mahenrique94/jlib.git
+[submodule "src/main/webapp/assets/css/stilize"]
+	path = src/main/webapp/assets/css/stilize
 	url = git@github.com:mahenrique94/stilize.git

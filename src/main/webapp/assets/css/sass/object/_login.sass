@@ -1,0 +1,52 @@
+.o-login
+    background: url(../img/bg-login.png) no-repeat center / cover
+    height: 100%
+    width: 100%
+    &__wrap
+        @include transform("translate(-50%, -50%)")
+        left: 50%
+        position: absolute
+        top: 50%
+    &__panel
+        background: rgba(255, 255, 255, .85)
+        margin-bottom: 1rem
+        padding: 1.5rem
+        text-align: center
+        width: 35vw
+    &__logo
+        bottom: 10px
+        position: absolute
+        right: 10px
+        width: 100px
+    &__title
+        color: #0099FF        
+        font-size: 2rem
+        margin-bottom: 1rem
+    &__data
+        background: transparent
+        border: none
+        border-bottom: 1px solid #333333
+        margin-bottom: 1rem
+        padding: 1rem
+        text-align: center
+        width: 100%
+        &:focus
+            border-bottom-color: #0099FF
+    &__group
+        position: relative
+    &__icon
+        color: #0099FF
+        font-size: 1.5rem
+        position: absolute
+        top: 15px
+    &__button
+        border-radius: 0
+        padding: 1rem 1.5rem
+        width: 100%
+    &__remember
+        color: #333333
+        padding: .5rem
+        &Link        
+            color: #0099FF
+            &:hover
+                text-decoration: underline
