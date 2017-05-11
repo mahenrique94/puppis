@@ -1,28 +1,27 @@
 <%@include file="/config/header.jsp" %>
-<form action="<c:url value="/administrador/usuario/tipo-de-acesso"/>" class="form-modern" id="formadmusuariotipoacesso" method="post" name="formadmusuariotipoacesso" role="form">
-	<%-- <input name="versao" type="hidden" value="${obj.versao}"> --%>
-	<nav class="band-nav-lube" role="complementary">
-		<div class="row" role="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
-				<label><a href="<c:url value="/dashboard/administrador"/>"><fmt:message key="nav.administrador"/></a>&nbsp;<i class="icon-right-open"></i>&nbsp;<fmt:message key="nav.administrador.usuario.tipo.acesso"/></label>					
-			</div>
+<c:set var="autoFocus" value="${obj.id != null ? '' : 'autofocus'}"/>
+<form action="<c:url value="/administrador/usuario/tipo-de-acesso"/>" class="o-form" id="formadmtipoacesso" method="post" name="formadmtipoacesso" role="form">
+	<input aria-hidden="true" name="obj.id" type="hidden" value="${obj.id}">
+	<nav class="o-navbar--gary" role="complementary">
+		<div class="o-breadcrumb--arrow">
+			<span class="o-breadcrumb__link"><a href="<c:url value="/dashboard"/>" role="link" title="<fmt:message key="nav.dashboard"/>"><fmt:message key="nav.dashboard"/></a></span>
+			<span class="o-breadcrumb__link"><a href="<c:url value="/dashboard/administrador"/>" role="link" title="<fmt:message key="nav.administrador"/>"><fmt:message key="nav.administrador"/></a></span>
+			<span class="o-breadcrumb__link"><a href="<c:url value="/administrador/usuario/tipo-de-acesso"/>" role="link" title="<fmt:message key="nav.administrador.usuario.tipo.acesso"/>"><fmt:message key="nav.administrador.usuario.tipo.acesso"/></a></span>
+			<span class="o-breadcrumb__link"><a href="<c:url value="/administrador/usuario/tipo-de-acesso"/>" role="link" title="<fmt:message key="nav.lista"/>"><fmt:message key="nav.lista"/></a></span>
+			<span class="o-breadcrumb__link"><a class="is-inactive" href="<c:url value="/administrador/usuario/tipo-de-acesso/formulario"/>" role="link" title="<fmt:message key="nav.formulario"/>"><fmt:message key="nav.formulario"/></a></span>
 		</div>
 	</nav>
-	<section aria-expanded="true" aria-hidden="false" class="form-body" role="form">
-		<input name="obj.id" type="hidden" value="${obj.id}">
-		<div class="row" role="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
-				<label><fmt:message key="label.descricao"/></label>
-				<input autofocus class="form-data validate" maxlength="60" name="obj.descricao" pattern="letraNumeroEspaco" required type="text" value="${obj.descricao}">
-				<netsis:validationMessage name="obj.descricao"/>
+	<section class="o-form__body o-form__body--padding">
+		<div class="l-row" role="row">
+			<div class="u-grid--12" role="grid">
+				<label class="o-form__text" for="descricao"><fmt:message key="label.descricao"/><validate:validationMessage name="obj.descricao"/></label>
+				<input aria-required="true" ${autoFocus} class="o-form__data has-validation" id="descricao" maxlength="30" name="obj.descricao" pattern="espacoLetraNumero" required type="text" value="${obj.descricao}">
 			</div>
 		</div>
 	</section>
-	<nav class="nav-group-tie nav-fixed-bottom" role="complementary">
-		<ul>
-			<li><button title="<fmt:message key="button.salvar"/>" type="submit"><i class="icon-floppy"></i>&nbsp;<fmt:message key="button.salvar"/></button></li>
-			<li><a href="<c:url value="/administrador/usuario/tipo-de-acesso"/>" title="<fmt:message key="button.pesquisar"/>"><i class="icon-search"></i>&nbsp;<fmt:message key="button.pesquisar"/></a></li>
-		</ul>
-	</nav>
+	<menu class="o-toolbar--lube is-fixedBottomFull" role="menubar">
+		<menuitem class="o-toolbar__item" role="menuitem"><button role="button" title="<fmt:message key="button.salvar"/>" type="submit"><i class="icon-floppy"></i>&nbsp;<fmt:message key="button.salvar"/></button></menuitem>
+		<menuitem class="o-toolbar__item" role="menuitem"><a href="<c:url value="/administrador/usuario/tipo-de-acesso"/>" role="link" title="<fmt:message key="button.pesquisar"/>"><i class="icon-search"></i>&nbsp;<fmt:message key="button.pesquisar"/></a></menuitem>
+	</menu> 
 </form>
 <%@include file="/config/footer.jsp"%>

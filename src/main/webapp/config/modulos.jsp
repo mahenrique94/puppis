@@ -1,4 +1,4 @@
-<%@include file="/config/taglibraries.jsp"%>
+<%@include file="taglibraries.jsp"%>
 <c:set value="disabled" var="disabledAdministrador"/>
 <c:set value="disabled" var="disabledCadastro"/>
 <c:set value="disabled" var="disabledComercio"/>

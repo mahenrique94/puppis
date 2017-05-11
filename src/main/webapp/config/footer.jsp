@@ -1,5 +1,5 @@
 		</section>
 	</main>
-	<%@include file="/config/libraries-js.jsp"%>
+	<%@include file="libraries-js.jsp"%>
 </body>
 </html>

@@ -65,7 +65,7 @@ public class LoginModule {
 	}
 	
 	private void erro() {
-		this.validator.add(new SimpleMessage("login.invalido", "Usuário ou senha inválidos"));
+		this.validator.add(new SimpleMessage("login.invalido", "mensagem.login.erro"));
 		this.validator.onErrorRedirectTo(LoginController.class).formulario();
 	}
 	

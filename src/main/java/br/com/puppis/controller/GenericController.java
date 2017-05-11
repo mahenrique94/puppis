@@ -32,8 +32,7 @@ public abstract class GenericController<T> {
 	@Delete("")
 	public void deletar(T obj) {
 		this.getDao().delete(obj);
-		if(this.isRedirect())
-			this.result.redirectTo(this).listar(obj, null);
+		this.result.nothing();
 	}
 	
 	@Get
@@ -80,7 +79,7 @@ public abstract class GenericController<T> {
 	public void salvar(@Valid T obj) {
 		this.validator.onErrorForwardTo(this).formulario(obj);
 		getDao().save(obj);
-		this.result.include("mensagem", "Operação concluída com sucesso");
+		this.result.include("mensagem", "mensagem.operacao.sucesso");
 		if(isRedirect())
 			this.result.redirectTo(this).listar(obj, null);
 	}	
