@@ -30,7 +30,7 @@
 								<div class="u-grid--12" role="grid">
 									<div class="o-login__group">
 										<i class="o-login__icon icon-lock"></i>
-										<input aria-required="true" class="o-login__data" maxlength="8" name="senha" pattern="letraNumero" placeholder="<fmt:message key="label.senha"/>" required type="password">
+										<input aria-required="true" class="o-login__data" maxlength="8" name="senha" pattern="letraNumeroMin8Max8" placeholder="<fmt:message key="label.senha"/>" required type="password">
 									</div>
 								</div>
 							</div>

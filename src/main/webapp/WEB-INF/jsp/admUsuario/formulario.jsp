@@ -3,6 +3,7 @@
 <form action="<c:url value="/administrador/usuario"/>" class="o-form" id="formadmusuario" method="post" name="formadmusuario" role="form">
 	<input aria-hidden="true" name="obj.id" type="hidden" value="${obj.id}">
 	<input aria-hidden="true" name="obj.idgrupo.idaux" type="hidden" value="${obj.idgrupo.id}">
+	<input aria-hidden="true" name="obj.idtipoacesso.idaux" type="hidden" value="${obj.idtipoacesso.id}">
 	<nav class="o-navbar--gary" role="complementary">
 		<div class="o-breadcrumb--arrow">
 			<span class="o-breadcrumb__link"><a href="<c:url value="/dashboard"/>" role="link" title="<fmt:message key="nav.dashboard"/>"><fmt:message key="nav.dashboard"/></a></span>

@@ -43,21 +43,20 @@ public class AdmUsuario implements Serializable {
 	private Integer id;
 	@NotNull
 	@NotEmpty
-	@Basic(optional = false)
 	@Size(min = 0, max = 60, message = "{minimo.0.maximo.60}")
-	@Pattern(regexp = "^([\\dA-Z]+(\\s[\\dA-Z]+)*)$")
+	@Pattern(regexp = "^(([A-Z\\d])+(\\s[A-Z\\d]+)*)$", message = "{pattern.espacoLetraNumero}")
 	@Column(length = 60, columnDefinition = "varchar(60)", nullable = false, unique = true)
 	private String nome;
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 30, message = "{minimo.0.maximo.30}")
-	@Pattern(regexp = "^([\\dA-Z]*)$")
+	@Pattern(regexp = "^([A-Z\\d]+)$", message = "{pattern.letraNumero}")
 	@Column(length = 20, columnDefinition = "varchar(30)", nullable = false, unique = true)
 	private String usuario;
 	@NotNull
 	@NotEmpty
 	@Size(min = 8, max = 8, message = "{minimo.8.maximo.8}")
-	@Pattern(regexp = "^([\\dA-Z]+([\\dA-Z]+)*){8,8}$")
+	@Pattern(regexp = "^([A-Z\\d]{8,8})$", message = "{pattern.letraNumeroMin8Max8}")
 	@Column(length = 8, columnDefinition = "varchar(8)", nullable = false)
 	private String senha;
 	@ManyToOne
