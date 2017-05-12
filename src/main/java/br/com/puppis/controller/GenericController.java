@@ -44,7 +44,9 @@ public abstract class GenericController<T> {
 	@Get("formulario")
 	public void formulario(T obj) {
 		if (obj == null)
-			this.result.include("obj", ClassFunction.newInstance(obj.getClass()));
+			this.result.include("obj", ClassFunction.invokeConstructorDefault(obj.getClass()));
+		else
+			this.result.include("obj", obj);
 	}
 	
 	@Get("")
