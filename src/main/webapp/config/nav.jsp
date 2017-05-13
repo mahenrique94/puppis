@@ -22,6 +22,24 @@
 						<menuitem class="c-nav__item--third" role="menuitem"><a href="<c:url value="/financeiro/historico"/>" role="link" title="<fmt:message key="nav.cadastro.historico"/>"><fmt:message key="nav.cadastro.historico"/></a></menuitem>
 						<menuitem class="c-nav__item--third" role="menuitem"><a href="<c:url value="/cadastro/pais"/>" role="link" title="<fmt:message key="nav.cadastro.pais"/>"><fmt:message key="nav.cadastro.pais"/></a></menuitem>
 						<menuitem class="c-nav__item--third" role="menuitem"><a href="<c:url value="/pessoa"/>" role="link" title="<fmt:message key="nav.cadastro.pessoa"/>"><fmt:message key="nav.cadastro.pessoa"/></a></menuitem>
+						<menuitem class="c-nav__item--third" role="menuitem"><a class="has-dropdown" href="#" onclick="NavController.dropdown(this, event);" role="link" title="<fmt:message key="nav.cadastro.produto.servico"/>"><fmt:message key="nav.cadastro.produto.servico"/></a>
+							<menu aria-expanded="false" aria-haspopup="true" aria-hidden="true" class="c-nav__menu--third is-hide" role="menubar" type="popup">
+								<menuitem class="c-nav__item--fourth" role="menuitem"><a href="<c:url value="/produto-servico/grupo"/>" role="link" title="<fmt:message key="nav.cadastro.produto.servico.grupo"/>"><fmt:message key="nav.cadastro.produto.servico.grupo"/></a></menuitem>
+								<menuitem class="c-nav__item--fourth" role="menuitem"><a href="<c:url value="/produto-servico/classe"/>" role="link" title="<fmt:message key="nav.cadastro.produto.servico.classe"/>"><fmt:message key="nav.cadastro.produto.servico.classe"/></a></menuitem>
+								<menuitem class="c-nav__item--fourth" role="menuitem"><a href="<c:url value="/produto-servico"/>" role="link" title="<fmt:message key="nav.cadastro.produto.servico"/>"><fmt:message key="nav.cadastro.produto.servico"/></a></menuitem>
+							</menu>
+						</menuitem>
+						<menuitem class="c-nav__item--third" role="menuitem"><a href="<c:url value="/tabela-de-preco"/>" role="link" title="<fmt:message key="nav.cadastro.tabela.preco"/>"><fmt:message key="nav.cadastro.tabela.preco"/></a></menuitem>
+						<menuitem class="c-nav__item--third" role="menuitem"><a class="has-dropdown" href="#" onclick="NavController.dropdown(this, event);" role="link" title="<fmt:message key="nav.cadastro.relatorios"/>"><fmt:message key="nav.cadastro.relatorios"/></a>
+							<menu aria-expanded="false" aria-haspopup="true" aria-hidden="true" class="c-nav__menu--third is-hide" role="menubar" type="popup">
+								<menuitem class="c-nav__item--fourth" role="menuitem"><a href="<c:url value="/relatorio/centro/custo"/>" role="link" title="<fmt:message key="nav.cadastro.relatorios.centro.custo"/>"><fmt:message key="nav.cadastro.relatorios.centro.custo"/></a></menuitem>
+								<menuitem class="c-nav__item--fourth" role="menuitem"><a href="<c:url value="/relatorio/produto/classe"/>" role="link" title="<fmt:message key="nav.cadastro.relatorios.produto.servico.classe"/>"><fmt:message key="nav.cadastro.relatorios.produto.servico.classe"/></a></menuitem>
+								<menuitem class="c-nav__item--fourth" role="menuitem"><a href="<c:url value="/relatorio/produto/grupo"/>" role="link" title="<fmt:message key="nav.cadastro.relatorios.produto.servico.grupo"/>"><fmt:message key="nav.cadastro.relatorios.produto.servico.grupo"/></a></menuitem>
+								<menuitem class="c-nav__item--fourth" role="menuitem"><a href="<c:url value="/relatorio/pessoa"/>" role="link" title="<fmt:message key="nav.cadastro.relatorios.pessoa"/>"><fmt:message key="nav.cadastro.relatorios.pessoa"/></a></menuitem>
+								<menuitem class="c-nav__item--fourth" role="menuitem"><a href="<c:url value="/relatorio/produto/servico"/>" role="link" title="<fmt:message key="nav.cadastro.relatorios.produto.servico"/>"><fmt:message key="nav.cadastro.relatorios.produto.servico"/></a></menuitem>
+								<menuitem class="c-nav__item--fourth" role="menuitem"><a href="<c:url value="/relatorio/tabela/preco"/>" role="link" title="<fmt:message key="nav.cadastro.relatorios.tabela.preco"/>"><fmt:message key="nav.cadastro.relatorios.tabela.preco"/></a></menuitem>
+							</menu>
+						</menuitem>
 					</menu>
 				</menuitem>
 			</menu>

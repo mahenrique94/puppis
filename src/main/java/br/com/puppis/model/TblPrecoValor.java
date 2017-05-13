@@ -28,8 +28,8 @@ import org.hibernate.annotations.DynamicUpdate;
 public class TblPrecoValor implements Serializable {
 	
 	@Id
-	@SequenceGenerator(name = "tbl_precoitem", sequenceName = "sqtbl_precoitem", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tbl_precoitem")
+	@SequenceGenerator(name = "tbl_precovalor", sequenceName = "sqtbl_precovalor", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tbl_precovalor")
 	private Integer id;	
 	@ManyToOne
 	@JoinColumn(name = "idtabelaprecopessoa", referencedColumnName = "id", nullable = false)

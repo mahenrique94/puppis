@@ -5,7 +5,7 @@
 	<input aria-hidden="true" name="obj.id" type="hidden" value="${obj.id}">
 	<input aria-hidden="true" name="obj.idpessoa.id" type="hidden" value="${obj.idpessoa.id}">
 	<header class="o-modal__header">
-		<label class="o-modal__title" id="o-modal__title--1"><fmt:message key="titulo.pespessoa.contato"/></label>
+		<label class="o-modal__title" id="o-modal__title--1"><i class="icon-tag"></i>&nbsp;<fmt:message key="titulo.pespessoa.contato"/></label>
 	</header>
 	<section class="o-form__body o-form__body--padding o-modal__body">
 		<div class="l-row" role="row">
@@ -25,7 +25,7 @@
 			</div>
 			<div class="u-grid--5" role="grid">
 				<label class="o-form__text" for="celular"><fmt:message key="label.celular"/><validate:validationMessage name="obj.celular"/></label>
-				<input class="o-form__data has-validation" id="celular" maxlength="11" name="obj.celular" onkeypress="checkMask(event);" onkeyup="mask(maskCelular, this, event);" pattern="celular" type="text" value="${obj.celular}">
+				<input class="o-form__data has-validation" id="celular" maxlength="10" name="obj.celular" onkeypress="checkMask(event);" onkeyup="mask(maskCelular, this, event);" pattern="celular" type="text" value="${obj.celular}">
 			</div>
 		</div>
 		<div class="l-row" role="row">	

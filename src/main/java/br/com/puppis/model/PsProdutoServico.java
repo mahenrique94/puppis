@@ -44,7 +44,7 @@ public class PsProdutoServico implements Serializable{
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 120, message = "{minimo.0.maximo.120}")
-	@Pattern(regexp = "^([A-Z]+(\\s[A-Z]+)*)$")
+	@Pattern(regexp = "^(([A-Z\\d])+(\\s[A-Z\\d]+)*)$", message = "{pattern.espacoLetraNumero}")
 	@Column(length = 120, columnDefinition = "varchar(120)", nullable = false, unique = true)
 	private String descricao;
 	@Column(nullable = false)
@@ -58,14 +58,14 @@ public class PsProdutoServico implements Serializable{
 	@Column(nullable = false)
 	private Boolean inativo;
 	@Size(min = 0, max = 30, message = "{minimo.0.maximo.30}")
-	@Pattern(regexp = "^([A-Z]+(\\s[A-Z]+)*)$")
+	@Pattern(regexp = "^(([A-Z\\d])+(\\s[A-Z\\d]+)*)$", message = "{pattern.espacoLetraNumero}")
 	@Column(length = 30, columnDefinition = "varchar(30)", nullable = true)
 	private String marca;
 	@Size(min = 0, max = 120, message = "{minimo.0.maximo.120}")
-	@Pattern(regexp = "^([\\dA-Z]*)$")
+	@Pattern(regexp = "^([A-Z\\d]+)$", message = "{pattern.letraNumero}")
 	@Column(length = 120, columnDefinition = "varchar(120)", nullable = true, unique = true)
 	private String codigobarra;
-	@Pattern(regexp = "[aA-zZ0-9\"\'(){}*,.\\/\\s-]*")
+	@Pattern(regexp = "^([A-Z\\d\\s\\.\\/\\-\\,]+)$", message = "{pattern.textarea}")
 	@Column(columnDefinition = "text", nullable = true)
 	private String observacao;
 	@Size(min = 0, max = 255, message = "{minimo.0.maximo.255}")

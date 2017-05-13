@@ -41,7 +41,7 @@ public class PsClasse implements Serializable{
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 30, message = "{minimo.0.maximo.30}")
-	@Pattern(regexp = "^([A-Z]+(\\s[A-Z]+)*)$")
+	@Pattern(regexp = "^(([A-Z\\d])+(\\s[A-Z\\d]+)*)$", message = "{pattern.espacoLetraNumero}")
 	@Column(length = 30, columnDefinition = "varchar(30)", nullable = false)
 	private String descricao;
 	@Temporal(TemporalType.DATE)

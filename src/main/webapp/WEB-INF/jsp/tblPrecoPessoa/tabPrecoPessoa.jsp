@@ -1,13 +1,10 @@
 <%@include file="/config/taglibraries.jsp" %>
-<section aria-expanded="true" aria-hidden="false" class="form-body" role="form">
-	<input name="obj.id" type="hidden" value="${obj.id}">
-	<input name="obj.idtabelapreco.id" type="hidden" value="${obj.idtabelapreco.id}">
-	<input name="obj.iddefinicao.idaux" type="hidden" value="${obj.iddefinicao.id}">
-	<div class="row" role="row">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
-			<label><fmt:message key="label.pessoa"/></label>
-			<select class="form-data ss validate" data-class="slPesDefinicao" id="slPessoa_Definicao_Json_01" name="obj.iddefinicao.id"></select>
-			<netsis:validationMessage name="obj.iddefinicao.id"/>
+<c:set var="autoFocus" value="${obj.id != null ? '' : 'autofocus'}"/>
+<section class="o-form__body o-form__body--padding">
+	<div class="l-row" role="row">
+		<div class="u-grid-" role="grid">
+			<label class="o-form__text" for="pessoa"><fmt:message key="label.pessoa"/><validate:validationMessage name="obj.iddefinicao.id"/></label>
+			<select aria-required="true" ${autoFocus} class="o-form__data has-validation" data-select="slPesDefinicao" data-url="slPessoa_Definicao_Json" id="pessoa" name="obj.iddefinicao.id" required></select>
 		</div>
 	</div>
 </section>

@@ -40,20 +40,20 @@ public class PesContato implements Serializable {
 	private PesPessoa idpessoa;
 	@NotNull
 	@NotEmpty
-	@Pattern(regexp = "^([A-Z]+(\\s[A-Z]+)*)$")
+	@Pattern(regexp = "^(([A-Z\\d])+(\\s[A-Z\\d]+)*)$", message = "{pattern.espacoLetraNumero}")
 	@Column(length = 60, columnDefinition = "varchar(60)", nullable = false)
 	private String nome;
 	@Range(min = 0, message = "{minimo.0}")
 	@Column(nullable = true)
 	private Integer ddd;
-	@Pattern(regexp = "^(\\d{4}-?\\d{4})$")
+	@Pattern(regexp = "^(([\\d]{4})([\\-])([\\d]{4}))$", message = "{pattern.telefone}")
 	@Column(length = 10, columnDefinition = "varchar(10)", nullable = true)
 	private String telefone;
-	@Pattern(regexp = "^(\\d.\\d{4}-?\\d{4})$")
+	@Pattern(regexp = "^(([\\d]{5})([\\-])([\\d]{4}))$", message = "{pattern.celular}")
 	@Column(length = 12, columnDefinition = "varchar(12)", nullable = true)
 	private String celular;
 	@Email
-	@Column(length = 255, columnDefinition = "varchar(255)", nullable = true)
+	@Pattern(regexp = "^(([aA-zZ\\d\\w]+)([@])([aA-zZ]+)([\\.])([aA-zZ]+)(([\\.])([aA-zZ])+)*)$", message = "{pattern.email}")
 	private String email;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)

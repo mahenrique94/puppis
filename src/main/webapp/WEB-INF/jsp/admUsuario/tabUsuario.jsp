@@ -32,7 +32,7 @@
 	</div>
 	<div class="l-row" role="row">
 		<div class="u-grid--12" role="grid">
-			<label class="o-form__text" for="inativo"><fmt:message key="label.inativo"/></label>
+			<label class="o-form__text" for="inativo"><fmt:message key="label.inativo"/><validate:validationMessage name="obj.inativo"/></label>
 			<input <c:if test="${obj.inativo == true}">checked</c:if> class="o-mark__data--checkbox" id="inativo" name="obj.inativo" type="hidden" value="${obj.inativo}">
 			<label class="o-mark__text"><span class="o-mark__element" data-marked="true" data-unmarked="false" onclick="MarkController.mark(this);"></span></label>
 		</div>

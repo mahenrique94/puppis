@@ -32,8 +32,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class TblPrecoValorOutros implements Serializable {
 	
 	@Id
-	@SequenceGenerator(name = "tbl_precooutros", sequenceName = "sqtbl_precooutros", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tbl_precooutros")
+	@SequenceGenerator(name = "tbl_precovaloroutros", sequenceName = "sqtbl_precovaloroutros", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tbl_precovaloroutros")
 	private Integer id;
 	@ManyToOne
 	@JoinColumn(name = "idtabelaprecopessoa", referencedColumnName = "id", nullable = false)
@@ -41,7 +41,7 @@ public class TblPrecoValorOutros implements Serializable {
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 30, message = "{minimo.0.maximo.30}")
-	@Pattern(regexp = "^([A-Z]+(\\s[A-Z]+)*)$")
+	@Pattern(regexp = "^(([A-Z\\d])+(\\s[A-Z\\d]+)*)$", message = "{pattern.espacoLetraNumero}")
 	@Column(length = 30, columnDefinition = "varchar(30)", nullable = false, unique = true)
 	private String descricao;
 	@DecimalMin("0.0")

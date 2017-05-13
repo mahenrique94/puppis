@@ -5,7 +5,7 @@
 	<input aria-hidden="true" name="obj.idmodulo.idaux" type="hidden" value="${obj.idmodulo.id}">
 	<input aria-hidden="true" name="obj.idcomercio.id" type="hidden" value="${obj.idcomercio.id}">
 	<header class="o-modal__header">
-		<label class="o-modal__title" id="o-modal__title--1"><fmt:message key="titulo.admusuario.comercio"/></label>
+		<label class="o-modal__title" id="o-modal__title--1"><i class="icon-cubes"></i>&nbsp;<fmt:message key="titulo.admusuario.comercio"/></label>
 	</header>
 	<section class="o-form__body o-form__body--padding o-modal__body">
 		<div class="l-row" role="row">

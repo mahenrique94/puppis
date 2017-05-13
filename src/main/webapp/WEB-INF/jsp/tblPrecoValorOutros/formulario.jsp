@@ -1,33 +1,26 @@
 <%@include file="/config/taglibraries.jsp" %>
 <%@include file="/config/libraries-style.jsp"%>
-<form action="<c:url value="/tabela-de-preco/valor/outros"/>" class="form-modern" id="formtblprecooutros" method="post" name="formtblprecooutros" onsubmit="return enviarPost(this);" role="form">
-	<input name="obj.id" type="hidden" value="${obj.id}">
-	<input name="obj.idtabelaprecopessoa.id" type="hidden" value="${obj.idtabelaprecopessoa.id}">
-	<nav class="band-nav-lube" role="complementary">
-		<div class="row" role="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
-				<label><fmt:message key="nav.cadastro.tabela.preco.pessoa.outros"/></label>					
+<c:set var="autoFocus" value="${obj.id != null ? '' : 'autofocus'}"/>
+<form action="<c:url value="/tabela-de-preco/valor/outros"/>" class="o-form"id="formtblprecovaloroutros" method="post" name="formtblprecovaloroutros" onsubmit="requestModal(this, event);" role="form">
+	<input aria-hidden="true" name="obj.id" type="hidden" value="${obj.id}">
+	<input aria-hidden="true" name="obj.idtabelaprecopessoa.id" type="hidden" value="${obj.idtabelaprecopessoa.id}">
+	<header class="o-modal__header">
+		<label class="o-modal__title" id="o-modal__title--1"><i class="icon-dollar"></i>&nbsp;<fmt:message key="titulo.tblpreco.pessoa.outros"/></label>
+	</header>
+	<section class="o-form__body o-form__body--padding o-modal__body">
+		<div class="l-row" role="row">
+			<div class="u-grid--6" role="grid">
+				<label class="o-form__text" for="descricao"><fmt:message key="label.descricao"/><validate:validationMessage name="obj.descricao"/></label>
+				<input aria-required="true" ${autoFocus} class="o-form__data has-validation" id="descricao" maxlength="30" name="obj.descricao" pattern="espacoLetraNumero" required type="text" value="${obj.descricao}">
 			</div>
-		</div>
-	</nav>
-	<section aria-expanded="true" aria-hidden="false" class="form-body" role="form">
-		<div class="row" role="row">
-			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
-				<label><fmt:message key="label.descricao"/></label>
-				<input class="form-data validate" maxlength="30" name="obj.descricao" pattern="letraNumeroEspaco" required type="text" value="${obj.descricao}">
-				<netsis:validationMessage name="obj.descricao"/>
-			</div>
-			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
-				<label><fmt:message key="label.valor"/></label>
-				<input class="form-data validate" maxlength="13" name="obj.valor" pattern="numeric10_2" type="text" value="<fmt:formatNumber pattern="0.00" type="currency" value="${obj.valor}"/>"/>
-				<netsis:validationMessage name="obj.valor"/>
+			<div class="u-grid--6" role="grid">
+				<label class="o-form__text" for="valor"><fmt:message key="label.valor"/><validate:validationMessage name="obj.valor"/></label>
+				<input aria-required="true" class="o-form__data has-validation" id="valor" maxlength="13" name="obj.valor" pattern="numeric10-2" required type="text" value="<fmt:formatNumber pattern="0.00" type="currency" value="${obj.valor}"/>"/>
 			</div>
 		</div>
 	</section>
-	<nav class="nav-group-tie nav-fixed-bottom" role="complementary">
-		<ul>
-			<li><button title="<fmt:message key="button.salvar"/>" type="submit"><i class="icon-floppy"></i>&nbsp;<fmt:message key="button.salvar"/></button></li>
-		</ul>
-	</nav>
+	<footer class="o-modal__footer is-alignRight">
+		<button class="o-button--ren o-button--large" role="button" title="<fmt:message key="button.salvar"/>" type="submit"><i class="icon-floppy"></i>&nbsp;<fmt:message key="button.salvar"/></button> 
+	</footer>
 </form>
 <%@include file="/config/libraries-js.jsp"%>
