@@ -1,57 +1,46 @@
-<%@include file="/config/taglibraries.jsp"%>
+<%@include file="/config/taglibraries.jsp" %>
 <%@include file="/config/libraries-style.jsp"%>
-<form action="<c:url value="/financeiro/extrato"/>" class="form-modern" id="formfinextrato" method="post" name="formfinextrato" onsubmit="return enviarPost(this);" role="form">
-	<input name="obj.id" type="hidden" value="${obj.id}">
-	<input name="obj.idcontabancaria.idaux" type="hidden" value="${obj.idcontabancaria.id}">
-	<nav class="band-nav-lube" role="complementary">
-		<div class="row" role="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
-				<label><a href="<c:url value="/dashboard/financeiro"/>"><fmt:message key="nav.financeiro"/></a>&nbsp;<i class="icon-right-open"></i>&nbsp;<fmt:message key="nav.financeiro.extrato"/></label>					
+<form action="<c:url value="/financeiro/extrato"/>" class="o-form"id="formfinextrato" method="post" name="formfinextrato" onsubmit="requestModal(this, event);" role="form">
+	<input aria-hidden="true" name="obj.id" type="hidden" value="${obj.id}">
+	<input aria-hidden="true" name="obj.idcontabancaria.idaux" type="hidden" value="${obj.idcontabancaria.id}">
+	<header class="o-modal__header">
+		<label class="o-modal__title" id="o-modal__title--1"><i class="icon-list-bullet"></i>&nbsp;<fmt:message key="titulo.finextrato"/></label>
+	</header>
+	<section class="o-form__body o-form__body--padding o-modal__body">
+		<div class="l-row" role="row">
+			<div class="u-grid--12" role="separator">
+				<label class="o-form__text" for="conta"><fmt:message key="label.conta"/><validate:validationMessage name="obj.idcontabancaria.id"/></label>
+				<select aria-required="true" class="o-form__data has-validation" data-select="slFinContaBancaria" data-url="slFinanceiro_Conta-bancaria_Json" id="conta" name="obj.idcontabancaria.id" required></select>
 			</div>
 		</div>
-	</nav>
-	<section aria-expanded="true" aria-hidden="false" class="form-body" role="form">
-		<div class="row" role="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
-				<label><fmt:message key="label.conta"/></label>
-				<select class="form-data validate" data-class="slFinContaBancaria" id="slFinanceiro_Conta-bancaria_Json_01" name="obj.idcontabancaria.id" required></select>
-				<netsis:validationMessage name="obj.idcontabancaria.id"/>
+		<div class="l-row" role="row">
+			<div class="u-grid--6" role="separator">
+				<label class="o-form__text" for="operacao"><fmt:message key="label.operacao"/><validate:validationMessage name="obj.idtipooperacao.id"/></label>
+				<select aria-required="true" class="o-form__data has-validation" data-parameters-fields="[idmodulo.id, gruporesumo]" data-parameters-values="[2, EXTRATO]" data-select="slSysTipoOperacao" data-url="slSystem_Tipo-de-operacao_Json" id="operacao" name="obj.idtipooperacao.id" required></select>
 			</div>
-		</div>
-		<div class="row" role="row">
-			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
-				<label><fmt:message key="label.operacao"/></label>
-				<select class="form-data validate" data-class="slSysTipoOperacao" data-fields="idmodulo.id, gruporesumo" data-parameters="2, EXTRATO" id="slSystem_Tipo-de-operacao_Json_01" name="obj.idtipooperacao.id" required></select>
-				<netsis:validationMessage name="obj.idtipooperacao.id"/>
-			</div>
-			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
-				<label><fmt:message key="label.tipo"/></label>
-				<select class="form-data validate" name="obj.creditodebito">
+			<div class="u-grid--6" role="separator">
+				<label class="o-form__text" for="tipo"><fmt:message key="label.tipo"/><validate:validationMessage name="obj.creditodebito"/></label>
+				<select aria-required="true" class="o-form__data has-validation" id="tipo" name="obj.creditodebito" required>
 					<option value="C">CREDITO</option>
 					<option value="D">DEBITO</option>
 				</select>
-				<netsis:validationMessage name="obj.creditodebito"/>
 			</div>
 		</div>
-		<div class="row" role="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
-				<label><fmt:message key="label.valor"/></label>
-				<input class="form-data validate" maxlength="13" name="obj.valor" pattern="numeric10_2" required type="text" value="<fmt:formatNumber pattern="0.00" type="currency" value="${obj.valor}"/>"/>
-				<netsis:validationMessage name="obj.valor"/>
+		<div class="l-row" role="row">
+			<div class="u-grid--12" role="separator">
+				<label class="o-form__text" for="valor"><fmt:message key="label.valor"/><validate:validationMessage name="obj.valor"/></label>
+				<input aria-required="true" class="o-form__data has-validation" id="valor" maxlength="13" name="obj.valor" pattern="numeric10-2" required type="text" value="<fmt:formatNumber pattern="0.00" type="currency" value="${obj.valor}"/>"/>
 			</div>
 		</div>
-		<div class="row" role="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
-				<label><fmt:message key="label.historico"/></label>
-				<textarea class="form-data validate" name="obj.historico" pattern="textarea" rows="10">${obj.historico}</textarea>
-				<netsis:validationMessage name="obj.historico"/>
+		<div class="l-row" role="row">
+			<div class="u-grid--12" role="separator">
+				<label class="o-form__text" for="historico"><fmt:message key="label.historico"/><validate:validationMessage name="obj.historico"/></label>
+				<textarea class="o-form__data has-validation" id="historico" name="obj.historico" pattern="textarea">${obj.historico}</textarea>
 			</div>
 		</div>
 	</section>
-	<nav class="nav-group-tie nav-fixed-bottom" role="complementary">
-		<ul>
-			<li><button title="<fmt:message key="button.salvar"/>" type="submit"><i class="icon-floppy"></i>&nbsp;<fmt:message key="button.salvar"/></button></li>
-		</ul>
-	</nav>
+	<footer class="o-modal__footer is-alignRight">
+		<button class="o-button--ren o-button--large" role="button" title="<fmt:message key="button.salvar"/>" type="submit"><i class="icon-floppy"></i>&nbsp;<fmt:message key="button.salvar"/></button> 
+	</footer>
 </form>
 <%@include file="/config/libraries-js.jsp"%>

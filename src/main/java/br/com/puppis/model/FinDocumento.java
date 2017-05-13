@@ -64,6 +64,7 @@ public class FinDocumento implements Serializable, Cloneable {
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 7, message = "{minimo.0.maximo.7}")
+	@Pattern(regexp = "^(([\\d]+)([\\/])([\\d]+))$", message = "{pattern.desdobramento}")
 	@Column(length = 7, columnDefinition = "varchar(7)", nullable = false)
 	private String desdobramento;
 	@ManyToOne

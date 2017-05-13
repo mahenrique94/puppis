@@ -1,98 +1,80 @@
 <%@include file="/config/taglibraries.jsp"%>
+<c:set var="autoFocus" value="${obj.id != null ? '' : 'autofocus'}"/>
 <c:set var="readOnly" value="${obj.datapagamento != null ? 'readonly' : ''}"/>
 <c:set var="disabled" value="${obj.datapagamento != null ? 'disabled' : ''}"/>
-<input name="obj.id" type="hidden" value="${obj.id}">
-<input name="obj.iddefinicao.idaux" type="hidden" value="${obj.iddefinicao.id}">
-<input name="obj.idtipooperacao.idaux" type="hidden" value="${obj.idtipooperacao.id}">
-<input name="obj.idcontabancaria.idaux" type="hidden" value="${obj.idcontabancaria.id}">
-<input name="obj.idtipodocumento.idaux" type="hidden" value="${obj.idtipodocumento.id}">
-<input name="obj.idformapagamento.idaux" type="hidden" value="${obj.idformapagamento.id}">
-<input name="obj.idhistorico.idaux" type="hidden" value="${obj.idhistorico.id}">
-<input name="obj.valordesconto" type="hidden" value="${obj.valordesconto}">
-<input name="obj.valorjuros" type="hidden" value="${obj.valorjuros}">
-<section aria-expanded="true" aria-hidden="false" class="form-body" role="form">
-	<div class="row-input" role="row">
-		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-			<label><fmt:message key="label.operacao"/></label>
-			<select class="form-data validate" data-class="slSysTipoOperacao" data-fields="idmodulo.id, gruporesumo" data-parameters="2, DOCUMENTO" ${disabled} id="slSystem_Tipo-de-operacao_Json_01" name="obj.idtipooperacao.id" ${readOnly} required></select>
-			<netsis:validationMessage name="obj.idtipooperacao.id"/>
+<section class="o-form__body o-form__body--padding">
+	<div class="l-row" role="row">
+		<div class="u-grid--6">
+			<label class="o-form__text" for="operacao"><fmt:message key="label.operacao"/><validate:validationMessage name="obj.idtipooperacao.id"/></label>
+			<select aria-required="true" ${autoFocus} class="o-form__data has-validation" data-parameters-fields="[idmodulo.id, gruporesumo]" data-parameters-values="[2, DOCUMENTO]" data-select="slSysTipoOperacao" data-url="slSystem_Tipo-de-operacao_Json" ${disabled} id="operacao" name="obj.idtipooperacao.id" ${readOnly} required></select>
 		</div>
-		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
-			<label><fmt:message key="label.forma.pagamento"/></label>
-			<select class="form-data validate" data-class="slFinFormaPagamento" ${disabled} id="slFinanceiro_Forma-de-pagamento_Json_01" name="obj.idformapagamento.id" ${readOnly}></select>
+		<div class="u-grid--6" role="grid">
+			<label class="o-form__text" for="formapagamento"><fmt:message key="label.forma.pagamento"/><validate:validationMessage name="obj.idformapagamento.id"/></label>
+			<select aria-required="true" class="o-form__data has-validation" data-select="slFinFormaPagamento" data-url="slFinanceiro_Forma-de-pagamento_Json" ${disabled} id="formapagamento" name="obj.idformapagamento.id" ${readOnly} required></select>
 		</div>
 	</div>
-	<div class="row" role="row">
-		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
-			<label><fmt:message key="label.pessoa"/></label>
-			<select class="form-data ss validate" data-class="slPesDefinicao" ${disabled} id="slPessoa_Definicao_Json_01" name="obj.iddefinicao.id" ${readOnly} required></select>
-			<netsis:validationMessage name="obj.iddefinicao.id"/>
+	<div class="l-row" role="row">
+		<div class="u-grid--6" role="grid">
+			<label class="o-form__text" for="pessoa"><fmt:message key="label.pessoa"/><validate:validationMessage name="obj.iddefinicao.id"/></label>
+			<select aria-required="true" class="o-form__data has-validation" data-select="slPesDefinicao" data-url="slPessoa_Definicao_Json" ${disabled} id="pessoa" name="obj.iddefinicao.id" ${readOnly} required></select>
 		</div>
-		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
-			<label><fmt:message key="label.conta"/></label>
-			<select class="form-data validate" data-class="slFinContaBancaria" ${disabled} id="slFinanceiro_Conta-bancaria_Json_01" name="obj.idcontabancaria.id" ${readOnly} required></select>
-			<netsis:validationMessage name="obj.idcontabancaria.id"/>
+		<div class="u-grid--3" role="grid">
+			<label class="o-form__text" for="conta"><fmt:message key="label.conta"/><validate:validationMessage name="obj.idcontabancaria.id"/></label>
+			<select aria-required="true" class="o-form__data has-validation" data-select="slFinContaBancaria" data-url="slFinanceiro_Conta-bancaria_Json" ${disabled} id="conta" name="obj.idcontabancaria.id" ${readOnly} required></select>
 		</div>
-		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
-			<label><fmt:message key="label.tipo.documento"/></label>
-			<select class="form-data validate" data-class="slFinTipoDocumento" ${disabled} id="slFinanceiro_Tipo-de-documento_Json_01" name="obj.idtipodocumento.id" ${readOnly} required></select>
-			<netsis:validationMessage name="obj.idtipodocumento.id"/>
+		<div class="u-grid--3" role="grid">
+			<label class="o-form__text" for="tipodocumento"><fmt:message key="label.tipo.documento"/><validate:validationMessage name="obj.idtipodocumento.id"/></label>
+			<select aria-required="true" class="o-form__data has-validation" data-select="slFinTipoDocumento" data-url="slFinanceiro_Tipo-de-documento_Json" ${disabled} id="tipodocumento" name="obj.idtipodocumento.id" ${readOnly} required></select>
 		</div>
 	</div>
-	<div class="row" role="row">
-		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" role="separator">
-			<label><fmt:message key="label.numero"/></label>
-			<div class="form-data-group">
-				<input class="form-data validate" id="code-target" min="0" name="obj.numero" pattern="numero0a9" ${readOnly} required type="number" value="${obj.numero}">
-				<span class="form-data-group-btn"><button class="btn-default" onclick="gerarCode();" type="button"><i class="icon-cog"></i></button></span>
+	<div class="l-row" role="row">
+		<div class="u-grid--2" role="grid">
+			<label class="o-form__text" for="numero"><fmt:message key="label.numero"/><validate:validationMessage name="obj.numero"/></label>
+			<div class="o-form__group">
+				<input aria-required="true" class="o-form__data has-validation" id="numero" min="0" name="obj.numero" pattern="number0to9" ${readOnly} required step="1" type="number" value="${obj.numero}">
+				<span class="o-form__groupElement"><button class="o-button--lube" onclick="createCode(this);" role="button" title="<fmt:message key="button.gerar.numero"/>" type="button"><i class="icon-cog"></i></button></span>
 			</div>
-			<netsis:validationMessage name="obj.numero"/>
 		</div>		
-		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" role="separator">
-			<label><fmt:message key="label.serie"/></label>
-			<input class="form-data validate" min="0" name="obj.serie" pattern="numero0a9" ${readOnly} type="number" value="${obj.serie}">
-			<netsis:validationMessage name="obj.serie"/>
+		<div class="u-grid--2" role="grid">
+			<label class="o-form__text" for="serie"><fmt:message key="label.serie"/><validate:validationMessage name="obj.serie"/></label>
+			<input class="o-form__data has-validation" min="0" name="obj.serie" pattern="number0to9" ${readOnly} step="1" type="number" value="${obj.serie}">
 		</div>
-		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" role="separator">
-			<label><fmt:message key="label.desdobramento"/></label>
-			<input class="form-data validate" name="obj.desdobramento" required type="text" ${readOnly} value="${obj.desdobramento}">
-			<netsis:validationMessage name="obj.desdobramento"/>
+		<div class="u-grid--2" role="grid">
+			<label class="o-form__text" for="desdobramento"><fmt:message key="label.desdobramento"/><validate:validationMessage name="obj.desdobramento"/></label>
+			<div class="o-form__tooltip">
+				<input aria-required="true" class="o-form__data has-validation" id="desdobramento" maxlength="7" minlength="0" name="obj.desdobramento" ${readOnly} pattern="desdobramento" required type="text" value="${obj.desdobramento}">
+				<span class="o-tooltip--gary"></span>
+			</div>
 		</div>
-		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
-			<label><fmt:message key="label.data.emissao"/></label>
-			<input class="form-data validate" maxlength="10" min="01-01-1970" name="obj.dataemissao" onkeypress="format(this, event, maskData);" pattern="data" ${readOnly} required type="text" value="<fmt:formatDate pattern="dd/MM/yyyy" type="date" value="${obj.dataemissao.time}"/>">
-			<netsis:validationMessage name="obj.dataemissao"/>
+		<div class="u-grid--3" role="grid">
+			<label class="o-form__text" for="dataemissao"><fmt:message key="label.data.emissao"/><validate:validationMessage name="obj.dataemissao"/></label>
+			<input aria-required="true" class="o-form__data has-validation" id="dataemissao" max="12-31-2900" maxlength="10" min="01-01-1900" name="obj.dataemissao" onkeypress="checkMask(event);" onkeyup="mask(maskData, this, event);" pattern="data" ${readOnly} required type="text" value="<fmt:formatDate pattern="dd/MM/yyyy" type="date" value="${obj.dataemissao.time}"/>">
 		</div>
-		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
-			<label><fmt:message key="label.data.vencimento"/></label>
-			<input class="form-data validate" maxlength="10" min="01-01-1970" name="obj.datavencimento" onkeypress="format(this, event, maskData);" ${readOnly} required type="text" value="<fmt:formatDate pattern="dd/MM/yyyy" type="date" value="${obj.datavencimento.time}"/>">
-			<netsis:validationMessage name="obj.datavencimento"/>
-		</div>
-	</div>
-	<div class="row" role="row">
-		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
-			<label><fmt:message key="label.valor.total"/></label>
-			<input class="form-data validate" maxlength="13" name="obj.valortotal" pattern="numeric10_2" ${readOnly} required type="text" value="<fmt:formatNumber pattern="0.00" type="currency" value="${obj.valortotal}"/>"/>
-			<netsis:validationMessage name="obj.valortotal"/>
-		</div>
-		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
-			<label><fmt:message key="label.saldo"/></label>
-			<input class="form-data validate" name="obj.saldo" readonly type="text" value="<fmt:formatNumber pattern="0.00" type="currency" value="${obj.saldo}"/>"/>
-			<netsis:validationMessage name="obj.saldo"/>
+		<div class="u-grid--3" role="grid">
+			<label class="o-form__text" for="datavencimento"><fmt:message key="label.data.vencimento"/><validate:validationMessage name="obj.datavencimento"/></label>
+			<input aria-required="true" class="o-form__data has-validation" id="datavencimento" max="12-31-2900" maxlength="10" min="01-01-1900" name="obj.datavencimento" onkeypress="checkMask(event);" onkeyup="mask(maskData, this, event);" pattern="data" ${readOnly} required type="text" value="<fmt:formatDate pattern="dd/MM/yyyy" type="date" value="${obj.datavencimento.time}"/>">
 		</div>
 	</div>
-	<div class="row" role="row">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
-			<label><fmt:message key="label.codigo.barra"/></label>
-			<input class="form-data validate" maxlength="120" name="obj.codigobarra" pattern="letraNumero" ${readOnly} type="text" value="${obj.codigobarra}">
-			<netsis:validationMessage name="obj.codigobarra"/>
+	<div class="l-row" role="row">
+		<div class="u-grid--6" role="grid">
+			<label class="o-form__text" for="valortotal"><fmt:message key="label.valor.total"/><validate:validationMessage name="obj.valortotal"/></label>
+			<input aria-required="true" class="o-form__data has-validation" id="valortotal" maxlength="13" name="obj.valortotal" pattern="numeric10-2" ${readOnly} required type="text" value="<fmt:formatNumber pattern="0.00" type="currency" value="${obj.valortotal}"/>"/>
+		</div>
+		<div class="u-grid--6" role="grid">
+			<label class="o-form__text" for="saldo"><fmt:message key="label.saldo"/><validate:validationMessage name="obj.saldo"/></label>
+			<input aria-readonly="true" class="o-form__data has-validation" id="saldo" maxlength="13" name="obj.saldo" pattern="numeric10-2" readonly type="text" value="<fmt:formatNumber pattern="0.00" type="currency" value="${obj.saldo}"/>"/>
 		</div>
 	</div>
-	<div class="row" role="row">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
-			<label><fmt:message key="label.id.historico"/></label>
-			<select class="form-data ss validate" data-class="sl" ${disabled} id="slFinanceiro_Historico_Json_01" name="obj.idhistorico.id" ${readOnly}></select>
-			<netsis:validationMessage name="obj.idhistorico.id"/>
+	<div class="l-row" role="row">
+		<div class="u-grid--12" role="grid">
+			<label class="o-form__text" for="codigobarra"><fmt:message key="label.codigo.barra"/><validate:validationMessage name="obj.codigobarra"/></label>
+			<input class="o-form__data has-validation" id="codigobarra" maxlength="120" name="obj.codigobarra" pattern="letraNumero" ${readOnly} type="text" value="${obj.codigobarra}">
+		</div>
+	</div>
+	<div class="l-row" role="row">
+		<div class="u-grid--12" role="grid">
+			<label class="o-form__text" for="historico"><fmt:message key="label.historico"/><validate:validationMessage name="obj.idhistorico.id"/></label>
+			<select class="o-form__data has-validation" data-select="sl" data-url="slFinanceiro_Historico_Json" ${disabled} id="historico" name="obj.idhistorico.id" ${readOnly}></select>
 		</div>
 	</div>
 </section>

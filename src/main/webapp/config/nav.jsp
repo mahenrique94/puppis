@@ -42,6 +42,14 @@
 						</menuitem>
 					</menu>
 				</menuitem>
+				<menuitem class="c-nav__item--second" role="menuitem"><a class="has-dropdown" href="#" onclick="NavController.dropdown(this, event);" role="link" title="<fmt:message key="nav.financeiro"/>"><fmt:message key="nav.financeiro"/></a>
+					<menu aria-expanded="false" aria-haspopup="true" aria-hidden="true" class="c-nav__menu--third is-hide" role="menubar" type="popup">
+						<menuitem class="c-nav__item--third" role="menuitem"><a href="<c:url value="/financeiro/documento"/>" role="link" title="<fmt:message key="nav.financeiro.documento"/>"><fmt:message key="nav.financeiro.documento"/></a></menuitem>
+						<menuitem class="c-nav__item--third" role="menuitem"><a href="<c:url value="/financeiro/documento/parcelamento"/>" role="link" title="<fmt:message key="nav.financeiro.parcelamento"/>"><fmt:message key="nav.financeiro.parcelamento"/></a></menuitem>
+						<menuitem class="c-nav__item--third" role="menuitem"><a href="<c:url value="/financeiro/documento/baixa"/>" role="link" title="<fmt:message key="nav.financeiro.baixa"/>"><fmt:message key="nav.financeiro.baixa"/></a></menuitem>
+						<menuitem class="c-nav__item--third" role="menuitem"><a href="<c:url value="/financeiro/extrato"/>" role="link" title="<fmt:message key="nav.financeiro.extrato"/>"><fmt:message key="nav.financeiro.extrato"/></a></menuitem>
+					</menu>
+				</menuitem>
 			</menu>
 		</menuitem>
 		<menuitem class="c-nav__item--first c-nav__item--right" role="menuitem"><a class="has-dropdown" href="#" onclick="NavController.dropdown(this, event);" role="link">${userName.usuario}&nbsp;-&nbsp;${userName.comercio}</a>
