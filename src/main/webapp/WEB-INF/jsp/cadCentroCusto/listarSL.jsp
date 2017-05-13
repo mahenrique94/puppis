@@ -1,32 +1,30 @@
 <%@include file="/config/taglibraries.jsp"%>
 <%@include file="/config/libraries-style.jsp"%>
-<form action="<c:url value="/cadastro/centro-de-custo/listarsl"/>" class="form-modern" id="formlistarcadcentrocusto" method="get" name="formlistarcadcentrocusto" role="search">
-	<input name="openBoxSearch" type="hidden" value="${param.search}">
-	<nav class="band-nav-lube" role="complementary">
-		<div class="row" role="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
-				<label><a href="<c:url value="/dashboard/cadastro"/>"><fmt:message key="nav.cadastro"/></a>&nbsp;<i class="icon-right-open"></i>&nbsp;<fmt:message key="nav.cadastro.centro.custo"/></label>					
+<nav class="o-navbar--gary" role="complementary">
+	<div class="o-breadcrumb--arrow">
+		<span class="o-breadcrumb__link"><a class="is-inactive" href="#" role="link" title="<fmt:message key="nav.lista"/>&nbsp;<fmt:message key="label.de"/>&nbsp;<fmt:message key="nav.cadastro.centro.custo"/>"><fmt:message key="nav.lista"/>&nbsp;<fmt:message key="label.de"/>&nbsp;<fmt:message key="nav.cadastro.centro.custo"/></a></span>
+	</div>
+	<form action="<c:url value="/cadastro/centro-de-custo/listarsl"/>" class="o-form" id="formcadcentrocustolistar" method="get" name="formcadcentrocustolistar" role="search">
+		<input aria-hidden="true" data-search name="search" type="hidden" value="${param.search}">
+		<div class="l-row" role="row">
+			<div class="u-grid--2" role="grid">
+				<select class="o-form__data" data-select="slTable" name="parametrosWeb[0].campo"></select>
 			</div>
-		</div>
-		<div class="row" role="row">
-			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
-				<select class="form-data" data-class="displaytagSelect" name="parametrosWeb[0].campo"></select>
-			</div>
-			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" role="separator">
-				<div class="form-data-group">
-					<input autocomplete="off" class="form-data" name="parametrosWeb[0].parametroInicial" pattern="letraNumeroEspacoPontoTracoBarra" type="text">
-					<span class="form-data-group-btn"><button class="btn-default"><i class="icon-search"></i></button></span>
+			<div class="u-grid--10" role="grid">
+				<div class="o-form__group">
+					<input class="o-form__data" name="parametrosWeb[0].parametroInicial" placeholder="<fmt:message key="placeholder.pesquisar"/>" type="search">
+					<span class="o-form__groupElement"><button class="o-button--lube" role="button" title="<fmt:message key="button.pesquisar"/>" type="submit"><i class="icon-search"></i></button></span>
 				</div>
-			</div>
+			</div>   		
 		</div>
-	</nav>
-</form>
-<display:table class="table-default" export="false" id="obj" name="${CadCentroCustoList}" requestURI="/cadastro/centro-de-custo">
+	</form>
+</nav>
+<display:table class="c-table--lube c-table--hovered c-table--zebrered c-table--bordered js-slTable" export="false" id="obj" name="${CadCentroCustoList}" requestURI="/cadastro/centro-de-custo">
 	<display:column property="descricao" headerScope="descricao" titleKey="displaytag.descricao"/>
 	<display:column property="idcentrocustomaster.descricao" headerScope="idcentrocustomaster.descricao" titleKey="displaytag.descricao.master"/>
-	<display:column class="hidden" headerClass="hidden">
-		<select class="selectOpenBox">
-			<option id="id" value="${obj.id}"></option>
+	<display:column class="is-hide" headerClass="is-hide">
+		<select data-select="slSelect">
+			<option data-provide="cadcentrocusto.id" value="${obj.id}"></option>
 		</select>
 	</display:column>
 </display:table>

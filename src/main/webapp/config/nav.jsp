@@ -48,6 +48,14 @@
 						<menuitem class="c-nav__item--third" role="menuitem"><a href="<c:url value="/financeiro/documento/parcelamento"/>" role="link" title="<fmt:message key="nav.financeiro.parcelamento"/>"><fmt:message key="nav.financeiro.parcelamento"/></a></menuitem>
 						<menuitem class="c-nav__item--third" role="menuitem"><a href="<c:url value="/financeiro/documento/baixa"/>" role="link" title="<fmt:message key="nav.financeiro.baixa"/>"><fmt:message key="nav.financeiro.baixa"/></a></menuitem>
 						<menuitem class="c-nav__item--third" role="menuitem"><a href="<c:url value="/financeiro/extrato"/>" role="link" title="<fmt:message key="nav.financeiro.extrato"/>"><fmt:message key="nav.financeiro.extrato"/></a></menuitem>
+						<menuitem class="c-nav__item--third" role="menuitem"><a class="has-dropdown" href="#" onclick="NavController.dropdown(this, event);" role="link" title="<fmt:message key="nav.cadastro.relatorios"/>"><fmt:message key="nav.financeiro.relatorios"/></a>
+							<menu aria-expanded="false" aria-haspopup="true" aria-hidden="true" class="c-nav__menu--third is-hide" role="menubar" type="popup">
+								<menuitem class="c-nav__item--fourth" role="menuitem"><a href="<c:url value="/relatorio/financeiro/documento/custo"/>" role="link" title="<fmt:message key="nav.financeiro.relatorios.documento.custo"/>"><fmt:message key="nav.financeiro.relatorios.documento.custo"/></a></menuitem>
+								<menuitem class="c-nav__item--fourth" role="menuitem"><a href="<c:url value="/relatorio/financeiro/documento/pagamento"/>" role="link" title="<fmt:message key="nav.financeiro.relatorios.documento.pagamento"/>"><fmt:message key="nav.financeiro.relatorios.documento.pagamento"/></a></menuitem>
+								<menuitem class="c-nav__item--fourth" role="menuitem"><a href="<c:url value="/relatorio/financeiro/documento/pessoa"/>" role="link" title="<fmt:message key="nav.financeiro.relatorios.documento.pessoa"/>"><fmt:message key="nav.financeiro.relatorios.documento.pessoa"/></a></menuitem>
+								<menuitem class="c-nav__item--fourth" role="menuitem"><a href="<c:url value="/relatorio/financeiro/extrato"/>" role="link" title="<fmt:message key="nav.financeiro.relatorios.extrato"/>"><fmt:message key="nav.financeiro.relatorios.extrato"/></a></menuitem>
+							</menu>
+						</menuitem>
 					</menu>
 				</menuitem>
 			</menu>

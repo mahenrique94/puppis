@@ -1,34 +1,32 @@
 <%@include file="/config/taglibraries.jsp"%>
 <%@include file="/config/libraries-style.jsp"%>
-<form action="<c:url value="/pessoa/definicao/listarsl"/>" class="form-modern" id="formlistarpesdefinicao" method="get" name="formlistarpesdefinicao" role="search">
-	<input name="openBoxSearch" type="hidden" value="${param.search}">
-	<nav class="band-nav-lube" role="complementary">
-		<div class="row" role="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
-				<label><fmt:message key="nav.definicao"/></label>					
+<nav class="o-navbar--gary" role="complementary">
+	<div class="o-breadcrumb--arrow">
+		<span class="o-breadcrumb__link"><a class="is-inactive" href="#" role="link" title="<fmt:message key="nav.lista"/>&nbsp;<fmt:message key="label.de"/>&nbsp;<fmt:message key="nav.cadastro.pessoa.definicao"/>"><fmt:message key="nav.lista"/>&nbsp;<fmt:message key="label.de"/>&nbsp;<fmt:message key="nav.cadastro.pessoa.definicao"/></a></span>
+	</div>
+	<form action="<c:url value="/pessoa/definicao/listarsl"/>" class="o-form" id="formpesdefinicaolistar" method="get" name="formpesdefinicaolistar" role="search">
+		<input aria-hidden="true" data-search name="search" type="hidden" value="${param.search}">
+		<div class="l-row" role="row">
+			<div class="u-grid--2" role="grid">
+				<select class="o-form__data" data-select="slTable" name="parametrosWeb[0].campo"></select>
 			</div>
-		</div>
-		<div class="row" role="row">
-			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" role="separator">
-				<select class="form-data" data-class="displaytagSelect" name="parametrosWeb[0].campo"></select>
-			</div>
-			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" role="separator">
-				<div class="form-data-group">
-					<input autocomplete="off" class="form-data" name="parametrosWeb[0].parametroInicial" pattern="letraNumeroEspacoPontoTracoBarra" type="text">
-					<span class="form-data-group-btn"><button class="btn-default"><i class="icon-search"></i></button></span>
+			<div class="u-grid--10" role="grid">
+				<div class="o-form__group">
+					<input class="o-form__data" name="parametrosWeb[0].parametroInicial" placeholder="<fmt:message key="placeholder.pesquisar"/>" type="search">
+					<span class="o-form__groupElement"><button class="o-button--lube" role="button" title="<fmt:message key="button.pesquisar"/>" type="submit"><i class="icon-search"></i></button></span>
 				</div>
-			</div>
+			</div>   		
 		</div>
-	</nav>
-</form>
-<display:table class="table-default" export="false" id="obj" name="${PesDefinicaoList}" requestURI="/pessoa">
+	</form>
+</nav>
+<display:table class="c-table--lube c-table--hovered c-table--zebrered c-table--bordered js-slTable" export="false" id="obj" name="${PesDefinicaoList}" requestURI="/pessoa">
 	<display:column headerScope="id" property="id" style="width: 50px;" titleKey="displaytag.id"/>
 	<display:column headerScope="idpessoa.nomerazaosocial" property="idpessoa.nomerazaosocial" titleKey="displaytag.nome.razao.social"/>
 	<display:column headerScope="idpessoa.documento.cpfcnpj" property="idpessoa.documento.cpfcnpj" titleKey="displaytag.cpf.cnpj"/>
 	<display:column headerScope="idpessoa.documento.rginscricaoestadual" property="idpessoa.documento.rginscricaoestadual" titleKey="displaytag.rg.inscricao.estadual"/>
-	<display:column class="hidden" headerClass="hidden">
-		<select class="selectOpenBox">
-			<option id="id" value="${obj.id}"></option>
+	<display:column class="is-hide" headerClass="is-hide">
+		<select data-select="slSelect">
+			<option data-provide="pesdefinicao.id" value="${obj.id}"></option>
 		</select>
 	</display:column>
 </display:table>
