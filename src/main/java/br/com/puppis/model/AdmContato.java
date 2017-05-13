@@ -41,15 +41,16 @@ public class AdmContato implements Serializable {
 	@Column(nullable = true)
 	private Integer ddd;
 	@Size(min = 0, max = 9, message = "{telefone}")
-	@Pattern(regexp = "^(\\d{4}-?\\d{4})$")
+	@Pattern(regexp = "^(([\\d]{4})([\\-])([\\d]{4}))$", message = "{pattern.telefone}")
 	@Column(length = 9, columnDefinition = "varchar(9)", nullable = true)
 	private String telefone;
 	@Size(min = 0, max = 11, message = "{celular}")
-	@Pattern(regexp = "^(\\d.\\d{4}-?\\d{4})$")
+	@Pattern(regexp = "^(([\\d]{5})([\\-])([\\d]{4}))$", message = "{pattern.celular}")
 	@Column(length = 11, columnDefinition = "varchar(11)", nullable = true)
 	private String celular;
 	@Email
 	@Size(min = 0, max = 255, message = "{email}")
+	@Pattern(regexp = "^(([aA-zZ\\d\\w]+)([@])([aA-zZ]+)([\\.])([aA-zZ]+)(([\\.])([aA-zZ])+)*)$", message = "{pattern.email}")
 	@Column(length = 255, columnDefinition = "varchar(255)", nullable = true)
 	private String email;
 	@Temporal(TemporalType.DATE)

@@ -40,24 +40,25 @@ public class PesDocumento implements Serializable {
 	@NotNull
 	@NotEmpty
 	@Size(min = 10, max = 18, message = "{cpfcnpj}")
-	@Pattern(regexp = "^(\\d{3}.\\d{3}.\\d{3}-\\d{2}|\\d{11}|\\d{2}.\\d{3}.\\d{3}/\\d{4}-\\d{2}|\\d{14}|[0]|[Z]{1,20})$")
+	@Pattern(regexp = "^((([\\d]{3})([\\.])([\\d]{3})([\\.])([\\d]{3})([\\-])([\\d]{2}))|(([\\d]{2})([\\.])([\\d]{3})([\\.])([\\d]{3})([\\/])([\\d]{4})([\\-])([\\d]{2})))$", message = "{pattern.cpfCnpj}")
 	@Column(length = 18, columnDefinition = "varchar(18)", nullable = false, unique = true)
 	private String cpfcnpj;
 	@NotNull
 	@NotEmpty
-	@Size(min = 6, max = 15, message = "{rginscricaoestadual}")
+	@Size(min = 0, max = 15, message = "{rginscricaoestadual}")
 	@Column(length = 15, columnDefinition = "varchar(15)", nullable = false, unique = true)
 	private String rginscricaoestadual;
 	@Column(nullable = true)
 	private Integer ctps;
 	@Column(nullable = true)
 	private Integer seriectps;
-	@Pattern(regexp = "^((\\d{3}.\\d{5}.\\d{2}-\\d{1}))$")
-	@Column(length = 15, columnDefinition = "varchar(15", nullable = true)
+	@Pattern(regexp = "^(([\\d]{3})([\\.])([\\d]{5})([\\.])([\\d]{2})([\\-])([\\d]))$", message = "{pattern.pis}")
+	@Column(length = 15, columnDefinition = "varchar(15)", nullable = true)
 	private String pis;
+	@Pattern(regexp = "^([\\d]{11})$", message = "{pattern.cnh}")
 	@Column(length = 20, columnDefinition = "varchar(20)", nullable = true, unique = true)
 	private String cnh;
-	@Pattern(regexp = "^(|A|B|D|E|AB|AD|AE)$")
+	@Pattern(regexp = "^(([A])|([B])|([C])|([D])|([E])|([A][B])|([A][C])|([A][D])|([A][E]))$", message = "{pattern.tipoCnh}")
 	@Column(length = 5, columnDefinition = "varchar(5)", nullable = true)
 	private String tipocnh;
 	@Temporal(TemporalType.DATE)

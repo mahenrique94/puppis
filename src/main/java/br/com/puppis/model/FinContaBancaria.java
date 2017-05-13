@@ -42,19 +42,19 @@ public class FinContaBancaria implements Serializable {
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 10, message = "{minimo.0.maximo.10}")
-	@Pattern(regexp = "^([-/.\\dA-Z]+([\\dA-Z]+)*)$")
+	@Pattern(regexp = "^([A-Z\\d\\/\\.\\-]+)$", message = "{pattern.letraNumeroBarraPontoTraco}")
 	@Column(length = 10, columnDefinition = "varchar(10)", nullable = false)
 	private String agencia;
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 10, message = "{minimo.0.maximo.10}")
-	@Pattern(regexp = "^([/.\\d-]{1,})$")
+	@Pattern(regexp = "^([A-Z\\d\\.\\-]+)$", message = "{pattern.letraNumeroPontoTraco}")
 	@Column(length = 10, columnDefinition = "varchar(10)", nullable = false)
 	private String numeroconta;
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 60, message = "{minimo.0.maximo.60}")
-	@Pattern(regexp = "^([A-Z]+(\\s[A-Z]+)*)$")
+	@Pattern(regexp = "^(([A-Z\\d])+(\\s[A-Z\\d]+)*)$", message = "{pattern.espacoLetraNumero}")
 	@Column(length = 60, columnDefinition = "varchar(60)", nullable = false)
 	private String nometitular;
 	@Column(nullable = false)

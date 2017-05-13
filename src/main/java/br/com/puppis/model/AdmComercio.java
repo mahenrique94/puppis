@@ -42,11 +42,11 @@ public class AdmComercio implements Serializable {
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 60, message = "{minimo.0.maximo.60}")
-	@Pattern(regexp = "^([-./\\dA-Z]+(\\s[-./\\dA-Z]+)*)$")
+	@Pattern(regexp = "^(([A-Z\\d\\.\\/\\-])+(\\s[A-Z\\d\\.\\/\\-]+)*)$", message = "{pattern.espacoLetraNumeroBarraPontoTraco}")
 	@Column(length = 60, columnDefinition = "varchar(60)", nullable = false, unique = true)
 	private String nomerazaosocial;
 	@Size(min = 0, max = 60, message = "{minimo.0.maximo.60}")
-	@Pattern(regexp = "^([-./\\dA-Z]+(\\s[-./\\dA-Z]+)*)$")
+	@Pattern(regexp = "^(([A-Z\\d\\.\\/\\-])+(\\s[A-Z\\d\\.\\/\\-]+)*)$", message = "{pattern.espacoLetraNumeroBarraPontoTraco}")
 	@Column(length = 60, columnDefinition = "varchar(60)", nullable = true, unique = true)
 	private String nomefantasia;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "idcomercio")

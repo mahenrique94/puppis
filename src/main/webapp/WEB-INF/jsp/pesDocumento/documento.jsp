@@ -1,58 +1,37 @@
 <%@include file="/config/taglibraries.jsp"%>
-<input name="obj.documento.id" type="hidden" value="${obj.documento.id}">
-<input name="obj.documento.idpessoa.id" type="hidden" value="${obj.documento.idpessoa.id}">
-<fieldset class="block-lube m-bottom-15">
-	<legend class="block-header"><label class="block-title"><i class="font-5x icon-vcard"></i>&nbsp;<fmt:message key="titulo.documento"/></label></legend>
-	<section class="block-body block-body-padding">
-		<div class="row" role="row">
-			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
-				<label><fmt:message key="label.cpf.cnpj"/></label>
-				<input class="form-data validate" maxlength="18" name="obj.documento.cpfcnpj" pattern="cpfCnpj" required type="text" value="${obj.documento.cpfcnpj}">
-				<netsis:validationMessage name="obj.documento.cpfcnpj"/>
+<fieldset class="c-block--lube" style="margin-bottom: 1rem;">
+	<legend class="c-block__header"><label class="c-block__title"><i class="icon-id-card"></i>&nbsp;<fmt:message key="titulo.documento"/></label></legend>
+	<section class="c-block__body c-block__body--padding">
+		<div class="l-row" role="row">
+			<div class="u-grid--6" role="grid">
+				<label class="o-form__text" for="cnh"><fmt:message key="label.cnh"/><validate:validationMessage name="obj.documento.cnh"/></label>
+				<input class="o-form__data has-validation" id="cnh" maxlength="20" name="obj.documento.cnh" type="text" value="${obj.documento.cnh}">
 			</div>
-			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
-				<label><fmt:message key="label.rg.inscricao.estadual"/></label>
-				<input class="form-data validate" maxlength="15" name="obj.documento.rginscricaoestadual" pattern="rgInscricao" required type="text" value="${obj.documento.rginscricaoestadual}">
-				<netsis:validationMessage name="obj.documento.rginscricaoestadual"/>
+			<div class="u-grid--2" role="grid">
+				<label class="o-form__text" for="tipo"><fmt:message key="label.tipo"/><validate:validationMessage name="obj.documento.tipocnh"/></label>
+				<input class="o-form__data has-validation" maxlength="2" name="obj.documento.tipocnh" pattern="tipoCnh" type="text" value="${obj.documento.tipocnh}">
 			</div>
-		</div>
-		<div class="row" role="row">
-			<div class="col-xs-6 col-sm-6 col-md-6 col-6" role="separator">
-				<label><fmt:message key="label.cnh"/></label>
-				<input class="form-data validate" name="obj.documento.cnh" type="text" value="${obj.documento.cnh}">
-				<netsis:validationMessage name="obj.documento.cnh"/>
+			<div class="u-grid--2" role="grid">
+				<label class="o-form__text" for="dataexpedicao"><fmt:message key="label.data.expedicao"/><validate:validationMessage name="obj.documento.dataexpedicaocnh"/></label>
+				<input class="o-form__data has-validation" id="dataexpedicao" maxlength="10" max="31-12-2900" min="01-01-1900" name="obj.documento.dataexpedicaocnh" onkeypress="checkMask(event);" onkeyup="mask(maskData, this, event);" pattern="data" type="text" value="<fmt:formatDate pattern="dd/MM/yyyy" type="date" value="${obj.documento.dataexpedicaocnh.time}"/>">
 			</div>
-			<div class="col-xs-2 col-sm-2 col-md-2 col-2" role="separator">
-				<label><fmt:message key="label.tipo"/></label>
-				<input class="form-data validate" name="obj.documento.tipocnh" pattern="tipoCnh" type="text" value="${obj.documento.tipocnh}">
-				<netsis:validationMessage name="obj.documento.tipocnh"/>
-			</div>
-			<div class="col-xs-2 col-sm-2 col-md-2 col-2" role="separator">
-				<label><fmt:message key="label.data.expedicao"/></label>
-				<input class="form-data validate" maxlength="10" min="01-01-1970" name="obj.documento.dataexpedicaocnh" onkeypress="format(this, event, maskData);" pattern="data" type="text" value="<fmt:formatDate pattern="dd/MM/yyyy" type="date" value="${obj.documento.dataexpedicaocnh.time}"/>">
-				<netsis:validationMessage name="obj.documento.dataexpedicaocnh"/>
-			</div>
-			<div class="col-xs-2 col-sm-2 col-md-2 col-2" role="separator">
-				<label><fmt:message key="label.data.vencimento"/></label>
-				<input class="form-data validate" maxlength="10" min="01-01-1970" name="obj.documento.datavencimentocnh" onkeypress="format(this, event, maskData);" pattern="data" type="text" value="<fmt:formatDate pattern="dd/MM/yyyy" type="date" value="${obj.documento.datavencimentocnh.time}"/>">
-				<netsis:validationMessage name="obj.documento.datavencimentocnh"/>
+			<div class="u-grid--2" role="grid">
+				<label class="o-form__text" for="datavencimento"><fmt:message key="label.data.vencimento"/><validate:validationMessage name="obj.documento.datavencimentocnh"/></label>
+				<input class="o-form__data has-validation" id="datavencimento" maxlength="10" max="31-12-2900" min="01-01-1970" name="obj.documento.datavencimentocnh" onkeypress="checkMask(event);" onkeyup="mask(maskData, this, event);" pattern="data" type="text" value="<fmt:formatDate pattern="dd/MM/yyyy" type="date" value="${obj.documento.datavencimentocnh.time}"/>">
 			</div>
 		</div>
-		<div class="row" role="row">
-			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" role="separator">
-				<label><fmt:message key="label.ctps"/></label>
-				<input class="form-data validate" name="obj.documento.ctps" type="text" value="${obj.documento.ctps}">
-				<netsis:validationMessage name="obj.documento.ctps"/>
+		<div class="l-row" role="row">
+			<div class="u-grid--4" role="grid">
+				<label class="o-form__text" for="ctps"><fmt:message key="label.ctps"/><validate:validationMessage name="obj.documento.ctps"/></label>
+				<input class="o-form__data has-validation" id="ctps" min="0" name="obj.documento.ctps" pattern="number0to9" step="1" type="number" value="${obj.documento.ctps}">
 			</div>
-			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" role="separator">
-				<label><fmt:message key="label.serie"/></label>
-				<input class="form-data validate" name="obj.documento.seriectps" type="text" value="${obj.documento.seriectps}">
-				<netsis:validationMessage name="obj.documento.seriectps"/>
+			<div class="u-grid--4" role="grid">
+				<label class="o-form__text" for="serie"><fmt:message key="label.serie"/><validate:validationMessage name="obj.documento.seriectps"/></label>
+				<input class="o-form__data has-validation" id="serie" min="0" name="obj.documento.seriectps" pattern="number0to9" step="1" type="number" value="${obj.documento.seriectps}">
 			</div>
-			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" role="separator">
-				<label><fmt:message key="label.pis"/></label>
-				<input class="form-data validate" name="obj.documento.pis" pattern="pis" type="text" value="${obj.documento.pis}">
-				<netsis:validationMessage name="obj.documento.pis"/>
+			<div class="u-grid--4" role="grid">
+				<label class="o-form__text" for="pis"><fmt:message key="label.pis"/><validate:validationMessage name="obj.documento.pis"/></label>
+				<input class="o-form__data has-validation" id="pis" maxlength="15" name="obj.documento.pis" type="text" value="${obj.documento.pis}">
 			</div>
 		</div>
 	</section>

@@ -26,7 +26,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "adm_endereco", uniqueConstraints = {@UniqueConstraint(columnNames = {"rua", "numero", "cep", "bairro"})})
+@Table(name = "adm_endereco", uniqueConstraints = {@UniqueConstraint(columnNames = {"logradouro", "numero", "cep", "bairro"})})
 @DynamicUpdate(value = true)
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class AdmEndereco extends Endereco implements Serializable {

@@ -41,15 +41,15 @@ public class PesPessoa implements Serializable {
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 60, message = "{minimo.0.maximo.60}")
-	@Pattern(regexp = "^([-./\\dA-Z]+(\\s[-./\\dA-Z]+)*)$")
+	@Pattern(regexp = "^(([A-Z\\d\\.\\/\\-])+(\\s[A-Z\\d\\.\\/\\-]+)*)$", message = "{pattern.espacoLetraNumeroBarraPontoTraco}")
 	@Column(length = 60, columnDefinition = "varchar(60)", nullable = false, unique = true)
 	private String nomerazaosocial;
 	@Size(min = 0, max = 60, message = "{minimo.0.maximo.60}")
-	@Pattern(regexp = "^([-./\\dA-Z]+(\\s[-./\\dA-Z]+)*)$")
+	@Pattern(regexp = "^(([A-Z\\d\\.\\/\\-])+(\\s[A-Z\\d\\.\\/\\-]+)*)$", message = "{pattern.espacoLetraNumeroBarraPontoTraco}")
 	@Column(length = 60, columnDefinition = "varchar(60)", nullable = true, unique = true)
 	private String nomefantasia;
 	@Size(min = 0, max = 30, message = "{minimo.0.maximo.30}")
-	@Pattern(regexp = "^([A-Z]+(\\s[A-Z]+)*)$")
+	@Pattern(regexp = "^(([A-Z\\d])+(\\s[A-Z\\d]+)*)$", message = "{pattern.espacoLetraNumero}")
 	@Column(length = 30, columnDefinition = "varchar(30)", nullable = true)
 	private String apelido;
 	@ManyToOne
@@ -60,7 +60,7 @@ public class PesPessoa implements Serializable {
 	private PesEstadoCivil idestadocivil;
 	@Column(nullable = false)
 	private Boolean inativo;
-	@Pattern(regexp = "[aA-zZ0-9\"\'(){}*,.\\/\\s-]*")
+	@Pattern(regexp = "^([A-Z\\d\\s\\.\\/\\-\\,]+)$", message = "{pattern.textarea}")
 	@Column(columnDefinition = "text", nullable = true)
 	private String observacao;
 	@Temporal(TemporalType.DATE)

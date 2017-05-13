@@ -9,7 +9,14 @@
 	<title><fmt:message key="titulo.pagina"/></title>
 </head>
 <body>
-	<%@include file="/config/mensagens.jsp"%>
+	<c:if test="${not empty errors}">
+		<div class="o-toast--error has-icon is-fixedTop" role="alert">
+			<c:forEach items="${errors}" var="error">
+				<p class="o-toast__message"><i class="icon-cancel-circled o-toast__icon--left"></i><fmt:message key="${error.message}"/></p>
+			</c:forEach>
+			<button class="o-toast__close" onclick="ToastController.close(this.parentNode);"><i class="icon-cancel"></i></button>
+		</div>
+	</c:if>
 	<section class="o-login">
 		<img alt="Puppis" class="o-login__logo" src="<c:url value="/assets/img/logo.png"/>" role="presentation">
 		<div class="o-login__wrap">

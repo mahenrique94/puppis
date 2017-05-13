@@ -1,27 +1,21 @@
 <%@include file="/config/taglibraries.jsp"%>
-<input type="hidden" name="obj.contato.id" value="${obj.contato.id}">
-<input type="hidden" name="obj.contato.idcomercio.id" value="${obj.contato.idcomercio.id}">
-<div class="row" role="row">
-	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" role="separator">
-		<label class="align-left"><fmt:message key="label.ddd"/></label>
-		<input class="form-data validate" maxlength="2" min="0" name="obj.contato.ddd" pattern="ddd" type="number" value="${obj.contato.ddd}">
-		<netsis:validationMessage name="obj.contato.ddd"/>
+<div class="l-row" role="row">
+	<div class="u-grid--2" role="grid">
+		<label class="o-form__text" for="ddd"><fmt:message key="label.ddd"/><validate:validationMessage name="obj.contato.ddd"/></label>
+		<input class="o-form__data has-validation" id="ddd" max="100" min="0" name="obj.contato.ddd" pattern="ddd" step="1" type="number" value="${obj.contato.ddd}">
 	</div>
-	<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" role="separator">
-		<label class="align-left"><fmt:message key="label.telefone"/></label>
-		<input class="form-data validate" maxlength="9" name="obj.contato.telefone" onkeypress="format(this, event, maskTelefone);" pattern="telefone" type="text" value="${obj.contato.telefone}">
-		<netsis:validationMessage name="obj.contato.telefone"/>
+	<div class="u-grid--5" role="grid">
+		<label class="o-form__text" for="telefone"><fmt:message key="label.telefone"/><validate:validationMessage name="obj.contato.telefone"/></label>
+		<input class="o-form__data has-validation" id="telefone" maxlength="9" name="obj.contato.telefone" onkeypress="checkMask(event);" onkeyup="mask(maskTelefone, this, event);" pattern="telefone" type="text" value="${obj.contato.telefone}">
 	</div>
-	<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" role="separator">
-		<label class="align-left"><fmt:message key="label.celular"/></label>
-		<input class="form-data validate" maxlength="11" name="obj.contato.celular" onkeypress="format(this, event, maskCelular);" pattern="celular" type="text" value="${obj.contato.celular}">
-		<netsis:validationMessage name="obj.contato.celular"/>
+	<div class="u-grid--5" role="grid">
+		<label class="o-form__text" for="celular"><fmt:message key="label.celular"/><validate:validationMessage name="obj.contato.celular"/></label>
+		<input class="o-form__data has-validation" id="celular" maxlength="11" name="obj.contato.celular" onkeypress="checkMask(event);" onkeyup="mask(maskCelular, this, event);" pattern="celular" type="text" value="${obj.contato.celular}">
 	</div>
 </div>
-<div class="row" role="row">	
-	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
-		<label class="align-left"><fmt:message key="label.email"/></label>
-		<input class="form-data validate" maxlength="255" name="obj.contato.email" type="email" value="${obj.contato.email}">
-		<netsis:validationMessage name="obj.contato.email"/>
+<div class="l-row" role="row">	
+	<div class="u-grid--12" role="grid">
+		<label class="o-form__text" for="email"><fmt:message key="label.email"/><validate:validationMessage name="obj.contato.email"/></label>
+		<input class="o-form__data has-validation" id="email" maxlength="255" name="obj.contato.email" pattern="email" type="email" value="${obj.contato.email}">
 	</div>
 </div>

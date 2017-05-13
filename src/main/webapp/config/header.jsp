@@ -14,4 +14,4 @@
 		<header role="banner">
 			<%@include file="nav.jsp"%>	
 		</header>
-		<section class="u-content" style="padding-top: 57px;">
+		<section class="u-content" style="padding-top: 57px;padding-bottom: 50px;">

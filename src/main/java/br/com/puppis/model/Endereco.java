@@ -29,29 +29,29 @@ public class Endereco implements Serializable {
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 60, message = "{minimo.0.maximo.60}")
-	@Pattern(regexp = "^([A-Z]+(\\s[A-Z]+)*)$")
+	@Pattern(regexp = "^(([A-Z\\d])+(\\s[A-Z\\d]+)*)$", message = "{pattern.espacoLetraNumero}")
 	@Column(length = 60, columnDefinition = "varchar(60)", nullable = false)
-	private String rua;
+	private String logradouro;
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 10, message = "{minimo.0.maximo.10}")
-	@Pattern(regexp = "^^((S/N)|[\\d-]*)$")
+	@Pattern(regexp = "^(([A-Z\\d])*([S\\/N])*)$", message = "{pattern.numeroEndereco}")
 	@Column(length = 10, columnDefinition = "varchar(10)", nullable = false)
 	private String numero;
 	@NotNull
 	@NotEmpty
 	@Size(min = 9, max = 9, message = "{cep}")
-	@Pattern(regexp = "\\d{5}-\\d{3}")
+	@Pattern(regexp = "^(([\\d]){5}([\\-])([\\d]{3}))$", message = "{pattern.cep}")
 	@Column(length = 9, columnDefinition = "varchar(9)", nullable = false)
 	private String cep;
 	@Size(min = 0, max = 30, message = "{minimo.0.maximo.30}")
-	@Pattern(regexp = "^([-./\\dA-Z]+(\\s[-./\\dA-Z]+)*)$")
+	@Pattern(regexp = "^(([A-Z\\d\\.\\/\\-])+(\\s[A-Z\\d\\.\\/\\-]+)*)$", message = "{pattern.espacoLetraNumeroBarraPontoTraco}")
 	@Column(length = 30, columnDefinition = "varchar(30)", nullable = true)
 	private String complemento;
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 60, message = "{minimo.0.maximo.60}")
-	@Pattern(regexp = "^([A-Z]+(\\s[A-Z]+)*)$")
+	@Pattern(regexp = "^(([A-Z])+(\\s[A-Z]+)*)$", message = "{pattern.espacoLetra}")
 	@Column(length = 60, columnDefinition = "varchar(60)", nullable = false)
 	private String bairro;
 	@ManyToOne
@@ -79,11 +79,11 @@ public class Endereco implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getRua() {
-		return rua;
+	public String getLogradouro() {
+		return logradouro;
 	}
-	public void setRua(String rua) {
-		this.rua = rua;
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
 	}
 	public String getNumero() {
 		return numero;

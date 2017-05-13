@@ -32,7 +32,7 @@ public class FinHistorico implements Serializable {
 	private Integer id;
 	@NotNull
 	@NotEmpty
-	@Pattern(regexp = "[aA-zZ0-9\"\'(){}*,.\\/\\s-]*")
+	@Pattern(regexp = "^([A-Z\\d\\s\\.\\/\\-\\,]+)$", message = "{pattern.textarea}")
 	@Column(columnDefinition = "text", nullable = false)
 	private String descricao;
 	@Temporal(TemporalType.DATE)

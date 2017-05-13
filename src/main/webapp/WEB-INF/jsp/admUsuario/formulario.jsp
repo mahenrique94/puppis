@@ -1,5 +1,4 @@
 <%@include file="/config/header.jsp" %>
-<c:set var="autoFocus" value="${obj.id != null ? '' : 'autofocus'}"/>
 <form action="<c:url value="/administrador/usuario"/>" class="o-form" id="formadmusuario" method="post" name="formadmusuario" role="form">
 	<input aria-hidden="true" name="obj.id" type="hidden" value="${obj.id}">
 	<input aria-hidden="true" name="obj.idgrupo.idaux" type="hidden" value="${obj.idgrupo.id}">
@@ -10,7 +9,7 @@
 			<span class="o-breadcrumb__link"><a href="<c:url value="/dashboard/administrador"/>" role="link" title="<fmt:message key="nav.administrador"/>"><fmt:message key="nav.administrador"/></a></span>
 			<span class="o-breadcrumb__link"><a href="<c:url value="/administrador/usuario"/>" role="link" title="<fmt:message key="nav.administrador.usuario"/>"><fmt:message key="nav.administrador.usuario"/></a></span>
 			<span class="o-breadcrumb__link"><a href="<c:url value="/administrador/usuario"/>" role="link" title="<fmt:message key="nav.lista"/>"><fmt:message key="nav.lista"/></a></span>
-			<span class="o-breadcrumb__link"><a class="is-inactive" href="<c:url value="/administrador/usuario//formulario"/>" role="link" title="<fmt:message key="nav.formulario"/>"><fmt:message key="nav.formulario"/></a></span>
+			<span class="o-breadcrumb__link"><a class="is-inactive" href="<c:url value="/administrador/usuario/formulario"/>" role="link" title="<fmt:message key="nav.formulario"/>"><fmt:message key="nav.formulario"/></a></span>
 		</div>
 	</nav>
 	<c:import url="tabs.jsp"/>	

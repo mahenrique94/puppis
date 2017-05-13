@@ -40,7 +40,7 @@ public class CadCentroCusto implements Serializable{
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 60, message = "{minimo.0.maximo.60}")
-	@Pattern(regexp = "^([A-Z]+(\\s[A-Z]+)*)$")
+	@Pattern(regexp = "^(([A-Z])+(\\s[A-Z]+)*)$", message = "{pattern.espacoLetra}")
 	@Column(length = 60, columnDefinition = "varchar(60)", nullable = false, unique = true)
 	private String descricao;
 	@Temporal(TemporalType.DATE)

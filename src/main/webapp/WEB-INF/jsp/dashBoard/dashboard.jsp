@@ -16,10 +16,10 @@
 		</header>
 		<nav class="c-square--gary" role="navigation">
 			<menu aria-haspopup="true" class="c-square__menu" role="menubar">
+				<menuitem class="c-square__item ${disabledAdministrador}" role="menuitem"><a href="<c:url value="/dashboard/administrador"/>" role="link" title="<fmt:message key="nav.administrador"/>"><i class="icon-address-book"></i><fmt:message key="nav.administrador"/></a></menuitem>
 				<menuitem class="c-square__item ${disabledCadastro}" role="menuitem"><a href="<c:url value="/dashboard/cadastro"/>" role="link" title="<fmt:message key="nav.cadastro"/>"><i class="icon-address-book"></i><fmt:message key="nav.cadastro"/></a></menuitem>
 				<menuitem class="c-square__item ${disabledComercio}" role="menuitem"><a href="<c:url value="/dashboard/comercio"/>" role="link" title="<fmt:message key="nav.comercio"/>"><i class="icon-address-book"></i><fmt:message key="nav.comercio"/></a></menuitem>
 				<menuitem class="c-square__item ${disabledFinanceiro}" role="menuitem"><a href="<c:url value="/dashboard/financeiro"/>" role="link" title="<fmt:message key="nav.financeiro"/>"><i class="icon-address-book"></i><fmt:message key="nav.financeiro"/></a></menuitem>
-				<menuitem class="c-square__item ${disabledAdministrador}" role="menuitem"><a href="<c:url value="/dashboard/administrador"/>" role="link" title="<fmt:message key="nav.administrador"/>"><i class="icon-address-book"></i><fmt:message key="nav.administrador"/></a></menuitem>
 			</menu>
 		</nav>
 	</div>

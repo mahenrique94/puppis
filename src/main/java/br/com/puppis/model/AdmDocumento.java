@@ -16,6 +16,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cache;
@@ -40,6 +41,7 @@ public class AdmDocumento implements Serializable {
 	@NotNull
 	@NotEmpty
 	@Size(min = 14, max = 18, message = "{cpf.cnpj}")
+	@Pattern(regexp = "^((([\\d]{3})([\\.])([\\d]{3})([\\.])([\\d]{3})([\\-])([\\d]{2}))|(([\\d]{2})([\\.])([\\d]{3})([\\.])([\\d]{3})([\\/])([\\d]{4})([\\-])([\\d]{2})))$", message = "{pattern.cpfCnpj}")
 	@Column(length = 18, columnDefinition = "varchar(18)", nullable = false, unique = true)
 	private String cpfcnpj;
 	@NotNull

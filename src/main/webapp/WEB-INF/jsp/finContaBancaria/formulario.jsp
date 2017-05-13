@@ -1,60 +1,56 @@
 <%@include file="/config/header.jsp" %>
-<form action="<c:url value="/financeiro/conta-bancaria"/>" class="form-modern" id="formfincontabancaria" method="post" name="formfincontabancaria" role="form">
-	<input name="obj.id" type="hidden" value="${obj.id}">
-	<input name="obj.idbanco.idaux" type="hidden" value="${obj.idbanco.id}">
-	<input name="obj.idtipocontabancaria.idaux" type="hidden" value="${obj.idtipocontabancaria.id}">
-	<nav class="band-nav-lube" role="complementary">
-		<div class="row" role="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
-				<label><a href="<c:url value="/dashboard/cadastro"/>"><fmt:message key="nav.cadastro"/></a>&nbsp;<i class="icon-right-open"></i>&nbsp;<fmt:message key="nav.cadastro.conta.bancaria"/></label>					
-			</div>
+<c:set var="autoFocus" value="${obj.id != null ? '' : 'autofocus'}"/>
+<form action="<c:url value="/financeiro/conta-bancaria"/>" class="o-form" id="formfincontabancaria" method="post" name="formfincontabancaria" role="form">
+	<input aria-hidden="true" name="obj.id" type="hidden" value="${obj.id}">
+	<input aria-hidden="true" name="obj.idbanco.idaux" type="hidden" value="${obj.idbanco.id}">
+	<input aria-hidden="true" name="obj.idtipocontabancaria.idaux" type="hidden" value="${obj.idtipocontabancaria.id}">
+	<nav class="o-navbar--gary" role="complementary">
+		<div class="o-breadcrumb--arrow">
+			<span class="o-breadcrumb__link"><a href="<c:url value="/dashboard"/>" role="link" title="<fmt:message key="nav.dashboard"/>"><fmt:message key="nav.dashboard"/></a></span>
+			<span class="o-breadcrumb__link"><a href="<c:url value="/dashboard/cadastro"/>" role="link" title="<fmt:message key="nav.cadastro"/>"><fmt:message key="nav.cadastro"/></a></span>
+			<span class="o-breadcrumb__link"><a href="<c:url value="/financeiro/conta-bancaria"/>" role="link" title="<fmt:message key="nav.cadastro.conta.bancaria"/>"><fmt:message key="nav.cadastro.conta.bancaria"/></a></span>
+			<span class="o-breadcrumb__link"><a href="<c:url value="/financeiro/conta-bancaria"/>" role="link" title="<fmt:message key="nav.lista"/>"><fmt:message key="nav.lista"/></a></span>
+			<span class="o-breadcrumb__link"><a class="is-inactive" href="<c:url value="/financeiro/conta-bancaria/formulario"/>" role="link" title="<fmt:message key="nav.formulario"/>"><fmt:message key="nav.formulario"/></a></span>
 		</div>
 	</nav>
-	<section aria-expanded="true" aria-hidden="false" class="form-body" role="form">
-		<div class="row-input" role="row">
-			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
-				<label><fmt:message key="label.banco"/></label>
-				<select class="form-data validate" data-class="slFinBanco" id="slFinanceiro_Banco_Json_01" name="obj.idbanco.id"></select>
-				<netsis:validationMessage name="obj.idbanco.id"/>
+	<section class="o-form__body o-form__body--padding">
+		<div class="l-row" role="row">
+			<div class="u-grid--6" role="grid">
+				<label class="o-form__text" for="banco"><fmt:message key="label.banco"/><validate:validationMessage name="obj.idbanco.id"/></label>
+				<select aria-required="true" class="o-form__data has-validation" data-select="slFinBanco" data-url="slFinanceiro_Banco_Json" id="banco" name="obj.idbanco.id" required></select>
 			</div>
-			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
-				<label><fmt:message key="label.tipo"/></label>
-				<select class="form-data validate" data-class="slFinTipoContaBancaria" id="slFinanceiro_Tipo-de-conta-bancaria_Json_01" name="obj.idtipocontabancaria.id"></select>
-				<netsis:validationMessage name="obj.idtipocontabancaria.id"/>
+			<div class="u-grid--6" role="grid">
+				<label class="o-form__text" for="tipo"><fmt:message key="label.tipo"/><validate:validationMessage name="obj.idtipocontabancaria.id"/></label>
+				<select aria-required="true" class="o-form__data has-validation" data-select="slFinTipoContaBancaria" data-url="slFinanceiro_Tipo-de-conta-bancaria_Json" id="tipo" name="obj.idtipocontabancaria.id" required></select>
 			</div>
 		</div>
-		<div class="row-input" role="row">
-			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
-				<label><fmt:message key="label.agencia"/></label>
-				<input class="form-data validate" maxlength="10" name="obj.agencia" pattern="letraNumeroPontoTracoBarra" required type="text" value="${obj.agencia}">
-				<netsis:validationMessage name="obj.agencia"/>
+		<div class="l-row" role="row">
+			<div class="u-grid--6" role="grid">
+				<label class="o-form__text" for="agencia"><fmt:message key="label.agencia"/><validate:validationMessage name="obj.agencia"/></label>
+				<input aria-required="true" class="o-form__data has-validation" id="agencia" maxlength="10" name="obj.agencia" pattern="letraNumeroBarraPontoTraco" required type="text" value="${obj.agencia}">
 			</div>
-			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" role="separator">
-				<label><fmt:message key="label.conta"/></label>
-				<input class="form-data validate" maxlength="10" name="obj.numeroconta" pattern="numeroPontoTracoBarra" required type="text" value="${obj.numeroconta}">
-				<netsis:validationMessage name="obj.numeroconta"/>
+			<div class="u-grid--6" role="grid">
+				<label class="o-form__text" for="conta"><fmt:message key="label.conta"/><validate:validationMessage name="obj.numeroconta"/></label>
+				<input aria-required="true" class="o-form__data has-validation" id="contaconta" maxlength="10" name="obj.numeroconta" pattern="letraNumeroPontoTraco" required type="text" value="${obj.numeroconta}">
 			</div>
 		</div>
-		<div class="row-input" role="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
-				<label><fmt:message key="label.titular"/></label>
-				<input class="form-data validateform-data validate" maxlength="60" name="obj.nometitular" pattern="letraNumeroEspaco" required type="text" value="${obj.nometitular}">
-				<netsis:validationMessage name="obj.nometitular"/>
+		<div class="l-row" role="row">
+			<div class="u-grid--12" role="grid">
+				<label class="o-form__text" for="titular"><fmt:message key="label.titular"/><validate:validationMessage name="obj.nometitular"/></label>
+				<input aria-required="true" class="o-form__data has-validation" id="titular" maxlength="60" name="obj.nometitular" pattern="espacoLetraNumero" required type="text" value="${obj.nometitular}">
 			</div>
 		</div>
-		<div class="row-input" role="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" role="separator">
-				<label><fmt:message key="label.inativo"/></label>
-				<input <c:if test="${obj.inativo == true}">checked</c:if> class="form-data" name="obj.inativo" type="checkbox" value="true">
-				<netsis:validationMessage name="obj.inativo"/>
+		<div class="l-row" role="row">
+			<div class="u-grid--12" role="grid">
+				<label class="o-form__text" for="inativo"><fmt:message key="label.inativo"/><validate:validationMessage name="obj.inativo"/></label>
+				<input <c:if test="${obj.inativo == true}">checked</c:if> class="o-mark__data--checkbox" id="inativo" name="obj.inativo" type="hidden" value="${obj.inativo}">
+				<label class="o-mark__text"><span class="o-mark__element" data-marked="true" data-unmarked="false" onclick="MarkController.mark(this);"></span></label>
 			</div>
 		</div>
 	</section>
-	<nav class="nav-group-tie nav-fixed-bottom" role="complementary">
-		<ul>
-			<li><button title="<fmt:message key="button.salvar"/>" type="submit"><i class="icon-floppy"></i>&nbsp;<fmt:message key="button.salvar"/></button></li>
-			<li><a href="<c:url value="/financeiro/conta-bancaria"/>" title="<fmt:message key="button.pesquisar"/>"><i class="icon-search"></i>&nbsp;<fmt:message key="button.pesquisar"/></a></li>
-		</ul>
-	</nav>
+	<menu class="o-toolbar--lube is-fixedBottomFull" role="menubar">
+		<menuitem class="o-toolbar__item" role="menuitem"><button role="button" title="<fmt:message key="button.salvar"/>" type="submit"><i class="icon-floppy"></i>&nbsp;<fmt:message key="button.salvar"/></button></menuitem>
+		<menuitem class="o-toolbar__item" role="menuitem"><a href="<c:url value="/financeiro/conta-bancaria"/>" role="link" title="<fmt:message key="button.pesquisar"/>"><i class="icon-search"></i>&nbsp;<fmt:message key="button.pesquisar"/></a></menuitem>
+	</menu> 
 </form>
 <%@include file="/config/footer.jsp"%>
