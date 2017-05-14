@@ -10,7 +10,7 @@
 	</div>
 	<div class="u-grid--5" role="grid">
 		<label class="o-form__text" for="celular"><fmt:message key="label.celular"/><validate:validationMessage name="obj.contato.celular"/></label>
-		<input class="o-form__data has-validation" id="celular" maxlength="11" name="obj.contato.celular" onkeypress="checkMask(event);" onkeyup="mask(maskCelular, this, event);" pattern="celular" type="text" value="${obj.contato.celular}">
+		<input class="o-form__data has-validation" id="celular" maxlength="10" name="obj.contato.celular" onkeypress="checkMask(event);" onkeyup="mask(maskCelular, this, event);" pattern="celular" type="text" value="${obj.contato.celular}">
 	</div>
 </div>
 <div class="l-row" role="row">	

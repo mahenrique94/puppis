@@ -35,7 +35,7 @@ public class ComEstoqueController {
 			quantidadeAnterior = produto.getEstoque().getQuantidade();
 			produto.getEstoque().setQuantidade(quantidade);
 			movimento.movimenta(getDao(), 0, produto.getId(), quantidade, MovimentoTipo.getMovimentoTipo(idMovimento));
-			this.result.include("mensagem", "Estoque corrigido com sucesso");
+			this.result.include("mensagem", "mensagem.estoque.correcao.sucesso");
 			this.result.redirectTo(this).correcao(null, null, null);
 		}
 	}

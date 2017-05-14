@@ -32,7 +32,7 @@ public class ComNotaController extends GenericController<ComNota> {
 		atualiza(obj);
 		this.finDocumentoController.criaFinanceiro(criaParametrosAtualizarFinanceiro(obj));
 		super.salvar(obj);
-		this.result.include("mensagem", "Nota atualizada com sucesso");
+		this.result.include("mensagem", "mensagem.nota.atualizar.sucesso");
 		this.result.redirectTo(this).listar(obj, null);
 	}
 	
@@ -76,8 +76,8 @@ public class ComNotaController extends GenericController<ComNota> {
 	
 	@Post("estornar/{obj.id}")
 	public void estornar(ComNota obj) {
-		if (existeBaixa(obj.getId())) {
-			this.result.include("mensagem", "Operação inválida pois a nota possui baixa no financeiro");
+		if (existeBaixa(obj.getIdtipooperacao().getDescricao().equals("VENDA") ? obj.getId() : obj.getNumero())) {
+			this.result.include("erro", "mensagem.nota.estornar.erro");
 			this.result.redirectTo(this).editar(obj);
 		} else {
 			obj = (ComNota) this.edit(obj);
@@ -86,7 +86,7 @@ public class ComNotaController extends GenericController<ComNota> {
 				this.getDao().delete(finDocumento);
 			}
 			atualiza(obj);
-			this.result.include("mensagem", "Nota estornada com sucesso");
+			this.result.include("mensagem", "mensagem.nota.estornar.sucesso");
 			this.result.redirectTo(this).editar(obj);
 		}
 	}
