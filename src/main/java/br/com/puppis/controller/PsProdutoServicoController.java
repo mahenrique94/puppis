@@ -27,7 +27,7 @@ public class PsProdutoServicoController extends GenericController<PsProdutoServi
 	@Override
 	public void salvar(PsProdutoServico obj) {
 		// TODO Auto-generated method stub
-		this.setRedirect(false);
+		super.setRedirect(false);
 		if (obj.getId() == null) {
 			obj.setCusto(new PsCusto());
 			obj.getCusto().setIdprodutoservico(obj);
@@ -35,13 +35,13 @@ public class PsProdutoServicoController extends GenericController<PsProdutoServi
 			obj.getEstoque().setIdprodutoservico(obj);
 		}
 		super.salvar(obj);
-		this.result.redirectTo(this).editar(this.getObj());
+		super.result.redirectTo(this).editar(super.getObj());
 	}
 	
 	protected PsProdutoServico buscaProduto(int id) {
 		List<ParametrosWeb> parametrosWeb = new ArrayList<ParametrosWeb>();
 		parametrosWeb.add(new ParametrosWeb("id", Integer.toString(id)));
-		return (PsProdutoServico) this.getDao().find(PsProdutoServico.class, parametrosWeb);
+		return (PsProdutoServico) super.getDao().find(PsProdutoServico.class, parametrosWeb);
 	}
 	
 }

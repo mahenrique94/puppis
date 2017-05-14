@@ -20,9 +20,9 @@ public class PesDefinicaoController extends GenericController<PesDefinicao> {
 	@Override
 	public void deletar(PesDefinicao obj) {
 		// TODO Auto-generated method stub
-		this.setRedirect(false);
+		super.setRedirect(false);
 		super.deletar(obj);
-		this.result.nothing();
+		super.result.nothing();
 	}
 	
 	@Get("{obj.id}")
@@ -36,7 +36,7 @@ public class PesDefinicaoController extends GenericController<PesDefinicao> {
 	@Override
 	public void formulario(PesDefinicao obj) {
 		// TODO Auto-generated method stub
-		this.result.include("obj", obj);
+		super.result.include("obj", obj);
 		super.formulario(obj);
 	}
 	
@@ -45,23 +45,23 @@ public class PesDefinicaoController extends GenericController<PesDefinicao> {
 	public void toJSON(PesDefinicao obj, List<ParametrosWeb> parametrosWeb) {
 		// TODO Auto-generated method stub
 		List<PesDefinicao> list = getDao().findAll(obj.getClass(), parametrosWeb);
-		this.result.use(Results.json()).from(list).include("idpessoa").include("idtipo").serialize();
+		super.result.use(Results.json()).from(list).include("idpessoa").include("idtipo").serialize();
 	}
 	
 	@Get("loadgrid/{obj.idpessoa.id}")
 	public void loadGrid(PesDefinicao obj) {
 		List<ParametrosWeb> parametrosWeb = new ArrayList<ParametrosWeb>();
 		parametrosWeb.add(new ParametrosWeb("idpessoa.id", obj.getIdpessoa().getId().toString()));
-		this.listar(obj, parametrosWeb);
+		super.listar(obj, parametrosWeb);
 	}
 	
 	@Post("")
 	@Override
 	public void salvar(PesDefinicao obj) {
 		// TODO Auto-generated method stub
-		this.setRedirect(false);
+		super.setRedirect(false);
 		super.salvar(obj);
-		this.result.nothing();
+		super.result.nothing();
 	}
 
 }

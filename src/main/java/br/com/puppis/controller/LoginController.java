@@ -9,7 +9,6 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import br.com.puppis.dao.Dao;
-import br.com.puppis.dao.GenericDao;
 import br.com.puppis.security.LoginModule;
 import br.com.puppis.security.UserName;
 
@@ -17,15 +16,21 @@ import br.com.puppis.security.UserName;
 @Path("login")
 public class LoginController {
 	
-	@Inject
-	private Dao dao;
-	@Inject
 	private Result result;
-	@Inject
 	private UserName userName;
-	@Inject
 	private LoginModule loginModule;
 	
+	@Inject
+	public LoginController(Result result, UserName userName, LoginModule loginModule) {
+		// TODO Auto-generated constructor stub
+		this.result = result;
+		this.userName = userName;
+		this.loginModule = loginModule;
+	}
+	@Deprecated
+	public LoginController() {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Get("formulario")
 	@Public
@@ -41,10 +46,6 @@ public class LoginController {
 	public void logout() {
 		this.userName.logout();
 		this.result.redirectTo(this).formulario();
-	}
-	
-	private GenericDao getDao() {
-		return this.dao.getDao();
 	}
 	
 }

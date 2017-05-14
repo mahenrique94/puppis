@@ -21,9 +21,9 @@ public class TblPrecoController extends GenericController<TblPreco> {
 	@Override
 	public void salvar(TblPreco obj) {
 		// TODO Auto-generated method stub
-		this.setRedirect(false);
+		super.setRedirect(false);
 		super.salvar(obj);
-		this.result.redirectTo(this).editar(this.getObj());
+		super.result.redirectTo(this).editar(this.getObj());
 	}
 
 }

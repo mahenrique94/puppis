@@ -22,49 +22,35 @@ import br.com.puppis.model.FinDocumento;
 @Path("comercio/nota")
 public class ComNotaController extends GenericController<ComNota> {
 	
-	@Inject
 	private FinDocumentoController finDocumentoController;
+	
+	@Inject
+	public ComNotaController(FinDocumentoController finDocumentoController) {
+		// TODO Auto-generated constructor stub
+		this.finDocumentoController = finDocumentoController;
+	}
+	@Deprecated
+	public ComNotaController() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	@Post("atualizar")
 	public void atualizar(ComNota obj) {
-		this.setRedirect(false);
-		obj = (ComNota) this.edit(obj);
+		super.setRedirect(false);
+		obj = (ComNota) super.edit(obj);
 		atualiza(obj);
 		this.finDocumentoController.criaFinanceiro(criaParametrosAtualizarFinanceiro(obj));
 		super.salvar(obj);
-		this.result.include("mensagem", "mensagem.nota.atualizar.sucesso");
-		this.result.redirectTo(this).listar(obj, null);
+		super.result.include("mensagem", "mensagem.nota.atualizar.sucesso");
+		super.result.redirectTo(this).listar(obj, null);
 	}
 	
 	@Post("calcular")
 	public void calcular(ComNota obj) {
-		this.setRedirect(false);
-		obj = (ComNota) this.edit(obj);
-		double icms = 0.0;
-		double ipi = 0.0;
-		double desconto = 0.0;
-		double juros = 0.0;
-		double total = 0.0;
-		if (obj.getItens() != null && !obj.getItens().isEmpty()) {
-			for (ComNotaItem item : obj.getItens()) {
-				if (obj.getIdtipooperacao().getDescricao().equals("COMPRA"))
-					item.calculaTotal();
-				else
-					this.getDao().executeProcedure("fn_calcularTabelaPreco", new Object[]{item.getId()}, new Class[]{Long.class});
-				icms += item.getValorIcms();
-				ipi += item.getValorIpi();
-				desconto += item.getValorDesconto();
-				juros += item.getValorJuros();
-				total += item.getValortotal();
-			}
-		}
-		obj.getCusto().setValoricms(icms);
-		obj.getCusto().setValoripi(ipi);
-		obj.getCusto().setValordesconto(desconto);
-		obj.getCusto().setValorjuros(juros);
-		obj.getCusto().setValortotal(total);
-		super.salvar(obj);
-		this.result.redirectTo(this).editar(obj);
+		super.setRedirect(false);
+		obj = (ComNota) super.edit(obj);
+		super.salvar(obj.calcular(super.getDao()));
+		super.result.redirectTo(this).editar(obj);
 	}
 	
 	@Get("{obj.id}")
@@ -77,17 +63,17 @@ public class ComNotaController extends GenericController<ComNota> {
 	@Post("estornar/{obj.id}")
 	public void estornar(ComNota obj) {
 		if (existeBaixa(obj.getIdtipooperacao().getDescricao().equals("VENDA") ? obj.getId() : obj.getNumero())) {
-			this.result.include("erro", "mensagem.nota.estornar.erro");
-			this.result.redirectTo(this).editar(obj);
+			super.result.include("erro", "mensagem.nota.estornar.erro");
+			super.result.redirectTo(this).editar(obj);
 		} else {
-			obj = (ComNota) this.edit(obj);
+			obj = (ComNota) super.edit(obj);
 			List<FinDocumento> documentos = buscaDocumentoComNumero(obj.getIdtipooperacao().getDescricao().equals("VENDA") ? obj.getId() : obj.getNumero());
 			for (FinDocumento finDocumento : documentos) {
-				this.getDao().delete(finDocumento);
+				super.getDao().delete(finDocumento);
 			}
 			atualiza(obj);
-			this.result.include("mensagem", "mensagem.nota.estornar.sucesso");
-			this.result.redirectTo(this).editar(obj);
+			super.result.include("mensagem", "mensagem.nota.estornar.sucesso");
+			super.result.redirectTo(this).editar(obj);
 		}
 	}
 	
@@ -96,7 +82,7 @@ public class ComNotaController extends GenericController<ComNota> {
 	public void listar(ComNota obj, List<ParametrosWeb> parametrosWeb) {
 		// TODO Auto-generated method stub
 		parametrosWeb = validaParamerosWebListar(parametrosWeb);
-		this.result.include("parametrosWeb", parametrosWeb);
+		super.result.include("parametrosWeb", parametrosWeb);
 		super.listar(obj, parametrosWeb);
 	}
 	
@@ -104,18 +90,18 @@ public class ComNotaController extends GenericController<ComNota> {
 	@Override
 	public void salvar(ComNota obj) {
 		// TODO Auto-generated method stub
-		this.setRedirect(false);
+		super.setRedirect(false);
 		if (obj.getId() == null) {
 			obj.getCusto().setIdnota(obj);
 		}
 		super.salvar(obj);
-		this.result.redirectTo(this).editar(this.getObj());
+		super.result.redirectTo(this).editar(super.getObj());
 	}
 	
 	private void atualiza(ComNota nota) {
 		Gerenciador gerenciador = GerenciadorFactory.cria(nota.getIdtipooperacao().getDescricao(), nota.getDataatualizacao());
 		for (ComNotaItem item : nota.getItens()) {
-			gerenciador.gerencia(this.getDao(), nota.getId(), item.getIdprodutoservico().getId(), item.getQuantidade(), item.getValorunitario());
+			gerenciador.gerencia(super.getDao(), nota.getId(), item.getIdprodutoservico().getId(), item.getQuantidade(), item.getValorunitario());
 		}
 		nota.setDataatualizacao(nota.getDataatualizacao() != null ? null : Calendar.getInstance());
 	}
@@ -123,7 +109,7 @@ public class ComNotaController extends GenericController<ComNota> {
 	private List<FinDocumento> buscaDocumentoComNumero(long idNota) {
 		List<ParametrosWeb> parametrosWeb = new ArrayList<ParametrosWeb>();
 		parametrosWeb.add(new ParametrosWeb("numero", Long.toString(idNota)));
-		return this.getDao().findAll(FinDocumento.class, parametrosWeb);
+		return super.getDao().findAll(FinDocumento.class, parametrosWeb);
 	}
 	
 	private List<ParametrosWeb> criaParametrosAtualizarFinanceiro(ComNota obj) {
@@ -147,7 +133,7 @@ public class ComNotaController extends GenericController<ComNota> {
 		List<ParametrosWeb> parametrosWeb = new ArrayList<ParametrosWeb>();
 		parametrosWeb.add(new ParametrosWeb("numero", Long.toString(idNota)));
 		parametrosWeb.add(new ParametrosWeb("datapagamento", "", null, "is not null"));
-		List<FinDocumento> finDocumentos = this.getDao().findAll(FinDocumento.class, parametrosWeb);
+		List<FinDocumento> finDocumentos = super.getDao().findAll(FinDocumento.class, parametrosWeb);
 		return finDocumentos != null && !finDocumentos.isEmpty();
 	}
 	

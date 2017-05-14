@@ -34,7 +34,7 @@ public class FinDocumentoController extends GenericController<FinDocumento> {
 			} else { // 4 = BAIXA, 6 = CANCELAMENTO
 				parametrosWeb.add(new ParametrosWeb("datapagamento", null, null, "is null"));
 			}
-			this.result.include("parametrosWeb", parametrosWeb).include("idTipoOperacao", idTipoOperacao).include("FinDocumentoList", this.getDao().findAll(FinDocumento.class, parametrosWeb));
+			super.result.include("parametrosWeb", parametrosWeb).include("idTipoOperacao", idTipoOperacao).include("FinDocumentoList", super.getDao().findAll(FinDocumento.class, parametrosWeb));
 		}
 	}
 	
@@ -50,7 +50,7 @@ public class FinDocumentoController extends GenericController<FinDocumento> {
 	public void listar(FinDocumento obj, List<ParametrosWeb> parametrosWeb) {
 		// TODO Auto-generated method stub
 		parametrosWeb = validaParamerosWebListar(parametrosWeb);
-		this.result.include("parametrosWeb", parametrosWeb);
+		super.result.include("parametrosWeb", parametrosWeb);
 		super.listar(obj, parametrosWeb);
 	}
 	
@@ -59,7 +59,7 @@ public class FinDocumentoController extends GenericController<FinDocumento> {
 	@Path("parcelamento")
 	public void parcelamento(List<ParametrosWeb> parametrosWeb) {
 		if (parametrosWeb != null) {
-			this.result.include("parametrosWeb", parametrosWeb).include("FinDocumentoList", geraDocumentos(parametrosWeb));
+			super.result.include("parametrosWeb", parametrosWeb).include("FinDocumentoList", geraDocumentos(parametrosWeb));
 		}
 	}
 	
@@ -71,7 +71,7 @@ public class FinDocumentoController extends GenericController<FinDocumento> {
 				criaDocumento(finDocumento, Integer.parseInt(parametrosWeb.get(11).getParametroInicial()));
 			}
 		}
-		this.result.redirectTo(this).parcelamento(null);
+		super.result.redirectTo(this).parcelamento(null);
 	}
 	
 	@Post("processar")
@@ -79,16 +79,16 @@ public class FinDocumentoController extends GenericController<FinDocumento> {
 		for (FinDocumento finDocumento : obj) {
 			atualizar(finDocumento, idTipoOperacao);
 		}
-		this.result.redirectTo(this).baixa(null, null);
+		super.result.redirectTo(this).baixa(null, null);
 	}
 	
 	@Post("")
 	@Override
 	public void salvar(FinDocumento obj) {
 		// TODO Auto-generated method stub
-		this.setRedirect(false);
+		super.setRedirect(false);
 		super.salvar(obj.novo());
-		this.result.redirectTo(this).editar(this.getObj());
+		super.result.redirectTo(this).editar(super.getObj());
 	}
 	
 	protected void criaFinanceiro(List<ParametrosWeb> parametrosWeb) {
@@ -102,7 +102,7 @@ public class FinDocumentoController extends GenericController<FinDocumento> {
 	
 	private List<FinDocumento> geraDocumentos(List<ParametrosWeb> parametrosWeb) {
 		List<FinDocumento> documentos = new ArrayList<FinDocumento>();
-		FinFormaPagamento finFormaPagamento = (FinFormaPagamento) this.getDao().edit(new FinFormaPagamento(Integer.parseInt(parametrosWeb.get(0).getParametroInicial())));
+		FinFormaPagamento finFormaPagamento = (FinFormaPagamento) super.getDao().edit(new FinFormaPagamento(Integer.parseInt(parametrosWeb.get(0).getParametroInicial())));
 		int desdobramentoInicial = parametrosWeb.get(10).getParametroInicial() != null ? Integer.parseInt(parametrosWeb.get(10).getParametroInicial()) : 1;
 		for (int i = desdobramentoInicial; i <= finFormaPagamento.getQuantidadeparcela(); i++) {
 			documentos.add(new FinDocumento().novoParcelamento(parametrosWeb, finFormaPagamento, i));
@@ -111,21 +111,21 @@ public class FinDocumentoController extends GenericController<FinDocumento> {
 	}
 	
 	private FinDocumento criaDocumento(FinDocumento finDocumento) {
-		this.getDao().save(finDocumento);
-		return this.getObj();
+		super.getDao().save(finDocumento);
+		return super.getObj();
 	}
 	
 	private void criaDocumento(FinDocumento finDocumento, int idCentroCusto) {
-		this.getDao().save(finDocumento);
+		super.getDao().save(finDocumento);
 		if (idCentroCusto > 0) {
-			FinDocumentoCentroCusto finDocumentoCentroCusto = new FinDocumentoCentroCusto(this.getObj().getId(), idCentroCusto);
-			this.getDao().save(finDocumentoCentroCusto);
+			FinDocumentoCentroCusto finDocumentoCentroCusto = new FinDocumentoCentroCusto(super.getObj().getId(), idCentroCusto);
+			super.getDao().save(finDocumentoCentroCusto);
 		}
 	}
 	
 	private void atualizar(FinDocumento finDocumento, Integer idTipoOperacao) {
 		// TODO Auto-generated method stub
-		SysTipoOperacao sysTipoOperacao = (SysTipoOperacao) this.getDao().edit(new SysTipoOperacao(idTipoOperacao));
+		SysTipoOperacao sysTipoOperacao = (SysTipoOperacao) super.getDao().edit(new SysTipoOperacao(idTipoOperacao));
 		Gerenciador gerenciador = GerenciadorFactory.cria(sysTipoOperacao.getDescricao());
 		gerenciador.gerencia(getDao(), finDocumento, sysTipoOperacao);
 	}

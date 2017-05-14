@@ -15,12 +15,21 @@ import br.com.puppis.security.UserName;
 @Intercepts
 public class PermissionInterceptor implements Interceptor {
 	
-	@Inject
 	private Result result;
-	@Inject
 	private PermissionModule permissionModule;
-	@Inject
 	private UserName userName;
+	
+	@Inject
+	public PermissionInterceptor(Result result, PermissionModule permissionModule, UserName userName) {
+		// TODO Auto-generated constructor stub
+		this.result = result;
+		this.permissionModule = permissionModule;
+		this.userName = userName;
+	}
+	@Deprecated
+	public PermissionInterceptor() {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public boolean accepts(ControllerMethod method) {

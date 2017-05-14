@@ -21,7 +21,7 @@ public class FinExtratoController extends GenericController<FinExtrato> {
 		// TODO Auto-generated method stub
 		parametrosWeb = validaParametrosWeb(parametrosWeb);
 		if (parametrosWeb != null && !parametrosWeb.isEmpty()) {
-			this.result.include("parametrosWeb", parametrosWeb);
+			super.result.include("parametrosWeb", parametrosWeb);
 			super.listar(obj, parametrosWeb);
 		}
 	}
@@ -30,9 +30,9 @@ public class FinExtratoController extends GenericController<FinExtrato> {
 	@Override
 	public void salvar(FinExtrato obj) {
 		// TODO Auto-generated method stub
-		this.setRedirect(false);
+		super.setRedirect(false);
 		super.salvar(obj);
-		this.result.nothing();
+		super.result.nothing();
 	}
 	
 	private List<ParametrosWeb> validaParametrosWeb(List<ParametrosWeb> parametrosWeb) {

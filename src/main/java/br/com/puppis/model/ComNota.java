@@ -19,17 +19,13 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
+
+import br.com.puppis.dao.GenericDao;
 
 @Entity
 @Table(name = "com_nota")
@@ -172,6 +168,33 @@ public class ComNota implements Serializable {
 	}
 	public void setItens(List<ComNotaItem> itens) {
 		this.itens = itens;
+	}
+	
+	public ComNota calcular(GenericDao dao) {
+		double icms = 0.0;
+		double ipi = 0.0;
+		double desconto = 0.0;
+		double juros = 0.0;
+		double total = 0.0;
+		if (getItens() != null && !getItens().isEmpty()) {
+			for (ComNotaItem item : getItens()) {
+				if (getIdtipooperacao().getDescricao().equals("COMPRA"))
+					item.calculaTotal();
+				else
+					dao.executeProcedure("fn_calcularTabelaPreco", new Object[]{item.getId()}, new Class[]{Long.class});
+				icms += item.getValorIcms();
+				ipi += item.getValorIpi();
+				desconto += item.getValorDesconto();
+				juros += item.getValorJuros();
+				total += item.getValortotal();
+			}
+		}
+		getCusto().setValoricms(icms);
+		getCusto().setValoripi(ipi);
+		getCusto().setValordesconto(desconto);
+		getCusto().setValorjuros(juros);
+		getCusto().setValortotal(total);
+		return this;
 	}
 	
 }

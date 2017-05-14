@@ -19,9 +19,9 @@ public class TblPrecoPessoaController extends GenericController<TblPrecoPessoa> 
 	@Override
 	public void deletar(TblPrecoPessoa obj) {
 		// TODO Auto-generated method stub
-		this.setRedirect(false);
+		super.setRedirect(false);
 		super.deletar(obj);
-		this.result.nothing();
+		super.result.nothing();
 	}
 	
 	@Get("{obj.id}")
@@ -35,7 +35,7 @@ public class TblPrecoPessoaController extends GenericController<TblPrecoPessoa> 
 	@Override
 	public void formulario(TblPrecoPessoa obj) {
 		// TODO Auto-generated method stub
-		this.result.include("obj", obj);
+		super.result.include("obj", obj);
 		super.formulario(obj);
 	}
 	
@@ -43,16 +43,16 @@ public class TblPrecoPessoaController extends GenericController<TblPrecoPessoa> 
 	public void loadGrid(TblPrecoPessoa obj) {
 		List<ParametrosWeb> parametrosWeb = new ArrayList<ParametrosWeb>();
 		parametrosWeb.add(new ParametrosWeb("idtabelapreco.id", obj.getIdtabelapreco().getId().toString()));
-		this.listar(obj, parametrosWeb);
+		super.listar(obj, parametrosWeb);
 	}
 	
 	@Post("")
 	@Override
 	public void salvar(TblPrecoPessoa obj) {
 		// TODO Auto-generated method stub
-		this.setRedirect(false);
+		super.setRedirect(false);
 		super.salvar(obj);
-		this.result.nothing();
+		super.result.nothing();
 	}
 
 }

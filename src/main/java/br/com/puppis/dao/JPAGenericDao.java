@@ -20,8 +20,18 @@ import br.com.mhc.parametrosweb.ParametrosWebBuilder;
 
 public class JPAGenericDao<T> implements GenericDao<T> {
 
-	@Inject
 	private EntityManager em;
+	
+	@Inject
+	public JPAGenericDao(EntityManager em) {
+		// TODO Auto-generated constructor stub
+		this.em = em;
+	}
+	@Deprecated
+	public JPAGenericDao() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	private T obj;
 
 	@Override

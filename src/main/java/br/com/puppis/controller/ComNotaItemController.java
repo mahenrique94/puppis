@@ -9,7 +9,6 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.mhc.parametrosweb.ParametrosWeb;
-import br.com.puppis.model.ComNota;
 import br.com.puppis.model.ComNotaItem;
 
 @Controller
@@ -20,9 +19,9 @@ public class ComNotaItemController extends GenericController<ComNotaItem> {
 	@Override
 	public void deletar(ComNotaItem obj) {
 		// TODO Auto-generated method stub
-		this.setRedirect(false);
+		super.setRedirect(false);
 		super.deletar(obj);
-		this.result.nothing();
+		super.result.nothing();
 	}
 	
 	@Get("{obj.id}")
@@ -36,7 +35,7 @@ public class ComNotaItemController extends GenericController<ComNotaItem> {
 	@Override
 	public void formulario(ComNotaItem obj) {
 		// TODO Auto-generated method stub
-		this.result.include("obj", obj);
+		super.result.include("obj", obj);
 		super.formulario(obj);
 	}
 	
@@ -44,16 +43,16 @@ public class ComNotaItemController extends GenericController<ComNotaItem> {
 	public void loadGrid(ComNotaItem obj) {
 		List<ParametrosWeb> parametrosWeb = new ArrayList<ParametrosWeb>();
 		parametrosWeb.add(new ParametrosWeb("idnota.id", obj.getIdnota().getId().toString()));
-		this.listar(obj, parametrosWeb);
+		super.listar(obj, parametrosWeb);
 	}
 
 	@Post("")
 	@Override
 	public void salvar(ComNotaItem obj) {
 		// TODO Auto-generated method stub
-		this.setRedirect(false);		
+		super.setRedirect(false);		
 		super.salvar(obj);
-		this.result.nothing();
+		super.result.nothing();
 	}
 	
 }

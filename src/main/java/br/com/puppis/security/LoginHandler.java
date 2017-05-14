@@ -10,8 +10,17 @@ import br.com.puppis.controller.LoginController;
 @RequestScoped
 public class LoginHandler implements RuleHandler {
 
-	@Inject
 	private Result result;
+	
+	@Inject
+	public LoginHandler(Result result) {
+		// TODO Auto-generated constructor stub
+		this.result = result;
+	}
+	@Deprecated
+	public LoginHandler() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	@Override
 	public void handle() {

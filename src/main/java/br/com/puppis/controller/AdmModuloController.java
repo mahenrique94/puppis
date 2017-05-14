@@ -19,9 +19,9 @@ public class AdmModuloController extends GenericController<AdmModulo> {
 	@Override
 	public void deletar(AdmModulo obj) {
 		// TODO Auto-generated method stub
-		this.setRedirect(false);
+		super.setRedirect(false);
 		super.deletar(obj);
-		this.result.nothing();
+		super.result.nothing();
 	}
 	
 	@Get("{obj.id}")
@@ -35,7 +35,7 @@ public class AdmModuloController extends GenericController<AdmModulo> {
 	@Override
 	public void formulario(AdmModulo obj) {
 		// TODO Auto-generated method stub
-		this.result.include("obj", obj);
+		super.result.include("obj", obj);
 		super.formulario(obj);
 	}
 	
@@ -43,16 +43,16 @@ public class AdmModuloController extends GenericController<AdmModulo> {
 	public void loadGrid(AdmModulo obj) {
 		List<ParametrosWeb> parametrosWeb = new ArrayList<ParametrosWeb>();
 		parametrosWeb.add(new ParametrosWeb("idcomercio.id", obj.getIdcomercio().getId().toString()));
-		this.listar(obj, parametrosWeb);
+		super.listar(obj, parametrosWeb);
 	}
 	
 	@Post("")
 	@Override
 	public void salvar(AdmModulo obj) {
 		// TODO Auto-generated method stub
-		this.setRedirect(false);
+		super.setRedirect(false);
 		super.salvar(obj);
-		this.result.nothing();
+		super.result.nothing();
 	}
 	
 }

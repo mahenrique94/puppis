@@ -21,7 +21,7 @@ public class AdmComercioController extends GenericController<AdmComercio> {
 	@Override
 	public void salvar(AdmComercio obj) {
 		// TODO Auto-generated method stub
-		this.setRedirect(false);
+		super.setRedirect(false);
 		if (obj.getId() == null) {
 			obj.getContato().setIdcomercio(obj);
 			obj.getEndereco().setIdcomercio(obj);
@@ -29,7 +29,7 @@ public class AdmComercioController extends GenericController<AdmComercio> {
 			obj.getPagamento().setIdcomercio(obj);
 		}
 		super.salvar(obj);
-		this.result.redirectTo(this).editar(this.getObj());
+		super.result.redirectTo(this).editar(super.getObj());
 	}
 	
 }

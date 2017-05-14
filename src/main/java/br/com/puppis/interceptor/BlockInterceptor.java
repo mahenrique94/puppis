@@ -19,10 +19,18 @@ import br.com.puppis.security.UserName;
 @Intercepts
 public class BlockInterceptor implements Interceptor {
 
-	@Inject
 	private UserName userName;
-	@Inject
 	private Result result;
+	
+	@Inject
+	public BlockInterceptor(UserName userName, Result result) {
+		// TODO Auto-generated constructor stub
+		this.userName = userName;
+		this.result = result;
+	}
+	public BlockInterceptor() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	@Override
 	public boolean accepts(ControllerMethod method) {

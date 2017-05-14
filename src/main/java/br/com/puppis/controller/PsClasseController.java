@@ -24,8 +24,7 @@ public class PsClasseController extends GenericController<PsClasse> {
 	@Override
 	public void toJSON(PsClasse obj, List<ParametrosWeb> parametrosWeb) {
 		// TODO Auto-generated method stub
-		List<PsClasse> list = this.getDao().findAll(PsClasse.class, parametrosWeb);
-		this.result.use(Results.json()).from(list).include("idgrupo").serialize();
+		super.result.use(Results.json()).from(super.getDao().findAll(PsClasse.class, parametrosWeb)).include("idgrupo").serialize();
 	}
 	
 }

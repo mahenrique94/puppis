@@ -22,16 +22,24 @@ import br.com.puppis.validator.ValidatorUser;
 
 public class LoginModule {
 
-	@Inject
 	private Dao dao;
-	@Inject
 	private Result result;
-	@Inject
 	private Validator validator;
-	@Inject
 	private ValidatorUser validatorUser;
-	@Inject
 	private UserName userName;
+	
+	@Inject
+	public LoginModule(Dao dao, Result result, Validator validator, ValidatorUser validatorUser, UserName userName) {
+		// TODO Auto-generated constructor stub
+		this.dao = dao;
+		this.result = result;
+		this.validator = validator;
+		this.validatorUser = validatorUser;
+		this.userName = userName;
+	}
+	public LoginModule() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	public void loga(String usuario, String senha, Integer idComercio) {
 		if (this.validatorUser.validarUsuario(usuario) && this.validatorUser.validarSenha(senha)) {

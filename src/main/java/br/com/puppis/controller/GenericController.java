@@ -18,6 +18,7 @@ import br.com.mhc.paginator.Paginator;
 import br.com.mhc.parametrosweb.ParametrosWeb;
 import br.com.puppis.dao.Dao;
 import br.com.puppis.dao.GenericDao;
+import br.com.puppis.model.AdmUsuario;
 
 public abstract class GenericController<T> {
 	
@@ -88,14 +89,12 @@ public abstract class GenericController<T> {
 	
 	@Get("json")
 	public void toJSON(T obj, List<ParametrosWeb> parametrosWeb) {
-		List<T> list = getDao().findAll(obj.getClass(), parametrosWeb);
-		this.result.use(Results.json()).from(list).serialize();
+		this.result.use(Results.json()).from(getDao().findAll(obj.getClass(), parametrosWeb)).serialize();
 	}
 	
 	@Get("xml")
 	public void toXML(T obj, List<ParametrosWeb> parametrosWeb) {
-		List<T> list = getDao().findAll(obj.getClass(), parametrosWeb);
-		this.result.use(Results.xml()).from(list).recursive().serialize();
+		this.result.use(Results.xml()).from(getDao().findAll(obj.getClass(), parametrosWeb)).recursive().serialize();
 	}
 	
 	protected Object edit(T obj) {
@@ -120,6 +119,10 @@ public abstract class GenericController<T> {
 
 	protected void setRedirect(boolean redirect) {
 		this.redirect = redirect;
+	}
+	
+	protected List<AdmUsuario> buscarTodos(Class clazz) {
+		return getDao().findAll(clazz, null);
 	}
 	
 }

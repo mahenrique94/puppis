@@ -19,9 +19,9 @@ public class FinDocumentoCentroCustoController extends GenericController<FinDocu
 	@Override
 	public void deletar(FinDocumentoCentroCusto obj) {
 		// TODO Auto-generated method stub
-		this.setRedirect(false);
+		super.setRedirect(false);
 		super.deletar(obj);
-		this.result.nothing();
+		super.result.nothing();
 	}
 	
 	@Get("{obj.id}")
@@ -36,7 +36,7 @@ public class FinDocumentoCentroCustoController extends GenericController<FinDocu
 	@Override
 	public void formulario(FinDocumentoCentroCusto obj) {
 		// TODO Auto-generated method stub
-		this.result.include("obj", obj);
+		super.result.include("obj", obj);
 		super.formulario(obj);
 	}
 
@@ -44,16 +44,16 @@ public class FinDocumentoCentroCustoController extends GenericController<FinDocu
 	public void loadGrid(FinDocumentoCentroCusto obj) {
 		List<ParametrosWeb> parametrosWeb = new ArrayList<ParametrosWeb>();
 		parametrosWeb.add(new ParametrosWeb("iddocumento.id", obj.getIddocumento().getId().toString()));
-		this.listar(obj, parametrosWeb);
+		super.listar(obj, parametrosWeb);
 	}
 	
 	@Post("")
 	@Override
 	public void salvar(FinDocumentoCentroCusto obj) {
 		// TODO Auto-generated method stub
-		this.setRedirect(false);
+		super.setRedirect(false);
 		super.salvar(obj);
-		this.result.nothing();
+		super.result.nothing();
 	}
 	
 }

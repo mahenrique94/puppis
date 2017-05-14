@@ -29,15 +29,23 @@ import br.com.puppis.dao.GenericDao;
 @Path("relatorio")
 public class RelatorioController {
 
-	@Inject
 	private Dao dao;
-	@Inject
 	private Result result;
-	
-	private static final ReportBuilder reportBuilder = new ReportBuilder();
+	private static final ReportBuilder REPORT_BUILDER = new ReportBuilder();
 	private static final String PATH_RELATORIO = "/WEB-INF/jsp/relatorios";
 	private static final String PATH_JRXML = PATH_RELATORIO + "/jrxml";
 	private static final String PATH_LOGOTIPO = PATH_RELATORIO + "/img/logo.png";			 
+	
+	@Inject
+	public RelatorioController(Dao dao, Result result) {
+		// TODO Auto-generated constructor stub
+		this.dao = dao;
+		this.result = result;
+	}
+	@Deprecated
+	public RelatorioController() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	@Get("{operacao*}")
 	public void operacao(String operacao) {
@@ -381,7 +389,7 @@ public class RelatorioController {
 				}
 			
 			Report report = new Report(getDao().getConnection(), parameters, pathRelatorio, nomeRelatorio, ReportTypeFactory.findType(type));
-			return new InputStreamDownload(this.reportBuilder.build(report), report.getType().getType().getApplication(), report.getFinalName());
+			return new InputStreamDownload(this.REPORT_BUILDER.build(report), report.getType().getType().getApplication(), report.getFinalName());
 		}
 		return null;
 	}

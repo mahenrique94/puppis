@@ -24,8 +24,7 @@ public class FinContaBancariaController extends GenericController<FinContaBancar
 	@Override
 	public void toJSON(FinContaBancaria obj, List<ParametrosWeb> parametrosWeb) {
 		// TODO Auto-generated method stub
-		List<FinContaBancaria> list = this.getDao().findAll(FinContaBancaria.class, parametrosWeb);
-		this.result.use(Results.json()).from(list).include("idtipocontabancaria").serialize();
+		super.result.use(Results.json()).from(super.getDao().findAll(FinContaBancaria.class, parametrosWeb)).include("idtipocontabancaria").serialize();
 	}
 
 }

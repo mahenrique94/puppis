@@ -10,8 +10,17 @@ import br.com.caelum.vraptor.Intercepts;
 @Intercepts
 public class EntityManagerInterceptor {
 
-	@Inject
 	private EntityManager em;
+	
+	@Inject
+	public EntityManagerInterceptor(EntityManager em) {
+		// TODO Auto-generated constructor stub
+		this.em = em;
+	}
+	@Deprecated
+	public EntityManagerInterceptor() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	@BeforeCall
 	public void before() {

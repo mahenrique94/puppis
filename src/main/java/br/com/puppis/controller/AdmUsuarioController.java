@@ -21,9 +21,9 @@ public class AdmUsuarioController extends GenericController<AdmUsuario> {
 	@Override
 	public void salvar(AdmUsuario obj) {
 		// TODO Auto-generated method stub
-		this.setRedirect(false);
+		super.setRedirect(false);
 		super.salvar(obj);
-		this.result.redirectTo(this).editar(this.getObj());
+		super.result.redirectTo(this).editar(super.getObj());
 	}
 	
 }

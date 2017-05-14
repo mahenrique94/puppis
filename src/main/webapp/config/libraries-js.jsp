@@ -1,4 +1,5 @@
 <script src="<c:url value="/assets/css/stilize/stilize.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/js/ssearch/ssearch.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/js/jlib/jlib.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/js/jlib/autocomplete.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/js/jlib/checkGrid.js"/>" type="text/javascript"></script>

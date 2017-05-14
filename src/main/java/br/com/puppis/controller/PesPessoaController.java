@@ -21,13 +21,13 @@ public class PesPessoaController extends GenericController<PesPessoa> {
 	@Override
 	public void salvar(PesPessoa obj) {
 		// TODO Auto-generated method stub
-		this.setRedirect(false);
+		super.setRedirect(false);
 		if (obj.getId() == null) {
 			obj.getEndereco().setIdpessoa(obj);
 			obj.getDocumento().setIdpessoa(obj);
 		}
 		super.salvar(obj);
-		this.result.redirectTo(this).editar(this.getObj());
+		super.result.redirectTo(this).editar(super.getObj());
 	}
 	
 }

@@ -17,12 +17,21 @@ import br.com.puppis.movimento.MovimentoTipo;
 @Path("comercio/estoque")
 public class ComEstoqueController {
 	
-	@Inject
 	private PsProdutoServicoController psProdutoServicoController;
-	@Inject
 	private Dao dao;
-	@Inject
 	private Result result;
+	
+	@Inject
+	public ComEstoqueController(PsProdutoServicoController psProdutoServicoController, Dao dao, Result result) {
+		// TODO Auto-generated constructor stub
+		this.psProdutoServicoController = psProdutoServicoController;
+		this.dao = dao;
+		this.result = result;
+	}
+	@Deprecated
+	public ComEstoqueController() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	@Get
 	@Post

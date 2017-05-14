@@ -19,9 +19,9 @@ public class PsComposicaoController extends GenericController<PsComposicao> {
 	@Override
 	public void deletar(PsComposicao obj) {
 		// TODO Auto-generated method stub
-		this.setRedirect(false);
+		super.setRedirect(false);
 		super.deletar(obj);
-		this.result.nothing();
+		super.result.nothing();
 	}
 	
 	@Get("{obj.id}")
@@ -35,7 +35,7 @@ public class PsComposicaoController extends GenericController<PsComposicao> {
 	@Override
 	public void formulario(PsComposicao obj) {
 		// TODO Auto-generated method stub
-		this.result.include("obj", obj);
+		super.result.include("obj", obj);
 		super.formulario(obj);
 	}
 	
@@ -43,16 +43,16 @@ public class PsComposicaoController extends GenericController<PsComposicao> {
 	public void loadGrid(PsComposicao obj) {
 		List<ParametrosWeb> parametrosWeb = new ArrayList<ParametrosWeb>();
 		parametrosWeb.add(new ParametrosWeb("idprodutoservico.id", obj.getIdprodutoservico().getId().toString()));
-		this.listar(obj, parametrosWeb);
+		super.listar(obj, parametrosWeb);
 	}
 	
 	@Post("")
 	@Override
 	public void salvar(PsComposicao obj) {
 		// TODO Auto-generated method stub
-		this.setRedirect(false);
+		super.setRedirect(false);
 		super.salvar(obj);
-		this.result.nothing();
+		super.result.nothing();
 	}
 
 }

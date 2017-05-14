@@ -2,7 +2,6 @@ package br.com.puppis.validator;
 
 import br.com.puppis.model.AdmUsuario;
 
-
 public class ValidatorUser {
 
 	public boolean active(AdmUsuario usuario) {

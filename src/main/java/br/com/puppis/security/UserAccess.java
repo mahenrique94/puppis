@@ -12,8 +12,17 @@ import br.com.caelum.brutauth.auth.rules.CustomBrutauthRule;
 @HandledBy(LoginHandler.class)
 public class UserAccess implements CustomBrutauthRule {
 
-	@Inject
 	private UserName userName;
+	
+	@Inject
+	public UserAccess(UserName userName) {
+		// TODO Auto-generated constructor stub
+		this.userName = userName;
+	}
+	@Deprecated
+	public UserAccess() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public boolean isAllowed() {
 		return this.userName.isLogged();

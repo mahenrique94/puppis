@@ -6,8 +6,17 @@ import br.com.puppis.model.AdmPermissao;
 
 public class PermissionModule {
 
-	@Inject
 	private UserName userName;
+	
+	@Inject
+	public PermissionModule(UserName userName) {
+		// TODO Auto-generated constructor stub
+		this.userName = userName;
+	}
+	@Deprecated
+	public PermissionModule() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	public boolean allowed(String clazz, String method) {
 		AdmPermissao permissao = this.userName.getPermissoes().get(clazz.toUpperCase());
