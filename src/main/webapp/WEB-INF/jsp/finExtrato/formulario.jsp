@@ -10,17 +10,18 @@
 		<div class="l-row" role="row">
 			<div class="u-grid--12" role="separator">
 				<label class="o-form__text" for="conta"><fmt:message key="label.conta"/><validate:validationMessage name="obj.idcontabancaria.id"/></label>
-				<select aria-required="true" class="o-form__data has-validation" data-select="slFinContaBancaria" data-url="slFinanceiro_Conta-bancaria_Json" id="conta" name="obj.idcontabancaria.id" required></select>
+				<select aria-readonly="true" aria-required="true" class="o-form__data has-validation" data-select="slFinContaBancaria" data-url="slFinanceiro_Conta-bancaria_Json" id="conta" name="obj.idcontabancaria.id" readonly required></select>
 			</div>
 		</div>
 		<div class="l-row" role="row">
 			<div class="u-grid--6" role="separator">
 				<label class="o-form__text" for="operacao"><fmt:message key="label.operacao"/><validate:validationMessage name="obj.idtipooperacao.id"/></label>
-				<select aria-required="true" class="o-form__data has-validation" data-parameters-fields="[idmodulo.id, gruporesumo]" data-parameters-values="[2, EXTRATO]" data-select="slSysTipoOperacao" data-url="slSystem_Tipo-de-operacao_Json" id="operacao" name="obj.idtipooperacao.id" required></select>
+				<select aria-readonly="true" class="o-form__data has-validation" data-parameters-fields="[idmodulo.id, gruporesumo]" data-parameters-values="[2, EXTRATO]" data-select="slSysTipoOperacao" data-url="slSystem_Tipo-de-operacao_Json" id="operacao" name="obj.idtipooperacao.id" readonly></select>
 			</div>
 			<div class="u-grid--6" role="separator">
 				<label class="o-form__text" for="tipo"><fmt:message key="label.tipo"/><validate:validationMessage name="obj.creditodebito"/></label>
 				<select aria-required="true" class="o-form__data has-validation" id="tipo" name="obj.creditodebito" required>
+					<option value=""></option>
 					<option value="C">CREDITO</option>
 					<option value="D">DEBITO</option>
 				</select>

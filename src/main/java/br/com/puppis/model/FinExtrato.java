@@ -14,6 +14,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
@@ -23,6 +24,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Formula;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
 
@@ -64,6 +66,9 @@ public class FinExtrato implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Calendar datacreate;
+	@Transient
+	@Formula(value = "select coalesce((sum(ext.valor) - coalesce((select sum(ext2.valor) from fin_extrato ext2 where ext2.creditodebito = 'D' group by ext2.creditodebito), 0.0)), 0.0) as saldo from fin_extrato ext where ext.creditodebito = 'C' group by ext.creditodebito")
+	private Double saldo;
 	
 	public FinExtrato() {
 		// TODO Auto-generated constructor stub
@@ -128,6 +133,9 @@ public class FinExtrato implements Serializable {
 	}
 	public void setDatacreate(Calendar datacreate) {
 		this.datacreate = datacreate;
+	}
+	public Double getSaldo() {
+		return saldo;
 	}
 	
 	public static FinExtrato cria(FinDocumento finDocumento, SysTipoOperacao sysTipoOperacao, double valor, String historico) {

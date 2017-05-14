@@ -35,7 +35,7 @@
 		</c:if>
 	</section>
 	<menu class="o-toolbar--lube is-fixedBottomFull" role="menubar">
-		<menuitem class="o-toolbar__item" role="menuitem"><a href="<c:url value="/financeiro/extrato/formulario"/>" onclick="ModalController.show(this, event);" role="link" title="<fmt:message key="button.novo"/>"><i class="icon-plus"></i>&nbsp;<fmt:message key="button.novo"/></a></menuitem>
+		<menuitem class="o-toolbar__item" role="menuitem"><a href="<c:url value="/financeiro/extrato/formulario?obj.idcontabancaria.id=${parametrosWeb[0].parametroInicial}"/>" onclick="ModalController.show(this, event);" role="link" title="<fmt:message key="button.novo"/>"><i class="icon-plus"></i>&nbsp;<fmt:message key="button.novo"/></a></menuitem>
 		<menuitem class="o-toolbar__item" role="menuitem"><button role="button" title="<fmt:message key="button.pesquisar"/>" type="submit"><i class="icon-search"></i>&nbsp;<fmt:message key="button.pesquisar"/></button></menuitem>
 	</menu>
 </form>
