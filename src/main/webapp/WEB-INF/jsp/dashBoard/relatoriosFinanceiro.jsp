@@ -12,10 +12,10 @@
 	<div class="o-dashboard__content">
 		<nav class="c-square--gary" role="navigation">
 			<menu aria-haspopup="true" class="c-square__menu" role="menubar">
-				<menuitem class="c-square__item ${disabledFinanceiro}" role="menuitem"><a href="<c:url value="/relatorio/financeiro/documento/custo"/>" role="link" title="<fmt:message key="nav.financeiro.relatorios.documento.custo"/>"><i class="icon-money"></i><fmt:message key="nav.financeiro.relatorios.documento.custo"/></a></menuitem>
-				<menuitem class="c-square__item ${disabledFinanceiro}" role="menuitem"><a href="<c:url value="/relatorio/financeiro/documento/pagamento"/>" role="link" title="<fmt:message key="nav.financeiro.relatorios.documento.pagamento"/>"><i class="icon-dollar"></i><fmt:message key="nav.financeiro.relatorios.documento.pagamento"/></a></menuitem>
-				<menuitem class="c-square__item ${disabledFinanceiro}" role="menuitem"><a href="<c:url value="/relatorio/financeiro/documento/pessoa"/>" role="link" title="<fmt:message key="nav.financeiro.relatorios.documento.pessoa"/>"><i class="icon-male"></i><fmt:message key="nav.financeiro.relatorios.documento.pessoa"/></a></menuitem>
-				<menuitem class="c-square__item ${disabledFinanceiro}" role="menuitem"><a href="<c:url value="/relatorio/financeiro/extrato"/>" role="link" title="<fmt:message key="nav.financeiro.relatorios.extrato"/>"><i class="icon-list-bullet"></i><fmt:message key="nav.financeiro.relatorios.extrato"/></a></menuitem>
+				<menuitem class="c-square__item" role="menuitem"><a class="${disabledFinanceiro}" href="<c:url value="/relatorio/financeiro/documento/custo"/>" role="link" title="<fmt:message key="nav.financeiro.relatorios.documento.custo"/>"><i class="icon-money"></i><fmt:message key="nav.financeiro.relatorios.documento.custo"/></a></menuitem>
+				<menuitem class="c-square__item" role="menuitem"><a class="${disabledFinanceiro}" href="<c:url value="/relatorio/financeiro/documento/pagamento"/>" role="link" title="<fmt:message key="nav.financeiro.relatorios.documento.pagamento"/>"><i class="icon-dollar"></i><fmt:message key="nav.financeiro.relatorios.documento.pagamento"/></a></menuitem>
+				<menuitem class="c-square__item" role="menuitem"><a class="${disabledFinanceiro}" href="<c:url value="/relatorio/financeiro/documento/pessoa"/>" role="link" title="<fmt:message key="nav.financeiro.relatorios.documento.pessoa"/>"><i class="icon-male"></i><fmt:message key="nav.financeiro.relatorios.documento.pessoa"/></a></menuitem>
+				<menuitem class="c-square__item" role="menuitem"><a class="${disabledFinanceiro}" href="<c:url value="/relatorio/financeiro/extrato"/>" role="link" title="<fmt:message key="nav.financeiro.relatorios.extrato"/>"><i class="icon-list-bullet"></i><fmt:message key="nav.financeiro.relatorios.extrato"/></a></menuitem>
 			</menu>
 		</nav>
 	</div>

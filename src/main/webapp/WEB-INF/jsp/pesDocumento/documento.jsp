@@ -13,11 +13,11 @@
 			</div>
 			<div class="u-grid--2" role="grid">
 				<label class="o-form__text" for="dataexpedicao"><fmt:message key="label.data.expedicao"/><validate:validationMessage name="obj.documento.dataexpedicaocnh"/></label>
-				<input class="o-form__data has-validation" id="dataexpedicao" maxlength="10" max="31-12-2900" min="01-01-1900" name="obj.documento.dataexpedicaocnh" onkeypress="checkMask(event);" onkeyup="mask(maskData, this, event);" pattern="data" type="text" value="<fmt:formatDate pattern="dd/MM/yyyy" type="date" value="${obj.documento.dataexpedicaocnh.time}"/>">
+				<input class="o-form__data has-validation" id="dataexpedicao" max="31-12-2900" maxlength="10" min="01-01-1900" name="obj.documento.dataexpedicaocnh" onkeypress="checkMask(event);" onkeyup="mask(maskData, this, event);" pattern="data" type="text" value="<fmt:formatDate pattern="dd/MM/yyyy" type="date" value="${obj.documento.dataexpedicaocnh.time}"/>">
 			</div>
 			<div class="u-grid--2" role="grid">
 				<label class="o-form__text" for="datavencimento"><fmt:message key="label.data.vencimento"/><validate:validationMessage name="obj.documento.datavencimentocnh"/></label>
-				<input class="o-form__data has-validation" id="datavencimento" maxlength="10" max="31-12-2900" min="01-01-1970" name="obj.documento.datavencimentocnh" onkeypress="checkMask(event);" onkeyup="mask(maskData, this, event);" pattern="data" type="text" value="<fmt:formatDate pattern="dd/MM/yyyy" type="date" value="${obj.documento.datavencimentocnh.time}"/>">
+				<input class="o-form__data has-validation" id="datavencimento" max="31-12-2900" maxlength="10" min="01-01-1900" name="obj.documento.datavencimentocnh" onkeypress="checkMask(event);" onkeyup="mask(maskData, this, event);" pattern="data" type="text" value="<fmt:formatDate pattern="dd/MM/yyyy" type="date" value="${obj.documento.datavencimentocnh.time}"/>">
 			</div>
 		</div>
 		<div class="l-row" role="row">

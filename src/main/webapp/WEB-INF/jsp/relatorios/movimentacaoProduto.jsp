@@ -33,8 +33,8 @@
 						</div>
 						<div class="l-row" role="row">
 							<div class="u-grid--12" role="grid">
-								<label class="o-form__text" for="datacadastroinicial"><fmt:message key="label.data.cadastro"/></label>
-								<input class="o-form__data has-validation" id="datacadastroinicial" maxlength="10" name="parametrosWeb[4].parametroInicial" onkeypress="checkMask(event);" onkeyup="mask(maskData, this, event);" pattern="data" placeholder="<fmt:message key="placeholder.data"/>" type="text">
+								<label class="o-form__text" for="datamovimentacaoinicial"><fmt:message key="label.data.movimentacao"/></label>
+								<input class="o-form__data has-validation" id="datamovimentacaoinicial" max="31-12-2900" maxlength="10" min="01-01-1900" name="parametrosWeb[4].parametroInicial" onkeypress="checkMask(event);" onkeyup="mask(maskData, this, event);" pattern="data" placeholder="<fmt:message key="placeholder.data"/>" type="text">
 							</div>
 						</div>
 					</section>
@@ -61,8 +61,8 @@
 						</div>
 						<div class="l-row" role="row">
 							<div class="u-grid--12" role="grid">
-								<label class="o-form__text" for="datacadastrofinal"><fmt:message key="label.data.cadastro"/></label>
-								<input class="o-form__data has-validation" id="datacadastrofinal" maxlength="10" name="parametrosWeb[4].parametroFinal" onkeypress="checkMask(event);" onkeyup="mask(maskData, this, event);" pattern="data" placeholder="<fmt:message key="placeholder.data"/>" type="text">
+								<label class="o-form__text" for="datamovimentacaofinal"><fmt:message key="label.data.movimentacao"/></label>
+								<input class="o-form__data has-validation" id="datamovimentacaofinal" max="31-12-2900" maxlength="10" min="01-01-1900" name="parametrosWeb[4].parametroFinal" onkeypress="checkMask(event);" onkeyup="mask(maskData, this, event);" pattern="data" placeholder="<fmt:message key="placeholder.data"/>" type="text">
 							</div>
 						</div>
 					</section>

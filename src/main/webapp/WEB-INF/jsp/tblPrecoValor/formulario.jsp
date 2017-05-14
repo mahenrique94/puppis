@@ -11,11 +11,11 @@
 		<div class="l-row" role="row">
 			<div class="u-grid--6" role="grid">
 				<label class="o-form__text" for="datavigenciainicial"><fmt:message key="label.data.vigencia.inicial"/><validate:validationMessage name="obj.datavigenciainicial"/></label>
-				<input aria-required="true" ${autoFocus} class="o-form__data has-validation" id="datavigenciainicial" maxlength="16" name="obj.datavigenciainicial" onkeypress="checkMask(event);" onkeyup="mask(maskDataHora, this, event);" pattern="dataHora" required type="text" value="<fmt:formatDate pattern="dd/MM/yyyy HH:mm" type="date" value="${obj.datavigenciainicial.time}"/>">
+				<input aria-required="true" ${autoFocus} class="o-form__data has-validation" id="datavigenciainicial" max="31-12-2900" maxlength="16" min="01-01-1900" name="obj.datavigenciainicial" onkeypress="checkMask(event);" onkeyup="mask(maskDataHora, this, event);" pattern="dataHora" required type="text" value="<fmt:formatDate pattern="dd/MM/yyyy HH:mm" type="date" value="${obj.datavigenciainicial.time}"/>">
 			</div>
 			<div class="u-grid--6" role="grid">
 				<label class="o-form__text" for="datavigenciafinal"><fmt:message key="label.data.vigencia.final"/><validate:validationMessage name="obj.datavigenciafinal"/></label>
-				<input aria-required="true" class="o-form__data has-validation" id="datavigenciafinal" maxlength="16" name="obj.datavigenciafinal" onkeypress="checkMask(event);" onkeyup="mask(maskDataHora, this, event);" pattern="dataHora" required type="text" value="<fmt:formatDate pattern="dd/MM/yyyy HH:mm" type="date" value="${obj.datavigenciafinal.time}"/>">
+				<input aria-required="true" class="o-form__data has-validation" id="datavigenciafinal" max="31-12-2900" maxlength="16" min="01-01-1900" name="obj.datavigenciafinal" onkeypress="checkMask(event);" onkeyup="mask(maskDataHora, this, event);" pattern="dataHora" required type="text" value="<fmt:formatDate pattern="dd/MM/yyyy HH:mm" type="date" value="${obj.datavigenciafinal.time}"/>">
 			</div>
 		</div>
 		<div class="l-row" role="row">

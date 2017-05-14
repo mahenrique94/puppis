@@ -40,13 +40,13 @@
 			</div>
 			<div class="u-grid--10" role="grid">
 				<label class="o-form__text" for="cidade"><fmt:message key="label.cidade"/><validate:validationMessage name="obj.endereco.idcidade.id"/></label>
-				<select aria-required="true" class="o-form__data has-validation" data-cep="cidade" data-changed data-parameters-fields="[iduf.id]" data-parameters-values="[slCadEstado]" data-select="slCadCidade" data-url="slCadastro_Cidade_Json" id="cidade" name="obj.endereco.idcidade.id" required></select>
+				<select aria-required="true" class="o-form__data has-validation" data-cep="cidade" data-changed data-parameters-fields="[idestado.id]" data-parameters-values="[slCadEstado]" data-select="slCadCidade" data-url="slCadastro_Cidade_Json" id="cidade" name="obj.endereco.idcidade.id" required></select>
 			</div>
 		</div>
 		<div class="l-row" role="row">
 			<div class="u-grid--12" role="grid">
 				<label class="o-form__text" for="pais"><fmt:message key="label.pais"/><validate:validationMessage name="obj.endereco.idcidade.idestado.idpais.id"/></label>
-				<select aria-required="true" class="o-form__data has-validation" data-cep="pais" data-select="slCadPais" data-url="slCadastro_Pais_Json" id="pais" name="obj.endereco.idcidade.idestado.idpais.id" required></select>
+				<select class="o-form__data has-validation" data-cep="pais" data-select="slCadPais" data-url="slCadastro_Pais_Json" id="pais" name="obj.endereco.idcidade.idestado.idpais.id"></select>
 			</div>
 		</div>
 	</section>

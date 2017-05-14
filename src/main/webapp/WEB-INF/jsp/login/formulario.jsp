@@ -29,7 +29,7 @@
 								<div class="u-grid--12" role="grid">
 									<div class="o-login__group">
 										<i class="o-login__icon icon-user"></i>
-										<input aria-required="true" autofocus class="o-login__data" maxlength="30" name="usuario" pattern="letraNumeroPonto" placeholder="<fmt:message key="label.usuario"/>" required type="text">
+										<input aria-required="true" ${usuario != null ? '' : 'autofocus'} class="o-login__data" maxlength="30" name="usuario" pattern="letraNumeroPonto" placeholder="<fmt:message key="label.usuario"/>" required type="text" value="${usuario}">
 									</div>
 								</div>
 							</div>
@@ -37,7 +37,7 @@
 								<div class="u-grid--12" role="grid">
 									<div class="o-login__group">
 										<i class="o-login__icon icon-lock"></i>
-										<input aria-required="true" class="o-login__data" maxlength="8" name="senha" pattern="letraNumeroMin8Max8" placeholder="<fmt:message key="label.senha"/>" required type="password">
+										<input aria-required="true" class="o-login__data" maxlength="8" name="senha" pattern="letraNumeroMin8Max8" placeholder="<fmt:message key="label.senha"/>" required type="password" value="${senha}">
 									</div>
 								</div>
 							</div>

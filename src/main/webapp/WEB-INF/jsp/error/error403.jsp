@@ -8,27 +8,17 @@
    	<title>PUPPIS - Acessado negado</title>
    	<link rel="icon" href="<c:url value="/images/favicon.ico"/>">
 </head>
-<body>
-	<main id="wrap" role="main">
-		<section id="content" style="padding-bottom: 4rem;">
-			<section class="container-center-sm">
-				<img class="error-logo" src="<c:url value="/img/robo.jpeg"/>">
-				<div class="error-info">
-					<h1>403!</h1>
-					<h3>Acesso negado</h3>
-					<p>Você tentou acessar uma página que você não ter permissão, por favor verifique com seu superior.</p>
-				</div>
-			</section>
-			<div class="error-band">
-				<section class="container-center-sm">
-					<ul class="error-list">
-						<li>Seu problema pode ter ocorrido por algum dos motivos abaixo:</li>
-						<li>Você tentou acessar um endereço ou página que não você não possui permissão</li>
-					</ul>
-					<a class="btn-default btn-full btn-lg" href="<c:url value="/dashboard"/>"><i class="icon-left"></i>&nbsp;Página Inicial</a>
-				</section>
-			</div>
-		</section>
-	</main>
+<body class="o-pageError--holeMan">
+	<header class="o-pageError__header">
+		<h1><a class="o-pageError__brand" href="<c:url value="/"/>"><fmt:message key="titulo.pagina"/></a></h1>
+	</header>
+	<section class="o-pageError__body">
+		<span class="o-pageError__picture"></span>
+		<div class="o-pageError__info">
+			<h2 class="o-pageError__title">403!</h2>
+			<p class="o-pageError__describe">Você esta tentando acessar um recurso que não possuí permissão.</p>
+			<label class="o-pageError__feedback">Retornar para a <a class="o-pageError__link" href="<c:url value="/"/>">página principal.</a></label>
+		</div>
+	</section>
 </body>
 </html>

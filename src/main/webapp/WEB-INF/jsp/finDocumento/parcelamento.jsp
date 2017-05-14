@@ -18,7 +18,7 @@
 		<div class="l-row" role="row">
 			<div class="u-grid--6">
 				<label class="o-form__text" for="operacao"><fmt:message key="label.operacao"/></label>
-				<select aria-required="true" class="o-form__data has-validation" data-parameters-fields="[idmodulo.id, gruporesumo]" data-parameters-values="[2, DOCUMENTO]" data-select="slSysTipoOperacao" data-url="slSystem_Tipo-de-operacao_Json" id="operacao" name="parametrosWeb[9].parametroInicial" required></select>
+				<select aria-readonly="true" class="o-form__data has-validation" data-parameters-fields="[idmodulo.id, gruporesumo]" data-parameters-values="[2, DOCUMENTO]" data-select="slSysTipoOperacao" data-url="slSystem_Tipo-de-operacao_Json" id="operacao" name="parametrosWeb[9].parametroInicial" readonly></select>
 			</div>
 			<div class="u-grid--6" role="grid">
 				<label class="o-form__text" for="formapagamento"><fmt:message key="label.forma.pagamento"/></label>

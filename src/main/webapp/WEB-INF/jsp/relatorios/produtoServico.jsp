@@ -28,7 +28,7 @@
 						<div class="l-row" role="row">
 							<div class="u-grid--12" role="grid">
 								<label class="o-form__text" for="datacadastroinicial"><fmt:message key="label.data.cadastro"/></label>
-								<input class="o-form__data has-validation" id="datacadastroinicial" maxlength="10" name="parametrosWeb[3].parametroInicial" onkeypress="checkMask(event);" onkeyup="mask(maskData, this, event);" pattern="data" placeholder="<fmt:message key="placeholder.data"/>" type="text">
+								<input class="o-form__data has-validation" id="datacadastroinicial" max="31-12-2900" maxlength="10" min="01-01-1900" name="parametrosWeb[3].parametroInicial" onkeypress="checkMask(event);" onkeyup="mask(maskData, this, event);" pattern="data" placeholder="<fmt:message key="placeholder.data"/>" type="text">
 							</div>
 						</div>
 					</section>
@@ -50,7 +50,7 @@
 						<div class="l-row" role="row">
 							<div class="u-grid--12" role="grid">
 								<label class="o-form__text" for="datacadastrofinal"><fmt:message key="label.data.cadastro"/></label>
-								<input class="o-form__data has-validation" id="datacadastrofinal" maxlength="10" name="parametrosWeb[3].parametroFinal" onkeypress="checkMask(event);" onkeyup="mask(maskData, this, event);" pattern="data" placeholder="<fmt:message key="placeholder.data"/>" type="text">
+								<input class="o-form__data has-validation" id="datacadastrofinal" max="31-12-2900" maxlength="10" min="01-01-1900" name="parametrosWeb[3].parametroFinal" onkeypress="checkMask(event);" onkeyup="mask(maskData, this, event);" pattern="data" placeholder="<fmt:message key="placeholder.data"/>" type="text">
 							</div>
 						</div>
 					</section>

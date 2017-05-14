@@ -6,11 +6,11 @@
 	<div class="l-row" role="row">
 		<div class="u-grid--6">
 			<label class="o-form__text" for="operacao"><fmt:message key="label.operacao"/><validate:validationMessage name="obj.idtipooperacao.id"/></label>
-			<select aria-required="true" ${autoFocus} class="o-form__data has-validation" data-parameters-fields="[idmodulo.id, gruporesumo]" data-parameters-values="[2, DOCUMENTO]" data-select="slSysTipoOperacao" data-url="slSystem_Tipo-de-operacao_Json" ${disabled} id="operacao" name="obj.idtipooperacao.id" ${readOnly} required></select>
+			<select aria-readonly="true" class="o-form__data has-validation" data-parameters-fields="[idmodulo.id, gruporesumo]" data-parameters-values="[2, DOCUMENTO]" data-select="slSysTipoOperacao" data-url="slSystem_Tipo-de-operacao_Json" ${disabled} id="operacao" name="obj.idtipooperacao.id" readonly></select>
 		</div>
 		<div class="u-grid--6" role="grid">
 			<label class="o-form__text" for="formapagamento"><fmt:message key="label.forma.pagamento"/><validate:validationMessage name="obj.idformapagamento.id"/></label>
-			<select aria-required="true" class="o-form__data has-validation" data-select="slFinFormaPagamento" data-url="slFinanceiro_Forma-de-pagamento_Json" ${disabled} id="formapagamento" name="obj.idformapagamento.id" ${readOnly} required></select>
+			<select aria-required="true" ${autoFocus} class="o-form__data has-validation" data-select="slFinFormaPagamento" data-url="slFinanceiro_Forma-de-pagamento_Json" ${disabled} id="formapagamento" name="obj.idformapagamento.id" ${readOnly} required></select>
 		</div>
 	</div>
 	<div class="l-row" role="row">

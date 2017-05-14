@@ -11,9 +11,9 @@
 	<div class="o-dashboard__content">
 		<nav class="c-square--gary" role="navigation">
 			<menu aria-haspopup="true" class="c-square__menu" role="menubar">
-				<menuitem class="c-square__item ${disabledComercio}" role="menuitem"><a href="<c:url value="/comercio/nota"/>" role="link" title="<fmt:message key="nav.comercio.nota"/>"><i class="icon-doc-inv"></i><fmt:message key="nav.comercio.nota"/></a></menuitem>
-				<menuitem class="c-square__item ${disabledComercio}" role="menuitem"><a href="<c:url value="/comercio/estoque/correcao"/>" role="link" title="<fmt:message key="nav.comercio.correcao.estoque"/>"><i class="icon-exchange"></i><fmt:message key="nav.comercio.correcao.estoque"/></a></menuitem>
-				<menuitem class="c-square__item ${disabledComercio}" role="menuitem"><a href="<c:url value="/dashboard/relatorios/comercio"/>" role="link" title="<fmt:message key="nav.comercio.relatorios"/>"><i class="icon-chart-bar"></i><fmt:message key="nav.comercio.relatorios"/></a></menuitem>
+				<menuitem class="c-square__item" role="menuitem"><a class="${disabledComercio}" href="<c:url value="/comercio/nota"/>" role="link" title="<fmt:message key="nav.comercio.nota"/>"><i class="icon-doc-inv"></i><fmt:message key="nav.comercio.nota"/></a></menuitem>
+				<menuitem class="c-square__item" role="menuitem"><a class="${disabledComercio}" href="<c:url value="/comercio/estoque/correcao"/>" role="link" title="<fmt:message key="nav.comercio.correcao.estoque"/>"><i class="icon-exchange"></i><fmt:message key="nav.comercio.correcao.estoque"/></a></menuitem>
+				<menuitem class="c-square__item" role="menuitem"><a class="${disabledComercio}" href="<c:url value="/dashboard/relatorios/comercio"/>" role="link" title="<fmt:message key="nav.comercio.relatorios"/>"><i class="icon-chart-bar"></i><fmt:message key="nav.comercio.relatorios"/></a></menuitem>
 			</menu>
 		</nav>
 	</div>

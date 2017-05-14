@@ -12,7 +12,7 @@
 	<div class="o-dashboard__content">
 		<nav class="c-square--gary" role="navigation">
 			<menu aria-haspopup="true" class="c-square__menu" role="menubar">
-				<menuitem class="c-square__item ${disabledCadastro}" role="menuitem"><a href="<c:url value="/relatorio/movimentacao/produto"/>" role="link" title="<fmt:message key="nav.comercio.relatorios.movimentacao.produto"/>"><i class="icon-exchange"></i><fmt:message key="nav.comercio.relatorios.movimentacao.produto"/></a></menuitem>
+				<menuitem class="c-square__item" role="menuitem"><a class="${disabledComercio}" href="<c:url value="/relatorio/movimentacao/produto"/>" role="link" title="<fmt:message key="nav.comercio.relatorios.movimentacao.produto"/>"><i class="icon-exchange"></i><fmt:message key="nav.comercio.relatorios.movimentacao.produto"/></a></menuitem>
 			</menu>
 		</nav>
 	</div>

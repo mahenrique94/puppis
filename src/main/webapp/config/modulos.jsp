@@ -1,10 +1,10 @@
 <%@include file="taglibraries.jsp"%>
-<c:set value="disabled" var="disabledAdministrador"/>
-<c:set value="disabled" var="disabledCadastro"/>
-<c:set value="disabled" var="disabledComercio"/>
-<c:set value="disabled" var="disabledFinanceiro"/>
-<c:set value="disabled" var="disabledRelatorio"/>
-<c:forEach items="${username.modulos}" var="modulo">
+<c:set value="is-disabled" var="disabledAdministrador"/>
+<c:set value="is-disabled" var="disabledCadastro"/>
+<c:set value="is-disabled" var="disabledComercio"/>
+<c:set value="is-disabled" var="disabledFinanceiro"/>
+<c:set value="is-disabled" var="disabledRelatorio"/>
+<c:forEach items="${userName.modulos}" var="modulo">
 	<c:if test="${modulo.equals('ADMINISTRADOR')}">
 		<c:set value="" var="disabledAdministrador"/>
 	</c:if>

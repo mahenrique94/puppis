@@ -11,13 +11,13 @@
 			<div class="u-grid--2" role="grid">
 				<div class="o-form__group">
 					<span class="o-form__groupElement"><label class="o-button--lube"><fmt:message key="label.de"/></label></span>
-					<input class="o-form__data has-validation" maxlength="10" max="12-31-2900" min="01-01-1900" name="parametrosWeb[1].parametroInicial" onkeypress="checkMask(event);" onkeyup="mask(maskData, this, event);" pattern="data" type="text" value="${parametrosWeb[1].parametroInicial}">
+					<input class="o-form__data has-validation" max="12-31-2900" maxlength="10" min="01-01-1900" name="parametrosWeb[1].parametroInicial" onkeypress="checkMask(event);" onkeyup="mask(maskData, this, event);" pattern="data" type="text" value="${parametrosWeb[1].parametroInicial}">
 				</div>
 			</div>
 			<div class="u-grid--2" role="grid">
 				<div class="o-form__group">
 					<span class="o-form__groupElement"><label class="o-button--lube"><fmt:message key="label.ate"/></label></span>
-					<input class="o-form__data has-validation" maxlength="10" max="12-31-2900" min="01-01-1900" name="parametrosWeb[1].parametroFinal" onkeypress="checkMask(event);" onkeyup="mask(maskData, this, event);" pattern="data" type="text" value="${parametrosWeb[1].parametroFinal}">
+					<input class="o-form__data has-validation" max="12-31-2900" maxlength="10" min="01-01-1900" name="parametrosWeb[1].parametroFinal" onkeypress="checkMask(event);" onkeyup="mask(maskData, this, event);" pattern="data" type="text" value="${parametrosWeb[1].parametroFinal}">
 				</div>
 			</div>
 			<div class="u-grid--2" role="grid">

@@ -8,7 +8,7 @@
 		</div>							
 		<div class="u-grid--6" role="grid">
 			<label class="o-form__text" for="datacreate"><fmt:message key="label.data.create"/><validate:validationMessage name="obj.datacreate"/></label>
-			<input aria-readonly="true" aria-required="true" class="o-form__data has-validation" id="datacreate" maxlength="10" onkeypress="checkMask(event);" onkeyup="mask(maskData, this, event);" pattern="data" readonly required type="text" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${obj.datacreate.time}" type="date"/>"/>
+			<input aria-readonly="true" aria-required="true" class="o-form__data has-validation" id="datacreate" max="31-12-2900" maxlength="10" min="01-01-1900" onkeypress="checkMask(event);" onkeyup="mask(maskData, this, event);" pattern="data" readonly required type="text" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${obj.datacreate.time}" type="date"/>"/>
 		</div>							
 	</div>
 	<c:import url="../documento.jsp"/>

@@ -11,10 +11,10 @@
 	<div class="o-dashboard__content">
 		<nav class="c-square--gary" role="navigation">
 			<menu aria-haspopup="true" class="c-square__menu" role="menubar">
-				<menuitem class="c-square__item ${disabledAdministrador}" role="menuitem"><a href="<c:url value="/administrador/comercio"/>" role="link" title="<fmt:message key="nav.administrador.comercio"/>"><i class="icon-vcard"></i><fmt:message key="nav.administrador.comercio"/></a></menuitem>
-				<menuitem class="c-square__item ${disabledAdministrador}" role="menuitem"><a href="<c:url value="/administrador/usuario/grupo"/>" role="link" title="<fmt:message key="nav.administrador.usuario.grupo"/>"><i class="icon-users"></i><fmt:message key="nav.administrador.usuario.grupo"/></a></menuitem>
-				<menuitem class="c-square__item ${disabledAdministrador}" role="menuitem"><a href="<c:url value="/administrador/usuario/tipo-de-acesso"/>" role="link" title="<fmt:message key="nav.administrador.usuario.tipo.acesso"/>"><i class="icon-lock"></i><fmt:message key="nav.administrador.usuario.tipo.acesso"/></a></menuitem>
-				<menuitem class="c-square__item ${disabledAdministrador}" role="menuitem"><a href="<c:url value="/administrador/usuario"/>" role="link" title="<fmt:message key="nav.administrador.usuario"/>"><i class="icon-user"></i><fmt:message key="nav.administrador.usuario"/></a></menuitem>
+				<menuitem class="c-square__item" role="menuitem"><a class="${disabledAdministrador}" href="<c:url value="/administrador/comercio"/>" role="link" title="<fmt:message key="nav.administrador.comercio"/>"><i class="icon-vcard"></i><fmt:message key="nav.administrador.comercio"/></a></menuitem>
+				<menuitem class="c-square__item" role="menuitem"><a class="${disabledAdministrador}" href="<c:url value="/administrador/usuario/grupo"/>" role="link" title="<fmt:message key="nav.administrador.usuario.grupo"/>"><i class="icon-users"></i><fmt:message key="nav.administrador.usuario.grupo"/></a></menuitem>
+				<menuitem class="c-square__item" role="menuitem"><a class="${disabledAdministrador}" href="<c:url value="/administrador/usuario/tipo-de-acesso"/>" role="link" title="<fmt:message key="nav.administrador.usuario.tipo.acesso"/>"><i class="icon-lock"></i><fmt:message key="nav.administrador.usuario.tipo.acesso"/></a></menuitem>
+				<menuitem class="c-square__item" role="menuitem"><a class="${disabledAdministrador}" href="<c:url value="/administrador/usuario"/>" role="link" title="<fmt:message key="nav.administrador.usuario"/>"><i class="icon-user"></i><fmt:message key="nav.administrador.usuario"/></a></menuitem>
 			</menu>
 		</nav>
 	</div>
