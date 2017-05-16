@@ -4,7 +4,7 @@
 	<div class="l-row" role="row">
 		<div class="u-grid--6" role="grid">
 			<label class="o-form__text" for="grupoclasse"><fmt:message key="label.grupo.classe"/><validate:validationMessage name="obj.idclasse.id"/></label>
-			<select aria-required="true" ${autoFocus} class="o-form__data has-validation" data-select="slPsGrupoClasse" data-url="slProduto-Servico_Classe_Json" id="grupoclasse" name="obj.idclasse.id" required></select>
+			<select aria-required="true" ${autoFocus} class="o-form__data has-validation ss-search" data-select="slPsGrupoClasse" data-url="slProduto-Servico_Classe_Json" id="grupoclasse" name="obj.idclasse.id" required></select>
 		</div>
 		<div class="u-grid--3" role="grid">
 			<label class="o-form__text" for="id"><fmt:message key="label.id"/><validate:validationMessage name="obj.id"/></label>

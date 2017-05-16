@@ -16,7 +16,7 @@
 	<div class="l-row" role="row">
 		<div class="u-grid--6" role="grid">
 			<label class="o-form__text" for="pessoa"><fmt:message key="label.pessoa"/><validate:validationMessage name="obj.iddefinicao.id"/></label>
-			<select aria-required="true" class="o-form__data has-validation" data-select="slPesDefinicao" data-url="slPessoa_Definicao_Json" ${disabled} id="pessoa" name="obj.iddefinicao.id" ${readOnly} required></select>
+			<select aria-required="true" class="o-form__data has-validation ss-search" data-select="slPesDefinicao" data-url="slPessoa_Definicao_Json" ${disabled} id="pessoa" name="obj.iddefinicao.id" ${readOnly} required></select>
 		</div>
 		<div class="u-grid--3" role="grid">
 			<label class="o-form__text" for="conta"><fmt:message key="label.conta"/><validate:validationMessage name="obj.idcontabancaria.id"/></label>

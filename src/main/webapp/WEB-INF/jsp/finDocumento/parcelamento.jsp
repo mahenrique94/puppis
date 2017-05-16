@@ -28,7 +28,7 @@
 		<div class="l-row" role="row">
 			<div class="u-grid--6" role="grid">
 				<label class="o-form__text" for="pessoa"><fmt:message key="label.pessoa"/></label>
-				<select aria-required="true" class="o-form__data has-validation" data-select="slPesDefinicao" data-url="slPessoa_Definicao_Json" id="pessoa" name="parametrosWeb[1].parametroInicial" required></select>
+				<select aria-required="true" class="o-form__data has-validation ss-search" data-select="slPesDefinicao" data-url="slPessoa_Definicao_Json" id="pessoa" name="parametrosWeb[1].parametroInicial" required></select>
 			</div>
 			<div class="u-grid--3" role="grid">
 				<label class="o-form__text" for="conta"><fmt:message key="label.conta"/></label>

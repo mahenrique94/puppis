@@ -37,7 +37,7 @@
 	<div class="l-row" role="row">
 		<div class="u-grid--12" role="grid">
 			<label class="o-form__text" for=""><fmt:message key="label.pessoa"/><validate:validationMessage name="obj.operacao"/></label>
-			<select aria-required="true" class="o-form__data has-validation" data-parameters-fields="[idtipo.descricao]" data-parameters-values="[FORNECEDOR]" data-select="slPesDefinicao" data-url="slPessoa_Definicao_Json" ${disabled} ${readOnly} required name="obj.iddefinicao.id"></select>
+			<select aria-required="true" class="o-form__data has-validation ss-search" data-parameters-fields="[idtipo.descricao]" data-parameters-values="[FORNECEDOR]" data-select="slPesDefinicao" data-url="slPessoa_Definicao_Json" ${disabled} ${readOnly} required name="obj.iddefinicao.id"></select>
 		</div>
 	</div>
 </section>

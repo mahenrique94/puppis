@@ -14,7 +14,7 @@
 		<div class="l-row" role="row">
 			<div class="u-grid--12" role="separator">
 				<label class="o-form__text" for="item"><fmt:message key="label.item"/><validate:validationMessage name="obj.idprodutoservico.id"/></label>
-				<select aria-required="true" ${autoFocus} class="o-form__data has-validation" data-select="sl" data-url="slProduto-Servico_Json" id="item" name="obj.idprodutoservico.id" ${readOnly} required></select>
+				<select aria-required="true" ${autoFocus} class="o-form__data has-validation ss-search" data-select="sl" data-url="slProduto-Servico_Json" id="item" name="obj.idprodutoservico.id" ${readOnly} required></select>
 			</div>
 		</div>
 		<div class="l-row" role="row">

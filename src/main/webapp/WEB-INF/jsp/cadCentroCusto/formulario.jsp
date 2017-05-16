@@ -20,7 +20,7 @@
 			</div>
 			<div class="u-grid--6" role="grid">
 				<label class="o-form__text" for="descricaomaster"><fmt:message key="label.descricao.master"/><validate:validationMessage name="obj.idcentrocustomaster.id"/></label>
-				<select class="o-form__data has-validation" data-select="sl" data-url="slCadastro_Centro-de-Custo_Json" id="descricaomaster" name="obj.idcentrocustomaster.id"></select>
+				<select class="o-form__data has-validation ss-search" data-select="sl" data-url="slCadastro_Centro-de-Custo_Json" id="descricaomaster" name="obj.idcentrocustomaster.id"></select>
 			</div>
 		</div>
 	</section>

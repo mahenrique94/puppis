@@ -17,7 +17,7 @@
 		<div class="l-row" role="row">
 			<div class="u-grid--12" role="grid">
 				<label class="o-form__text" for="produtoservico"><fmt:message key="label.produto.servico"/></label>
-				<select aria-required="true" class="o-form__data has-validation" data-select="sl" data-url="slProduto-Servico_Json" id="produtoservico" name="idProduto" required></select>
+				<select aria-required="true" class="o-form__data has-validation ss-search" data-select="sl" data-url="slProduto-Servico_Json" id="produtoservico" name="idProduto" required></select>
 			</div>
 		</div>
 		<div class="l-row" role="row">

@@ -17,7 +17,7 @@
 		<div class="l-row" role="row">
 			<div class="u-grid--12" role="grid">
 				<label class="o-form__text" for="grupo"><fmt:message key="label.grupo"/><validate:validationMessage name="obj.idgrupo.id"/></label>
-				<select aria-required="true" ${autoFocus} class="o-form__data has-validation" data-select="sl" data-url="slProduto-Servico_Grupo_Json" id="grupo" name="obj.idgrupo.id"></select>
+				<select aria-required="true" ${autoFocus} class="o-form__data has-validation ss-search" data-select="sl" data-url="slProduto-Servico_Grupo_Json" id="grupo" name="obj.idgrupo.id"></select>
 			</div>
 		</div>
 		<div class="row" role="row">
