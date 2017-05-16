@@ -49,10 +49,6 @@ public class ComNotaItem implements Serializable {
 	private Double valorunitario;
 	@DecimalMin("0.0")
 	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
-	@Column(nullable = false)
-	private Double valortotal;
-	@DecimalMin("0.0")
-	@Digits(integer = 10, fraction = 2, message = "{numeric.10.2}")
 	@Column(nullable = true)
 	private Double porcjuros;
 	@DecimalMin("0.0")
@@ -83,7 +79,6 @@ public class ComNotaItem implements Serializable {
 		setPorcicms(0.0);
 		setPorcipi(0.0);
 		setPorcjuros(0.0);
-		setValortotal(0.0);
 		setValorunitario(0.0);
 		setDatacreate(Calendar.getInstance());
 		setDataupdate(Calendar.getInstance());
@@ -122,12 +117,6 @@ public class ComNotaItem implements Serializable {
 	}
 	public void setValorunitario(Double valorunitario) {
 		this.valorunitario = valorunitario;
-	}
-	public Double getValortotal() {
-		return valortotal;
-	}
-	public void setValortotal(Double valortotal) {
-		this.valortotal = valortotal;
 	}
 	public Double getPorcjuros() {
 		return porcjuros;
@@ -171,12 +160,12 @@ public class ComNotaItem implements Serializable {
 	public void setDataupdate(Calendar dataupdate) {
 		this.dataupdate = dataupdate;
 	}
-
-	public void calculaTotal() {
-		double total = ((getQuantidade() * getValorunitario()) + getValorIcms() + getValorIpi() + getValorJuros()) - getValorDesconto();
-		setValortotal(total);
-	}
 	
+	public Double getValortotal() {
+		if (getId() != null)
+			return ((getQuantidade() * getValorunitario()) + getValorIcms() + getValorIpi() + getValorJuros()) - getValorDesconto();
+		return 0.0;
+	}
 	public double getValorIcms() {
 		return (getPorcicms() / 100) * getValorunitario();
 	}

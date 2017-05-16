@@ -11,15 +11,27 @@
 	</nav>
 	<section class="o-form__body o-form__body--padding">
 		<div class="l-row" role="row">
-			<div class="u-grid--6" role="grid">
+			<div class="u-grid--12" role="grid">
 				<label class="o-form__text" for=""><fmt:message key="label.tabela"/></label>
 				<input aria-readonly="true" aria-required="true" class="o-form__data has-validation" name="obj.tabela" readonly required type="text" value="${obj.tabela}">
 			</div>
+		</div>
+		<div class="l-row" role="row">
 			<div class="u-grid--6" role="grid">
 				<label class="o-form__text" for="usuario"><fmt:message key="label.usuario"/></label>
-				<select aria-required="true" class="o-form__data has-validation" data-select="sl" data-url="sl" name="obj.idusuario.id" required>
+				<select class="o-form__data has-validation" data-select="sl" data-url="sl" name="obj.idusuario.id">
+					<option value=""></option>
 					<c:forEach items="${AdmUsuarioList}" var="usuario">
 						<option value="${usuario.id}">${usuario.usuario}</option>
+					</c:forEach>
+				</select>
+			</div>
+			<div class="u-grid--6" role="grid">
+				<label class="o-form__text" for="usuario"><fmt:message key="label.grupo"/></label>
+				<select class="o-form__data has-validation" data-select="sl" data-url="sl" name="obj.idgrupo.id">
+					<option value=""></option>
+					<c:forEach items="${AdmGrupoList}" var="grupo">
+						<option value="${grupo.id}">${grupo.descricao}</option>
 					</c:forEach>
 				</select>
 			</div>

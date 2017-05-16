@@ -10,6 +10,7 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.mhc.parametrosweb.ParametrosWeb;
+import br.com.puppis.model.AdmGrupo;
 import br.com.puppis.model.AdmPermissao;
 import br.com.puppis.model.AdmUsuario;
 
@@ -18,11 +19,13 @@ import br.com.puppis.model.AdmUsuario;
 public class AdmPermissaoController extends GenericController<AdmPermissao> {
 
 	private AdmUsuarioController admUsuarioController;
+	private AdmGrupoController admGrupoController;
 
 	@Inject
-	public AdmPermissaoController(AdmUsuarioController admUsuarioController) {
+	public AdmPermissaoController(AdmUsuarioController admUsuarioController, AdmGrupoController admGrupoController) {
 		// TODO Auto-generated constructor stub
 		this.admUsuarioController = admUsuarioController;
+		this.admGrupoController = admGrupoController;
 	}
 	@Deprecated
 	public AdmPermissaoController() {
@@ -33,7 +36,7 @@ public class AdmPermissaoController extends GenericController<AdmPermissao> {
 	@Override
 	public void editar(AdmPermissao obj) {
 		// TODO Auto-generated method stub
-		super.result.include("AdmUsuarioList", this.admUsuarioController.buscarTodos(AdmUsuario.class));
+		super.result.include("AdmUsuarioList", this.admUsuarioController.buscarTodos(AdmUsuario.class)).include("AdmGrupoList", this.admGrupoController.buscarTodos(AdmGrupo.class));
 		super.editar(obj);
 	}
 	
@@ -41,7 +44,7 @@ public class AdmPermissaoController extends GenericController<AdmPermissao> {
 	@Override
 	public void formulario(AdmPermissao obj) {
 		// TODO Auto-generated method stub
-		super.result.include("obj", obj).include("AdmUsuarioList", this.admUsuarioController.buscarTodos(AdmUsuario.class));
+		super.result.include("obj", obj).include("AdmUsuarioList", this.admUsuarioController.buscarTodos(AdmUsuario.class)).include("AdmGrupoList", this.admGrupoController.buscarTodos(AdmGrupo.class));
 		super.formulario(obj);
 	}
 	
@@ -50,6 +53,10 @@ public class AdmPermissaoController extends GenericController<AdmPermissao> {
 	public void salvar(AdmPermissao obj) {
 		// TODO Auto-generated method stub
 		super.setRedirect(false);
+		if (obj.getIdgrupo() == null || obj.getIdgrupo().getId() == null)
+			obj.setIdgrupo(null);
+		if (obj.getIdusuario() == null || obj.getIdusuario().getId() == null)
+			obj.setIdusuario(null);
 		super.salvar(obj);
 		super.result.redirectTo(this).listar(obj, criaLista(obj.getTabela()));
 	}

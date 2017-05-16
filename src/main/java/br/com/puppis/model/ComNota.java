@@ -178,9 +178,7 @@ public class ComNota implements Serializable {
 		double total = 0.0;
 		if (getItens() != null && !getItens().isEmpty()) {
 			for (ComNotaItem item : getItens()) {
-				if (getIdtipooperacao().getDescricao().equals("COMPRA"))
-					item.calculaTotal();
-				else
+				if (getIdtipooperacao().getDescricao().equals("VENDA"))
 					dao.executeProcedure("fn_calcularTabelaPreco", new Object[]{item.getId()}, new Class[]{Long.class});
 				icms += item.getValorIcms();
 				ipi += item.getValorIpi();

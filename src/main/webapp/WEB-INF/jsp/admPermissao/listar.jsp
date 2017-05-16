@@ -22,6 +22,7 @@
 <display:table class="c-table--lube c-table--hovered c-table--zebrered c-table--bordered" export="false" id="obj" name="${AdmPermissaoList}" requestURI="/administrador/permissao">
 	<display:column headerScope="id" property="id" style="width: 50px;" titleKey="displaytag.id"/>
 	<display:column headerScope="idusuario.usuario" property="idusuario.usuario" titleKey="displaytag.usuario"/>
+	<display:column headerScope="idgrupo.descricao" property="idgrupo.descricao" titleKey="displaytag.grupo"/>
 	<display:column style="width: 50px;text-align: center;" titleKey="displaytag.deletar">
 		<c:if test="${obj.deletar == true}"><i class="icon-ok l-color--ren"></i></c:if>
 		<c:if test="${obj.deletar == false}"><i class="icon-cancel l-color--der"></i></c:if>

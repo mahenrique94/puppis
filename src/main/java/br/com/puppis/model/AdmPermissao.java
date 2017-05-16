@@ -14,6 +14,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -21,7 +22,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "adm_permissao")
+@Table(name = "adm_permissao", uniqueConstraints = {@UniqueConstraint(columnNames = {"idusuario", "idgrupo"})})
 public class AdmPermissao implements Serializable {
 	
 	@Id
@@ -29,8 +30,11 @@ public class AdmPermissao implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "adm_permissao")
 	private Integer id;
 	@ManyToOne
-	@JoinColumn(name  = "idusuario", referencedColumnName = "id", nullable = false)
+	@JoinColumn(name  = "idusuario", referencedColumnName = "id", nullable = true)
 	private AdmUsuario idusuario;
+	@ManyToOne
+	@JoinColumn(name  = "idgrupo", referencedColumnName = "id", nullable = true)
+	private AdmGrupo idgrupo;
 	@NotNull
 	@NotEmpty
 	@Size(min = 0, max = 30, message = "{minimo.0.maximo.30}")
@@ -86,6 +90,12 @@ public class AdmPermissao implements Serializable {
 	}
 	public void setIdusuario(AdmUsuario idusuario) {
 		this.idusuario = idusuario;
+	}
+	public AdmGrupo getIdgrupo() {
+		return idgrupo;
+	}
+	public void setIdgrupo(AdmGrupo idgrupo) {
+		this.idgrupo = idgrupo;
 	}
 	public String getTabela() {
 		return tabela;
