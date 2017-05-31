@@ -168,7 +168,7 @@ create sequence sqpes_endereco start with 1 increment by 1 no minvalue no maxval
 create table pes_endereco (
 	id bigint not null default nextval('sqpes_endereco'),
 	idpessoa bigint not null,
-	rua varchar(60) not null,
+	logradouro varchar(60) not null,
 	numero varchar(10) not null,
 	cep varchar(9) not null,
 	complemento varchar(30),
@@ -179,7 +179,7 @@ create table pes_endereco (
 	constraint pkpes_endereco primary key(id),
 	constraint fkpes_endereco01 foreign key(idpessoa) references pes_pessoa(id),
 	constraint fkpes_endereco02 foreign key(idcidade) references cad_cidade(id),
-	constraint ukpes_endereco01 unique(idpessoa, rua, numero, cep, bairro)
+	constraint ukpes_endereco01 unique(idpessoa, logradouro, numero, cep, bairro)
 );
 
 create sequence sqps_unidademedida start with 1 increment by 1 no minvalue no maxvalue cache 1;
@@ -531,7 +531,7 @@ create sequence sqadm_endereco start with 1 increment by 1 no minvalue no maxval
 create table adm_endereco (
 	id integer not null default nextval('sqadm_endereco'),
 	idcomercio integer not null,
-	rua varchar(60) not null,
+	logradouro varchar(60) not null,
 	numero varchar(10) not null,
 	cep varchar(9) not null,
 	complemento varchar(30),
@@ -542,7 +542,7 @@ create table adm_endereco (
 	constraint pkadm_endereco primary key(id),
 	constraint fkadm_endereco01 foreign key(idcomercio) references adm_comercio(id),
 	constraint fkadm_endereco02 foreign key(idcidade) references cad_cidade(id),
-	constraint ukadm_endereco01 unique(rua, numero, cep, bairro)
+	constraint ukadm_endereco01 unique(logradouro, numero, cep, bairro)
 );
 
 create sequence sqadm_modulo start with 1 increment by 1 no minvalue no maxvalue cache 1;
