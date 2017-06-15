@@ -9,30 +9,14 @@
    	<title>PUPPIS - Erro</title>
    	<link rel="icon" href="<c:url value="/images/favicon.ico"/>">
 </head>
-<body>
-	<main id="wrap" role="main">
-		<section id="content" style="padding-bottom: 4rem;">
-			<section class="container-center-sm">
-				<img class="error-logo" src="<c:url value="/img/robo.jpeg"/>">
-				<div class="error-info">
-					<h1>500!</h1>
-					<h3>Operação não foi realizada com sucesso</h3>
-					<p>Ocorreu um erro durante sua operação, por favor contate o suporte.</p>
-				</div>
-			</section>
-			<div class="error-band">
-				<section class="container-center-sm">
-					<ul class="error-list">
-						<li>Seu problema pode ter ocorrido por algum dos motivos abaixo:</li>
-						<li>Você tentou abrir um registro que não existe no banco de dados</li>
-						<li>Verifique se todos os campos obrigatórios foram preenchidos</li>
-						<li>Ocorreu um erro na aplicação durante sua operação</li>
-						<li>Não foi possível salvar o registro no banco de dados</li>
-					</ul>
-					<a class="btn-default btn-full btn-lg" href="<c:url value="/dashboard"/>"><i class="icon-left"></i>&nbsp;Página Inicial</a>
-				</section>
-			</div>
-		</section>
-	</main>
+<body class="o-pageError--robotBroken">
+	<section class="o-pageError__body">
+		<span class="o-pageError__picture"></span>
+		<div class="o-pageError__info">
+			<h2 class="o-pageError__title">500!</h2>
+			<p class="o-pageError__describe">Houve um problema ao processar sua requisição.</p>
+			<label class="o-pageError__feedback">Retornar para a <a class="o-pageError__link" href="<c:url value="/"/>">página principal.</a></label>
+		</div>
+	</section>
 </body>
 </html>

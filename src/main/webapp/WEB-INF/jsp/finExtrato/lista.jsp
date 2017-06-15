@@ -9,5 +9,5 @@
 	<display:column class="${colorText}" headerScope="creditodebito" property="creditodebito" titleKey="displaytag.tipo"/>
 	<display:column class="${colorText}" headerScope="historico" property="historico" titleKey="displaytag.historico"/>
 	<display:column class="${colorText}" headerScope="valor" property="valor" titleKey="displaytag.valor"/>
-	<display:footer><tr><td colspan="6"></td><td>${obj.saldo}</td></tr></display:footer>
+	<display:column headerScope="saldo" property="saldo" titleKey="displaytag.saldo"/>
 </display:table>

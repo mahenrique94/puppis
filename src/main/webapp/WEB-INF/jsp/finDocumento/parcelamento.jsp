@@ -54,7 +54,7 @@
 			<div class="u-grid--3" role="grid">
 				<label class="o-form__text" for="desdobramentoinicial"><fmt:message key="label.desdobramento.inicial"/></label>
 				<div class="o-form__tooltip">
-					<input class="o-form__data has-validation" id="desdobramentoinicial" maxlength="7" minlength="0" name="parametrosWeb[10].parametroInicial" pattern="desdobramento" type="text" value="${parametrosWeb[10].parametroInicial}">
+					<input class="o-form__data has-validation" id="desdobramentoinicial" maxlength="7" minlength="0" name="parametrosWeb[10].parametroInicial" pattern="number0to9" type="text" value="${parametrosWeb[10].parametroInicial}">
 					<span class="o-tooltip--gary"></span>
 				</div>
 			</div>

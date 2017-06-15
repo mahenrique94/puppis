@@ -3,6 +3,7 @@ package br.com.puppis.model;
 import java.io.Serializable;
 import java.util.Calendar;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PostLoad;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -66,8 +68,7 @@ public class FinExtrato implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Calendar datacreate;
-	@Transient
-	@Formula(value = "select coalesce((sum(ext.valor) - coalesce((select sum(ext2.valor) from fin_extrato ext2 where ext2.creditodebito = 'D' group by ext2.creditodebito), 0.0)), 0.0) as saldo from fin_extrato ext where ext.creditodebito = 'C' group by ext.creditodebito")
+	@Formula("(coalesce((select sum(ext2.valor) from fin_extrato ext2 where ext2.id <= id and ext2.idcontabancaria = idcontabancaria and ext2.creditodebito = 'C'), 0.0) - coalesce((select sum(ext2.valor) from fin_extrato ext2 where ext2.id <= id and ext2.idcontabancaria = idcontabancaria and ext2.creditodebito = 'D'), 0.0))")
 	private Double saldo;
 	
 	public FinExtrato() {

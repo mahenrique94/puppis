@@ -322,8 +322,7 @@ public class FinDocumento implements Serializable, Cloneable {
 	public String getCreditoDebito() {
 		if (getIddefinicao().getIdtipo().getDescricao().equals("CLIENTE"))
 			return "C";
-		else
-			return "D";
+		return "D";
 	}
 	
 	@Override

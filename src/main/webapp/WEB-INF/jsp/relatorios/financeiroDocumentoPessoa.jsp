@@ -6,7 +6,7 @@
 		<div class="o-breadcrumb--arrow">
 			<span class="o-breadcrumb__link"><a href="<c:url value="/dashboard"/>" role="link" title="<fmt:message key="nav.dashboard"/>"><fmt:message key="nav.dashboard"/></a></span>
 			<span class="o-breadcrumb__link"><a href="<c:url value="/dashboard/financeiro"/>" role="link" title="<fmt:message key="nav.financeiro"/>"><fmt:message key="nav.financeiro"/></a></span>
-			<span class="o-breadcrumb__link"><a href="<c:url value="/dashboard/financeiro/relatorios"/>" role="link" title="<fmt:message key="nav.financeiro.relatorios"/>"><fmt:message key="nav.financeiro.relatorios"/></a></span>
+			<span class="o-breadcrumb__link"><a href="<c:url value="/dashboard/relatorios/financeiro"/>" role="link" title="<fmt:message key="nav.financeiro.relatorios"/>"><fmt:message key="nav.financeiro.relatorios"/></a></span>
 			<span class="o-breadcrumb__link"><a class="is-inactive" href="<c:url value="/relatorios/financeiro/documento/pessoa"/>" role="link" title="<fmt:message key="nav.financeiro.relatorios.documento.pessoa"/>"><fmt:message key="nav.financeiro.relatorios.documento.pessoa"/></a></span>
 		</div>
 	</nav>

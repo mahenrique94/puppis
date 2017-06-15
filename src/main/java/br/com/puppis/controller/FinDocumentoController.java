@@ -58,9 +58,8 @@ public class FinDocumentoController extends GenericController<FinDocumento> {
 	@Post
 	@Path("parcelamento")
 	public void parcelamento(List<ParametrosWeb> parametrosWeb) {
-		if (parametrosWeb != null) {
+		if (parametrosWeb != null)
 			super.result.include("parametrosWeb", parametrosWeb).include("FinDocumentoList", geraDocumentos(parametrosWeb));
-		}
 	}
 	
 	@Post
