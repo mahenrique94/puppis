@@ -298,6 +298,7 @@ public class FinDocumento implements Serializable, Cloneable {
 	
 	public void paga(double valor) {
 		this.saldo -= valor;
+		this.saldo = NumberFunction.round(this.saldo);
 	}
 	
 	public void atualiza(double valor) {
