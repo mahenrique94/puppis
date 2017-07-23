@@ -53,4 +53,9 @@ Agora basta acessar a aplicação na porta `8080`
 
 [http://localhost:8080/puppis](http://localhost:8080/puppis/login/formulario)
 
-E utilizar o sistema
+Para realizar o login existe o usuário:
+
+```
+Usuario: ADMIN
+Senha: ADMIN123
+```
