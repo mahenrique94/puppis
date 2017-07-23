@@ -1,0 +1,78 @@
+/* Component para ativar o SSearch */
+.ss-search {
+	display: none;
+}
+
+/* Component para receber todos os components do ss */
+.ss-search__components {
+	position: relative;
+}
+
+/* Component para receber os valores á serem buscados ou filtrados */
+.ss-search__data {
+	border: 1px solid #DCDCDC;
+	border-radius: 3px;
+	padding: .65rem;
+	width: 100%;
+}
+.ss-search__data:focus {
+	border: 1px solid #0099FF;
+	box-shadow: 0 0 5px rgba(0, 153, 255, .2);
+}
+.ss-search__data:focus ~ .ss-search__list {
+	display: block;
+}
+.ss-search__data:hover {
+	background: #F4FBFF;
+	cursor: pointer;
+}
+
+/* Component para receber os itens á serem buscados ou filtrados */
+.ss-search__list {
+	background: #FFFFFF;
+	border: 1px solid #DCDCDC;
+	border-radius: 0 0 5px 5px;
+	border-top: none;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, .2), inset 0 0 2px rgba(0, 0, 0, .2);
+	height: 250px;
+	overflow-y: auto;
+	position: absolute;
+	width: 100%;
+	z-index: 1000;
+}
+.ss-search__list.is-hide {
+	display: none;
+}
+.ss-search__item {
+	color: #333333;
+	font-weight: 100;
+	line-height: 35px;
+	padding: 0 .5rem;
+}
+.ss-search__item.is-hovered, .ss-search__item:hover {
+	background: #80AAFF;
+	color: #F2F2F2;
+	cursor: pointer;
+}
+.ss-search__item:last-child {
+	padding-bottom: 0;
+}
+
+/* Component para receber destacar a string encontrada */
+.ss-search__match {
+	background: #CCFFF2;
+	color: #00CC99;
+	padding: .1rem;
+}
+
+/* Component para informar se a lista esta aberta ou fechada */
+.ss-search__icon {
+	color: #A1A1A1;
+	font-size: 1.5rem;
+	position: absolute;
+	right: 0;
+	top: 7px;
+}
+.ss-search__icon:hover {
+	cursor: pointer;
+}

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2016-12-10T15:36:21 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IRPESSOASUB" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="170c7a41-a9c6-43b0-81f0-100933b3200c">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="PUPPIS LOCAL"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="IDPESSOA" class="java.lang.Long" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[select pcon.nome, pcon.ddd, pcon.telefone, pcon.celular, pcon.email
+from pes_contato pcon
+where pcon.idpessoa = $P{IDPESSOA}]]>
+	</queryString>
+	<field name="nome" class="java.lang.String"/>
+	<field name="ddd" class="java.lang.Integer"/>
+	<field name="telefone" class="java.lang.String"/>
+	<field name="celular" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<pageHeader>
+		<band height="15" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="15" uuid="e5d7264b-e485-4dcd-b9b0-a61b965167a1"/>
+				<box>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Contato]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="15" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="186" height="15" uuid="15cbc5ad-eb10-41e6-864d-cb8b2898fb97"/>
+				<box leftPadding="2"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="186" y="0" width="27" height="15" uuid="046470f5-7c8e-4a34-9864-4cd86cde92cf"/>
+				<box leftPadding="2"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DDD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="213" y="0" width="94" height="15" uuid="45f04636-0ded-485a-9b1d-31262e67a2f2"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Telefone]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="307" y="0" width="94" height="15" uuid="c4400816-38cb-452a-9aee-5d7f29a6a1b7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Celular]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="401" y="0" width="154" height="15" uuid="7a201066-6c77-4cf5-87c4-64adeefd32db"/>
+				<box leftPadding="2"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Email]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="186" height="15" uuid="8742ac31-d6ca-46aa-8902-ab55d5078556"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="186" y="0" width="27" height="15" uuid="acf433e9-b30f-4a95-95b7-7398a877ec97"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ddd}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="213" y="0" width="94" height="15" uuid="b1a6b653-83d4-453a-a8df-4aaf18f08488"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{telefone}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="307" y="0" width="94" height="15" uuid="a70ecdf1-5d84-4c43-97fc-60553fef1384"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{celular}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="401" y="0" width="154" height="15" uuid="81be1285-a9f6-4397-8447-aed656d253fd"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

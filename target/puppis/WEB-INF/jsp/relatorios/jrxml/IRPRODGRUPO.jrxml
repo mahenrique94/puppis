@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2016-12-10T15:47:05 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IRPRODGRUPO" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="52ff6cdf-8f21-4250-b88e-5134ccc7cd8a">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="PUPPIS LOCAL"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="DATACADASTRO_INICIAL" class="java.util.Date" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="DATACADASTRO_FINAL" class="java.util.Date" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select gru.id, gru.descricao
+from ps_grupo gru
+where gru.datacreate >= $P{DATACADASTRO_INICIAL}
+  and gru.datacreate <= $P{DATACADASTRO_FINAL}
+  and gru.id > 0
+order by gru.descricao]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="descricao" class="java.lang.String"/>
+	<background>
+		<band height="802" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="555" height="802" uuid="93b623c2-1974-4639-92d5-01ff7867ee34"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+			</frame>
+		</band>
+	</background>
+	<title>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="555" height="20" uuid="8072573d-befa-4298-a3e0-08ada981e0d4"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RELATÓRIO DE GRUPO DOS PRODUTO]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="555" height="15" uuid="3c4d98c5-5973-45dc-a15a-6d3b63aa6060"/>
+				<staticText>
+					<reportElement x="0" y="0" width="73" height="15" uuid="8bc5cb66-305f-41be-bc30-f0ae4f9d4b94"/>
+					<box leftPadding="2"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ID]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="73" y="0" width="482" height="15" uuid="a59debd2-80dd-4ec6-a41e-7d3b8617871d"/>
+					<box leftPadding="2"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Descrição]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="555" height="15" uuid="aa1012f1-9c4b-4244-9a04-4b306db04e01"/>
+				<textField isBlankWhenNull="true">
+					<reportElement x="0" y="0" width="73" height="15" uuid="f55bdba4-9d0b-4bbe-b698-90008bf9f0d7"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="73" y="0" width="482" height="15" uuid="d309dea1-b613-4a12-b4b8-e956aa37ba29"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="555" height="15" uuid="78be4769-75bf-436b-9e2e-8cd9ab0cf123"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+				</box>
+				<textField pattern="dd/MM/yyyy HH:mm" isBlankWhenNull="true">
+					<reportElement x="0" y="0" width="100" height="15" uuid="a1b6c4d7-6162-4872-a8d8-40e067b92400"/>
+					<box leftPadding="2"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="445" y="0" width="80" height="15" uuid="cc393327-2899-488d-89c3-48da0e846f8e"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER} + " de "]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Report" isBlankWhenNull="true">
+					<reportElement x="527" y="0" width="28" height="15" uuid="a37f5148-63a6-46e5-9fb2-bb1d6c8fef38"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+</jasperReport>
