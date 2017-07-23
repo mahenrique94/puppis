@@ -7,6 +7,12 @@ Pré requisítos:
 - PostgresQL
 - Java 8
 - Tomcat(7, 8 ou 9)
+- Maven
+
+Depêndencias:
+- [MHC](http://mhc.matheuscastiglioni.com.br/)
+- [Stilize](http://stilize.matheuscastiglioni.com.br/)
+- [Jlib](http://jlib.matheuscastiglioni.com.br/)
 
 Para começar a utilizar crie um banco de dados no PostgresQL:
 
@@ -30,7 +36,13 @@ Para:
 <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://127.0.0.1:5432/MEU_BANCO_DE_DADOS"/>
 ```
 
-Com as configurações do banco de dados prontas, agora precisamos apenas subir a aplicação. Para isso dentro da pasta `target` encontrase o arquivo `puppis.war`, o mesmo deve ser copiado para dentro da pasta `webapps` do **tomcat**, feito isso basta subir o container:
+Com as configurações do banco de dados prontas, agora precisamos apenas subir a aplicação. Para isso devemos criar o **.war** e empacotação do projeto com o Maven, navegue até a raiz do projeto e execute:
+
+```
+mvn package
+```
+
+O maven irá criar a pasta `target` onde encontra-se o arquivo `puppis.war`, o mesmo deve ser copiado para dentro da pasta `webapps` do **tomcat**, feito isso basta subir o container:
 
 ```
 cd /PASTA_TOMCAT/bin
