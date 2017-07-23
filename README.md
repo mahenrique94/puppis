@@ -1,7 +1,7 @@
 # Puppis
 Sistema para gestão financeira e comercial
 
-O **Puppis** foi desenvolvido utilizando a linguagem **Java** como *back-end* e integrado com o **PostgresQL** como banco de dados, na parte do front foi utilizado o framework **[Stilize](http://stilize.matheuscastiglioni.com.br/)** para CSS e **[Jlib](http://jlib.matheuscastiglioni.com.br/)** para JS, para geração de relatórios foi utilizadao **JasperStudio**.
+O **Puppis** foi desenvolvido utilizando a linguagem **Java** como *back-end* e integrado com o **PostgresQL** como banco de dados, na parte do front foi utilizado o framework **[Stilize](http://stilize.matheuscastiglioni.com.br/)** para CSS e **[Jlib](http://jlib.matheuscastiglioni.com.br/)** para JS, para geração de relatórios foi utilizadao **JasperSoftStudio**.
 
 Pré requisítos:
 - PostgresQL
