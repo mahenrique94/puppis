@@ -22,6 +22,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import br.com.puppis.util.Parametros;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicUpdate;
@@ -124,7 +125,7 @@ public class FinDocumento implements Serializable, Cloneable {
 		this();
 		setId(id);
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -251,6 +252,36 @@ public class FinDocumento implements Serializable, Cloneable {
 	public void setDatavencimento(Calendar datavencimento) {
 		this.datavencimento = datavencimento;
 	}
+
+	public String getCreditoDebito() {
+		if (getIddefinicao().getIdtipo().getDescricao().equals("CLIENTE"))
+			return "C";
+		return "D";
+	}
+
+	public void atualiza(double valor) {
+		paga(valor);
+		if (this.saldo == 0)
+			setDatapagamento(Calendar.getInstance());
+	}
+
+	public double calcula() {
+		return (this.valortotal - this.valorjuros) + this.valordesconto;
+	}
+
+	public void cancela() {
+		setDatapagamento(Calendar.getInstance());
+		setSaldo(0.0);
+	}
+
+	public void criarParcela(int numeroParcela) {
+		setDesdobramento(numeroParcela + "/" + getIdformapagamento().getQuantidadeparcela());
+		setDatavencimento(new Util().calcularDataVencimento(this, numeroParcela));
+	}
+
+	public void estorna() {
+		setDatapagamento(null);
+	}
 	
 	public FinDocumento novo() {
 		Calendar agora = Calendar.getInstance();
@@ -290,42 +321,12 @@ public class FinDocumento implements Serializable, Cloneable {
 		criarParcela(numeroParcela);
 		return this;
 	}
-	
-	public void criarParcela(int numeroParcela) {
-		setDesdobramento(numeroParcela + "/" + getIdformapagamento().getQuantidadeparcela());
-		setDatavencimento(new Util().calcularDataVencimento(this, numeroParcela));
-	}
-	
+
 	public void paga(double valor) {
 		this.saldo -= valor;
 		this.saldo = NumberFunction.round(this.saldo);
 	}
-	
-	public void atualiza(double valor) {
-		paga(valor);
-		if (this.saldo == 0)
-			setDatapagamento(Calendar.getInstance());
-	}
-	
-	public void estorna() {
-		setDatapagamento(null);
-	}
-	
-	public void cancela() {
-		setDatapagamento(Calendar.getInstance());
-		setSaldo(0.0);
-	}
-	
-	public double calcula() {
-		return (this.valortotal - this.valorjuros) + this.valordesconto;
-	}
-	
-	public String getCreditoDebito() {
-		if (getIddefinicao().getIdtipo().getDescricao().equals("CLIENTE"))
-			return "C";
-		return "D";
-	}
-	
+
 	@Override
 	public Object clone() {
 		// TODO Auto-generated method stub

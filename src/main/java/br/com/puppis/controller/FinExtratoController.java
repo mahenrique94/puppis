@@ -10,6 +10,7 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.mhc.parametrosweb.ParametrosWeb;
 import br.com.puppis.model.FinExtrato;
+import br.com.puppis.util.CreditoDebito;
 
 @Controller
 @Path("financeiro/extrato")
@@ -34,7 +35,12 @@ public class FinExtratoController extends GenericController<FinExtrato> {
 		super.salvar(obj);
 		super.result.nothing();
 	}
-	
+
+	protected void transferencia(int idContaOrigem, int idContaDestino, double valor) {
+		super.getDao().save(FinExtrato.transferencia(idContaOrigem, CreditoDebito.DEBITO, valor));
+		super.getDao().save(FinExtrato.transferencia(idContaDestino, CreditoDebito.CREDITO, valor));
+	}
+
 	private List<ParametrosWeb> validaParametrosWeb(List<ParametrosWeb> parametrosWeb) {
 		if (parametrosWeb != null && !parametrosWeb.isEmpty()) {
 			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");

@@ -17,12 +17,14 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.swing.text.ParagraphView;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import br.com.puppis.util.Parametros;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicUpdate;
@@ -150,5 +152,16 @@ public class FinExtrato implements Serializable {
 		finExtrato.setHistorico(historico);
 		return finExtrato;
 	}
-	
+
+	public static FinExtrato transferencia(int idContaBancaria, br.com.puppis.util.CreditoDebito creditoDebito, double valor) {
+		FinExtrato extrato = new FinExtrato();
+		extrato.setIdcontabancaria(new FinContaBancaria(idContaBancaria));
+		extrato.setIdtipooperacao(new SysTipoOperacao(Parametros.EXTRATO_LANCAMENTOMANUAL.toInt()));
+		extrato.setCreditodebito(creditoDebito.get());
+		extrato.setHistorico("TRANSFERENCIA");
+		extrato.setNumerodocumento(System.currentTimeMillis());
+		extrato.setValor(valor);
+		return extrato;
+	}
+
 }

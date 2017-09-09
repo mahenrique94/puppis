@@ -111,7 +111,7 @@
 	</section>
 	<menu class="o-toolbar--lube is-fixedBottomFull" role="menubar">
 		<menuitem class="o-toolbar__item" role="menuitem"><a href="<c:url value="/financeiro/documento/parcelamento"/>" role="link" title="<fmt:message key="button.novo"/>"><i class="icon-plus"></i>&nbsp;<fmt:message key="button.novo"/></a></menuitem>
-		<menuitem class="o-toolbar__item" role="menuitem"><button title="<fmt:message key="button.processar"/>" role="button" title="<fmt:message key="button.processar"/>" type="submit"><i class="icon-spin6"></i>&nbsp;<fmt:message key="button.processar"/></button></menuitem>
+		<menuitem class="o-toolbar__item" role="menuitem"><button role="button" title="<fmt:message key="button.processar"/>" type="submit"><i class="icon-spin6"></i>&nbsp;<fmt:message key="button.processar"/></button></menuitem>
 		<c:if test="${not empty FinDocumentoList}">
 			<menuitem class="o-toolbar__item" role="menuitem"><button formaction="<c:url value="/financeiro/documento/parcelamento/confirmar"/>" role="button" title="<fmt:message key="button.confirmar"/>" type="submit"><i class="icon-thumbs-up"></i>&nbsp;<fmt:message key="button.confirmar"/></button></menuitem>
 		</c:if>

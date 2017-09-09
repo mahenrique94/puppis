@@ -17,10 +17,22 @@ import br.com.puppis.model.FinDocumentoCentroCusto;
 import br.com.puppis.model.FinFormaPagamento;
 import br.com.puppis.model.SysTipoOperacao;
 
+import javax.enterprise.context.Dependent;
+import javax.inject.Inject;
+
 @Controller
 @Path("financeiro/documento")
 public class FinDocumentoController extends GenericController<FinDocumento> {
-	
+
+	private FinExtratoController extratoController;
+
+	@Inject
+	public FinDocumentoController(FinExtratoController extratoController) {
+		this.extratoController = extratoController;
+	}
+	@Deprecated
+	public FinDocumentoController() { }
+
 	@Get
 	@Post
 	@Path("baixa")
@@ -88,6 +100,17 @@ public class FinDocumentoController extends GenericController<FinDocumento> {
 		super.setRedirect(false);
 		super.salvar(obj.novo());
 		super.result.redirectTo(this).editar(super.getObj());
+	}
+
+	@Get
+	@Post
+	@Path("transferencia")
+	public void transferencia(Integer idContaOrigem, Integer idContaDestino, Double valor) {
+		if (idContaDestino != null && idContaDestino != null && valor != null & valor > 0) {
+			this.extratoController.transferencia(idContaOrigem, idContaDestino, valor);
+			super.result.include("mensagem", "mensagem.transferencia.sucesso");
+			super.result.redirectTo(this).transferencia(null, null, null);
+		}
 	}
 	
 	protected void criaFinanceiro(List<ParametrosWeb> parametrosWeb) {
