@@ -4,7 +4,10 @@ import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
+import br.com.mhc.parametrosweb.ParametrosWeb;
 import br.com.puppis.model.AdmComercio;
+
+import java.util.List;
 
 @Controller
 @Path("administrador/comercio")
@@ -16,7 +19,13 @@ public class AdmComercioController extends GenericController<AdmComercio> {
 		// TODO Auto-generated method stub
 		super.editar(obj);
 	}
-	
+
+	@Get("json")
+	@Override
+	public void toJSON(AdmComercio obj, List<ParametrosWeb> parametrosWeb) {
+		super.toJSON(obj, super.filterIdGreaterThanOne(parametrosWeb));
+	}
+
 	@Post("")
 	@Override
 	public void salvar(AdmComercio obj) {

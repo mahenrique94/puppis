@@ -26,6 +26,50 @@ function checkDocument(document, input) {
 }
 
 /** @auth Matheus Castiglioni
+ *  Função responsável por pegar as informações de um CNPJ e preencher os campos na tela
+ */
+function fillFieldsCNPJ(json) {
+    $("[data-cnpj=nomerazaosocial]").value = json.razaosocial.replace(/([\s]{2})/gi, " ").trim();
+    const nomeFantasia = $("[data-cnpj=nomefantasia]");
+    if (nomeFantasia)
+        nomeFantasia.value = json.nomefantasia;
+}
+
+/** @auth Matheus Castiglioni
+ *  Função responsável por buscar as informações referente a um determinado CNPJ
+ */
+function findData(cnpj) {
+    let iconNomeRazaoSocial;
+    const inputRazaoSocial = $("[data-cnpj=nomerazaosocial]");
+    if (inputRazaoSocial) {
+        iconNomeRazaoSocial = inputRazaoSocial.parentNode.querySelector(".o-form__icon");
+        if (iconNomeRazaoSocial)
+            initAnimateInput(iconNomeRazaoSocial);
+    }
+
+    let iconNomeFantasia;
+    const inputNomeFantasia = $("[data-cnpj=nomefantasia]");
+    if (inputNomeFantasia) {
+        iconNomeFantasia = inputNomeFantasia.parentNode.querySelector(".o-form__icon");
+        if (iconNomeFantasia)
+            initAnimateInput(iconNomeFantasia);
+    }
+
+    if (cnpj) {
+        const URL = `${WEBSERVICE}/document/cnpj/data/${cnpj}/json/simple/upper`;
+        HttpService.request(URL, "GET").then(response => {
+            const json = JSON.parse(response);
+			fillFieldsCNPJ(json);
+			if (iconNomeRazaoSocial)
+				stopAnimateInput(iconNomeRazaoSocial);
+			if (iconNomeFantasia)
+				stopAnimateInput(iconNomeFantasia);
+			fillFieldsCep(json.endereco);
+    	}).catch(error => console.error(error));
+    }
+}
+
+/** @auth Matheus Castiglioni
  *  Função responsável por validar um CNPJ ou CPF
  */
 function validatingDocument(input, document) {
@@ -52,50 +96,6 @@ function validatingDocument(input, document) {
 		console.error(error)
 		stopAnimateInput(icon);
 	});
-}
-
-/** @auth Matheus Castiglioni
- *  Função responsável por buscar as informações referente a um determinado CNPJ
- */
-function findData(cnpj) {
-	let iconNomeRazaoSocial;
-	const inputRazaoSocial = $("[data-cnpj=nomerazaosocial]");
-	if (inputRazaoSocial) {
-		iconNomeRazaoSocial = inputRazaoSocial.parentNode.querySelector(".o-form__icon");
-		if (iconNomeRazaoSocial)
-			initAnimateInput(iconNomeRazaoSocial);
-	}
-	
-	let iconNomeFantasia;
-	const inputNomeFantasia = $("[data-cnpj=nomefantasia]");
-	if (inputNomeFantasia) {
-		iconNomeFantasia = inputNomeFantasia.parentNode.querySelector(".o-form__icon");
-		if (iconNomeFantasia)
-			initAnimateInput(iconNomeFantasia);
-	}
-	
-	if (cnpj) {
-		const URL = `${WEBSERVICE}/document/cnpj/data/${cnpj}/json/simple/upper`;
-		HttpService.request(URL, "GET").then(response => {
-			const json = JSON.parse(response);
-			fillFieldsCNPJ(json);
-			if (iconNomeRazaoSocial)
-				stopAnimateInput(iconNomeRazaoSocial);
-			if (iconNomeFantasia)
-				stopAnimateInput(iconNomeFantasia);
-			fillFieldsCep(json.endereco);
-		}).catch(error => console.error(error));
-	}
-}
-
-/** @auth Matheus Castiglioni
- *  Função responsável por pegar as informações de um CNPJ e preencher os campos na tela 
- */
-function fillFieldsCNPJ(json) {
-	$("[data-cnpj=nomerazaosocial]").value = json.razaosocial.replace(/([\s]{2})/gi, " ").trim();
-	const nomeFantasia = $("[data-cnpj=nomefantasia]");
-	if (nomeFantasia)
-		nomeFantasia.value = json.nomefantasia;
 }
 
 /*********************************************** KEYS ***********************************************/
@@ -126,6 +126,53 @@ function checkKey(input) {
 
 /*********************************************** CEP ***********************************************/
 /** @auth Matheus Castiglioni
+ *  Checando o CEP informado para realizar a busca do endereço
+ */
+function checkAddresWithCep() {
+    const cep = $("[data-cep]");
+    if (cep && cep.value.length == 9 && !cep.value.endsWith("000"))
+        disabledFiledsCep();
+}
+
+/** @auth Matheus Castiglioni
+ *  Travar os campos referente as informações do CEP para digitação
+ */
+function disabledFiledsCep() {
+    $("[data-cep=logradouro]").setAttribute("readonly", "true");
+    $("[data-cep=bairro]").setAttribute("readonly", "true");
+    $("[data-cep=estado]").setAttribute("readonly", "true");
+    $("[data-cep=cidade]").setAttribute("readonly", "true");
+    if ($("[data-cep=pais]"))
+        $("[data-cep=pais]").setAttribute("readonly", "true");
+}
+
+/** @auth Matheus Castiglioni
+ *  Liberar os campos referente as informações do CEP para digitação
+ */
+function enabledFieldsCep() {
+    $("[data-cep=logradouro]").removeAttribute("readonly");
+    $("[data-cep=bairro]").removeAttribute("readonly");
+    $("[data-cep=estado]").removeAttribute("readonly");
+    $("[data-cep=cidade]").removeAttribute("readonly");
+}
+
+/** @auth Matheus Castiglioni
+ *  Função responsável por pegar as informações de um CEP e preencher os campos na tela
+ */
+function fillFieldsCep(json) {
+    $("[data-cep=cep]").value = json.cep;
+    $("[data-cep=logradouro]").value = json.logradouro;
+    $("[data-cep=bairro]").value = json.bairro;
+    $("[data-cep=complemento]").value = json.complemento;
+    $("[data-cep=estado]").innerHTML = `<option value="${json.codestado}">${json.estado}</option>`;
+    $("[data-cep=cidade]").innerHTML = `<option value="${json.codibge}">${json.cidade}</option>`;
+    if ($("[data-cep=pais]"))
+        $("[data-cep=pais]").innerHTML = `<option value="1058">BRASIL</option>`;
+    if (!json.cep.endsWith("000"))
+        disabledFiledsCep();
+}
+
+/** @auth Matheus Castiglioni
  *  Função responsável por buscar o endereço de um determinado CEP 
  */
 function findCep(button) {
@@ -137,6 +184,38 @@ function findCep(button) {
 	} else {
 		input.focus();
 	}
+}
+
+/** @auth Matheus Castiglioni
+ *  Função responsável por iniciar a animação de loading do icone do botão
+ */
+function initAnimateButton(icon) {
+    icon.classList.remove("icon-globe");
+    icon.classList.add("icon-spin3", "animate-spin");
+}
+
+/** @auth Matheus Castiglioni
+ *  Função responsável por iniciar a animação de loading do icone em um input
+ */
+function initAnimateInput(icon) {
+    icon.classList.remove("is-hide");
+    icon.classList.add("is-show", "animate-spin");
+}
+
+/** @auth Matheus Castiglioni
+ *  Função responsável por parar a animação de loading do icone do botão
+ */
+function stopAnimateButton(icon) {
+    icon.classList.remove("icon-spin3", "animate-spin");
+    icon.classList.add("icon-globe");
+}
+
+/** @auth Matheus Castiglioni
+ *  Função responsável por parar a animação de loading do icone em um input
+ */
+function stopAnimateInput(icon) {
+    icon.classList.remove("is-show", "animate-spin");
+    icon.classList.add("is-hide");
 }
 
 /** @auth Matheus Castiglioni
@@ -159,81 +238,6 @@ function requestCep(cep, icon, button) {
 		enabledFieldsCep();
 		stopAnimateButton(icon);
 	});
-}
-
-/** @auth Matheus Castiglioni
- *  Função responsável por pegar as informações de um CEP e preencher os campos na tela 
- */
-function fillFieldsCep(json) {
-	$("[data-cep=cep]").value = json.cep;
-	$("[data-cep=logradouro]").value = json.logradouro;
-	$("[data-cep=bairro]").value = json.bairro;
-	$("[data-cep=complemento]").value = json.complemento;
-	$("[data-cep=estado]").innerHTML = `<option value="${json.codestado}">${json.estado}</option>`;
-	$("[data-cep=cidade]").innerHTML = `<option value="${json.codibge}">${json.cidade}</option>`;
-	if ($("[data-cep=pais]"))
-		$("[data-cep=pais]").innerHTML = `<option value="1058">BRASIL</option>`;
-	disabledFiledsCep();
-}
-
-/** @auth Matheus Castiglioni
- *  Travar os campos referente as informações do CEP para digitação 
- */
-function disabledFiledsCep() {
-	$("[data-cep=logradouro]").setAttribute("readonly", "true");
-	$("[data-cep=bairro]").setAttribute("readonly", "true");
-	$("[data-cep=estado]").setAttribute("readonly", "true");
-	$("[data-cep=cidade]").setAttribute("readonly", "true");
-	if ($("[data-cep=pais]"))
-		$("[data-cep=pais]").setAttribute("readonly", "true");
-}
-
-/** @auth Matheus Castiglioni
- *  Liberar os campos referente as informações do CEP para digitação 
- */
-function enabledFieldsCep() {
-	$("[data-cep=logradouro]").removeAttribute("readonly");
-	$("[data-cep=bairro]").removeAttribute("readonly");
-	$("[data-cep=estado]").removeAttribute("readonly");
-	$("[data-cep=cidade]").removeAttribute("readonly");
-}
-
-function checkAddresWithCep() {
-	const cep = $("[data-cep]");
-	if (cep && cep.value.length == 9 && !cep.value.endsWith("000"))
-		disabledFiledsCep();
-}
-
-/** @auth Matheus Castiglioni
- *  Função responsável por iniciar a animação de loading do icone em um input 
- */
-function initAnimateInput(icon) {
-	icon.classList.remove("is-hide");
-	icon.classList.add("is-show", "animate-spin");
-}
-
-/** @auth Matheus Castiglioni
- *  Função responsável por parar a animação de loading do icone em um input 
- */
-function stopAnimateInput(icon) {
-	icon.classList.remove("is-show", "animate-spin");
-	icon.classList.add("is-hide");
-}
-
-/** @auth Matheus Castiglioni
- *  Função responsável por iniciar a animação de loading do icone do botão 
- */
-function initAnimateButton(icon) {
-	icon.classList.remove("icon-globe");
-	icon.classList.add("icon-spin3", "animate-spin");
-}
-
-/** @auth Matheus Castiglioni
- *  Função responsável por parar a animação de loading do icone do botão 
- */
-function stopAnimateButton(icon) {
-	icon.classList.remove("icon-spin3", "animate-spin");
-	icon.classList.add("icon-globe");
 }
 
 /** @auth Matheus Castiglioni

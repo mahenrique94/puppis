@@ -1,6 +1,7 @@
 package br.com.puppis.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -53,8 +54,9 @@ public class FinExtratoController extends GenericController<FinExtrato> {
 			if (parametrosWeb.get(1).getParametroInicial() == null)
 				parametrosWeb.get(1).setParametroInicial(formatador.format(agora.getTime()));
 			parametrosWeb.get(0).setCampo("idcontabancaria.id");
+			parametrosWeb.get(0).setLimit(999999999);
 			parametrosWeb.get(1).setCampo("datacreate");
-		}			
+		}
 		return parametrosWeb;
 	}
 

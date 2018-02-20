@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2016-12-10T15:39:11 -->
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IRPESSOA" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="783cace9-cb3f-4d78-b865-bb360c1109e7">
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="PUPPIS LOCAL"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="PUPPISMHC@localhost"/>
 	<subDataset name="DataSet_Definicao" uuid="3b386e46-16ba-4c18-9084-bea949c651c3">
 		<parameter name="IDPESSOA" class="java.lang.Long">
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
@@ -28,11 +27,11 @@ where def.idpessoa = $P{IDPESSOA}
 	</parameter>
 	<queryString>
 		<![CDATA[select pes.id, max(pes.nomerazaosocial) as nomerazaosocial, max(pes.datacreate) as datacreate, max(pes.apelido) as apelido,
-  max(case when pes.inativo = 'F' then 'ATIVO' else 'INATIVO' end) as inativo,
+  max(case pes.inativo when false then 'ATIVO' else 'INATIVO' end) as inativo,
   max(pdoc.cpfcnpj) as cpfcnpj, max(pdoc.rginscricaoestadual) as rginscricaoestadual, max(pdoc.cnh) as cnh,
   max(pestc.descricao) as estadocivil,
   max(psex.descricao) as sexo,
-  max(pend.rua) as rua, max(pend.numero) as numero, max(pend.cep) as cep, max(pend.bairro) as bairro, max(pend.complemento) as complemento,
+  max(pend.logradouro) as logradouro, max(pend.numero) as numero, max(pend.cep) as cep, max(pend.bairro) as bairro, max(pend.complemento) as complemento,
   max(pais.descricao) as pais,
   max(est.descricao) as uf,
   max(cid.descricao) as cidade,
@@ -56,25 +55,63 @@ where pes.id >= $P{IDPESSOA_INICIAL}
 group by pes.id
 order by pes.nomerazaosocial]]>
 	</queryString>
-	<field name="id" class="java.lang.Long"/>
-	<field name="nomerazaosocial" class="java.lang.String"/>
-	<field name="datacreate" class="java.sql.Date"/>
-	<field name="apelido" class="java.lang.String"/>
-	<field name="inativo" class="java.lang.String"/>
-	<field name="cpfcnpj" class="java.lang.String"/>
-	<field name="rginscricaoestadual" class="java.lang.String"/>
-	<field name="cnh" class="java.lang.String"/>
-	<field name="estadocivil" class="java.lang.String"/>
-	<field name="sexo" class="java.lang.String"/>
-	<field name="rua" class="java.lang.String"/>
-	<field name="numero" class="java.lang.String"/>
-	<field name="cep" class="java.lang.String"/>
-	<field name="bairro" class="java.lang.String"/>
-	<field name="complemento" class="java.lang.String"/>
-	<field name="pais" class="java.lang.String"/>
-	<field name="uf" class="java.lang.String"/>
-	<field name="cidade" class="java.lang.String"/>
-	<field name="tipopessoa" class="java.lang.String"/>
+	<field name="id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+	</field>
+	<field name="nomerazaosocial" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nomerazaosocial"/>
+	</field>
+	<field name="datacreate" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="datacreate"/>
+	</field>
+	<field name="apelido" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="apelido"/>
+	</field>
+	<field name="inativo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="inativo"/>
+	</field>
+	<field name="cpfcnpj" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cpfcnpj"/>
+	</field>
+	<field name="rginscricaoestadual" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="rginscricaoestadual"/>
+	</field>
+	<field name="cnh" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cnh"/>
+	</field>
+	<field name="estadocivil" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="estadocivil"/>
+	</field>
+	<field name="sexo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="sexo"/>
+	</field>
+	<field name="logradouro" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="logradouro"/>
+	</field>
+	<field name="numero" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="numero"/>
+	</field>
+	<field name="cep" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cep"/>
+	</field>
+	<field name="bairro" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="bairro"/>
+	</field>
+	<field name="complemento" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="complemento"/>
+	</field>
+	<field name="pais" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="pais"/>
+	</field>
+	<field name="uf" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="uf"/>
+	</field>
+	<field name="cidade" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cidade"/>
+	</field>
+	<field name="tipopessoa" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="tipopessoa"/>
+	</field>
 	<group name="Group_Pessoa">
 		<groupExpression><![CDATA[$F{id}]]></groupExpression>
 		<groupHeader>
@@ -313,7 +350,7 @@ order by pes.nomerazaosocial]]>
 					<textElement verticalAlignment="Middle">
 						<font fontName="Arial"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{rua}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{logradouro}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement x="317" y="15" width="46" height="15" uuid="a4e36ae6-539e-434c-b8bb-0d0649e6da6b"/>

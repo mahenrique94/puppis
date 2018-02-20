@@ -52,13 +52,10 @@ public abstract class GenericController<T> {
 	
 	@Get("")
 	public void listar(T obj, List<ParametrosWeb> parametrosWeb) {
-		if (parametrosWeb == null) {
-			parametrosWeb = new ArrayList<ParametrosWeb>();
-		}
-		parametrosWeb.add(new ParametrosWeb("id", "0", null, ">"));
+		parametrosWeb = filterIdGreaterThanZero(parametrosWeb);
 		this.result.include(getClassName(obj) + "List", getDao().findAll(obj.getClass(), parametrosWeb)).include("parametrosWeb", parametrosWeb);
 	}
-	
+
 	@Get("listarsl")
 	public void listarSL(T obj, List<ParametrosWeb> parametrosWeb) {
 		this.result.include(getClassName(obj) + "List", getDao().findAll(obj.getClass(), parametrosWeb));
@@ -89,6 +86,7 @@ public abstract class GenericController<T> {
 	
 	@Get("json")
 	public void toJSON(T obj, List<ParametrosWeb> parametrosWeb) {
+
 		this.result.use(Results.json()).from(getDao().findAll(obj.getClass(), parametrosWeb)).serialize();
 	}
 	
@@ -113,16 +111,32 @@ public abstract class GenericController<T> {
 		return (T) getDao().getObj();
 	}
 	
-	private boolean isRedirect() {
-		return redirect;
-	}
-
 	protected void setRedirect(boolean redirect) {
 		this.redirect = redirect;
 	}
 	
 	protected List<AdmUsuario> buscarTodos(Class clazz) {
 		return getDao().findAll(clazz, null);
+	}
+
+	protected List<ParametrosWeb> filterIdGreaterThanOne(List<ParametrosWeb> parametrosWeb) {
+		return filterByIdGreaterThan(parametrosWeb, 1);
+	}
+
+	protected List<ParametrosWeb> filterIdGreaterThanZero(List<ParametrosWeb> parametrosWeb) {
+		return filterByIdGreaterThan(parametrosWeb, 0);
+	}
+
+	private List<ParametrosWeb> filterByIdGreaterThan(List<ParametrosWeb> parametrosWeb, int id) {
+		if (parametrosWeb == null) {
+			parametrosWeb = new ArrayList<ParametrosWeb>();
+		}
+		parametrosWeb.add(new ParametrosWeb("id", Integer.toString(id), null, ">"));
+		return parametrosWeb;
+	}
+
+	private boolean isRedirect() {
+		return redirect;
 	}
 	
 }

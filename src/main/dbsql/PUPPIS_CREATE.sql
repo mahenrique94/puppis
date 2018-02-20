@@ -6570,7 +6570,7 @@ INSERT INTO cad_cidade (id,idestado,descricao,datacreate,dataupdate) VALUES (530
 insert into adm_comercio(id, nomerazaosocial, nomefantasia, inativo, datacreate, dataupdate) values (0, 'PUPPIS', 'PUPPIS', 'F', current_date, current_timestamp);
 
 ------------------------------------------------- ADM_ENDERECO -----------------------------------------------------------
-insert into adm_endereco (id, idcomercio, rua, numero, cep, complemento, bairro, idcidade, datacreate, dataupdate) values (0, 0, 'PADRAO', 0, '13840-000', null, 'PADRAO', 0, current_date, current_timestamp);
+insert into adm_endereco (id, idcomercio, logradouro, numero, cep, complemento, bairro, idcidade, datacreate, dataupdate) values (0, 0, 'PADRAO', 0, '13840-000', null, 'PADRAO', 0, current_date, current_timestamp);
 
 ------------------------------------------------- ADM_CONTATO -----------------------------------------------------------
 insert into adm_contato (id, idcomercio, ddd, telefone, celular, email, datacreate, dataupdate) values (0, 0, 0, '3891-3891', '99999-9999', 'puppis@puppis.com.br', current_date, current_timestamp);

@@ -3,11 +3,12 @@
 class Mark implements Object {
 
     public mark(mark : HTMLObjectElement) : void {
-        const data : HTMLObjectElement = mark.parentNode.parentNode.querySelector("input[type=hidden]");
+        const data : HTMLObjectElement = mark.parentNode.parentNode.querySelector("input[type=hidden], .is-hidden");
         if (this._isCheckBox(data))
             this._markCheckBox(data, mark);
         else
             this._markRadio(data, mark);
+        this._dispatchInputEvent(data);
     }
 
     public checkRequired(mark : HTMLObjectElement) {
@@ -32,7 +33,7 @@ class Mark implements Object {
     }
 
     private _markCheckBoxMultiple(data : HTMLObjectElement, mark : HTMLObjectElement) : void {
-        const regEx = new RegExp(`[${mark.dataset.marked}]`, "gi");
+        const regEx = new RegExp(`(${mark.dataset.marked})`, "gi");
         if (regEx.test(data.value))
             data.value = data.value.replace(regEx, "");
         else
@@ -65,6 +66,10 @@ class Mark implements Object {
 
     private _isMarked(mark : HTMLObjectElement) : boolean {
         return mark.classList.contains("is-marked");
+    }
+
+    private _dispatchInputEvent(mark : HTMLObjectElement) : void {
+        mark.dispatchEvent(new Event("input"));
     }
 
 }

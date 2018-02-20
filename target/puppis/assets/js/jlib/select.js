@@ -57,6 +57,98 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 
 /** @auth Matheus Castiglioni
+ *  Criando os options para serem inseridos nos selects
+ */
+const createOption = (item, text, value) => new Option(getPropertyJSON(item, text), getPropertyJSON(item, value));
+
+/** @auth Matheus Castiglioni
+ *  Alimentando os options do select de acordo com os registros encontrados no banco de dados
+ */
+function fillSelect(select, list, text, value) {
+    if (select.required) {
+        const optionRequired = new Option("", "");
+        optionRequired.style.display = "none";
+        select.appendChild(optionRequired);
+    }
+    list.forEach(item => select.appendChild(createOption(item, text, value)));
+}
+
+/** @auth Matheus Castiglioni
+ *  Montando URL para buscar as informações referente a determinado select
+ */
+function getUrl(select) {
+    let parameters = "";
+    let url = select.dataset.url;
+    url = url.substring(2).replace(/[_]/g, "/").toLowerCase();
+    url = window.location.pathname.substring(0, window.location.pathname.substring(1).indexOf("/") + 2) + url;
+    switch (select.dataset.select.substring(2).toLowerCase()) {
+        case "json" :
+            url = `${url}.json`;
+            break;
+        case "txt" :
+            url = `${url}.txt`;
+            break;
+        default:
+            break;
+    }
+    if (select.dataset.parametersFields && select.dataset.parametersValues) {
+        const regExp = /[\[\]\"\s]/g;
+        const fields = select.dataset.parametersFields.replace(regExp, "").split(",");
+        const values = select.dataset.parametersValues ? select.dataset.parametersValues.replace(regExp, "").split(",") : "";
+        const operators = select.dataset.parametersOperators ? select.dataset.parametersOperators.replace(regExp, "").split(",") : "";
+        if (fields.length === values.length) {
+            for (let i = 0; i < fields.length; i++) {
+                parameters += `parametrosWeb[${i}].campo=${fields[i]}&parametrosWeb[${i}].parametroInicial=${getValueParameter(values[i])}&`;
+                if (operators && operators.length > 0)
+                    parameters += `parametrosWeb[${i}].operador=${operators[i]}`;
+            }
+        }
+    }
+    if (parameters)
+        url += `?${parameters}`;
+    return url;
+}
+
+/** @auth Matheus Castiglioni
+ *  Pegando o valor para informar nos parâmetros do @ParametrosWeb
+ */
+function getValueParameter(value) {
+    if (value.startsWith("sl"))
+        value = $(`[data-select=${value}]`).value;
+    return value;
+}
+
+/** @auth Matheus Castiglioni
+ *  Navegando no objeto até seu ponto primitivo
+ */
+function getPrimitiveValue(item, propertys) {
+    let value, split;
+    split = propertys.split(".");
+    for (let i = 0; i < split.length; i++) {
+        value = item[split[i]];
+        if (value instanceof Object)
+            item = value;
+    }
+    return value;
+}
+
+/** @auth Matheus Castiglioni
+ *  Busca as informações desejadas no JSON, se for um objeto o mesmo é navegado até seu ponto primitivo
+ */
+function getPropertyJSON(item, propertys) {
+    let split, value = "";
+    if (Array.isArray(propertys)) {
+        for (let i = 0; i < propertys.length; i++) {
+            value = value.concat(getPrimitiveValue(item, propertys[i]), " / ");
+        }
+        value = value.substring(0, (value.length - 3));
+    } else {
+        value = getPrimitiveValue(item, propertys);
+    }
+    return value;
+}
+
+/** @auth Matheus Castiglioni
  *  Informando quais serão os campos que irão aparecer para o usuário e ficar como values para serem persistidos
  */
 function requestData(select) {
@@ -78,23 +170,37 @@ function requestData(select) {
 			case "slAdmComercio" :
 				text = "nomerazaosocial";
 				value = "id";
-				break; 
+				break;
+			case "slArmLocalTipo" :
+				text = "descricao";
+				value = "id.tipo";
+				break;
 			case "slCadContato" :
+			case "slCadContatoFinal" :
+			case "slCadContatoInicial" :
 				text = "nome";
 				value = "id";
 				break; 
 			case "slCadEmpresa" :
 				text = ["id", "razaosocial"];
 				value = "id";
-				break; 
+				break;
 			case "slCadEmpresaDocumento" :
 				text = "id.idtipodocumento.descricao";
 				value = "id.idtipodocumento.id";
-				break; 
+				break;
+			case "slCadEntidade" :
+				text = ["razaosocial", "cnpj"];
+				value = "id";
+				break;
 			case "slCadFormulario" :
 				text = "nome";
 				value = "id";
-				break; 
+				break;
+			case "slCadFormularioEntidade" :
+				text = "idformulario.nome";
+				value = "idformulario.id";
+				break;
 			case "slCadMunicipioNome" :
 				text = "nome";
 				value = "id";
@@ -109,6 +215,8 @@ function requestData(select) {
 				value = "nome";
 				break; 
 			case "slCadPessoa" :
+            case "slCadPessoaFinal" :
+            case "slCadPessoaInicial" :
 				text = "nomerazaosocial";
 				value = "id";
 				break; 
@@ -134,6 +242,10 @@ function requestData(select) {
 				text = "nome";
 				value = "uf";
 				break; 
+			case "slFinBancoAgenciaConta" :
+				text = ["idbancoagencia.idbanco.descricao", "idbancoagencia.codagencia", "nroconta"];
+				value = "id";
+				break; 
 			case "slFinContaBancaria" :
 				text = ["idtipocontabancaria.descricao", "agencia", "numeroconta"];
 				value = "id";
@@ -145,11 +257,27 @@ function requestData(select) {
 			case "slPesDefinicao" :
 				text = ["idtipo.descricao", "idpessoa.nomerazaosocial"];
 				value = "id";
-				break; 
+				break;
+			case "slPesDefinicaoPsocial" :
+				text = "idpessoa.razaosocial";
+				value = "id";
+				break;
 			case "slPsGrupoClasse" :
+				text = ["idgrupo.descricao", "descricao"];
+				value = "id";
+				break;
+			case "slPsbClasse" :
+				text = "descricao";
+				value = ["id.id", "id.idgrupo.id"];
+				break;
+            case "slPsbClasseGrupo" :
+                text = ["id.idgrupo.descricao", "descricao"];
+				value = ["id.id", "id.idgrupo.id"];
+				break;
+			case "slPsbGrupoClasseCetus" :
 				text = ["id.idgrupo.descricao", "descricao"];
 				value = "id";
-				break; 
+				break;
 			case "slPsbClasse" :
 				text = ["id.idgrupo.descricao", "descricao"];
 				value = ["id.idgrupo.id", "id.id"];
@@ -178,101 +306,12 @@ function requestData(select) {
 }
 
 /** @auth Matheus Castiglioni
- *  Montando URL para buscar as informações referente a determinado select 
- */
-function getUrl(select) {
-	let parameters = "";
-	let url = select.dataset.url;
-	url = url.substring(2).replace(/[_]/g, "/").toLowerCase();
-	url = window.location.pathname.substring(0, window.location.pathname.substring(1).indexOf("/") + 2) + url;
-	switch (select.dataset.select.substring(2).toLowerCase()) {
-		case "json" :
-			url = `${url}.json`;
-			break;
-		case "txt" :
-			url = `${url}.txt`;
-			break;
-		default:
-			break;
-	}
-	if (select.dataset.parametersFields && select.dataset.parametersValues) {
-		const regExp = /[\[\]\"\s]/g;
-		const fields = select.dataset.parametersFields.replace(regExp, "").split(",");
-		const values = select.dataset.parametersValues.replace(regExp, "").split(",");
-		if (fields.length === values.length) {
-			for (let i = 0; i < fields.length; i++) {
-				parameters += `parametrosWeb[${i}].campo=${fields[i]}&parametrosWeb[${i}].parametroInicial=${getValueParameter(values[i])}&`;
-			}
-		}
-	}
-	if (parameters)
-		url += `?${parameters}`;
-    return url;
-}
-
-/** @auth Matheus Castiglioni
- *  Pegando o valor para informar nos parâmetros do @ParametrosWeb 
- */
-function getValueParameter(value) {
-	if (value.startsWith("sl"))
-		value = $(`[data-select=${value}]`).value;
-	return value;
-}
-
-/** @auth Matheus Castiglioni
- *  Alimentando os options do select de acordo com os registros encontrados no banco de dados 
- */
-function fillSelect(select, list, text, value) {
-	if (select.required) {
-		const optionRequired = new Option("", "");
-		optionRequired.style.display = "none";
-		select.appendChild(optionRequired);
-	}
-    list.forEach(item => select.appendChild(createOption(item, text, value)));
-}
-
-/** @auth Matheus Castiglioni
- *  Criando os options para serem inseridos nos selects 
- */
-const createOption = (item, text, value) => new Option(getPropertyJSON(item, text), getPropertyJSON(item, value));
-
-/** @auth Matheus Castiglioni
- *  Busca as informações desejadas no JSON, se for um objeto o mesmo é navegado até seu ponto primitivo 
- */
-function getPropertyJSON(item, propertys) {
-	let split, value = "";
-	if (Array.isArray(propertys)) {
-		for (let i = 0; i < propertys.length; i++) {
-			value = value.concat(getPrimitiveValue(item, propertys[i]), " / ");
-		}
-		value = value.substring(0, (value.length - 3));
-	} else {
-		value = getPrimitiveValue(item, propertys);
-	}
-	return value;
-}
-
-/** @auth Matheus Castiglioni
- *  Navegando no objeto até seu ponto primitivo 
- */
-function getPrimitiveValue(item, propertys) {
-	let value, split;
-	split = propertys.split(".");
-	for (let i = 0; i < split.length; i++) {
-		value = item[split[i]];
-		if (value instanceof Object)
-			item = value;
-	}
-	return value;
-}
-
-/** @auth Matheus Castiglioni
- *  Setando uma determinada opção como selecionado após abrir uma tela para edição 
+ *  Setando uma determinada opção como selecionado após abrir uma tela para edição
  */
 function setOptipnSelected(select) {
-	const aux = $(`input[name="${select.name}aux"][type=hidden]`);
+    const aux = $(`input[name="${select.name}aux"][type=hidden]`);
     if (aux && aux.value !== "") {
-    	select.value = aux.value;
-    	invokeChange(select);
+        select.value = aux.value;
+        invokeChange(select);
     }
 }

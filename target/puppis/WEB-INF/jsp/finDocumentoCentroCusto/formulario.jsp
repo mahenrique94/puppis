@@ -12,7 +12,7 @@
 		<div class="l-row" role="row">
 			<div class="u-grid--12" role="grid">
 				<label class="o-form__text" for="centrocusto"><fmt:message key="label.centro.custo"/><validate:validationMessage name="obj.idcentrocusto.id"/></label>
-				<select aria-required="true" class="o-form__data has-validation" data-select="sl" data-url="slCadastro_Centro-de-custo_Json" id="centrocusto" name="obj.idcentrocusto.id" required></select>
+				<select aria-required="true" ${autoFocus} class="o-form__data has-validation" data-select="sl" data-url="slCadastro_Centro-de-custo_Json" id="centrocusto" name="obj.idcentrocusto.id" required></select>
 			</div>
 		</div>
 	</section>
